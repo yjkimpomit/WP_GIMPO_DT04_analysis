@@ -1,0 +1,22 @@
+# 에외처리
+public/resources/css/bootstrap/
+public/resources/css/pano/
+public/resources/fonts/
+
+public/resources/admin/
+public/resources/js/**
+
+public/**
+
+
+# 아래 부분만 별도 반영
+!public/resources/js/common/
+!public/resources/js/common.js
+
+**/.DS_Store
+
+
+
+
+
+
