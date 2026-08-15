@@ -25,22 +25,18 @@
 
 <%--<!-- 일일안전현황 > 일일안전작업현황 > 오더번호 팝업 리스트 -->--%>
 <form id="searchWorkOrderPopForm" name="searchWorkOrderPopForm" method="post">
-    <div class="title-box">
-        <h4 class="title03">조회결과<small>(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</small></h4>
+    <div class="result-header">
+        <h2 class="result-header__title">조회결과<span class="result-header__count">(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</span></h2>
 
-        <div>
-            <div class="page-move">
-                <label for="currentPage" class="visually-hidden">이동할 페이지</label>
-                <input type="number" id="currentPage" class="form-control page" value="<c:out value='${paginationInfo.currentPageNo}'/>">
-                <span class="px-1">/</span>
+        <nav class="result-header__actions">
+            <nav class="pagination" aria-label="페이지 이동">
+                <input type="number" id="currentPage" class="form-control form-control--page" aria-label="이동할 페이지 번호" value="<c:out value='${paginationInfo.currentPageNo}'/>">
+                <span aria-hidden="true">/</span>
                 <span class="total"><fmt:formatNumber value="${paginationInfo.totalPageCount}" type="number"/></span>
-                <button type="button" class="btn btn-secondary" onclick="fnPageMovePop('M')">이동</button>
-            </div>
-
-            <div class="btn-box">
-                <button type="button" class="btn btn-outline-primary" onclick="fnPageMovePop('P')">이전</button>
-                <button type="button" class="btn btn-outline-primary" onclick="fnPageMovePop('N')">다음</button>
-            </div>
+                <button type="button" class="button button--neutral" onclick="fnPageMovePop('M')">이동</button>
+                <button type="button" class="button button--neutral" onclick="fnPageMovePop('P')">이전</button>
+                <button type="button" class="button button--neutral" onclick="fnPageMovePop('N')">다음</button>
+            </nav>
         </div>
     </div>
 </form>

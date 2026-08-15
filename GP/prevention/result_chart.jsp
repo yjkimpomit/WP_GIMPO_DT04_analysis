@@ -51,13 +51,13 @@
 						</div>
 
 						<div class="form-field">
-							<label class="form-label" id="maintDeptOption">*정비부서</label>
+							<label class="form-label" for="maintDeptOption">*정비부서</label>
 							<input class="form-control search-icon" id="maintDeptOption" name="workDeptNo" onclick="searchmainDeptTreePopup($(this));">
 							<input class="form-control" type="text" value="" id="maintDeptInput" disabled="" aria-label="선택된 정비부서">
 						</div>
 
 						<div class="form-field">
-							<label class="form-label" id="designDeptOption">설계부서</label>
+							<label class="form-label" for="designDeptOption">설계부서</label>
 							<input class="form-control search-icon" id="designDeptOption" name="planDeptNo" onclick="searchdesignDeptTreePopup($(this));">
 							<input class="form-control" type="text" value="" id="designDeptInput" disabled="" aria-label="선택된 설계부서">
 						</div>
@@ -79,13 +79,13 @@
 						</fieldset>
 
 						<div class="form-field">
-							<label class="form-label" id="inspectorOption">점검자</label>
+							<label class="form-label" for="inspectorOption">점검자</label>
 							<input class="form-control search-icon" id="inspectorOption" name="checkBy" onclick="searchItemPopup($(this));">
 							<input class="form-control" type="text" value="" id="inspectorInput" disabled="" aria-label="선택된 점검자">
 						</div>
 
 						<div class="form-field">
-							<label class="form-label" id="inspectorTypeOption">점검종류</label>
+							<label class="form-label" for="inspectorTypeOption">점검종류</label>
 							<input class="form-control search-icon" id="inspectorTypeOption" name="checkGbn" onclick="searchResultPopup($(this));">
 							<input class="form-control" type="text" value="" id="inspectorTypeInput" disabled="" aria-label="선택된 점검종류">
 						</div>

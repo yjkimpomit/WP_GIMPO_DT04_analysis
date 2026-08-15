@@ -22,7 +22,7 @@
 						<input type="hidden" id="ColList" name="ColList" value="">
 
 						<div class="form-field">
-							<label class="form-label" id="equipNoOption">설비번호</label>
+							<label class="form-label" for="equipNoOption">설비번호</label>
 							<input class="form-control search-icon" id="equipNoOption" name="equipNo" onclick="searchFacilityPopup($(this));">
 							<input class="form-control" type="text" value="" id="equipNoInput" disabled="">
 						</div>
@@ -58,7 +58,7 @@
 						</fieldset>
 
 						<div class="form-field">
-							<label class="form-label" id="maintDeptOption">정비부서</label>
+							<label class="form-label" for="maintDeptOption">정비부서</label>
 							<input class="form-control search-icon" id="maintDeptOption" name="deptNo" onclick="searchmainDeptTreePopup($(this));">
 							<input class="form-control" type="text" value="" id="maintDeptInput" disabled="" aria-label="선택된 정비부서명">
 						</div>

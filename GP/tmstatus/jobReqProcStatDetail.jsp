@@ -9,37 +9,27 @@
     var totalPage = ${paginationInfo.totalPageCount};
 </script>
 
-<div class="modal-header">
-    <h4 class="title04">작업요청 처리 현황 목록</h4>
-    <button type="button" class="btn close">
-        <span class="icon icon-close"></span><span>닫기</span>
-    </button>
-</div>
-<div class="modal-body">
-    <%-- 페이징 --%>
-    <div class="title-box">
-        <div>
-            <h6 class="title05">상세정보</h6>
-            <small>(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</small>
-        </div>
+<!-- 작업요청 처리 현황 목록 -->
+ 
+<!-- winbox detail popup -->
+<main class="detail-popup winbox-layout">
+	<header class="result-header detail-popup__header">
+		<h1 class="detail-popup__title">상세정보<span class="result-header__count">(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</span></h1>
 
-        <div>
-            <div class="page-move">
-                <label for="currentPage" class="visually-hidden">이동할 페이지</label>
-                <input type="number" id="currentPage" class="form-control page" value="<c:out value='${paginationInfo.currentPageNo}'/>">
-                <span class="px-1">/</span>
+        <div class="result-header__actions">
+            <nav class="pagination" aria-label="페이지 이동">
+                <input type="number" id="currentPage" class="form-control form-control--page" aria-label="이동할 페이지 번호" value="<c:out value='${paginationInfo.currentPageNo}'/>">
+                <span aria-hidden="true">/</span>
                 <span class="total"><fmt:formatNumber value="${paginationInfo.totalPageCount}" type="number"/></span>
-                <button type="button" class="btn btn-secondary" onclick="fnPageMove('M')">이동</button>
-            </div>
-
-            <div class="btn-box">
-                <button type="button" class="btn btn-outline-primary" onclick="fnPageMove('P')">이전</button>
-                <button type="button" class="btn btn-outline-primary" onclick="fnPageMove('N')">다음</button>
-            </div>
+                <button type="button" class="button button--neutral" onclick="fnPageMove('M')">이동</button>
+                <button type="button" class="button button--neutral" onclick="fnPageMove('P')">이전</button>
+                <button type="button" class="button button--neutral" onclick="fnPageMove('N')">다음</button>
+            </nav>
             <input type="hidden" id="hokiNo" value="<c:out value='${hoki}'/>">
             <input type="hidden" id="jobNo" value="<c:out value='${requestType}'/>">
         </div>
     </div>
+
     <div class="table-responsive">
         <table class="table table-sm" id="tblJobReqProcStatsDetail" aria-label="작업요청처리현황상세">
             <thead>

@@ -6,10 +6,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!-- data-grid -->
-<div class="title-box">
-    <div>
-        <h4 class="title04 my-0">작업오더(Red Tag) 설계 내용</h4>
-    </div>
+<div class="result-header">
+	<h3 class="result-header__title">작업오더(Red Tag) 설계 내용</h3>
     <!-- <div>
         <button type="button" class="btn btn-xs btn-primary">출력으로 보내기</button>
     </div> -->

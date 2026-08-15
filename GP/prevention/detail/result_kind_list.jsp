@@ -8,9 +8,10 @@
 <c:set var="listCount" value="${fn:length(list)}"/>
 
 <%-- 예방점검현황 > 점검종류 리스트 --%>
-<h5 class="title04">
-    점검종류 리스트<small>(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</small>
-</h5>
+<div class="result-header">
+	<h3 class="result-header__title">점검종류 리스트<span class="result-header__count">(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</span></h3>
+</div>
+
 <div class="table-responsive">
     <table class="table table-sm" id="tblInspectorTypeList" aria-label="점검종류-리스트">
         <thead>

@@ -13,9 +13,16 @@
 
 <%--  <c:forEach var="data" items="${list}" varStatus="status"> --%>
 <%-- </c:forEach> --%>
-<div id="procstat_chart" class="tui-chart-box">
 
-</div>
+<section class="result-chart" aria-labelledby="tm-processing-chart-title">
+	<div class="section-header visually-hidden">
+		<h2 class="section-title" id="tm-processing-chart-title">작업요청처리현황 차트</h2>
+	</div>
+	
+	<div class="chart-container">
+		<div class="chart-placeholder" role="img" aria-label="작업요청처리현황 차트" id="procstat_chart"></div>
+	</div>
+</section>					
 
 <script>
     //검색조건에 따라 차트 타이틀 변경 값

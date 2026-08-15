@@ -43,15 +43,15 @@
 						</fieldset>
 						
 						<div class="form-field">
-							<label class="form-label" for="multiple-request-department-code">요청부서</label>
+							<label class="form-label" for="reqDeptOption">요청부서</label>
 							<input class="form-control" id="reqDeptOption" name="reqDeptNo" onclick="searchReqDeptTreePopup($(this));">
-							<input class="form-control" type="text" value="" id="reqDeptInput" disabled="">
+							<input class="form-control" type="text" value="" id="reqDeptInput" disabled="" aria-label="선택된 요청부서명">
 						</div>
 						
 						<div class="form-field">
-							<label class="form-label" for="multiple-request-department-code">감독부서</label>
+							<label class="form-label" for="supvDeptOption">감독부서</label>
 							<input class="form-control" id="supvDeptOption" name="deptNo" onclick="searchReqTreePopup($(this));">
-							<input class="form-control" type="text" value="" id="supvDeptInput" disabled="">
+							<input class="form-control" type="text" value="" id="supvDeptInput" disabled="" aria-label="선택된 감독부서명">
 						</div>
 					</div>
 					

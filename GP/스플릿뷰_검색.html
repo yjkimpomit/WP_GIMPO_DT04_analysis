@@ -83,7 +83,9 @@
 [공통]
 1. 테이블 클릭시 상세화면 윈박스 및 행선택 스타일 클래스 반영
 2. readonly 의 스타일이 disabled에도 같이 반영되도록 설정
-3. fieldset > legend 인 경우에는 gap 이 반영되지 않으므로 margin-bottom 을 갭만큼 설정할 것.
+3. fieldset > legend 인 경우에는 gap 이 반영되지 않으므로 margin-bottom 을 갭만큼 설정할 것
+4. 결과 화면에서 테이블 영역의 감싸는 클래스 확인 - <div class="result-panel__body panel-split-layout__body">
+5. 상세팝업 - 참고화면: /Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/tmstatus/multipleTMStatsDetail.jsp
 
 [/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/tmstatus/multipleTMStats.jsp]
 1. <main class="winbox-layout page-content tm-confirmation-page"> 부분에서 tm-confirmation-page 클래스 제거해도 괜찮은지 확인
@@ -120,5 +122,20 @@
 [/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/dailysafety/workOrder.jsp]
 1. 공사번호 인풋 가려진거 확인
 2. 변경구분명 셀렉트박스 스타일 확인
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/dailysafety/detail/workReport_list.jsp]
+1. 라인 75 가로배치형 인풋 체크
+
+
+[차트확인]
+1. /Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/tmstatus/detail/jobReqProcStat_chart.jsp
+
+[개발확인]
+1. [dailysafety/workReport.jsp (line 191)](/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/dailysafety/workReport.jsp:191) / [226 (line 226)](/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/dailysafety/workReport.jsp:226): pageIndex
+
+2. [tmstatus/detail/multipleTMStats_list.jsp (line 48)](/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/tmstatus/detail/multipleTMStats_list.jsp:48): thead > tr 안에 빈 id/name의 input이 직접 들어가 있습니다. tr의 직접 자식은 th 또는 td여야 합니다
+
+3. [tmstatus/detail/jobReqProcStat_list.jsp (line 88)](/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/tmstatus/detail/jobReqProcStat_list.jsp:88), [jobReqCnt_list.jsp (line 198)](/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/tmstatus/detail/jobReqCnt_list.jsp:198): 반복 행 내부에 id="rnd" input이 직접 배치됩니다. 유효하지 않은 테이블 구조이며, 반복 데이터가 둘 이상이면 동일 ID가 여러 개 생성됩니다.
+
 
 -->

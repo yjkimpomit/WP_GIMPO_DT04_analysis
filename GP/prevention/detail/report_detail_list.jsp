@@ -8,7 +8,8 @@
 <c:set var="listCount" value="${fn:length(list)}"/>
 
 <%-- 예방점검현황 > 점검보고서 조회 상세내용 리스트 --%>
-<h5 class="title04">점검보고서 상세 내용<small>(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</small></h5>
+<h3 class="result-header__title">점검보고서 상세 내용<span class="result-header__count">(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</span></h3>
+
 <div class="table-responsive">
     <table class="table table-sm" id="tblReportDetailList" aria-label="점검보고서-상세내용">
         <thead>

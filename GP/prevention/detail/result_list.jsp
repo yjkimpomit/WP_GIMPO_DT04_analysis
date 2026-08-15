@@ -11,25 +11,22 @@
     var totalPage = ${paginationInfo.totalPageCount};
 </script>
 
-<div class="title-box">
-    <h4 class="title03">조회결과<small>(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</small></h4>
-    <div>
-        <div class="page-move">
-            <label for="currentPage" class="visually-hidden">이동할 페이지</label>
-            <input type="number" id="currentPage" class="form-control page" value="<c:out value='${paginationInfo.currentPageNo}'/>">
-            <span class="px-1">/</span>
+<div class="result-header">
+    <h2 class="result-header__title">조회결과<span class="result-header__count">(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</span></h2>
+    
+	<nav class="result-header__actions">
+        <nav class="pagination" aria-label="페이지 이동">
+            <input type="number" id="currentPage" class="form-control form-control--page" aria-label="이동할 페이지 번호" value="<c:out value='${paginationInfo.currentPageNo}'/>">
+            <span aria-hidden="true">/</span>
             <span class="total"><fmt:formatNumber value="${paginationInfo.totalPageCount}" type="number"/></span>
-            <button type="button" class="btn btn-secondary" onclick="fnPageMove('M')">이동</button>
-        </div>
-
-        <div class="btn-box">
-            <button type="button" class="btn btn-outline-primary" onclick="fnPageMove('P')">이전</button>
-            <button type="button" class="btn btn-outline-primary" onclick="fnPageMove('N')">다음</button>
+            <button type="button" class="button button--neutral" onclick="fnPageMove('M')">이동</button>
+            <button type="button" class="button button--neutral" onclick="fnPageMove('P')">이전</button>
+            <button type="button" class="button button--neutral" onclick="fnPageMove('N')">다음</button>
             <%-- 앱 로그인 체크 --%>
             <c:if test="${sessionScope.loginInfo.iui_isadmin ne '999'}">
-                <button type="button" class="btn btn-primary btn-file-download" onclick="reportExcelDownload3()">엑셀 다운로드</button>
+                <button type="button" class="button button--secondary" onclick="reportExcelDownload3()">엑셀 다운로드</button>
             </c:if>
-        </div>
+        </nav>
     </div>
 </div>
 

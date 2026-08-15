@@ -17,10 +17,8 @@
 </script>
 
 <!-- data-grid -->
-<div class="title-box mt-3 mt-xl-0">
-    <div>
-        <h4 class="title04 my-0">Red Tag 출력 리스트</h4>
-    </div>
+<div class="result-header">
+	<h4 class="result-header__title">Red Tag 출력 리스트</h4>
 </div>
 
 <div class="table-responsive">

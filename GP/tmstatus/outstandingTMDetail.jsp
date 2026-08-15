@@ -1,14 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<div class="modal-header">
-	<h5 class="title04">${outstandiingTMInfo.description}</h5>
-	<button type="button" class="btn close">
-        <span class="icon icon-close"></span><span>닫기</span>
-	</button>
-</div>
-
-<div class="modal-body">
-	<h6 class="title05">상세정보</h6>
+<!-- 미결TM현황-상세정보 -->
+ 
+<!-- winbox detail popup -->
+<main class="detail-popup winbox-layout">
+	<header class="result-header detail-popup__header">
+		<h1 class="detail-popup__title">
+			<span>${outstandiingTMInfo.description}</span>
+			<span class="result-header__count">(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</span>
+		</h1>
+	</header>
 	
 	<div class="table-box table-responsive">
 		<table class="table table-sm view-table" data-tab-id="workReqPane" aria-label="미결TM현황-상세정보">
@@ -66,4 +67,6 @@
 			</tbody>
 		</table>
 	</div>
-</div>
+</main>
+
+

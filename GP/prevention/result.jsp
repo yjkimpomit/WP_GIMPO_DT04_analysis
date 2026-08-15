@@ -49,7 +49,7 @@
 						</div>
 
 						<div class="form-field">
-							<label class="form-label" id="designDeptOption">설계부서</label>
+							<label class="form-label" for="designDeptOption">설계부서</label>
 							<input class="form-control search-icon" id="designDeptOption" name="planDeptNo" onclick="searchdesignDeptTreePopup($(this));">
 							<input class="form-control" type="text" value="" id="designDeptInput" disabled="" aria-label="선택된 설계부서명">
 						</div>

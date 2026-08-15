@@ -50,7 +50,7 @@
 						</div>
 						
 						<div class="form-field">
-							<label class="form-label" id="supvorOption">감독자</label>
+							<label class="form-label" for="supvorOption">감독자</label>
 							<input class="form-control search-icon" id="supvorOption" name="authoBy" onclick="searchItemPopup($(this));">
 							<input class="form-control" type="text" value="" id="supvorInput" disabled="" aria-label="선택된 감독자명">
 						</div>

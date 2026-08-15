@@ -61,7 +61,7 @@
 						</fieldset>
 
 						<div class="form-field">
-							<legend class="form-label" id="reqDeptOption">요청부서</legend>
+							<legend class="form-label" for="reqDeptOption">요청부서</legend>
 							<input class="form-control search-icon" id="reqDeptOption" name="reqDept" onclick="searchReqDeptTreePopup($(this));">
 							<input class="form-control" type="text" value="" id="reqDeptInput" disabled="" aria-label="선택된 요청부서명">
 						</div>
