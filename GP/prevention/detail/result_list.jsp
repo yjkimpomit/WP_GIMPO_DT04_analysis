@@ -14,7 +14,7 @@
 <div class="result-header">
     <h2 class="result-header__title">조회결과<span class="result-header__count">(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</span></h2>
     
-	<nav class="result-header__actions">
+	<div class="result-header__actions">
         <nav class="pagination" aria-label="페이지 이동">
             <input type="number" id="currentPage" class="form-control form-control--page" aria-label="이동할 페이지 번호" value="<c:out value='${paginationInfo.currentPageNo}'/>">
             <span aria-hidden="true">/</span>

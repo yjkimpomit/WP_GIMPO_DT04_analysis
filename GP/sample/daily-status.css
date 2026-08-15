@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+/* daily-safety-status-v1: 일일안전 작업현황 전용 레이아웃 */
+.daily-status-page {
+	--daily-status-section-gap: var(--spacing-100);
+	--daily-status-card-gap: var(--spacing-100);
+	overflow: auto;
+}
+
+.daily-status-section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--daily-status-section-gap);
+}
+
+.daily-status-section__date {
+	color: var(--fg-muted);
+	font-size: var(--font-size-sm);
+}
+
+.daily-summary-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(220px, 1fr));
+	gap: var(--spacing-200);
+	overflow-x: auto;
+	padding-bottom: var(--spacing-050);
+}
+
+.daily-summary-card {
+	display: flex;
+	flex-direction: column;
+	gap: var(--daily-status-card-gap);
+	min-width: 220px;
+	padding: var(--spacing-200);
+	border: 1px solid var(--panel-border);
+	border-radius: var(--radius-100);
+	background: var(--panel-bg);
+}
+
+.daily-summary-card__title {
+	margin: 0;
+	color: var(--fg-strong);
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-bold);
+}
+
+.daily-summary-card .responsive-table {
+	border-top-width: 1px;
+}
+
+.daily-summary-card .data-table--list th,
+.daily-summary-card .data-table--list td {
+	height: 40px;
+	padding: var(--spacing-050) var(--spacing-100);
+}
+
+.daily-summary-card .data-table--list th {
+	width: 60%;
+	text-align: left;
+}
+
+.daily-calendar-placeholder {
+	display: grid;
+	min-height: 160px;
+	place-items: center;
+	border: 1px solid var(--panel-border);
+	border-radius: var(--radius-100);
+	background: var(--chart-placeholder-bg);
+	color: var(--fg-muted);
+	font-size: var(--font-size-sm);
+}
+
+.daily-status-section--result {
+	padding-bottom: var(--spacing-300);
+}
+
+.daily-status-section--result .data-table {
+	min-width: 960px;
+}
+
+@media (min-width: 768px) {
+	.daily-status-page {
+		--daily-status-section-gap: var(--spacing-200);
+	}
+
+	.daily-status-section--result .result-header {
+		align-items: center;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.daily-status-section--result .result-header__actions {
+		justify-content: flex-end;
+		width: auto;
+	}
+}
