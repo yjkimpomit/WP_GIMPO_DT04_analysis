@@ -10,8 +10,8 @@
 </script>
 
 <%-- 예방점검현황 > 점검결과(chart) 조회 리스트 --%>
-<div class="title-box">
-    <h4 class="title03">조회결과<small>(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</small></h4>
+<div class="result-header">
+    <h2 class="result-header__title panel-split-layout__title">조회결과 <span class="result-header__count">(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</span></h2>
 
     <div>
         <div class="page-move">
@@ -34,41 +34,43 @@
 </div>
 
 <!-- data-grid -->
-<div class="table-responsive">
-    <table class="table table-sm" id="tblInspectorList" aria-label="점검결과(Chart)-리스트">
-        <thead>
-        <tr>
-            <th scope="col" name="excelCol" data-field="설비번호">설비번호</th>
-            <th scope="col" name="excelCol" data-field="설비명">설비명</th>
-            <th scope="col" name="excelCol" data-field="점검구분">점검구분</th>
-            <th scope="col" name="excelCol" data-field="점검번호">점검번호</th>
-            <th scope="col" name="excelCol" data-field="점검명">점검명</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%-- 데이터가 없을 경우 --%>
-        <c:if test="${fn:length(list) == 0}">
-            <tr>
-                <th colspan="5">
-                    <div class="no-data">
-                        조회된 데이터가 없습니다.
-                    </div>
-                </th>
-            </tr>
-        </c:if>
+<div class="result-panel__body panel-split-layout__body">
+	<div class="table-responsive">
+		<table class="table table-sm" id="tblInspectorList" aria-label="점검결과(Chart)-리스트">
+			<thead>
+			<tr>
+				<th scope="col" name="excelCol" data-field="설비번호">설비번호</th>
+				<th scope="col" name="excelCol" data-field="설비명">설비명</th>
+				<th scope="col" name="excelCol" data-field="점검구분">점검구분</th>
+				<th scope="col" name="excelCol" data-field="점검번호">점검번호</th>
+				<th scope="col" name="excelCol" data-field="점검명">점검명</th>
+			</tr>
+			</thead>
+			<tbody>
+			<%-- 데이터가 없을 경우 --%>
+			<c:if test="${fn:length(list) == 0}">
+				<tr>
+					<td colspan="5">
+						<div class="no-data">
+							조회된 데이터가 없습니다.
+						</div>
+					</ㅅ>
+				</tr>
+			</c:if>
 
-        <c:forEach var="data" items="${list}" varStatus="status">
-            <tr class="_TR_RESULT_DATA" data-request-no="${data.checkListNo}" onclick="fnResultDetailView($(this))">
-                <th data-field="설비번호">${data.equipNo}</th>
-                <td data-field="설비명">${data.equipNm}</td>
-                <td data-field="점검구분">${data.checkTypeNm}</td>
-                <td data-field="점검번호">${data.checkListNo}</td>
-                <td data-field="점검명">${data.description}</td>
-            </tr>
-        </c:forEach>
+			<c:forEach var="data" items="${list}" varStatus="status">
+				<tr class="_TR_RESULT_DATA" data-request-no="${data.checkListNo}" onclick="fnResultDetailView($(this))">
+					<th data-field="설비번호">${data.equipNo}</th>
+					<td data-field="설비명">${data.equipNm}</td>
+					<td data-field="점검구분">${data.checkTypeNm}</td>
+					<td data-field="점검번호">${data.checkListNo}</td>
+					<td data-field="점검명">${data.description}</td>
+				</tr>
+			</c:forEach>
 
-        </tbody>
-    </table>
+			</tbody>
+		</table>
+	</div>
 </div>
 
 <script>

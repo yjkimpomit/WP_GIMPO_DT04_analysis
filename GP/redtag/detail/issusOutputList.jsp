@@ -46,11 +46,11 @@
         </c:if>
         <c:forEach items="${list}" var="data" varStatus="status">
             <tr>
-                <td scope="col" data-field="작업오더">${data.woNo}</td>
-                <td scope="col" data-field="Barcode">${data.barcodeNo}</td>
-                <td scope="col" data-field="대상기기번호">${data.redtagNo}</td>
-                <td scope="col" data-field="대상기기명">${data.redtagName}</td>
-                <td scope="col" data-field="조작요청내용">${data.redtagStatus}</td>
+                <td data-field="작업오더">${data.woNo}</td>
+                <td data-field="Barcode">${data.barcodeNo}</td>
+                <td data-field="대상기기번호">${data.redtagNo}</td>
+                <td data-field="대상기기명">${data.redtagName}</td>
+                <td data-field="조작요청내용">${data.redtagStatus}</td>
             </tr>
         </c:forEach>
         </tbody>

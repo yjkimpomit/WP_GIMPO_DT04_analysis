@@ -1,0 +1,124 @@
+
+<main class="winbox-layout page-content">
+	<div class="page-content__placeholder">
+		<div class="splitview">
+			<aside class="splitview__pane splitview__pane--sidebar" aria-label="정보 검색">
+
+				<!-- 검색영역 -->
+				<form class="filter-panel" method="post" autocomplete="off">
+					<div class="filter-panel__header">
+						<span class="filter-panel__title">검색</span>
+						<button class="filter-panel__toggle" 
+								type="button"
+								aria-label="정보 검색 접기" 
+								aria-expanded="true" 
+								aria-controls="filter-panel-fields"></button>
+					</div>
+					<div class="filter-panel__fields" id="filter-panel-fields">
+						<!-- form-field 단위로 반복 -->
+
+						<div class="form-field">
+							<label class="form-label" for=""></label>
+							<input class="form-control search-icon">
+							<input class="form-control" type="text" value="" disabled="">
+						</div>
+
+						<fieldset class="form-field">
+							<legend class="form-label">검색기간(확정일)</legend>
+
+							<div class="form-control-group">
+								<label>
+									<span class="visually-hidden">확정 시작일</span>
+									<input type="date" class="form-control"
+										id="inspectorPeriodStart"
+										name="searchPeriodStart">
+								</label>
+
+								<label>
+									<span class="visually-hidden">확정 종료일</span>
+									<input type="date" class="form-control"
+										id="inspectorPeriodEnd"
+										name="searchPeriodEnd">
+								</label>
+							</div>
+						</fieldset>
+
+						<fieldset class="form-field">
+							<legend class="form-label">이상점검결과</legend>
+							<div class="form-field__content">
+								<label class="form-choice">
+									<input type="checkbox" name="abnormal-inspection-result" value="true"> <span>이상점검결과 선택</span>
+								</label>
+							</div>
+						</fieldset>
+						
+					</div>
+
+					<!-- 검색버튼 -->
+					<div class="filter-panel__actions">
+						<button type="button" class="button button--primary" onclick="fnWorkRequestSearch();">검색</button>
+					</div>
+				</form>
+			
+			</aside>
+			<section class="splitview__pane splitview__pane--content result-panel" aria-label="검색 결과">
+				<h1 class="page-content__heading"></h1>
+				
+				<%-- data-grid : 결과 리스트 뷰 --%>
+				<div class="result-panel__body" id="">
+					
+				</div>
+			</section>
+		</div>
+	</div>
+</main>
+
+
+<!-- 
+잔여작업
+폼박스 내 클래스 반영
+
+확인해야할 목록
+
+[공통]
+1. 테이블 클릭시 상세화면 윈박스 및 행선택 스타일 클래스 반영
+2. readonly 의 스타일이 disabled에도 같이 반영되도록 설정
+3. fieldset > legend 인 경우에는 gap 이 반영되지 않으므로 margin-bottom 을 갭만큼 설정할 것.
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/tmstatus/multipleTMStats.jsp]
+1. <main class="winbox-layout page-content tm-confirmation-page"> 부분에서 tm-confirmation-page 클래스 제거해도 괜찮은지 확인
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/prevention/report.jsp]
+1. 라인 91 ~ 99 연결테이블 레이아웃 확인
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/tmstatus/jobReqCnt.jsp]
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/tmstatus/jobReqProcStat.jsp]
+1. 결과화면 차트 확인할 것 - chart-item 크기 및 반응형
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/redtag/issusList.jsp]
+1. 라인 130번 주석부분 제거해도 되는지 확인
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/prevention/result.jsp]
+1. result-panel__body 클래스가 하단으로 3개 있어도 레이아웃 괜찮은지 확인할 것
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/prevention/costFailureTrends.jsp]
+1. d-none 확인할 것
+2. id="dateRangePicker" id="setYear" - 기간선택 옵션 테스트해볼 것
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/prevention/result_chart.jsp]
+1. 체크박스 확인 value가 2개
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/tmstatus/jobReqProcStat.jsp]
+1. hidden 인풋 없는지 확인
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/prevention/unispection.jsp]
+1. <datalist id="designDeptOpt"> 부분 동작 확인 사용안하면 제거
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/dailysafety/maintenanceOrder.jsp]
+1. 공사종류 인풋 readonly 확인
+
+[/Users/yunji/Sites/WP_GIMPO_DT04_analysis/GP/dailysafety/workOrder.jsp]
+1. 공사번호 인풋 가려진거 확인
+2. 변경구분명 셀렉트박스 스타일 확인
+
+-->

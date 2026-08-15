@@ -7,37 +7,43 @@
 
 <%-- 예방점검현황 > 점검내용 리스트 --%>
 <c:set var="listCount" value="${fn:length(list)}"/>
-<div class="title-box">
-    <h5 class="title04" style="margin-top: 0; margin-bottom: .75rem;">점검내용 리스트<small>(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</small></h5>
+
+<div class="result-header">
+	<h2 class="result-header__title panel-split-layout__title">점검내용 <span class="result-header__count">(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</span></h2>
 </div>
 
-<div class="table-responsive">
-    <table class="table table-sm" id="tblInspectorResultList" aria-label="점검내용(Chart)-리스트">
-        <thead>
-        <tr>
-            <th scope="col" data-field="점검일자(일자)">점검일자(일자)</th>
-            <th scope="col" data-field="점검값">점검값</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%-- 데이터가 없을 경우 --%>
-        <c:if test="${fn:length(list) == 0}">
-            <tr>
-                <th colspan="2">
-                    <div class="no-data">
-                        조회된 데이터가 없습니다.
-                    </div>
-                </th>
-            </tr>
-        </c:if>
+<!-- <%-- data-grid : 결과 리스트 뷰 --%> -->
+<div class="result-panel__body panel-split-layout__body">
 
-        <c:forEach var="data" items="${list}" varStatus="status">
-            <tr>
-                <td data-field="점검일자(일자)">${data.checkDate}</td>
-                <td data-field="점검값">${data.checkValue}</td>
-            </tr>
-        </c:forEach>
+	<div class="table-responsive">
+		<table class="table table-sm" id="tblInspectorResultList" aria-label="점검내용(Chart)-리스트">
+			<thead>
+			<tr>
+				<th scope="col" data-field="점검일자(일자)">점검일자(일자)</th>
+				<th scope="col" data-field="점검값">점검값</th>
+			</tr>
+			</thead>
+			<tbody>
+			<%-- 데이터가 없을 경우 --%>
+			<c:if test="${fn:length(list) == 0}">
+				<tr>
+					<td colspan="2">
+						<div class="no-data">
+							조회된 데이터가 없습니다.
+						</div>
+					</td>
+				</tr>
+			</c:if>
 
-        </tbody>
-    </table>
+			<c:forEach var="data" items="${list}" varStatus="status">
+				<tr>
+					<td data-field="점검일자(일자)">${data.checkDate}</td>
+					<td data-field="점검값">${data.checkValue}</td>
+				</tr>
+			</c:forEach>
+
+			</tbody>
+		</table>
+	</div>
+
 </div>

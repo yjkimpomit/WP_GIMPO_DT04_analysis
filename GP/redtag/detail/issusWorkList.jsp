@@ -40,11 +40,11 @@
         </c:if>
         <c:forEach items="${list}" var="data" varStatus="status">
             <tr data-request-no="${data.barcodeNo}" onclick="redtagWorkOrderDetail($(this))">
-                <td scope="col" data-field="대상기기번호">${data.redtagNo}</td>
-                <td scope="col" data-field="대상기기명">${data.redtagName}</td>
-                <td scope="col" data-field="조작요청내용">${data.redtagStatus}</td>
-                <td scope="col" data-field="출력자">${data.printBy}</td>
-                <td scope="col" data-field="출력일자">
+                <td data-field="대상기기번호">${data.redtagNo}</td>
+                <td data-field="대상기기명">${data.redtagName}</td>
+                <td data-field="조작요청내용">${data.redtagStatus}</td>
+                <td data-field="출력자">${data.printBy}</td>
+                <td data-field="출력일자">
                     <c:choose>
                         <c:when test="${fn:length(data.printDate) == 0}">
                             ${data.printDate}
@@ -55,8 +55,8 @@
                         </c:when>
                     </c:choose>
                 </td>
-                <td scope="col" data-field="회수자">${data.returnBy}</td>
-                <td scope="col" data-field="회수일자">
+                <td data-field="회수자">${data.returnBy}</td>
+                <td data-field="회수일자">
                     <c:choose>
                         <c:when test="${fn:length(data.returnDate) == 0}">
                             ${data.returnDate}

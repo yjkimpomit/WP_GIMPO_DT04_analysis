@@ -1,154 +1,148 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<div class="title-box">
-    <h3 class="title02">점검 결과(chart)</h3>
-</div>
+<main class="winbox-layout page-content">
+	<div class="page-content__placeholder">
+		<div class="splitview">
+			<aside class="splitview__pane splitview__pane--sidebar" aria-label="정보 검색">
 
-<!-- 검색영역 -->
-<div class="search-box">
-    <form id="form_search_result_chart" method="post" autocomplete="off">
+				<!-- 검색영역 -->
+				<form class="filter-panel" id="form_search_result_chart" method="post" autocomplete="off">
+					<div class="filter-panel__header">
+						<span class="filter-panel__title">검색</span>
+						<button class="filter-panel__toggle" 
+								type="button"
+								aria-label="정보 검색 접기" 
+								aria-expanded="true" 
+								aria-controls="filter-panel-fields"></button>
+					</div>
+					<div class="filter-panel__fields" id="filter-panel-fields">
 
-        <input type="hidden" id="ColList" name="ColList" value=""/>
+						<!-- form-field 단위로 반복 -->
+						<input type="hidden" id="ColList" name="ColList" value=""/>
 
-        <div class="row">
-            <div class="col-md-6 col-lg-4 col-xxl-2">
-                <label class="form-label" for="checkNo1">점검번호</label>
-                <input class="form-control" type="text" id="checkNo1" name="checkListNo"/>
-            </div>
+						<div class="form-field">
+							<label class="form-label" for="checkNo1">점검번호</label>
+							<input class="form-control" type="text" id="checkNo1" name="checkListNo"/>
+						</div>
 
-            <fieldset class="col-md-6 col-lg-4 col-xxl-2">
-                <legend class="form-label" id="equipNo">설비번호</legend>
-                <div class="row g-2">
-                    <div class="col">
-                        <label class="visually-hidden" for="equipNoOption">설비번호 검색</label>
-                        <input class="form-control search-icon" id="equipNoOption" name="equipNo" onclick="searchFacilityPopup($(this));">
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="equipNoInput">설비번호</label>
-                        <input class="form-control" type="text" value="" id="equipNoInput" disabled="">
-                    </div>
-                </div>
-            </fieldset>
+						<div class="form-field">
+							<label class="form-label" for="equipNoOption">설비번호</label>
+							<input class="form-control search-icon" id="equipNoOption" name="equipNo" onclick="searchFacilityPopup($(this));">
+							<input class="form-control" type="text" value="" id="equipNoInput" disabled="" aria-label="선택된 설비번호">
+						</div>
+						
+						<!-- <fieldset class="form-field">
+							<legend class="form-label">이상점검결과</legend>
+							<div class="form-field__content">
+								<label class="form-choice">
+									<input type="checkbox" name="abnormal-inspection-result" value="true">
+								</label>
+							</div>
+						</fieldset> -->
 
-            <div class="col-md-6 col-lg-4 col-xxl-2">
-                <span class="form-label">이상점검결과</span>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="chkAbnormalResult" value="1"/>
-                    <label class="form-check-label" for="chkAbnormalResult">이상점검결과 선택</label>
-                </div>
-            </div>
+						<div class="form-field">
+							<legend class="form-label">이상점검결과</legend>
+							<div class="form-field__content">
+								<label class="form-choice">
+									<input type="checkbox" value="" id="chkAbnormalResult" value="1"/>
+									<span>이상점검결과 선택</span>
+								</label>
+							</div>
+						</div>
 
-            <fieldset class="col-md-6 col-lg-4 col-xxl-3">
-                <legend class="form-label" id="maintDept">*정비부서</legend>
-                <div class="row g-2">
-                    <div class="col">
-                        <label class="visually-hidden" for="maintDeptOption">정비부서 검색</label>
-                        <input class="form-control search-icon" id="maintDeptOption" name="workDeptNo" onclick="searchmainDeptTreePopup($(this));">
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="maintDeptInput">정비부서</label>
-                        <input class="form-control" type="text" value="" id="maintDeptInput" disabled="">
-                    </div>
-                </div>
-            </fieldset>
+						<div class="form-field">
+							<label class="form-label" id="maintDeptOption">*정비부서</label>
+							<input class="form-control search-icon" id="maintDeptOption" name="workDeptNo" onclick="searchmainDeptTreePopup($(this));">
+							<input class="form-control" type="text" value="" id="maintDeptInput" disabled="" aria-label="선택된 정비부서">
+						</div>
 
-            <fieldset class="col-md-6 col-lg-4 col-xxl-3">
-                <legend class="form-label" id="designDept">설계부서</legend>
-                <div class="row g-2">
-                    <div class="col">
-                        <label class="visually-hidden" for="designDeptOption">설계부서 검색</label>
-                        <input class="form-control search-icon" id="designDeptOption" name="planDeptNo" onclick="searchdesignDeptTreePopup($(this));">
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="designDeptInput">설계부서</label>
-                        <input class="form-control" type="text" value="" id="designDeptInput" disabled="">
-                    </div>
-                </div>
-            </fieldset>
+						<div class="form-field">
+							<label class="form-label" id="designDeptOption">설계부서</label>
+							<input class="form-control search-icon" id="designDeptOption" name="planDeptNo" onclick="searchdesignDeptTreePopup($(this));">
+							<input class="form-control" type="text" value="" id="designDeptInput" disabled="" aria-label="선택된 설계부서">
+						</div>
 
-            <fieldset class="col-md-6 col-lg-4 col-xxl-3">
-                <legend class="form-label" id="inspectorPeriod">점검기간</legend>
-                <div class="row g-2 period-box">
-                    <div class="col">
-                        <label class="visually-hidden" for="inspectorPeriodStart">시작일</label>
-                        <input type="date" class="form-control" name="searchPeriodStart" id="inspectorPeriodStart">
-                    </div>
-                    <div class="col-auto">
-                        <span class="form-control-plaintext text-center">~</span>
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="inspectorPeriodEnd">종료일</label>
-                        <input type="date" class="form-control" name="searchPeriodEnd" id="inspectorPeriodEnd">
-                    </div>
-                </div>
-            </fieldset>
+						<fieldset class="form-field">
+							<legend class="form-label">점검기간</legend>
 
-            <fieldset class="col-md-6 col-lg-4 col-xxl-3">
-                <legend class="form-label" id="inspector">점검자</legend>
-                <div class="row g-2">
-                    <div class="col">
-                        <label class="visually-hidden" for="inspectorOption">점검자 검색</label>
-                        <input class="form-control search-icon" id="inspectorOption" name="checkBy" onclick="searchItemPopup($(this));">
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="inspectorInput">점검자</label>
-                        <input class="form-control" type="text" value="" id="inspectorInput" disabled="">
-                    </div>
-                </div>
-            </fieldset>
+							<div class="form-control-group">
+								<label>
+									<span class="visually-hidden">점검 시작일</span>
+									<input type="date" class="form-control" id="inspectorPeriodStart" name="searchPeriodStart">
+								</label>
 
-            <fieldset class="col-md-6 col-lg-4 col-xxl-3">
-                <legend class="form-label" id="inspectorType">점검종류</legend>
-                <div class="row g-2">
-                    <div class="col">
-                        <label class="visually-hidden" for="inspectorTypeOption">점검종류 검색</label>
-                        <input class="form-control search-icon" id="inspectorTypeOption" name="checkGbn" onclick="searchResultPopup($(this));">
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="inspectorTypeInput">점검종류</label>
-                        <input class="form-control" type="text" value="" id="inspectorTypeInput" disabled="">
-                    </div>
-                </div>
-            </fieldset>
+								<label>
+									<span class="visually-hidden">점검 종료일</span>
+									<input type="date" class="form-control" id="inspectorPeriodEnd" name="searchPeriodEnd">
+								</label>
+							</div>
+						</fieldset>
 
-            <div class="col-md col-lg col-xxl">
-                <label class="form-label" for="inspectorClass">점검구분</label>
-                <select class="form-select" id="inspectorClass" name="checkTypeNm">
-                    <option value="">----------------------------------</option>
-                    <option value="일반예방점검">일반예방점검</option>
-                    <option value="오일점검">오일점검</option>
-                    <option value="오일분석">오일분석</option>
-                    <option value="상태기반예방점검">상태기반예방점검</option>
-                </select>
-            </div>
+						<div class="form-field">
+							<label class="form-label" id="inspectorOption">점검자</label>
+							<input class="form-control search-icon" id="inspectorOption" name="checkBy" onclick="searchItemPopup($(this));">
+							<input class="form-control" type="text" value="" id="inspectorInput" disabled="" aria-label="선택된 점검자">
+						</div>
 
-            <div class="col col-md-auto">
-                <button type="button" class="btn btn-primary" onclick="fnResultChartSearch()">
-                    <span class="icon icon-search"></span>
-                    <span>검색</span>
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
+						<div class="form-field">
+							<label class="form-label" id="inspectorTypeOption">점검종류</label>
+							<input class="form-control search-icon" id="inspectorTypeOption" name="checkGbn" onclick="searchResultPopup($(this));">
+							<input class="form-control" type="text" value="" id="inspectorTypeInput" disabled="" aria-label="선택된 점검종류">
+						</div>
+						
+						<div class="form-field">
+                            <label class="form-label" for="inspectorClass">점검구분</label>
+							<select class="form-select" id="inspectorClass" name="checkTypeNm">
+								<option value="">----------------------------------</option>
+								<option value="일반예방점검">일반예방점검</option>
+								<option value="오일점검">오일점검</option>
+								<option value="오일분석">오일분석</option>
+								<option value="상태기반예방점검">상태기반예방점검</option>
+							</select>
+						</div>
+					</div>
 
-<%-- data-grid : 조회결과 리스트 뷰 --%>
-<div class="row">
-    <div class="col-xl-9">
-        <div id="_VIEW_RESULT_CHART_LIST">
-            <%-- 조회 리스트 : /detail/result_chart_list.jsp --%>
-        </div>
+					<!-- 검색버튼 -->
+					<div class="filter-panel__actions">
+						<button type="button" class="button button--primary" onclick="fnResultChartSearch()">검색</button>
+					</div>
+				</form>
+			
+			</aside>
+			<section class="splitview__pane splitview__pane--content result-panel" aria-label="검색 결과">
+				<h1 class="page-content__heading">점검 결과(chart)</h1>
+				
+				<%-- data-grid : 결과 리스트 뷰 --%>
+				<div class="result-panel__body">
+					<div class="splitview panel-split-layout panel-split-layout--two-to-one">
+						<aside class="splitview__pane splitview__pane--sidebar panel-split-layout__sidebar" aria-label="조회리스트">
 
-        <div id="_VIEW_RESULT_CHART_KIND_LIST">
-            <%-- 조회결과의 점검종류 리스트 : /detail/result_chart_kind_list.jsp --%>
-        </div>
-    </div>
-    <div class="col-xl-3">
-        <div id="_VIEW_RESULT_CHART_DETAIL_LIST" class="h-100">
-            <%-- 조회결과의 점검내용 리스트 : /detail/result_chart_detail_list.jsp --%>
-        </div>
-    </div>
-</div>
+							<section class="panel-split-layout__group panel-split-layout__group--primary" id="_VIEW_RESULT_CHART_LIST" aria-label="점검결과 리스트">
+								<%-- 조회 리스트 : /detail/result_chart_list.jsp --%>
+							</section>
+
+							<section class="panel-split-layout__group panel-split-layout__group--secondary" id="_VIEW_RESULT_CHART_KIND_LIST" aria-label="점검종류 리스트">
+								<%-- 조회결과의 점검종류 리스트 : /detail/result_chart_kind_list.jsp --%>
+
+							</section>
+
+						</aside>
+
+						<div class="splitview__pane splitview__pane--content panel-split-layout__content" role="region" aria-label="점검내용">
+							<section class="panel-split-layout__group panel-split-layout__group--primary" id="_VIEW_RESULT_CHART_DETAIL_LIST" aria-label="점검내용 리스트">
+								<%-- 조회결과의 점검내용 리스트 : /detail/result_chart_detail_list.jsp --%>
+
+							</section>
+
+						</section>
+
+					</div>
+				</div>
+				
+			</section>
+		</div>
+	</div>
+</main>
 
 <script>
     function setDate() {

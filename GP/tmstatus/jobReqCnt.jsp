@@ -5,155 +5,140 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div class="title-box">
-    <h3 class="title02">작업요청 건수</h3>
-</div>
+<main class="winbox-layout page-content">
+	<div class="page-content__placeholder">
+		<div class="splitview">
+			<aside class="splitview__pane splitview__pane--sidebar" aria-label="정보 검색">
 
-<div class="search-box">
-    <form id="form_search_job_reqeust_count" method="post" autocomplete="off">
-        <div class="row">
-        	<!-- 사업소 영역 추후에 사용할 수 있음 -->
-            <!-- <div class="col-md-6 col-lg-4 col-xxl-2">
-                <label class="form-label" for="bizOfcSel">사업소</label>
-                <select class="form-select" aria-label="사업소 선택" id="bizOfcSel" disabled>
-                    <option>사업소 선택</option>
-                    <option value="1" selected>평택2복합</option>
-                </select>
-            </div> -->
+				<!-- 검색영역 -->
+				<form class="filter-panel" id="form_search_job_reqeust_count" method="post" autocomplete="off">
 
-            <fieldset class="col-md-6 col-lg-4 col-xxl-2 col-xxxl-6">
-                <legend class="form-label" id="searchType">검색유형</legend>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="rbSearchType01" name="searchType" value="1" checked>
-                        <label class="form-check-label" for="rbSearchType01">
-                            요청 유형
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="rbSearchType02" name="searchType" value="2">
-                        <label class="form-check-label" for="rbSearchType02">
-                            중요도
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
+					<div class="filter-panel__header">
+						<span class="filter-panel__title">검색</span>
+						<button class="filter-panel__toggle" 
+								type="button"
+								aria-label="정보 검색 접기" 
+								aria-expanded="true" 
+								aria-controls="filter-panel-fields"></button>
+					</div>
 
-            <!-- 상위 폼 요소 (연관된 인풋 두 개 세트) -->
-            <fieldset class="col-md-6 col-lg-4 col-xxl-3 col-xxxl-3">
-                <legend class="form-label" id="confirmedDt">검색기간(확정일)</legend>
-                <div class="row g-2 period-box">
-                    <div class="col">
-                        <label class="visually-hidden" for="confirmedDtStart">시작일</label>
-                        <input type="date" class="form-control" id="confirmedDtStart" name="searchPeriodStart">
-                    </div>
-                    <div class="col-auto">
-                        <span class="form-control-plaintext text-center">~</span>
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="confirmedDtEnd">종료일</label>
-                        <input type="date" class="form-control" id="confirmedDtEnd" name="searchPeriodEnd">
-                    </div>
-                </div>
-            </fieldset>
+					<!-- filter-panel__fields 안에서 form-field 단위로 반복 -->
+					<div class="filter-panel__fields" id="filter-panel-fields">
 
-            <fieldset class="col-auto col-lg-12 col-xxl-7 col-xxxl-6">
-                <legend class="form-label" id="searchCondition">검색조건</legend>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="rbSearchCondition05" name="searchCondition" value="5" data-label="설비" checked>
-                        <label class="form-check-label" for="rbSearchCondition05">
-                            설비별
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="rbSearchCondition02" name="searchCondition" value="2" data-label="요청부서">
-                        <label class="form-check-label" for="rbSearchCondition02">
-                            요청부서별
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="rbSearchCondition03" name="searchCondition" value="3" data-label="감독부서">
-                        <label class="form-check-label" for="rbSearchCondition03">
-                            감독부서별
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="rbSearchCondition04" name="searchCondition" value="4" data-label="요청자">
-                        <label class="form-check-label" for="rbSearchCondition04">
-                            요청자별
-                        </label>
-                    </div>
+						<!-- 사업소 영역 추후에 사용할 수 있음 -->
+						<!-- <div class="col-md-6 col-lg-4 col-xxl-2">
+							<label class="form-label" for="bizOfcSel">사업소</label>
+							<select class="form-select" aria-label="사업소 선택" id="bizOfcSel" disabled>
+								<option>사업소 선택</option>
+								<option value="1" selected>평택2복합</option>
+							</select>
+						</div> -->
 
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="rbSearchCondition01" name="searchCondition" value="1" data-label="호기">
-                        <label class="form-check-label" for="rbSearchCondition01">
-                            호기별
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="rbSearchCondition06" name="searchCondition" value="6" data-label="요청부서/감독부서">
-                        <label class="form-check-label" for="rbSearchCondition06">
-                            요청부서별 & 감독부서별
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
+						<fieldset class="form-field">
+							<legend class="form-label">검색 유형</legend>
+							<div class="form-field__content form-choice-list">
+								<label class="form-choice">
+									<input type="radio" id="rbSearchType01" name="searchType" value="1" checked>
+									<span>요청 유형</span>
+								</label>
+								<label class="form-choice">
+									<input type="radio" id="rbSearchType02" name="searchType" value="2">
+									<span>중요도</span>
+								</label>
+							</div>
+						</fieldset>
 
-            <!-- 상위 폼 요소 2 (연관된 인풋 두 개 세트) -->
-            <fieldset class="col-md-6 col-lg-4 col-xxl-3 col-xxxl-3">
-                <legend id="reqDept" class="form-label">요청부서</legend>
-                <div class="row g-2">
-                    <div class="col">
-                        <label class="visually-hidden" for="reqDeptOption">요청부서</label>
-                        <input class="form-control search-icon" id="reqDeptOption" name="reqDeptNo" disabled onclick="searchReqDeptTreePopup($(this));">
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="reqDeptInput">요청부서명</label>
-                        <input class="form-control" type="text" value="" id="reqDeptInput" disabled="">
-                    </div>
-                </div>
-            </fieldset>
+						<fieldset class="form-field">
+							<legend class="form-label" id="dateRangePicker">검색기간(확정일)</legend>
 
-            <fieldset class="col-md col-lg-4 col-xxl-3 col-xxxl-2">
-                <legend id="supvDept" class="form-label">감독부서</legend>
-                <div class="row g-2">
-                    <div class="col">
-                        <label class="visually-hidden" for="supvDeptOption">감독부서 검색</label>
-                        <input class="form-control search-icon" id="supvDeptOption" name="deptNo" disabled onclick="searchReqTreePopup($(this));">
-                    </div>
-                    <div class="col">
-                        <label class="visually-hidden" for="supvDeptInput">감독부서명</label>
-                        <input class="form-control" type="text" value="" id="supvDeptInput" disabled="">
-                    </div>
-                </div>
-            </fieldset>
+							<div class="form-control-group">
+								<label>
+									<span class="visually-hidden">시작일</span>
+									<input type="date" class="form-control" id="confirmedDtStart" name="searchPeriodStart">
+								</label>
 
-            <div class="col-md-auto">
-                <button type="button" class="btn btn-primary" onclick="fnJobRequestCountSearch()">
-                    <span class="icon icon-search"></span><span>검색</span>
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
+								<label>
+									<span class="visually-hidden">종료일</span>
+									<input type="date" class="form-control" id="confirmedDtEnd" name="searchPeriodEnd">
+								</label>
+							</div>
+						</fieldset>
 
-<div id="_VIEW_RESULT_SHOW" class="d-none">
-    <div id="divResultChart">
-        <div class="chart-box" role="img" aria-label="작업요청건수-차트">
-            <div class="chart-item">
-                <%-- 차트 : /detail/jobReqCnt_chart.jsp --%>
-            </div>
-        </div>
-    </div>
+						<fieldset class="form-field">
+							<legend class="form-label">검색조건</legend>
+							<div class="form-field__content form-choice-list">
+								<label class="form-choice">
+									<input type="radio" id="rbSearchCondition05" name="searchCondition" value="5" data-label="설비" checked>
+									<span>설비별</span>
+								</label>
+								<label class="form-choice">
+									<input type="radio" id="rbSearchCondition02" name="searchCondition" value="2" data-label="요청부서">
+									<span>요청부서별</span>
+								</label>
+								<label class="form-choice">
+									<input type="radio" id="rbSearchCondition03" name="searchCondition" value="3" data-label="감독부서">
+									<span>감독부서별</span>
+								</label>
+								<label class="form-choice">
+									<input type="radio" id="rbSearchCondition04" name="searchCondition" value="4" data-label="요청자">
+									<span>요청자별</span>
+								</label>
+								<label class="form-choice">
+									<input type="radio" id="rbSearchCondition01" name="searchCondition" value="1" data-label="호기">
+									<span>호기별</span>
+								</label>
+								<label class="form-choice">
+									<input type="radio" id="rbSearchCondition06" name="searchCondition" value="6" data-label="요청부서/감독부서">
+									<span>요청부서별 & 감독부서별</span>
+								</label>
+							</div>
+						</fieldset>
 
-    <div id="_VIEW_JOB_RC_LIST">
-        <%-- 조회 리스트 부분 : /detail/jobReqCnt_list.jsp --%>
-    </div>
-</div>
+						<div class="form-field">
+							<label class="form-label" for="reqDeptOption">요청부서</label>
+							<input class="form-control search-icon" id="reqDeptOption" name="reqDeptNo" disabled onclick="searchReqDeptTreePopup($(this));">
+							<input class="form-control" type="text" value="" id="reqDeptInput" disabled="">
+						</div>
+
+						<div class="form-field">
+							<label class="form-label" for="supvDeptOption">감독부서</label>
+							<input class="form-control search-icon" id="supvDeptOption" name="deptNo" disabled onclick="searchReqTreePopup($(this));">
+							<input class="form-control" type="text" value="" id="supvDeptInput" disabled="">
+						</div>
+					</div>
+
+					<div class="filter-panel__actions">
+						<button type="button" class="button button--primary" onclick="fnJobRequestCountSearch()">검색</button>
+					</div>
+					
+				</form>
+			
+			</aside>
+			<section class="splitview__pane splitview__pane--content result-panel" aria-label="검색 결과">
+				<h1 class="page-content__heading">작업요청 건수</h1>
+				
+				<%-- data-grid : 결과 리스트 뷰 --%>
+				<div class="d-none" id="_VIEW_RESULT_SHOW">
+					<div class="chart-placeholder" role="img" aria-label="작업요청건수-차트" id="divResultChart">
+						<!-- <div class="chart-box" role="img" aria-label="작업요청건수-차트"> -->
+							<div class="chart-item">
+								<%-- 차트 : /detail/jobReqCnt_chart.jsp --%>
+							</div>
+						<!-- </div> -->
+					</div>
+
+					<div class="result-panel__body" id="_VIEW_JOB_RC_LIST">
+						<%-- 조회 리스트 부분 : /detail/jobReqCnt_list.jsp --%>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+	</div>
+</main>
 
 <%-- 상세보기 팝업 --%>
-<div class="modal fade" tabindex="-1" id="jobReqCntDetailBox">
+<div class="modal fade" id="jobReqCntDetailBox" tabindex="-1" aria-label="작업 상세보기">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
         <div class="modal-content" id="jobReqCntDetailList">
         </div>

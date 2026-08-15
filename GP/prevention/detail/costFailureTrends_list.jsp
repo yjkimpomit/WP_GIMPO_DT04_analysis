@@ -22,11 +22,11 @@
         <%-- 데이터가 없을 경우 --%>
         <c:if test="${empty list}">
             <tr>
-                <th colspan="5">
+                <td colspan="5">
                     <div class="no-data">
                         조회된 데이터가 없습니다.
                     </div>
-                </th>
+                </td>
             </tr>
         </c:if>
 

@@ -14,16 +14,16 @@
 <canvas class="chart-item" id="trend_chart" style="width: 100%; height: 320px;"></canvas>
 </div>
 <div class="label-box">
-    <label class="chart-label01" for="dataset1"><input class="form-check-input" type="checkbox" id="dataset1"/>발전량(Mwh)</label>
-    <label class="chart-label02" for="dataset2"><input class="form-check-input" type="checkbox" id="dataset2"/>&#8361;/Mwh</label>
-    <label class="chart-label03" for="dataset3"><input class="form-check-input" type="checkbox" id="dataset3" checked/>비용(억원)</label>
-    <label class="chart-label04" for="dataset4"><input class="form-check-input" type="checkbox" id="dataset4"/>이용률(%)</label>
-    <label class="chart-label05" for="dataset5"><input class="form-check-input" type="checkbox" id="dataset5"/>PM(건)</label>
-    <label class="chart-label06" for="dataset6"><input class="form-check-input" type="checkbox" id="dataset6"/>작업오더(건)</label>
-    <label class="chart-label07" for="dataset7"><input class="form-check-input" type="checkbox" id="dataset7"/>TM(건)</label>
-    <label class="chart-label08" for="dataset8"><input class="form-check-input" type="checkbox" id="dataset8"/>Failure Tendency</label>
-    <label class="chart-label09" for="dataset9"><input class="form-check-input" type="checkbox" id="dataset9"/>Factor(F.T./$)</label>
-    <label class="chart-label10" for="dataset10"><input class="form-check-input" type="checkbox" id="dataset10"/>Trip(건)</label>
+    <label class="chart-label01" for="dataset1"><input type="checkbox" id="dataset1"/>발전량(Mwh)</label>
+    <label class="chart-label02" for="dataset2"><input type="checkbox" id="dataset2"/>&#8361;/Mwh</label>
+    <label class="chart-label03" for="dataset3"><input type="checkbox" id="dataset3" checked/>비용(억원)</label>
+    <label class="chart-label04" for="dataset4"><input type="checkbox" id="dataset4"/>이용률(%)</label>
+    <label class="chart-label05" for="dataset5"><input type="checkbox" id="dataset5"/>PM(건)</label>
+    <label class="chart-label06" for="dataset6"><input type="checkbox" id="dataset6"/>작업오더(건)</label>
+    <label class="chart-label07" for="dataset7"><input type="checkbox" id="dataset7"/>TM(건)</label>
+    <label class="chart-label08" for="dataset8"><input type="checkbox" id="dataset8"/>Failure Tendency</label>
+    <label class="chart-label09" for="dataset9"><input type="checkbox" id="dataset9"/>Factor(F.T./$)</label>
+    <label class="chart-label10" for="dataset10"><input type="checkbox" id="dataset10"/>Trip(건)</label>
 </div>
 
 <%-- 차트 뷰 --%>

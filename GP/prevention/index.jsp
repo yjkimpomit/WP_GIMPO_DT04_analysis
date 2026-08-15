@@ -7,7 +7,7 @@
 
 <c:import url="/header.do"/>
 
-<body class="sub">
+<body>
 <%-- <!-- 로딩박스 --> --%>
 <div class="loading-box" id="loadingBar" style="display: none;">
     <div class="loader"></div>

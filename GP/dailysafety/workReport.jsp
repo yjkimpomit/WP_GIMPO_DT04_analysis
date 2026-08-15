@@ -166,7 +166,7 @@
 </div>
 
 <%--<!-- 현황등록 Start -->--%>
-<div class="modal fade" id="dailyRiskEntryPopup" tabindex="-1">
+<div class="modal fade" id="dailyRiskEntryPopup" tabindex="-1" aria-label="현황 등록">
     <%-- 등록 팝업창 위치 : /workReportForm.jsp --%>
 </div>
 <%--<!-- 현황등록 End -->--%>
@@ -174,7 +174,7 @@
 <%--</div>--%>
 
 <!-- 미등록 팝업 -->
-<div class="modal fade search-popup" id="workReportUnRegistPopup" tabindex="-1">
+<div class="modal fade search-popup" id="workReportUnRegistPopup" tabindex="-1" aria-label="등록 현황">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down modal-lg modal-xl">
         <div class="modal-content">
             <div class="modal-header">

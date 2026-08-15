@@ -7,85 +7,94 @@
 
 <%-- TM현황 > 작업요청확정 탭 메뉴 --%>
 <main class="winbox-layout page-content tm-confirmation-page">
-    <div class="page-content__placeholder">
-        <div class="splitview">
-            <aside class="splitview__pane splitview__pane--sidebar" aria-label="정보 검색">
+	<div class="page-content__placeholder">
+		<div class="splitview">
+			<aside class="splitview__pane splitview__pane--sidebar" aria-label="정보 검색">
 
-                <!-- 검색영역 -->
-                <form class="filter-panel" id="form_search_work_request" method="post" autocomplete="off">
-                    <div class="filter-panel__header">
-                        <span class="filter-panel__title">검색</span>
-                        <button class="filter-panel__toggle" type="button"
-                                aria-label="정보 검색 접기" aria-expanded="true"></button>
-                    </div>
-                    <div class="filter-panel__fields">
-                        <input type="hidden" id="ColList" name="ColList" value=""/>
-                        
-                        <label class="form-field">
-                            <span class="form-label">요청유형</span>
-                            <select class="form-select" id="reqType" name="noticeType">
-                                <option value="">----------------------------------</option>
-                                <option value="TM">TM</option>
-                                <option value="설비개선">설비개선</option>
-                                <option value="NCR">NCR</option>
-                                <option value="CAR">CAR</option>
-                                <option value="유사사고방지">유사사고방지</option>
-                            </select>
-                        </label>
-                        
-                        <!-- 감독부서 유형 -->
-                        <div class="form-field">
-                            <label class="form-label" for="supvDeptOption">감독부서</label>
-                            <input class="form-control search-icon" id="supvDeptOption" name="dept" onclick="searchReqTreePopup($(this));"/>
-                            <input class="form-control" type="text" value="" id="supvDeptInput" disabled="" aria-label="선택된 감독부서명" readonly>
-                        </div>
-                        
-                        <div class="form-field">
-                            <span class="form-label">요청기간</span>
-                            <div class="form-control-group">
-                                <label>
-                                    <span class="visually-hidden">요청 시작일</span>
-                                    <input type="date" class="form-control" id="reqPeriodStart" name="searchPeriodStart">
-                                </label>
-                                <label>
-                                    <span class="visually-hidden">요청 종료일</span>
-                                    <input type="date" class="form-control" id="reqPeriodEnd" name="searchPeriodEnd">
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-field">
-                            <label class="form-label" for="reqDeptOption">요청부서</label>
-                            <input class="form-control" id="reqDeptOption" name="reqDept" onclick="searchReqDeptTreePopup($(this));"/>
-                            <input class="form-control" type="text" value="" id="reqDeptInput" disabled="" aria-label="선택된 요청부서명" readonly>
-                        </div>
-                        
-                    </div>
-                    <div class="filter-panel__actions">
-                        <button type="button" class="button button--primary" onclick="fnWorkRequestSearch();">검색</button>
-                    </div>
-                </form>
+				<!-- 검색영역 -->
+				<form class="filter-panel" id="form_search_work_request" method="post" autocomplete="off">
 
-            
-            </aside>
-            <section class="splitview__pane splitview__pane--content result-panel" aria-label="검색 결과">
-                <h1 class="page-content__heading">작업요청확정</h1>
-                
-                <%-- data-grid : 결과 리스트 뷰 --%>
-                <div class="result-panel__body" id="_VIEW_WORK_REQUEST_LIST">
-                    <%-- 조회 리스트 부분 : /detail/workRequest_list.jsp --%>
-                </div>
-            </section>
-        </div>
-    </div>
+					<div class="filter-panel__header">
+						<span class="filter-panel__title">검색</span>
+						<button class="filter-panel__toggle" 
+								type="button"
+								aria-label="정보 검색 접기" 
+								aria-expanded="true" 
+								aria-controls="filter-panel-fields"></button>
+					</div>
+
+					<!-- filter-panel__fields 안에서 form-field 단위로 반복 -->
+					<div class="filter-panel__fields" id="filter-panel-fields">
+						<input type="hidden" id="ColList" name="ColList" value=""/>
+						
+						<div class="form-field">
+							<label class="form-label" for="reqType">요청유형</label>
+							<select class="form-select" id="reqType" name="noticeType">
+								<option value="">----------------------------------</option>
+								<option value="TM">TM</option>
+								<option value="설비개선">설비개선</option>
+								<option value="NCR">NCR</option>
+								<option value="CAR">CAR</option>
+								<option value="유사사고방지">유사사고방지</option>
+							</select>
+						</div>
+						
+						<div class="form-field">
+							<label class="form-label" for="supvDeptOption">감독부서</label>
+							<input class="form-control search-icon" id="supvDeptOption" name="dept" onclick="searchReqTreePopup($(this));">
+							<input class="form-control" type="text" value="" id="supvDeptInput" disabled="" aria-label="선택된 감독부서명">
+						</div>
+
+						<fieldset class="form-field">
+							<legend class="form-label">요청기간</legend>
+
+							<div class="form-control-group">
+								<label>
+									<span class="visually-hidden">요청 시작일</span>
+									<input type="date" class="form-control" id="reqPeriodStart" name="searchPeriodStart">
+								</label>
+
+								<label>
+									<span class="visually-hidden">요청 종료일</span>
+									<input type="date" class="form-control" id="reqPeriodEnd" name="searchPeriodEnd">
+								</label>
+							</div>
+						</fieldset>
+						
+						<div class="form-field">
+							<label class="form-label" for="reqDeptOption">요청부서</label>
+							<input class="form-control" id="reqDeptOption" name="reqDept" onclick="searchReqDeptTreePopup($(this));" readonly>
+							<input class="form-control" type="text" value="" id="reqDeptInput" disabled="" aria-label="선택된 요청부서명">
+						</div>
+						
+					</div>
+
+					<div class="filter-panel__actions">
+						<button type="button" class="button button--primary" onclick="fnWorkRequestSearch();">검색</button>
+					</div>
+
+				</form>
+			
+			</aside>
+			<section class="splitview__pane splitview__pane--content result-panel" aria-label="검색 결과">
+				<h1 class="page-content__heading">작업요청확정</h1>
+				
+				<%-- data-grid : 결과 리스트 뷰 --%>
+				<div class="result-panel__body" id="_VIEW_WORK_REQUEST_LIST">
+					<%-- 조회 리스트 부분 : /detail/workRequest_list.jsp --%>
+				</div>
+			</section>
+		</div>
+	</div>
+
+</main>
 
 <%-- 리스트의 상세보기 팝업 --%>
-<div class="modal fade" tabindex="-1" id="requestDetailBox">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-        <div class="modal-content" id="requestDetail"></div>
-    </div>
+<div class="modal fade" tabindex="-1" id="requestDetailBox" aria-label="상세보기 팝업">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+		<div class="modal-content" id="requestDetail"></div>
+	</div>
 </div>
-</main>
 
 <script>
 	var stval = "";

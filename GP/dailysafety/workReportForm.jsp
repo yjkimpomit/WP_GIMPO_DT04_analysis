@@ -43,15 +43,15 @@
                             <th scope="row">* 구분</th>
                             <td colspan="3">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="radio_1_mt" name="modelTypeCode" value="TA">
+                                    <input type="radio" id="radio_1_mt" name="modelTypeCode" value="TA">
                                     <label class="form-check-label _MODEL_TYPE_NAME" for="radio_1_mt">태안</label>
                                 </div>
                                 <%--<div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="radio_1_mt" name="modelTypeCode" value="TA09">
+                                    <input type="radio" id="radio_1_mt" name="modelTypeCode" value="TA09">
                                     <label class="form-check-label _MODEL_TYPE_NAME" for="radio_1_mt">태안 9호기</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="radio_2_mt" name="modelTypeCode" value="TA10">
+                                    <input type="radio" id="radio_2_mt" name="modelTypeCode" value="TA10">
                                     <label class="form-check-label _MODEL_TYPE_NAME" for="radio_2_mt">태안 10호기</label>
                                 </div>--%>
                                 <input type="hidden" id="modelTypeName" name="modelTypeName"/>
@@ -71,8 +71,8 @@
                                     <div class="col">
                                         <c:if test="${workReportVO.mode eq 'I'}">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="withoutOrder">
-                                                <label class="form-check-label" for="withoutOrder">오더없이 작성</label>
+                                                <input type="checkbox" id="withoutOrder">
+                                                <label class="form-label" for="withoutOrder">오더없이 작성</label>
                                             </div>
                                         </c:if>
                                     </div>
@@ -233,47 +233,47 @@
                             <td colspan="3">
                                 <div class="d-flex flex-wrap">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="G" id="chkValue1" name="hazardWorkCode">
+                                        <input type="checkbox" value="G" id="chkValue1" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue1">일반</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="HW" id="chkValue2" name="hazardWorkCode">
+                                        <input type="checkbox" value="HW" id="chkValue2" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue2">화기</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="C" id="chkValue3" name="hazardWorkCode">
+                                        <input type="checkbox" value="C" id="chkValue3" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue3">밀폐</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="H" id="chkValue4" name="hazardWorkCode">
+                                        <input type="checkbox" value="H" id="chkValue4" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue4">고소</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="HO" id="chkValue5" name="hazardWorkCode">
+                                        <input type="checkbox" value="HO" id="chkValue5" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue5">중량물</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="PO" id="chkValue6" name="hazardWorkCode">
+                                        <input type="checkbox" value="PO" id="chkValue6" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue6">정전</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="E" id="chkValue7" name="hazardWorkCode">
+                                        <input type="checkbox" value="E" id="chkValue7" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue7">굴착</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="D" id="chkValue8" name="hazardWorkCode">
+                                        <input type="checkbox" value="D" id="chkValue8" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue8">잠수</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="R" id="chkValue9" name="hazardWorkCode">
+                                        <input type="checkbox" value="R" id="chkValue9" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue9">방사선</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="CS" id="chkValue10" name="hazardWorkCode">
+                                        <input type="checkbox" value="CS" id="chkValue10" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue10">화학물질</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" value="O" id="chkValue11" name="hazardWorkCode">
+                                        <input type="checkbox" value="O" id="chkValue11" name="hazardWorkCode">
                                         <label class="form-check-label _HAZARD_WORK_NAME" for="chkValue11">기타</label>
                                     </div>
                                     <input type="hidden" id="hazardWorkName" name="hazardWorkName"/>
@@ -391,8 +391,8 @@
                             </div>
                             <div class="col-md-auto mb-3">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" value="1" id="check_searchType" name="searchType">
-                                    <label class="form-check-label" for="check_searchType">전체</label>
+                                    <input type="checkbox" value="1" id="check_searchType" name="searchType">
+                                    <label class="form-label" for="check_searchType">전체</label>
                                 </div>
                             </div>
                             <div class="col-md-auto mb-3">

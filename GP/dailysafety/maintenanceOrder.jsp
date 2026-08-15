@@ -6,211 +6,166 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%-- 일일안전현황 > 공사오더(OH) 팝업 --%>
-<%--<div class="tab-pane fade _TAB_CONTENT" id="tab04-pane-safety" role="tabpanel" aria-labelledby="tab04_safety" tabindex="0">--%>
-<div class="panel-box safety">
-	<div class="side-panel left">
-        <%-- tree list view : 기능위치/계통/종류 --%>
-        <c:import url="/common/facilityPackageTreeList.do"/>
-    </div>
 
-	<div class="contents-panel">
-		<h3 class="title02">공사오더(OH)</h3>
-		<!-- 검색영역 -->
-		<div class="search-box">
-			<form id="searchWorkOrderForm" method="post" autocomplete="off">
-				<input type="hidden" name="pageIndex" id="pageIndex" value="${workOrderVO.pageIndex}">
-				<div class="row">
-					<!-- 설계자 -->
-					<fieldset class="col-md-6 col-xxl-4 col-xxxl-3">
-						<legend class="form-label" id="designer">설계자</legend>
-						<div class="row g-2">
-							<div class="col-6">
-								<label class="visually-hidden" for="designerOption">설계자 검색</label>
-								<input class="form-control search-icon" id="designerOption" name="designBy" onclick="searchItemPopup($(this));">
-							</div>
-							<div class="col-6">
-								<label class="visually-hidden" for="designerInput">설계자명</label>
-								<input class="form-control" type="text" value="" id="designerInput" name="designName" disabled>
-							</div>
-						</div>
-					</fieldset>
+<main class="winbox-layout page-content">
+	<div class="page-content__placeholder">
+		<div class="splitview">
+			<aside class="splitview__pane splitview__pane--sidebar" aria-label="정보 검색">
 
-					<!-- 설계부서 유형 -->
-					<fieldset class="col-md-6 col-xxl-4 col-xxxl-3">
-						<legend class="form-label" id="designDept">설계부서</legend>
-						<div class="row g-2">
-							<div class="col">
-								<label class="visually-hidden" for="designDeptOption">설계부서 검색</label>
-								<input class="form-control search-icon" id="designDeptOption" name="designDeptNo" onclick="searchdesignDeptTreePopup($(this));">
-							</div>
-							<div class="col">
-								<label class="visually-hidden" for="designDeptInput">설계부서</label>
-								<input class="form-control" type="text" value="" id="designDeptInput" name="designDeptName" disabled="">
-							</div>
-						</div>
-					</fieldset>
+				<!-- 검색영역 -->
+				<form class="filter-panel" id="searchWorkOrderForm" method="post" autocomplete="off">
 
-					<fieldset class="col-md-6 col-xxl-4 col-xxxl-3">
-						<legend class="form-label" id="supvor">감독자</legend>
-						<div class="row g-2">
-							<div class="col-6">
-								<label class="visually-hidden" for="supvorOption">감독자 검색</label>
-								<input class="form-control search-icon" id="supvorOption" name="planBy" onclick="searchItemPopup($(this));">
-							</div>
-							<div class="col-6">
-								<label class="visually-hidden" for="supvorInput">감독자명</label>
-								<input class="form-control" type="text" value="" id="supvorInput" name="planName" disabled="">
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset class="col-md-6 col-xxl-4 col-xxxl-3">
-						<legend class="form-label" id="supvDept">감독부서</legend>
-						<div class="row g-2">
-							<div class="col">
-								<label class="visually-hidden" for="supvDeptOption">감독부서 검색</label>
-								<input class="form-control search-icon" id="supvDeptOption" name="deptNo" onclick="searchReqTreePopup($(this));">
-							</div>
-							<div class="col">
-								<label class="visually-hidden" for="supvDeptInput">감독부서명</label>
-								<input class="form-control" type="text" value="" id="supvDeptInput" name="deptName" disabled="">
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset class="col-md-6 col-xxl-8 col-xxxl-3">
-						<legend class="form-label" id="planCreatedDate">설계일</legend>
-						<div class="row g-2 period-box">
-							<div class="col">
-								<label class="visually-hidden" for="requestDateStart">시작일</label>
-								<input type="date" class="form-control" id="requestDateStart" name="requestDateStart">
-							</div>
-							<div class="col-auto">
-								<span class="form-control-plaintext text-center">~</span>
-							</div>
-							<div class="col">
-								<label class="visually-hidden" for="requestDateEnd">종료일</label>
-								<input type="date" class="form-control" id="requestDateEnd" name="requestDateEnd">
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset class="col-md-6 col-xxl-4 col-xxxl-3">
-						<legend class="form-label" id="constCode">공사번호</legend>
-						<div class="row g-2">
-							<%--<div class="col">
-                                <label class="visually-hidden" for="constCodeOption">공사번호 검색</label>
-                                <input class="form-control search-icon" id="constCodeOption" name="projectNo" onclick="searchmainDeptTreePopup($(this));">
-                            </div>--%>
-							<div class="col">
-								<label class="visually-hidden" for="constCodeInput">공사번호명</label>
-								<input class="form-control" type="text" value="" id="constCodeInput" name="projectNo">
-							</div>
-						</div>
-					</fieldset>
-
-					<div class="col-md-6 col-xxl-4 col-xxxl-3">
-						<label class="form-label" for="projectTypeDesc">공사종류</label>
-						<input class="form-control" type="text" value="O/H" id="projectTypeDesc" name="projectTypeDesc" readonly>
+					<div class="filter-panel__header">
+						<span class="filter-panel__title">검색</span>
+						<button class="filter-panel__toggle" 
+								type="button"
+								aria-label="정보 검색 접기" 
+								aria-expanded="true" 
+								aria-controls="filter-panel-fields"></button>
 					</div>
 
-					<div class="col-md-6 col-xxl-4 col-xxxl-3">
-						<label class="form-label" for="orderNo">오더번호</label>
-						<input class="form-control" type="text" id="orderNo" name="woNo" placeholder="오더번호 입력">
-					</div>
+					<!-- filter-panel__fields 안에서 form-field 단위로 반복 -->
+					<div class="filter-panel__fields" id="filter-panel-fields">
+						<input type="hidden" name="pageIndex" id="pageIndex" value="${workOrderVO.pageIndex}">
+					
+						<div class="form-field">
+							<label class="form-label" for="designerOption">설계자</label>
+							<input class="form-control search-icon" id="designerOption" name="designBy" onclick="searchItemPopup($(this));">
+							<input class="form-control" type="text" value="" id="designerInput" name="designName" disabled="" aria-label="선택된 설계자명">
+						</div>
 
-					<fieldset class="col-md-12 col-xxl-6">
-						<legend class="form-label">변경구분</legend>
-						<div class="row g-2">
-							<div class="col-auto">
-								<div class="form-check mb-0">
-									<input class="form-check-input" type="radio" name="isProjectChanged" id="isProjectChanged_1" value="" checked>
-									<label class="form-check-label" for="isProjectChanged_1">
-										전체
-									</label>
-								</div>
+						<div class="form-field">
+							<label class="form-label" for="designDeptOption">설계부서</label>
+							<input class="form-control search-icon" id="designDeptOption" name="designDeptNo" onclick="searchdesignDeptTreePopup($(this));">
+							<input class="form-control" type="text" value="" id="designDeptInput" name="designDeptName" disabled="" aria-label="선택된 설계부서명">
+						</div>
+
+						<div class="form-field">
+							<label class="form-label" for="supvorOption">감독자</label>
+							<input class="form-control search-icon" id="supvorOption" name="planBy" onclick="searchItemPopup($(this));">
+							<input class="form-control" type="text" value="" id="supvorInput" name="planName" disabled="" aria-label="선택된 감독자명">
+						</div>
+
+						<div class="form-field">
+							<label class="form-label" for="supvDeptOption">감독부서</label>
+							<input class="form-control search-icon" id="supvDeptOption" name="deptNo" onclick="searchReqTreePopup($(this));">
+							<input class="form-control" type="text" value="" id="supvDeptInput" name="deptName" disabled="" aria-label="선택된 감독부서명">
+						</div>
+
+						<fieldset class="form-field">
+							<legend class="form-label">설계일</legend>
+
+							<div class="form-control-group">
+								<label>
+									<span class="visually-hidden">설계 시작일</span>
+									<input type="date" class="form-control" id="requestDateStart" name="requestDateStart">
+								</label>
+
+								<label>
+									<span class="visually-hidden">설계 종료일</span>
+									<input type="date" class="form-control" id="requestDateEnd" name="requestDateEnd">
+								</label>
 							</div>
-							<div class="col-auto">
-								<div class="form-check mb-0">
-									<input class="form-check-input" type="radio" name="isProjectChanged" id="isProjectChanged_2" value="N">
-									<label class="form-check-label" for="isProjectChanged_2">
-										최초설계분
-									</label>
-								</div>
+						</fieldset>
+
+						<div class="form-field">
+							<label class="form-label" for="constCodeInput">공사번호</label>
+							<!-- <%--
+							<input class="form-control search-icon" id="constCodeOption" name="projectNo" onclick="searchmainDeptTreePopup($(this));">
+							--%> -->
+							<input class="form-control" type="text" value="" id="constCodeInput" name="projectNo">
+						</div>
+
+						<div class="form-field">
+							<label class="form-label" for="projectTypeDesc">공사종류</label>
+							<input class="form-control" type="text" value="O/H" id="projectTypeDesc" name="projectTypeDesc" readonly>
+						</div>
+
+						<div class="form-field">
+							<label class="form-label" for="orderNo">오더번호</label>
+							<input class="form-control" type="text" id="orderNo" name="woNo" placeholder="오더번호 입력">
+						</div>
+
+						<fieldset class="form-field">
+							<legend class="form-label">변경구분</legend>
+							<div class="form-field__content form-choice-list">
+								<label class="form-choice">
+									<input type="radio" name="isProjectChanged" id="isProjectChanged_1" value="" checked>
+									<span>전체</span>
+								</label>
+								<label class="form-choice">
+									<input type="radio" name="isProjectChanged" id="isProjectChanged_2" value="N">
+									<span>최초설계분</span>
+								</label>
+								<label class="form-choice">
+									<input type="radio" name="isProjectChanged" id="isProjectChanged_3" value="Y">
+									<span>설계변경분</span>
+								</label>
 							</div>
-							<div class="col-auto">
-								<div class="form-check mb-0">
-									<input class="form-check-input" type="radio" name="isProjectChanged" id="isProjectChanged_3" value="Y">
-									<label class="form-check-label" for="isProjectChanged_3">
-										설계변경분
-									</label>
-								</div>
-							</div>
-							<div class="col-md">
-								<label class="visually-hidden" for="projectChangeType">변경구분명</label>
+
+							<div class="form-field__content">
+								<label class="form-label" for="projectChangeType">변경구분명</label>
 								<select class="form-select" id="projectChangeType" name="projectChangeType" disabled>
 									<option value="" selected>----------------------------------</option>
 									<option value="PLUS">증가분</option>
 									<option value="MINUS">감소분</option>
 								</select>
 							</div>
-						</div>
-					</fieldset>
+						</fieldset>
 
-					<fieldset class="col-md-6 col-lg-8 col-xxxl-3">
-						<legend class="form-label">설비번호</legend>
-						<div class="row g-2">
-							<div class="col">
-								<label class="visually-hidden" for="equipNoOption">설비번호 검색</label>
-								<input class="form-control search-icon" id="equipNoOption" name="equipNo" onclick="searchFacilityPopup($(this));">
-							</div>
-							<div class="col">
-								<label class="visually-hidden" for="equipNoInput">설비번호</label>
-								<input class="form-control" type="text" value="" id="equipNoInput" disabled="">
-							</div>
+						<div class="form-field">
+							<label class="form-label" for="equipNoOption">설비번호</label>
+							<input class="form-control search-icon" id="equipNoOption" name="equipNo" onclick="searchFacilityPopup($(this));">
+							<input class="form-control" type="text" value="" id="equipNoInput" disabled="" aria-label="선택된 설비번호">
 						</div>
-					</fieldset>
 
-					<div class="col-md mb-3">
-						<label class="form-label" for="isStandard">표준작업</label>
-						<select class="form-select" id="isStandard" name="isStandard">
-							<option value="" selected>----------------------------------</option>
-							<option value="Y">표준작업</option>
-							<option value="N">비표준작업</option>
-						</select>
+						<div class="form-field">
+							<label class="form-label" for="isStandard">표준작업</label>
+							<select class="form-select" id="isStandard" name="isStandard">
+								<option value="" selected>----------------------------------</option>
+								<option value="Y">표준작업</option>
+								<option value="N">비표준작업</option>
+							</select>
+						</div>
+
 					</div>
 
-					<div class="col-md-auto mb-3">
-						<button type="button" class="btn btn-primary" onclick="fnSearchForm();">
-                            <span class="icon icon-search"></span>
-                            <span>검색</span>
-						</button>
+					<div class="filter-panel__actions">
+						<button type="button" class="button button--primary" onclick="fnSearchForm();">검색</button>
 					</div>
+						
+					<div class="side-panel left">
+						<!-- <%-- tree list view : 기능위치/계통/종류 --%> -->
+						<c:import url="/common/facilityPackageTreeList.do"/>
+					</div>
+				</form>
+			
+			</aside>
+			<section class="splitview__pane splitview__pane--content result-panel" aria-label="검색 결과">
+				<h1 class="page-content__heading">공사오더(OH)</h1>
+				
+				<%-- data-grid : 결과 리스트 뷰 --%>
+				<div class="result-panel__body" id="_VIEW_RESULT_LIST">
+					<%-- 조회결과 리스트 뷰 : /detail/maintenanceWorkOrder_list.jsp --%>
+					
 				</div>
-			</form>
-		</div>
 
-		<%-- 조회결과 리스트 시작 --%>
-		<div id="_VIEW_RESULT_LIST">
-			<%-- 조회결과 리스트 뷰 : /detail/maintenanceWorkOrder_list.jsp --%>
+				<%-- 품질안전설계 시작 --%>
+				<div class="result-panel__body" id="_VIEW_RESULT_SAFETY_QUALITY">
+					<%-- 품질안전설계 뷰 : /detail/routineWorkOrder_safety_quality.jsp --%>
+				</div>
+				<%-- 품질안전설계 끝 --%>
+				
+			</section>
 		</div>
-		<%-- 조회결과 리스트 끝 --%>
-
-		<%-- 품질안전설계 시작 --%>
-		<div id="_VIEW_RESULT_SAFETY_QUALITY">
-			<%-- 품질안전설계 뷰 : /detail/routineWorkOrder_safety_quality.jsp --%>
-		</div>
-		<%-- 품질안전설계 끝 --%>
 	</div>
-</div>
+</main>
 
 <%-- 안전작업허가서 팝업 --%>
 <div class="modal fade detail-box" tabindex="-1" id="safetyWorkPermitPop">
 	<%-- 안전작업허가서 뷰 : /detail/routineWorkOrder_permit_pop.jsp --%>
 </div>
 <%-- 안전작업허가서 팝업 끝 --%>
-
-<%--</div>--%>
 
 <script>
 	function setDate() {
@@ -259,10 +214,10 @@
 	/* load list page */
 	fnSearchWorkOrderList();
 
-    function fnSearchForm() {
-        $("#searchWorkOrderForm #pageIndex").val(1);
-        fnSearchWorkOrderList();
-    }
+	function fnSearchForm() {
+		$("#searchWorkOrderForm #pageIndex").val(1);
+		fnSearchWorkOrderList();
+	}
 
 	<%-- 페이지 이동 부분 --%>
 

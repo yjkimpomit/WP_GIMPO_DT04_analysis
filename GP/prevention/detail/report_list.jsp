@@ -51,11 +51,11 @@
         <%-- 데이터가 없을 경우 --%>
         <c:if test="${fn:length(list) == 0}">
             <tr>
-                <th colspan="10">
+                <td colspan="10">
                     <div class="no-data">
                         조회된 데이터가 없습니다.
                     </div>
-                </th>
+                </td>
             </tr>
         </c:if>
 

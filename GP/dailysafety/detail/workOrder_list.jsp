@@ -144,11 +144,11 @@
         <%-- 데이터가 없을 경우 --%>
         <c:if test="${empty list}">
             <tr>
-                <th colspan="48">
+                <td colspan="48">
                     <div class="no-data">
                         조회된 데이터가 없습니다.
                     </div>
-                </th>
+                </td>
             </tr>
         </c:if>
 
@@ -171,7 +171,7 @@
                 <td data-field="표준작업">
                     <div class="me-0 form-check-inline">
                         <label class="visually-hidden" for="chkValue12">표준작업 상태</label>
-                        <input class="form-check-input" type="checkbox" value="${data.isStandard}" id="chkValue12"
+                        <input type="checkbox" value="${data.isStandard}" id="chkValue12"
                                <c:if test="${data.isStandard eq 'Y'}">checked</c:if> disabled>
                     </div>
                 </td>
@@ -179,7 +179,7 @@
                 <td data-field="변경구분">
                     <div class="me-0 form-check-inline">
                         <label class="visually-hidden" for="chkValue13">변경구분 상태</label>
-                        <input class="form-check-input" type="checkbox" value="${data.isProjectChanged}" id="chkValue13"
+                        <input type="checkbox" value="${data.isProjectChanged}" id="chkValue13"
                                <c:if test="${data.isProjectChanged eq 'Y'}">checked</c:if> disabled>
                     </div>
                 </td>
@@ -225,7 +225,7 @@
                 <td data-field="결재올리기">
                     <div class="me-0 form-check-inline">
                         <label class="visually-hidden" for="chkValue14">결재올리기상태</label>
-                        <input class="form-check-input" type="checkbox" value="" id="chkValue14"
+                        <input type="checkbox" value="" id="chkValue14"
                                <c:if test="${data.confirmCount eq 'Y'}">checked</c:if> disabled>
                     </div>
                 </td>
@@ -234,7 +234,7 @@
                 <td data-field="RBM검사">
                     <div class="me-0 form-check-inline">
                         <label class="visually-hidden" for="chkValue15">RBM검사 상태</label>
-                        <input class="form-check-input" type="checkbox" value="" id="chkValue15"
+                        <input type="checkbox" value="" id="chkValue15"
                                <c:if test="${data.isRbm eq 'Y'}">checked</c:if> disabled>
                     </div>
                 </td>

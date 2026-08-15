@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>예방점검현황</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+	<link rel="stylesheet" href="/resources/css/preventive-inspection.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content tabs tabs--scrollable" data-tabs>
+		<h1 class="page-content__heading">예방점검현황</h1>
+		<div class="tabs__list" role="tablist" aria-label="예방점검현황 메뉴"><button class="tabs__tab" id="cost-trend-tab"
+				type="button" role="tab" aria-selected="true" aria-controls="inspection-panel" data-tab-key="cost-trend"
+				data-tab-target="cost-trend">정비비용 고장경향 분석</button><button class="tabs__tab" id="report-tab"
+				type="button" role="tab" aria-selected="false" aria-controls="inspection-panel" data-tab-key="report"
+				data-tab-target="report">점검 보고서</button><button class="tabs__tab" id="result-tab" type="button"
+				role="tab" aria-selected="false" aria-controls="inspection-panel" data-tab-key="result"
+				data-tab-target="result">점검 결과</button><button class="tabs__tab" id="result-chart-tab" type="button"
+				role="tab" aria-selected="false" aria-controls="inspection-panel" data-tab-key="result-chart"
+				data-tab-target="result-chart">점검 결과(chart)</button><button class="tabs__tab" id="abnormal-tab"
+				type="button" role="tab" aria-selected="false" aria-controls="inspection-panel" data-tab-key="abnormal"
+				data-tab-target="abnormal">이상 점검 결과</button><button class="tabs__tab" id="unchecked-tab" type="button"
+				role="tab" aria-selected="false" aria-controls="inspection-panel" data-tab-key="unchecked"
+				data-tab-target="unchecked">미점검 일정</button></div>
+		<div class="tabs__panel" id="inspection-panel" role="tabpanel" tabindex="0">
+			<section id="cost-trend" data-tabs-content>
+				<div class="chart-placeholder" role="img" aria-label="정비비용과 고장경향 차트 영역">정비비용·고장경향 분석 차트</div>
+			</section>
+			<section id="report" data-tabs-content hidden>
+				<p class="status-message">점검 보고서 목록입니다.</p>
+			</section>
+			<section id="result" data-tabs-content hidden>
+				<p class="status-message">점검 결과 목록입니다.</p>
+			</section>
+			<section id="result-chart" data-tabs-content hidden>
+				<div class="chart-placeholder" role="img" aria-label="점검 결과 차트 영역"></div>
+
+
+				<div class="splitview panel-split-layout panel-split-layout--two-to-one">
+					<aside class="splitview__pane splitview__pane--sidebar panel-split-layout__sidebar" aria-label="조회리스트">
+						<section class="panel-split-layout__group panel-split-layout__group--primary">
+							
+							<div class="result-header">
+								<h2 class="result-header__title panel-split-layout__title">조회결과 <span class="result-header__count"></span></h2>
+
+								<div class="result-header__actions">
+									<nav class="pagination" aria-label="조회결과 페이지 이동">
+										<label class="visually-hidden" for="preventive-inspection-current-page">현재 페이지</label>
+										<input class="form-control form-control--page" id="preventive-inspection-current-page" type="number"
+											value="1" min="1" max="1">
+										<span aria-hidden="true">/</span><span>1</span>
+										<button class="button button--neutral" type="button">이동</button>
+										<button class="button button--neutral" type="button">이전</button>
+										<button class="button button--neutral" type="button">다음</button>
+									</nav>
+								</div>
+								
+							</div>
+							<!-- <%-- data-grid : 결과 리스트 뷰 --%> -->
+							<div class="result-panel__body panel-split-layout__body"></div>
+
+						</section>
+						<section class="panel-split-layout__group panel-split-layout__group--secondary">
+
+							<div class="result-header">
+								<h2 class="result-header__title panel-split-layout__title">점검종류</h2>
+							</div>
+							<!-- <%-- data-grid : 결과 리스트 뷰 --%> -->
+							<div class="result-panel__body panel-split-layout__body"></div>
+
+						</section>
+					</aside>
+					<div class="splitview__pane splitview__pane--content panel-split-layout__content" role="region"
+						aria-label="점검내용">
+						<section class="panel-split-layout__group panel-split-layout__group--primary">
+
+							<div class="result-header">
+								<h2 class="result-header__title panel-split-layout__title">점검내용</h2>
+							</div>
+
+							<!-- <%-- data-grid : 결과 리스트 뷰 --%> -->
+							<div class="result-panel__body panel-split-layout__body"></div>
+
+						</section>
+					</div>
+				</div>
+
+
+
+			</section>
+			<section id="abnormal" data-tabs-content hidden>
+				<p class="status-message" role="status">이상 점검 결과가 없습니다.</p>
+			</section>
+			<section id="unchecked" data-tabs-content hidden>
+				<p class="status-message">미점검 일정을 조회합니다.</p>
+			</section>
+		</div>
+	</main>
+	<script src="/resources/js/common/components.js"></script>
+</body>
+
+</html>
