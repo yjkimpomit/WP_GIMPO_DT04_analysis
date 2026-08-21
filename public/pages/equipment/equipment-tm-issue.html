@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TM발행</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout detail-popup detail-popup--form" aria-labelledby="tm-issue-title">
+		<h1 class="detail-popup__title visually-hidden" id="tm-issue-title">TM발행</h1>
+		<p class="form-helper"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>표시는 필수입력 항목입니다.</p>
+
+		<form class="form-dialog" data-popup-form>
+			<div class="form-grid form-grid--three-columns">
+				<label class="form-field form-field--wide">
+					<span class="form-label"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>요청명</span>
+					<input class="form-control" type="text" name="requestTitle" required>
+				</label>
+
+				<div class="form-field">
+					<label class="form-label" for="tm-issue-equipment-number">
+						<span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>설비번호
+						<span class="visually-hidden">필수</span>
+					</label>
+					<div class="form-control-group">
+						<span class="form-search">
+							<input class="form-control" id="tm-issue-equipment-number" type="text"
+								name="equipmentSearch" aria-required="true" readonly>
+							<button class="form-search__button" type="button" aria-label="설비 검색"
+								aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="equipment-lookup"
+								data-lookup-popup-title="설비 검색"
+								data-lookup-popup-url="/pages/common/popup/popup-equipment.html"
+								data-lookup-popup-width="1440" data-lookup-popup-height="760"
+								></button>
+						</span>
+						<input class="form-control" type="text" aria-label="선택된 설비명" readonly>
+					</div>
+				</div>
+
+				<div class="form-field">
+					<label class="form-label" for="tm-issue-requester-code">
+						<span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>요청자
+						<span class="visually-hidden">필수</span>
+					</label>
+					<div class="form-control-group">
+						<span class="form-search">
+							<input class="form-control" id="tm-issue-requester-code" type="text"
+								name="requesterSearch" aria-required="true" readonly>
+							<button class="form-search__button" type="button" aria-label="요청자 검색"
+								aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="requester-lookup"
+								data-lookup-popup-title="요청자 검색"
+								data-lookup-popup-url="/pages/common/popup/popup-requester.html"
+								data-lookup-popup-width="1024" data-lookup-popup-height="640"
+								></button>
+						</span>
+						<input class="form-control" type="text" aria-label="선택된 요청자" readonly>
+					</div>
+				</div>
+
+				<div class="form-field">
+					<label class="form-label" for="tm-issue-request-department-code">
+						<span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>요청부서
+						<span class="visually-hidden">필수</span>
+					</label>
+					<div class="form-control-group">
+						<span class="form-search">
+							<input class="form-control" id="tm-issue-request-department-code" type="text"
+								name="requestDepartmentSearch" aria-required="true" readonly>
+							<button class="form-search__button" type="button" aria-label="요청부서 검색"
+								aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="department-lookup"
+								data-lookup-popup-title="요청부서 검색"
+								data-lookup-popup-url="/pages/common/popup/popup-department.html"
+								data-lookup-popup-width="480" data-lookup-popup-height="640"
+								></button>
+						</span>
+						<input class="form-control" type="text" aria-label="선택된 요청부서" readonly>
+					</div>
+				</div>
+
+				<div class="form-field">
+					<label class="form-label" for="tm-issue-supervising-department-code">
+						<span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>감독부서
+						<span class="visually-hidden">필수</span>
+					</label>
+					<div class="form-control-group">
+						<span class="form-search">
+							<input class="form-control" id="tm-issue-supervising-department-code" type="text"
+								name="supervisingDepartmentSearch" aria-required="true" readonly>
+							<button class="form-search__button" type="button" aria-label="감독부서 검색"
+								aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="department-lookup"
+								data-lookup-popup-title="감독부서 검색"
+								data-lookup-popup-url="/pages/common/popup/popup-department.html"
+								data-lookup-popup-width="480" data-lookup-popup-height="640"
+								></button>
+						</span>
+						<input class="form-control" type="text" aria-label="선택된 감독부서" readonly>
+					</div>
+				</div>
+
+				<label class="form-field">
+					<span class="form-label"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>우선순위</span>
+					<select class="form-select" name="priority" required>
+						<option value="">선택</option>
+						<option value="urgent">긴급</option>
+						<option value="routine">일상</option>
+						<option value="post">사후</option>
+					</select>
+				</label>
+
+				<label class="form-field">
+					<span class="form-label"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>작업중요도</span>
+					<select class="form-select" name="workImportance" required>
+						<option value="">선택</option>
+						<option value="a">A등급</option>
+						<option value="b">B등급</option>
+						<option value="c">C등급</option>
+					</select>
+				</label>
+
+				<fieldset class="form-field">
+					<legend class="form-label">Red TAG</legend>
+					<div class="form-field__content">
+						<label class="form-choice">
+							<input type="checkbox" name="redTag">
+							Red TAG 필요
+						</label>
+					</div>
+				</fieldset>
+
+				<label class="form-field">
+					<span class="form-label"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>증상</span>
+					<select class="form-select" name="symptom" required>
+						<option value="">선택</option>
+						<option value="leak">누설 (Leak)</option>
+						<option value="vibration">진동 (Vibration)</option>
+						<option value="overheating">과열 (Overheating)</option>
+					</select>
+				</label>
+
+				<label class="form-field">
+					<span class="form-label"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>사업자코드</span>
+					<select class="form-select" name="businessCode" required>
+						<option value="">선택</option>
+						<option value="unit-1">1호기</option>
+						<option value="unit-2">2호기</option>
+						<option value="common">공통</option>
+					</select>
+				</label>
+
+				<label class="form-field form-field--wide">
+					<span class="form-label">요청내용</span>
+					<textarea class="form-control" name="requestContent"></textarea>
+				</label>
+			</div>
+
+			<div class="form-actions">
+				<button class="button button--primary" type="submit">저장</button>
+				<button class="button button--secondary-outline" type="button" data-popup-close="tm-issue">취소</button>
+			</div>
+		</form>
+	</main>
+	<script src="/resources/js/html-common/components.js"></script>
+	<script src="/resources/js/html-common/winbox.js"></script>
+</body>
+
+</html>

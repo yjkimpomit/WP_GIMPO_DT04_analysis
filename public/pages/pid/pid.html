@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>P&amp;ID</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content data-pid-page">
+		<div class="page-content__placeholder">
+			<div class="splitview">
+				<aside class="splitview__pane splitview__pane--sidebar" aria-label="P&amp;ID 정보 검색">
+					<form class="filter-panel">
+						<div class="filter-panel__header">
+							<span class="filter-panel__title">검색</span>
+							<button class="filter-panel__toggle" type="button"
+								aria-label="정보 검색 접기" aria-expanded="true"></button>
+						</div>
+						<div class="filter-panel__search" id="filter-panel-search">
+						<div class="filter-panel__fields">
+							<!-- 개발 연계: 검색 조건 영역은 filter-panel__fields를 사용하고, 각 조건은 form-field 단위로 추가·반복합니다. -->
+							<label class="form-field">
+								<span class="form-label">검색어 입력</span>
+								<input class="form-control" type="search" name="keyword">
+							</label>
+						</div>
+						<div class="filter-panel__actions">
+							<button class="button button--primary" type="submit">검색</button>
+						</div>
+						</div>
+					</form>
+				</aside>
+				<section class="splitview__pane splitview__pane--content result-panel" aria-label="P&amp;ID 조회 결과">
+					<h1 class="page-content__heading">P&amp;ID</h1>
+					<div class="result-panel__body">
+						<div class="result-header">
+							<h2 class="result-header__title">조회결과 <span class="result-header__count">(전체 4,882건)</span></h2>
+							<div class="result-header__actions">
+								<nav class="pagination" aria-label="페이지 이동">
+									<input class="form-control form-control--page" type="number" value="1" min="1" aria-label="현재 페이지">
+									<span aria-hidden="true">/</span><span>245</span>
+									<button class="button button--neutral" type="button">이동</button>
+									<button class="button button--neutral" type="button">이전</button>
+									<button class="button button--neutral" type="button">다음</button>
+								</nav>
+							</div>
+						</div>
+						<div class="board-list" role="group" aria-label="P&amp;ID 목록">
+							<button class="board-list__item" type="button"><span class="board-list__code">WP-PID-GT01-001</span><span class="board-list__title">WP_PID_GT01_FUEL_GAS_SYSTEM_001</span></button>
+							<button class="board-list__item" type="button"><span class="board-list__code">WP-PID-GT01-002</span><span class="board-list__title">WP_PID_GT01_LUBE_OIL_SYSTEM_002</span></button>
+							<button class="board-list__item" type="button"><span class="board-list__code">WP-PID-GT01-003</span><span class="board-list__title">WP_PID_GT01_COOLING_WATER_SYSTEM_003</span></button>
+							<button class="board-list__item" type="button"><span class="board-list__code">WP-PID-HRSG01-001</span><span class="board-list__title">WP_PID_HRSG01_FEED_WATER_SYSTEM_001</span></button>
+							<button class="board-list__item" type="button"><span class="board-list__code">WP-PID-ST01-001</span><span class="board-list__title">WP_PID_ST01_GLAND_STEAM_SYSTEM_001</span></button>
+							<button class="board-list__item" type="button"><span class="board-list__code">WP-PID-HRSG01-002</span><span class="board-list__title">WP_PID_HRSG01_MAIN_STEAM_SYSTEM_002</span></button>
+							<button class="board-list__item" type="button"><span class="board-list__code">WP-PID-ST01-002</span><span class="board-list__title">WP_PID_ST01_CONDENSATE_SYSTEM_002</span></button>
+							<button class="board-list__item" type="button"><span class="board-list__code">WP-PID-BOP-001</span><span class="board-list__title">WP_PID_BOP_INSTRUMENT_AIR_SYSTEM_001</span></button>
+							<button class="board-list__item" type="button"><span class="board-list__code">WP-PID-BOP-001</span><span class="board-list__title">WP_PID_BOP_INSTRUMENT_AIR_SYSTEM_001</span></button>
+							<button class="board-list__item" type="button"><span class="board-list__code">WP-PID-FPS-001</span><span class="board-list__title">WP_PID_FPS_FIRE_PROTECTION_SYSTEM_001</span></button>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+	<script src="/resources/js/html-common/components.js"></script>
+	<script src="/resources/js/html-common/winbox.js"></script>
+	<script>
+		function fnBtnPnidPop(target) {
+			var topWindow = window.top;
+			var box = new topWindow.WinBox("P&ID", {
+				root: topWindow.document.body,
+				//url: "/drawing/equipPnidPopup.do?searchKeyword=" + target,
+				url: "/pages/pid/pid-view.html",
+				width: Math.min(1400, topWindow.innerWidth - 20) + "px",
+				height: Math.min(720, topWindow.innerHeight - 20) + "px",
+				x: "center",
+				y: "center",
+				class: ["no-full", "app-winbox", "app-winbox--detail"],
+				position: "center",
+				onresize: function () {
+					if (this.min) return;
+					this.move("center", "center");
+				},
+				onclose: function () {
+					topWindow.removeEventListener("resize", resizeHandler);
+				}
+			});
+
+			function resizeHandler() {
+				if (!box || !box.g || box.min) return;
+
+				var newWidth = Math.min(1400, topWindow.innerWidth - 20);
+				var newHeight = Math.min(720, topWindow.innerHeight - 20);
+
+				box.resize(newWidth, newHeight);
+				box.move("center", "center");
+			}
+
+			topWindow.addEventListener("resize", resizeHandler);
+		}
+
+		document.querySelector(".board-list").addEventListener("click", function (event) {
+			var item = event.target.closest(".board-list__item");
+
+			if (!item) return;
+			fnBtnPnidPop(item.querySelector(".board-list__code").textContent.trim());
+		});
+	</script>
+</body>
+
+</html>

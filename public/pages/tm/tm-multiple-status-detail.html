@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>다발TM현황-상세정보</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout detail-popup tm-multiple-status-detail">
+		<header class="result-header detail-popup__header">
+			<h1 class="detail-popup__title">
+				<span>상세 정보</span>
+				<small class="result-header__count">(전체 1건)</small>
+			</h1>
+			<div class="result-header__actions">
+				<nav class="pagination" aria-label="페이지 이동">
+					<label class="visually-hidden" for="tm-multiple-detail-page">현재 페이지</label>
+					<input class="form-control form-control--page" id="tm-multiple-detail-page"
+						type="number" value="1" min="1" max="1">
+					<span aria-hidden="true">/</span><span>1</span>
+					<button class="button button--neutral" type="button">이동</button>
+					<button class="button button--neutral" type="button">이전</button>
+					<button class="button button--neutral" type="button">다음</button>
+				</nav>
+			</div>
+		</header>
+
+		<div class="table-responsive" tabindex="0">
+			<table class="data-table data-table--list data-table--wide-result"
+				aria-label="다발TM현황 상세 목록">
+				<thead>
+					<tr>
+						<th scope="col">호기</th>
+						<th scope="col">요청번호</th>
+						<th scope="col">진행상태</th>
+						<th scope="col">요청명</th>
+						<th scope="col">설비번호</th>
+						<th scope="col">설비명</th>
+						<th scope="col">요청자</th>
+						<th scope="col">요청부서</th>
+						<th scope="col">요청일자</th>
+						<th scope="col">감독부서</th>
+						<th scope="col">증상</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1호기</td>
+						<td>TM-260724-001</td>
+						<td>작업대기</td>
+						<td class="data-table__cell--title">TCV 연결부 Water Leak 점검</td>
+						<td>86535</td>
+						<td class="data-table__cell--title">#1 TBN Master Trip Device</td>
+						<td>홍길동</td>
+						<td>발전운영부</td>
+						<td>2026-07-24</td>
+						<td>터빈제어부</td>
+						<td>누설(Leakage)</td>
+					</tr>
+					<tr>
+						<td>1호기</td>
+						<td>TM-260618-012</td>
+						<td>작업진행</td>
+						<td class="data-table__cell--title">설비 지시값 이상 확인</td>
+						<td>86535</td>
+						<td class="data-table__cell--title">#1 TBN Master Trip Device</td>
+						<td>김중부</td>
+						<td>계측제어부</td>
+						<td>2026-06-18</td>
+						<td>터빈제어부</td>
+						<td>오지시(Indication Error)</td>
+					</tr>
+					<tr>
+						<td>1호기</td>
+						<td>TM-260507-008</td>
+						<td>작업완료</td>
+						<td class="data-table__cell--title">Trip Device 진동 점검</td>
+						<td>86535</td>
+						<td class="data-table__cell--title">#1 TBN Master Trip Device</td>
+						<td>이보령</td>
+						<td>발전운영부</td>
+						<td>2026-05-07</td>
+						<td>기계기술부</td>
+						<td>진동이상(Vibration)</td>
+					</tr>
+					<tr>
+						<td>1호기</td>
+						<td>TM-260321-021</td>
+						<td>조치검토</td>
+						<td class="data-table__cell--title">연결부 부식 상태 점검</td>
+						<td>86535</td>
+						<td class="data-table__cell--title">#1 TBN Master Trip Device</td>
+						<td>박서울</td>
+						<td>정비기획부</td>
+						<td>2026-03-21</td>
+						<td>터빈제어부</td>
+						<td>부식/침식(Corrosion/Erosion)</td>
+					</tr>
+					<tr>
+						<td>1호기</td>
+						<td>TM-260114-003</td>
+						<td>작업완료</td>
+						<td class="data-table__cell--title">작동 소음 발생 점검</td>
+						<td>86535</td>
+						<td class="data-table__cell--title">#1 TBN Master Trip Device</td>
+						<td>최인천</td>
+						<td>발전운영부</td>
+						<td>2026-01-14</td>
+						<td>기계기술부</td>
+						<td>이음(소음)(Noise)</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TM 현황</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<!-- 개발 연계: Bootstrap Tab의 data-bs-target으로 패널을 연결하고 data-page에서 동적 콘텐츠를 불러옵니다. -->
+	<main class="winbox-layout tabs tabs--scrollable" data-tabs data-tab-content-loader>
+		<!-- tab-menu -->
+		<ul class="nav nav-tabs" id="tmTab" role="tablist" aria-label="TM 현황 메뉴">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active _TAB_PAGE" id="workReqTab" data-bs-toggle="tab" data-bs-target="#workReqPane" type="button" role="tab" aria-controls="workReqPane" aria-selected="true" data-page="/pages/tm/tm-work-request-confirmation.html">작업요청확정</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link _TAB_PAGE" id="multTmTab" data-bs-toggle="tab" data-bs-target="#multTmTabPane" type="button" role="tab" aria-controls="multTmTabPane" aria-selected="false" data-page="/pages/tm/tm-multiple-status.html">다발 TM현황</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link _TAB_PAGE" id="outstandingTmTab" data-bs-toggle="tab" data-bs-target="#outstandingTmTabPane" type="button" role="tab" aria-controls="outstandingTmTabPane" aria-selected="false" data-page="/pages/tm/tm-pending-status.html">미결 TM현황</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link _TAB_PAGE" id="jobReqCntTab" data-bs-toggle="tab" data-bs-target="#jobReqCntTabPane" type="button" role="tab" aria-controls="jobReqCntTabPane" aria-selected="false" data-page="/pages/tm/tm-work-request-count.html">작업요청 건수</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link _TAB_PAGE" id="jobReqProcStatTab" data-bs-toggle="tab" data-bs-target="#jobReqProcStatTabPane" type="button" role="tab" aria-controls="jobReqProcStatTabPane" aria-selected="false" data-page="/pages/tm/tm-processing-status.html">작업요청 처리현황</button>
+			</li>
+		</ul>
+		
+		<!-- tab content -->
+		<div class="tab-content" id="tmTabContent">
+			<div class="tab-pane fade show active _TAB_CONTENT" id="workReqPane" role="tabpanel" aria-labelledby="workReqTab" tabindex="0"></div>
+			<div class="tab-pane fade _TAB_CONTENT" id="multTmTabPane" role="tabpanel" aria-labelledby="multTmTab" tabindex="0"></div>
+			<div class="tab-pane fade _TAB_CONTENT" id="outstandingTmTabPane" role="tabpanel" aria-labelledby="outstandingTmTab" tabindex="0"></div>
+			<div class="tab-pane fade _TAB_CONTENT" id="jobReqCntTabPane" role="tabpanel" aria-labelledby="jobReqCntTab" tabindex="0"></div>
+			<div class="tab-pane fade _TAB_CONTENT" id="jobReqProcStatTabPane" role="tabpanel" aria-labelledby="jobReqProcStatTab" tabindex="0"></div>
+		</div>
+
+	</main>
+	<script src="/resources/vendor/bootstrap-5.3.8/js/bootstrap-tab.js"></script>
+	<script src="/resources/js/html-common/tab-content-loader.js?v=20260813"></script>
+	<script src="/resources/js/html-common/components.js"></script>
+	<script src="/resources/js/html-common/data-table-detail.js"></script>
+	<script src="/resources/js/html-common/winbox.js"></script>
+</body>
+
+</html>

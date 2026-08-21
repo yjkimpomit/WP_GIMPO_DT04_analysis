@@ -1,0 +1,68 @@
+@charset "utf-8";
+@import url('/resources/fonts/NotoSansKR/NotoSansKR.css');
+@import url(variables.css);
+@import url(reset.css);
+@import url(icons.css);
+@import url(components.css);
+
+@import url(table.css);
+@import url(ztree.css);
+
+@import url(pages.css);
+
+html {
+	height: 100%;
+	min-height: 100%;
+	overflow: hidden;
+}
+
+body {
+	min-width: 0;
+	height: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	padding: 0;
+	background: var(--winbox-bg);
+	color: var(--winbox-fg);
+}
+
+.winbox-layout {
+	/* winbox-body-fill-v1: iframe viewport → layout → page content 높이 체인을 유지한다. */
+	--winbox-layout-gutter: var(--spacing-200);
+	--page-content-gap: var(--spacing-200);
+	--winbox-bottom-space: 0px;
+	height: 100%;
+	min-width: 0;
+	min-height: 0;
+}
+
+/* 동적 탭 콘텐츠의 중복 여백을 막기 위해 최상위 레이아웃에만 패딩을 적용한다. */
+body > .winbox-layout {
+	padding: var(--winbox-layout-gutter);
+}
+
+body > .winbox-layout--flush {
+	padding: 0;
+}
+
+.winbox-layout__gutter {
+	padding-inline: var(--winbox-layout-gutter);
+}
+
+.page-content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--page-content-gap);
+	height: calc(100% - var(--winbox-bottom-space));
+	min-height: 0;
+}
+
+.page-content--popup {
+	height: 100%;
+}
+
+@media (min-width: 768px) {
+	.winbox-layout {
+		--winbox-layout-gutter: var(--spacing-300);
+	}
+}

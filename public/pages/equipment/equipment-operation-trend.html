@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>운전정보 트렌드</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout detail-popup operation-trend" aria-labelledby="operation-trend-title">
+		<h1 class="visually-hidden" id="operation-trend-title">운전정보 트렌드</h1>
+
+		<form class="filter-panel operation-trend__filter" data-popup-form>
+			<div class="filter-panel__fields">
+				<fieldset>
+					<legend>조회 기간</legend>
+					<div class="operation-trend__controls">
+						<label>
+							<span class="visually-hidden">조회 시작일</span>
+							<input class="form-control" type="date" name="startDate" value="2026-07-26">
+						</label>
+						<label>
+							<span class="visually-hidden">조회 시작시간</span>
+							<input class="form-control" type="time" name="startTime" value="10:56">
+						</label>
+						<label>
+							<span class="visually-hidden">조회 종료일</span>
+							<input class="form-control" type="date" name="endDate" value="2026-07-28">
+						</label>
+						<label>
+							<span class="visually-hidden">조회 종료시간</span>
+							<input class="form-control" type="time" name="endTime" value="10:56">
+						</label>
+						<button class="button button--primary" type="submit">검색</button>
+					</div>
+				</fieldset>
+			</div>
+		</form>
+
+		<dl class="operation-trend__summary" aria-label="운전정보 요약">
+			<div>
+				<dt>최소</dt>
+				<dd>1.14</dd>
+			</div>
+			<div>
+				<dt>최대</dt>
+				<dd>493.42</dd>
+			</div>
+			<div>
+				<dt>현재</dt>
+				<dd>2.01</dd>
+			</div>
+		</dl>
+
+		<div class="operation-trend__chart" role="img" aria-label="운전정보 트렌드 차트 표시 영역">
+			<p>차트 영역</p>
+		</div>
+	</main>
+	<script src="/resources/js/html-common/components.js"></script>
+</body>
+
+</html>

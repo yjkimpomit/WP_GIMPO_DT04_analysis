@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+.tree-explorer__tree {
+	flex: 1 1 auto;
+	min-height: 200px;
+	overflow: auto;
+	border: 1px dashed var(--ztree-border);
+	border-radius: var(--ztree-radius);
+	background-color: var(--ztree-bg);
+}
+
+.tree-explorer__tree .ztree {
+	min-width: max-content;
+	margin: 0;
+	padding: var(--ztree-padding-y) var(--ztree-padding-x);
+	color: var(--ztree-fg);
+	list-style: none;
+}
+
+.tree-explorer__tree .ztree * {
+	font-size: 14px;
+}
+
+.tree-explorer__tree .ztree ul {
+	margin: 0;
+	padding-inline-start: var(--ztree-icon-size);
+	list-style: none;
+}
+
+.tree-explorer__tree .ztree li {
+	min-height: var(--ztree-item-height);
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+	list-style: none;
+}
+
+.tree-explorer__tree .ztree li > a {
+	display: inline-flex;
+	align-items: center;
+	min-height: var(--ztree-item-height);
+	border-radius: var(--ztree-item-radius);
+	color: var(--ztree-fg);
+	text-decoration: none;
+	vertical-align: top;
+}
+
+.tree-explorer__tree .ztree li > a:hover {
+	background-color: var(--ztree-item-bg-hover);
+	color: var(--ztree-fg-hover);
+}
+
+.tree-explorer__tree .ztree li > a.curSelectedNode {
+	background-color: var(--ztree-item-bg-selected);
+	color: var(--ztree-fg-hover);
+}
+
+.tree-explorer__tree .ztree li > a:focus-visible {
+	outline: var(--focus-ring-width) solid var(--focus-ring);
+	outline-offset: var(--focus-ring-offset);
+}
+
+.tree-explorer__tree .ztree li:focus-visible {
+	outline: var(--focus-ring-width) solid var(--focus-ring);
+	outline-offset: var(--focus-ring-offset);
+}
+
+.tree-explorer__tree .ztree .button.switch {
+	display: inline-block;
+	width: var(--ztree-icon-size);
+	height: var(--ztree-item-height);
+	background-color: var(--ztree-icon-fg);
+	-webkit-mask: url('/resources/images/icons/keyboard_arrow_right.svg') no-repeat left center / var(--ztree-icon-size);
+	mask: url('/resources/images/icons/keyboard_arrow_right.svg') no-repeat left center / var(--ztree-icon-size);
+	vertical-align: top;
+	cursor: pointer;
+	background-image: none;
+}
+
+.tree-explorer__tree .ztree .button.switch[class*="_open"] {
+	-webkit-mask-image: url('/resources/images/icons/keyboard_arrow_down.svg');
+	mask-image: url('/resources/images/icons/keyboard_arrow_down.svg');
+}
+
+.tree-explorer__tree .ztree .button.switch[class*="_docu"] {
+	width: var(--ztree-icon-size);
+	height: var(--ztree-item-height);
+}
+
+.tree-explorer__tree .ztree .button.switch.center_docu {
+	mask-image: url(/resources/images/ztree/center_docu.svg);
+}
+
+.tree-explorer__tree .ztree .button.switch.bottom_docu {
+	mask-image: url(/resources/images/ztree/bottom_docu.svg);
+}
+
+.tree-explorer__tree .ztree .node_name,
+.tree-explorer__tree .ztree .menu-item,
+.tree-explorer__tree .ztree .fac-name {
+	display: inline-flex;
+	align-items: center;
+	gap: 0 .5rem;
+}
+
+.tree-explorer__tree .ztree :is( .icon-description, .icon-3d, .icon-pano ) {
+	--icon-size: 1.25rem;
+}
+
+.tree-explorer__tree .ztree li ul.line {
+	background-image: url('/resources/images/ztree/line-y.svg');
+	background-repeat: repeat-y;
+}

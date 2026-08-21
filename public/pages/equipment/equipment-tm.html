@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>설비 TM정보</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content">
+
+		<section class="content-section">
+			<div class="section-header">
+				<h2 class="section-title">TM정보</h2>
+				<button class="button button--primary" type="button" data-winbox-popup
+					data-winbox-popup-id="tm-issue" data-winbox-popup-title="TM발행"
+					data-winbox-popup-url="/pages/equipment/equipment-tm-issue.html" data-winbox-popup-width="960"
+					data-winbox-popup-height="580">TM발행</button>
+			</div>
+			<div class="table-responsive" tabindex="0">
+				<table class="data-table data-table--list data-table--interactive" aria-label="TM정보"
+					data-master-detail="tm-detail">
+					<thead>
+						<tr>
+							<th>요청번호</th>
+							<th>요청명</th>
+							<th>요청일자</th>
+							<th>요청자</th>
+							<th>요청부서</th>
+							<th>감독부서</th>
+							<th>설비번호</th>
+							<th>설비명</th>
+							<th>작업중요도</th>
+							<th>우선순위</th>
+							<th>증상</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>112</td>
+							<td class="data-table__cell--title">#HP Backup 연결부 Water Leak</td>
+							<td>2025-03-01</td>
+							<td>홍길동</td>
+							<td>터빈제어부</td>
+							<td>ST제어과</td>
+							<td>2455248</td>
+							<td>#1 Front STD</td>
+							<td>B등급</td>
+							<td>일상</td>
+							<td>누설</td>
+						</tr>
+						<tr>
+							<td>111</td>
+							<td class="data-table__cell--title">#HP Backup 연결부 Water Leak</td>
+							<td>2024-03-01</td>
+							<td>홍길동</td>
+							<td>터빈제어부</td>
+							<td>ST제어과</td>
+							<td>2455248</td>
+							<td>#1 Front STD</td>
+							<td>B등급</td>
+							<td>일상</td>
+							<td>누설</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="content-section" id="tm-detail" aria-labelledby="tm-detail-title">
+			<div class="section-header">
+				<h2 class="section-title" id="tm-detail-title">TM 상세정보</h2>
+			</div>
+			<div class="table-responsive">
+				<table class="data-table data-table--view" aria-labelledby="tm-detail-title">
+					<tbody>
+						<tr>
+							<th scope="row">요청명</th>
+							<td>#HP Backup 연결부 Water Leak</td>
+							<th scope="row">요청일자</th>
+							<td>2025-03-01</td>
+						</tr>
+						<tr>
+							<th scope="row">요청자</th>
+							<td>홍길동</td>
+							<th scope="row">요청부서</th>
+							<td>터빈제어부</td>
+						</tr>
+						<tr>
+							<th scope="row">설비번호</th>
+							<td>2455248</td>
+							<th scope="row">설비명</th>
+							<td>#1 Front STD</td>
+						</tr>
+						<tr>
+							<th scope="row">감독부서</th>
+							<td>ST제어과</td>
+							<th scope="row">우선순위</th>
+							<td>일상</td>
+						</tr>
+						<tr>
+							<th scope="row">작업중요도</th>
+							<td>B등급</td>
+							<th scope="row">Red TAG</th>
+							<td>N</td>
+						</tr>
+						<tr>
+							<th scope="row">사업자코드</th>
+							<td>5000</td>
+							<th scope="row">증상</th>
+							<td>누설</td>
+						</tr>
+						<tr>
+							<th scope="row">요청내용</th>
+							<td colspan="3">#1 Front STD HP Backup 연결부 Water Leak 발생에 따른 누설 부위 점검 및 원인 확인 요청. 추가 누설 방지를 위한 연결부 보수 및 정상 상태 확인.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

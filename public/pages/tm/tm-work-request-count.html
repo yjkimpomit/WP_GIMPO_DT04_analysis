@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>작업요청건수</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content">
+		<div class="page-content__placeholder">
+			<div class="splitview">
+				<aside class="splitview__pane splitview__pane--sidebar" aria-label="정보 검색">
+					<form class="filter-panel">
+						<div class="filter-panel__header">
+							<span class="filter-panel__title">검색</span>
+							<button class="filter-panel__toggle" type="button"
+								aria-label="정보 검색 접기" aria-expanded="true"></button>
+						</div>
+
+						<div class="filter-panel__search" id="filter-panel-search">
+						<div class="filter-panel__fields">
+							<!-- 개발 연계: 검색 조건 영역은 filter-panel__fields를 사용하고, 각 조건은 form-field 단위로 추가·반복합니다. -->
+							<label class="form-field">
+								<span class="form-label">사업소</span>
+								<select class="form-select" name="business-site">
+									<option value="shin-boryeong">1호기</option>
+								</select>
+							</label>
+
+							<fieldset class="form-field">
+								<legend class="form-label">검색 유형</legend>
+								<div class="form-field__content form-choice-list">
+									<label class="form-choice">
+										<input type="radio" name="search-type" value="request-type" checked>
+										<span>요청 유형</span>
+									</label>
+									<label class="form-choice">
+										<input type="radio" name="search-type" value="importance">
+										<span>중요도</span>
+									</label>
+								</div>
+							</fieldset>
+
+							<div class="form-field">
+								<span class="form-label">검색기간(확정일)</span>
+								<div class="form-control-group">
+									<label>
+										<span class="visually-hidden">확정 시작일</span>
+										<input class="form-control" type="date" name="confirmation-start-date">
+									</label>
+									<label>
+										<span class="visually-hidden">확정 종료일</span>
+										<input class="form-control" type="date" name="confirmation-end-date">
+									</label>
+								</div>
+							</div>
+
+							<fieldset class="form-field">
+								<legend class="form-label">집계 유형</legend>
+								<div class="form-field__content form-choice-list">
+									<label class="form-choice">
+										<input type="radio" name="aggregation-type" value="equipment" checked>
+										<span>설비별</span>
+									</label>
+									<label class="form-choice">
+										<input type="radio" name="aggregation-type" value="request-department">
+										<span>요청부서별</span>
+									</label>
+									<label class="form-choice">
+										<input type="radio" name="aggregation-type" value="supervising-department">
+										<span>감독부서별</span>
+									</label>
+									<label class="form-choice">
+										<input type="radio" name="aggregation-type" value="requester">
+										<span>요청자별</span>
+									</label>
+									<label class="form-choice">
+										<input type="radio" name="aggregation-type" value="unit">
+										<span>호기별</span>
+									</label>
+									<label class="form-choice">
+										<input type="radio" name="aggregation-type" value="request-supervising-department">
+										<span>요청부서별 &amp; 감독부서별</span>
+									</label>
+								</div>
+							</fieldset>
+
+							<div class="form-field">
+								<label class="form-label" for="count-supervising-department-code">감독부서</label>
+								<span class="form-search">
+									<input class="form-control" id="count-supervising-department-code"
+										type="text" readonly>
+									<button class="form-search__button" type="button" aria-label="감독부서 찾기"
+										aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="department-lookup"
+										data-lookup-popup-title="감독부서 검색"
+										data-lookup-popup-url="/pages/common/popup/popup-department.html"
+										data-lookup-popup-width="480" data-lookup-popup-height="640"
+										></button>
+								</span>
+								<input class="form-control" type="text" aria-label="선택된 감독부서" readonly>
+							</div>
+
+							<div class="form-field">
+								<label class="form-label" for="count-request-department-code">요청부서</label>
+								<span class="form-search">
+									<input class="form-control" id="count-request-department-code"
+										type="text" readonly>
+									<button class="form-search__button" type="button" aria-label="요청부서 찾기"
+										aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="department-lookup"
+										data-lookup-popup-title="요청부서 검색"
+										data-lookup-popup-url="/pages/common/popup/popup-department.html"
+										data-lookup-popup-width="480" data-lookup-popup-height="640"
+										></button>
+								</span>
+								<input class="form-control" type="text" aria-label="선택된 요청부서" readonly>
+							</div>
+						</div>
+
+						<div class="filter-panel__actions">
+							<button class="button button--primary" type="submit">검색</button>
+						</div>
+						</div>
+					</form>
+				</aside>
+
+				<div class="splitview__pane splitview__pane--content result-panel">
+					<h1 class="page-content__heading">작업요청건수</h1>
+					<div class="result-panel__body">
+					<section class="result-chart" aria-labelledby="tm-count-chart-title">
+						<div class="section-header visually-hidden">
+							<h2 class="section-title" id="tm-count-chart-title">작업요청건수 차트</h2>
+						</div>
+						<div class="chart-container">
+							<div class="chart-placeholder" role="img" aria-label="작업요청건수 차트 영역">
+								<span>차트 영역</span>
+							</div>
+						</div>
+					</section>
+
+					<section class="result-table" aria-labelledby="tm-count-result-title">
+						<div class="result-header">
+							<h2 class="result-header__title" id="tm-count-result-title">
+								조회결과 <span class="result-header__count">(전체 5건)</span>
+							</h2>
+							<div class="result-header__actions">
+								<button class="button button--secondary" type="button">엑셀 다운로드</button>
+							</div>
+						</div>
+
+						<div class="table-responsive" tabindex="0">
+							<!-- 개발 연계: 행 클릭 시 data-detail-popup-url의 상세창을 엽니다. 제목 칼럼은 data-detail-popup-title-column으로 지정하며, data-detail-message가 있으면 안내문구만 표시합니다. -->
+							<table class="data-table data-table--list data-table--interactive"
+								aria-label="작업요청건수 조회결과" data-detail-popup
+								data-detail-popup-title="작업요청 상세정보" data-detail-popup-width="1280"
+								data-detail-popup-height="740"
+								data-detail-popup-url="/pages/tm/tm-work-request-count-detail.html"
+								data-detail-popup-title-column="0">
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2">설비</th>
+										<th scope="colgroup" colspan="2">TM</th>
+										<th scope="colgroup" colspan="2">설비개선</th>
+										<th scope="colgroup" colspan="2">NCR</th>
+										<th scope="colgroup" colspan="2">유사고장</th>
+										<th scope="colgroup" colspan="2">기타</th>
+										<th scope="col" rowspan="2">계</th>
+									</tr>
+									<tr>
+										<th scope="col">건</th>
+										<th scope="col">%</th>
+										<th scope="col">건</th>
+										<th scope="col">%</th>
+										<th scope="col">건</th>
+										<th scope="col">%</th>
+										<th scope="col">건</th>
+										<th scope="col">%</th>
+										<th scope="col">건</th>
+										<th scope="col">%</th>
+									</tr>
+								</thead>
+								<!-- 개발 시 조회 결과 유무에 따라 빈 상태와 데이터 tbody의 hidden 상태를 전환합니다. -->
+								<tbody data-table-body>
+									<tr>
+										<td colspan="12">
+											<div class="no-data">
+												조회된 데이터가 없습니다.
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="data-table__cell--title">터빈설비</td>
+										<td>128</td>
+										<td>57.1</td>
+										<td>42</td>
+										<td>18.8</td>
+										<td>16</td>
+										<td>7.1</td>
+										<td>28</td>
+										<td>12.5</td>
+										<td>10</td>
+										<td>4.5</td>
+										<td>224</td>
+									</tr>
+									<tr>
+										<td class="data-table__cell--title">보일러설비</td>
+										<td>96</td>
+										<td>53.9</td>
+										<td>38</td>
+										<td>21.3</td>
+										<td>12</td>
+										<td>6.7</td>
+										<td>24</td>
+										<td>13.5</td>
+										<td>8</td>
+										<td>4.5</td>
+										<td>178</td>
+									</tr>
+									<tr>
+										<td class="data-table__cell--title">전기설비</td>
+										<td>74</td>
+										<td>56.1</td>
+										<td>26</td>
+										<td>19.7</td>
+										<td>10</td>
+										<td>7.6</td>
+										<td>14</td>
+										<td>10.6</td>
+										<td>8</td>
+										<td>6.1</td>
+										<td>132</td>
+									</tr>
+									<tr>
+										<td class="data-table__cell--title">환경설비</td>
+										<td>48</td>
+										<td>50.0</td>
+										<td>22</td>
+										<td>22.9</td>
+										<td>8</td>
+										<td>8.3</td>
+										<td>12</td>
+										<td>12.5</td>
+										<td>6</td>
+										<td>6.3</td>
+										<td>96</td>
+									</tr>
+									<tr>
+										<td class="data-table__cell--title">공통설비</td>
+										<td>35</td>
+										<td>49.3</td>
+										<td>18</td>
+										<td>25.4</td>
+										<td>5</td>
+										<td>7.0</td>
+										<td>9</td>
+										<td>12.7</td>
+										<td>4</td>
+										<td>5.6</td>
+										<td>71</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

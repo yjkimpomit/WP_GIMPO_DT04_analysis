@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>작업요청 처리 상세정보</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout detail-popup">
+		<header class="result-header detail-popup__header">
+			<h1 class="detail-popup__title">
+				상세정보 <span class="result-header__count">(전체 3건)</span>
+			</h1>
+			<div class="result-header__actions">
+				<nav class="pagination" aria-label="페이지 이동">
+					<input class="form-control form-control--page" type="number" value="1" min="1"
+						aria-label="현재 페이지">
+					<span aria-hidden="true">/</span><span>1</span>
+					<button class="button button--neutral" type="button">이동</button>
+					<button class="button button--neutral" type="button">이전</button>
+					<button class="button button--neutral" type="button">다음</button>
+				</nav>
+			</div>
+		</header>
+
+		<div class="table-responsive" tabindex="0">
+			<table class="data-table data-table--list" aria-label="작업요청 처리 상세정보 목록">
+				<thead>
+					<tr>
+						<th scope="col">RBM 검사</th>
+						<th scope="col">호기</th>
+						<th scope="col">요청번호</th>
+						<th scope="col">확정요청일자</th>
+						<th scope="col">진행상태</th>
+						<th scope="col">요청명</th>
+						<th scope="col">확정요청시간</th>
+						<th scope="col">설비번호</th>
+						<th scope="col">설비명</th>
+						<th scope="col">요청자</th>
+						<th scope="col">요청부서</th>
+						<th scope="col">요청일자</th>
+						<th scope="col">감독자</th>
+						<th scope="col">감독부서</th>
+						<th scope="col">설계일자</th>
+						<th scope="col">오더타입</th>
+						<th scope="col">작업오더</th>
+						<th scope="col">오더명</th>
+						<th scope="col">운전부서</th>
+						<th scope="col">정비부서</th>
+						<th scope="col">허가일(발전차장)</th>
+						<th scope="col">중요도</th>
+						<th scope="col">작업허가</th>
+						<th scope="col">정비조건</th>
+						<th scope="col">작업형태</th>
+						<th scope="col">설계일정(시작)</th>
+						<th scope="col">설계일정(종료)</th>
+						<th scope="col">실제일정(시작)</th>
+						<th scope="col">실제일정(종료)</th>
+						<th scope="col">작업중요도</th>
+						<th scope="col">우선순위</th>
+						<th scope="col">증상</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>대상</td>
+						<td>1호기</td>
+						<td>TM-260724-001</td>
+						<td>2026-07-24</td>
+						<td>작업중</td>
+						<td class="data-table__cell--title">#1 TCV 연결부 Water Leak</td>
+						<td>10:30</td>
+						<td>86535</td>
+						<td class="data-table__cell--title">#1 TBN Master Trip Device</td>
+						<td>홍길동</td>
+						<td>발전운영부</td>
+						<td>2026-07-23</td>
+						<td>김감독</td>
+						<td>터빈제어부</td>
+						<td>2026-07-25</td>
+						<td>PM01</td>
+						<td>WO-260725-018</td>
+						<td class="data-table__cell--title">TCV 연결부 누설 정비</td>
+						<td>발전운영부</td>
+						<td>기계기술부</td>
+						<td>2026-07-26</td>
+						<td>A</td>
+						<td>허가완료</td>
+						<td>운전정지</td>
+						<td>계획정비</td>
+						<td>2026-07-26</td>
+						<td>2026-07-28</td>
+						<td>2026-07-26</td>
+						<td>-</td>
+						<td>A등급</td>
+						<td>긴급</td>
+						<td>누설(Leak)</td>
+					</tr>
+					<tr>
+						<td>비대상</td>
+						<td>1호기</td>
+						<td>TM-260722-014</td>
+						<td>2026-07-22</td>
+						<td>작업허가중</td>
+						<td class="data-table__cell--title">#1 TBN NO1 BRG Cap Oil Leak 개선</td>
+						<td>14:10</td>
+						<td>12322</td>
+						<td class="data-table__cell--title">#1 TBN NO1 BRG Cap</td>
+						<td>김중부</td>
+						<td>기계기술부</td>
+						<td>2026-07-21</td>
+						<td>이감독</td>
+						<td>터빈제어부</td>
+						<td>2026-07-23</td>
+						<td>CM01</td>
+						<td>WO-260723-011</td>
+						<td class="data-table__cell--title">TBN NO1 BRG Cap 누유 개선</td>
+						<td>발전운영부</td>
+						<td>기계기술부</td>
+						<td>-</td>
+						<td>B</td>
+						<td>허가요청</td>
+						<td>부분정지</td>
+						<td>경상정비</td>
+						<td>2026-07-24</td>
+						<td>2026-07-26</td>
+						<td>-</td>
+						<td>-</td>
+						<td>B등급</td>
+						<td>일상</td>
+						<td>누유(Oil Leak)</td>
+					</tr>
+					<tr>
+						<td>대상</td>
+						<td>2호기</td>
+						<td>TM-260719-008</td>
+						<td>2026-07-19</td>
+						<td>설계중</td>
+						<td class="data-table__cell--title">#2 LP TBN-A EXH Hood 진동 점검</td>
+						<td>09:20</td>
+						<td>64335</td>
+						<td class="data-table__cell--title">#2 LP TBN-A EXH Hood</td>
+						<td>이보령</td>
+						<td>발전운영부</td>
+						<td>2026-07-18</td>
+						<td>박감독</td>
+						<td>기계기술부</td>
+						<td>2026-07-20</td>
+						<td>PM02</td>
+						<td>WO-260720-006</td>
+						<td class="data-table__cell--title">LP TBN-A EXH Hood 진동 점검</td>
+						<td>발전운영부</td>
+						<td>터빈정비부</td>
+						<td>-</td>
+						<td>B</td>
+						<td>대기</td>
+						<td>운전중</td>
+						<td>예방정비</td>
+						<td>2026-07-22</td>
+						<td>2026-07-24</td>
+						<td>-</td>
+						<td>-</td>
+						<td>B등급</td>
+						<td>사후</td>
+						<td>진동(Vibration)</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+</body>
+
+</html>

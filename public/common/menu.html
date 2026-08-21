@@ -1,0 +1,170 @@
+<div class="gnb__head">
+	<h1 class="gnb__brand">
+		<a href="/index.html" aria-label="김포열병합 디지털트윈 홈"><img src="/resources/images/logo.svg" alt=""
+				aria-hidden="true"><span class="gnb__brand-text">김포열병합 디지털트윈</span></a>
+	</h1>
+	<button type="button" id="toggle-button" class="menu-icon" onclick="globalMenu();">
+		<span>메뉴열기</span>
+	</button>
+</div>
+
+<nav id="menuList" class="gnb">
+	<ul class="gnb-main depth-1">
+		<li>
+			<div class="menu-item">
+				<button type="button" class="menu-link d1" data-class="data"><span class="menu-text">연계자료</span></button>
+				<button type="button" class="open-icon" aria-expanded="false" aria-controls="menu-related-data" aria-label="연계자료 하위메뉴 열기"></button>
+			</div>
+			<div class="menu-box" id="menu-related-data">
+				<strong>연계자료</strong>
+				<ul class="depth-2">
+					<li>
+						<button type="button" onclick="fnOpenPopupFacilityMenu('/pages/equipment/equipment-search.html', $(this))" class="menu-link d2" data-title="설비검색"><span>설비검색</span></button>
+					</li>
+					<li>
+						<button type="button" onclick="fnOpenPopup('/pages/equipment/equipment-information.html?tabIdx=1', $(this))" class="menu-link d2" data-title="설비검색"><span>설비정보</span></button>
+					</li>
+					<li>
+						<button type="button" onclick="fnOpenPopup('/pages/pid/pid.html?tabIdx=3', $(this));" class="menu-link d2" data-title="P&amp;ID"><span>P&amp;ID</span></button>
+					</li>
+					<li>
+						<button type="button" onclick="fnOpenPopup('/pages/dataparc/dataparc.html?tabIdx=4', $(this));" class="menu-link d2" data-title="DataPARC"><span>DataPARC</span></button>
+					</li>
+					<li>
+						<button type="button" class="menu-link d2" data-title="파노라마"><span>파노라마</span></button>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<div class="menu-item">
+				<button type="button" class="menu-link d1" data-class="diagnosis"><span class="menu-text">설비진단</span></button>
+				<button type="button" class="open-icon" aria-expanded="false" aria-controls="menu-facility-diagnosis" aria-label="설비진단 하위메뉴 열기"></button>
+			</div>
+			<div class="menu-box" id="menu-facility-diagnosis">
+				<strong>설비진단</strong>
+				<ul class="depth-2">
+					<li>
+						<a href="#" target="_blank" rel="noopener noreferrer" class="menu-link d2 external-link" aria-label="두케어 새 창 열기"><span>두케어</span></a>
+					</li>
+					<li>
+						<a href="#" target="_blank" rel="noopener noreferrer" class="menu-link d2 external-link" aria-label="표준복합 새 창 열기"><span>표준복합</span></a>
+					</li>
+					<li>
+						<a href="#" target="_blank" rel="noopener noreferrer" class="menu-link d2 external-link" aria-label="가상시뮬레이션 새 창 열기"><span>가상시뮬레이션</span></a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<div class="menu-item">
+				<button type="button" class="menu-link d1" data-class="safety"><span class="menu-text">안전관리</span></button>
+				<button type="button" class="open-icon" aria-expanded="false" aria-controls="menu-safety" aria-label="안전관리 하위메뉴 열기"></button>
+			</div>
+			<div class="menu-box" id="menu-safety">
+				<strong>안전관리</strong>
+				<ul class="depth-2">
+					<li>
+						<div class="menu-link d2"><span>일일안전현황</span></div>
+						<ul class="depth-3">
+							<li>
+								<button type="button" onclick="fnOpenPopup('/pages/daily-status/daily-status.html?tabIdx=0', $(this));" class="menu-link d3" data-title="일일안전현황"><span>일일안전작업현황</span></button>
+							</li>
+							<li>
+								<button type="button" onclick="fnOpenPopup('/pages/daily-status/daily-status.html?tabIdx=1', $(this));" class="menu-link d3" data-title="일일안전현황"><span>경상오더</span></button>
+							</li>
+							<li>
+								<button type="button" onclick="fnOpenPopup('/pages/daily-status/daily-status.html?tabIdx=2', $(this));" class="menu-link d3" data-title="일일안전현황"><span>공사오더</span></button>
+							</li>
+							<li>
+								<button type="button" onclick="fnOpenPopup('/pages/daily-status/daily-status.html?tabIdx=3', $(this));" class="menu-link d3" data-title="일일안전현황"><span>공사오더(OH)</span></button>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<button type="button" class="menu-link d2" data-title="위치/건강 모니터링"><span>위치/건강 모니터링</span></button>
+					</li>
+					<li>
+						<button type="button" onclick="fnOpenPopup('/ai-cctv/ai-cctv.html', $(this));" class="menu-link d2" data-title="AI CCTV"><span>AI CCTV</span></button>
+					</li>
+					<li>
+						<button type="button" class="menu-link d2" data-title="피지컬 AI"><span>피지컬 AI</span></button>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<div class="menu-item">
+				<button type="button" class="menu-link d1" data-class="geni"><span class="menu-text">GENi</span></button>
+				<button type="button" class="open-icon" aria-expanded="false" aria-controls="menu-geni" aria-label="GENi 하위메뉴 열기"></button>
+			</div>
+			<div class="menu-box" id="menu-geni">
+				<strong>GENi</strong>
+				<ul class="depth-2">
+					<li>
+						<div class="menu-link d2"><span>TM 현황</span></div>
+						<ul class="depth-3">
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/tm/tm.html?tabIdx=0', $(this));" data-title="TM 현황"><span>작업요청 확정</span></button>
+							</li>
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/tm/tm.html?tabIdx=1', $(this));" data-title="TM 현황"><span>다발 TM현황</span></button>
+							</li>
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/tm/tm.html?tabIdx=2', $(this));" data-title="TM 현황"><span>미결 TM현황</span></button>
+							</li>
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/tm/tm.html?tabIdx=3', $(this));" data-title="TM 현황"><span>작업요청 건수</span></button>
+							</li>
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/tm/tm.html?tabIdx=4', $(this));" data-title="TM 현황"><span>작업요청 처리현황</span></button>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<div class="menu-link d2"><span>작업현황<sub>Red TAG</sub></span></div>
+						<ul class="depth-3">
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/work-status/red-tag.html?tabIdx=1', $(this));" data-title="작업현황"><span>Red Tag 발행</span></button>
+							</li>
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/work-status/red-tag.html?tabIdx=2', $(this));" data-title="작업현황"><span>Red Tag 관리대장</span></button>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<div class="menu-link d2"><span>예방점검현황</span></div>
+						<ul class="depth-3">
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/preventive-inspection/preventive-inspection.html?tabIdx=0', $(this));" data-title="예방점검현황"><span>정비비용 고장경향 분석</span></button>
+							</li>
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/preventive-inspection/prevention-inspection.html?tabIdx=1', $(this));" data-title="예방점검현황"><span>점검 보고서</span></button>
+							</li>
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/preventive-inspection/prevention-inspection.html?tabIdx=2', $(this));" data-title="예방점검현황"><span>점검 결과</span></button>
+							</li>
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/preventive-inspection/prevention-inspection.html?tabIdx=3', $(this));" data-title="예방점검현황"><span>점검 결과(chart)</span></button>
+							</li>
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/preventive-inspection/prevention-inspection.html?tabIdx=4', $(this));" data-title="예방점검현황"><span>이상 점검 결과</span></button>
+							</li>
+							<li>
+								<button type="button" class="menu-link d3" onclick="fnOpenPopup('/pages/preventive-inspection/prevention-inspection.html?tabIdx=5', $(this));" data-title="예방점검현황"><span>미점검 일정</span></button>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<div class="menu-item">
+				<button type="button" class="menu-link d1" onclick="fnOpenPopup('/pages/ar-site-inspection/ar-site-inspection.html', $(this));" data-class="ar-site" data-title="AR 현장점검"><span class="menu-text">AR 현장점검</span></button>
+			</div>
+			<div class="menu-box">
+				<strong>AR 현장점검</strong>
+			</div>
+		</li>
+	</ul>
+</nav>

@@ -6,7 +6,7 @@ public/resources/fonts/
 public/resources/admin/
 public/resources/js/**
 
-public/**
+#public/**
 
 
 # 아래 부분만 별도 반영

@@ -1,0 +1,89 @@
+/* Mask icons: color follows currentColor and can be overridden with --icon-color. */
+:is(
+	.icon-close,
+	.icon-search,
+	.icon-edit,
+	.icon-upload,
+	.icon-stacks,
+	.icon-download,
+	.icon-return,
+	.icon-settings,
+	.icon-description,
+	.icon-connect,
+	.icon-folder-data,
+	.icon-3d,
+	.icon-pano,
+	.icon-tm,
+	.icon-delete,
+	.icon-alert,
+	.icon-attach,
+	.icon-popup
+) {
+	display: inline-block;
+	flex: 0 0 var(--icon-size, 1.5rem);
+	width: var(--icon-size, 1.5rem);
+	height: var(--icon-size, 1.5rem);
+	background-color: var(--icon-color, currentColor);
+	-webkit-mask: var(--icon-source) center / contain no-repeat;
+	mask: var(--icon-source) center / contain no-repeat;
+}
+
+.icon-close {
+	--icon-source: url('/resources/images/icons/close.svg');
+}
+
+.icon-search {
+	--icon-source: url('/resources/images/icons/search.svg');
+}
+
+.icon-attach {
+	--icon-source: url('/resources/images/icons/attach_file.svg');
+}
+.icon-attach.disabled {
+	opacity: 0.5;
+}
+
+.icon-edit {
+	--icon-source: url('/resources/images/icons/edit.svg');
+}
+
+.icon-upload {
+	--icon-source: url('/resources/images/icons/upload_file.svg');
+}
+
+.icon-download {
+	--icon-source: url('/resources/images/icons/file_save.svg');
+}
+
+.icon-return {
+	--icon-source: url('/resources/images/icons/keyboard_return.svg');
+}
+
+.icon-settings {
+	--icon-source: url('/resources/images/icons/settings.svg');
+}
+
+.icon-description {
+	--icon-source: url('/resources/images/icons/description.svg');
+}
+
+.icon-3d {
+	--icon-source: url('/resources/images/icons/view_in_ar.svg');
+}
+
+.icon-pano {
+	--icon-source: url('/resources/images/icons/vrpano.svg');
+}
+
+.icon-delete {
+	--icon-source: url('/resources/images/icons/delete_forever.svg');
+}
+
+.icon-alert {
+	--icon-source: url('/resources/images/icons/notifications.svg');
+	--icon-size: 1.25rem;
+}
+
+.icon-popup {
+	--icon-source: url('/resources/images/icons/open_in_new.svg');
+}

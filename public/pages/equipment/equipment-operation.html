@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>설비 운전정보</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content">
+
+		<section class="content-section">
+			<div class="section-header">
+				<h2 class="section-title">운전정보</h2>
+			</div>
+			<div class="table-responsive" tabindex="0">
+				<table class="data-table data-table--list data-table--interactive" aria-label="운전정보"
+					data-winbox-popup-row-select data-winbox-popup-title-column="0">
+					<thead>
+						<tr>
+							<th>태그</th>
+							<th>상세정보</th>
+							<th>운전정보</th>
+							<th>예측값</th>
+							<th>트렌드</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="data-table__cell--title">PT.DCS.CG-P.GTC1.21G-D050AIND003</td>
+							<td>21TB IGVCS0</td>
+							<td>80.21</td>
+							<td>80.21</td>
+							<td>
+								<button class="button button--sm button--neutral" type="button"
+									data-winbox-popup data-winbox-popup-id="equipment-operation-trend"
+									data-winbox-popup-title="운전정보 트렌드"
+									data-winbox-popup-url="/pages/data/equipment/equipment-operation-trend.html"
+									data-winbox-popup-width="960" data-winbox-popup-height="680">트렌드</button>
+							</td>
+						</tr>
+						<tr>
+							<td class="data-table__cell--title">PT.DCS.CG-P.GTC2.21G-D050AIND003</td>
+							<td>22TB IGVCS0</td>
+							<td>91.14</td>
+							<td>91.14</td>
+							<td>
+								<button class="button button--sm button--neutral" type="button"
+									data-winbox-popup data-winbox-popup-id="equipment-operation-trend"
+									data-winbox-popup-title="운전정보 트렌드"
+									data-winbox-popup-url="/pages/data/equipment/equipment-operation-trend.html"
+									data-winbox-popup-width="960" data-winbox-popup-height="680">트렌드</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>다발TM현황</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content tm-multiple-status-page">
+		<div class="page-content__placeholder">
+			<div class="splitview">
+				<aside class="splitview__pane splitview__pane--sidebar"
+					aria-label="정보 검색 및 설비분류체계">
+					<form class="filter-panel" data-tm-multiple-filter>
+						<div class="filter-panel__header">
+							<span class="filter-panel__title">검색</span>
+							<button class="filter-panel__toggle" 
+								type="button"
+								aria-label="정보 검색 접기" 
+								aria-expanded="true" 
+								aria-controls="filter-panel-search"></button>
+						</div>
+
+						<div class="filter-panel__search" id="filter-panel-search">
+							<div class="filter-panel__fields">
+								<!-- 개발 연계: 검색 조건과 설비분류체계에서 선택한 항목을 함께 조회 조건으로 사용합니다. -->
+								<div class="form-field">
+									<span class="form-label">검색기간</span>
+									<div class="form-control-group">
+										<label>
+											<span class="visually-hidden">검색 시작일</span>
+											<input class="form-control" type="date" name="search-start-date">
+										</label>
+										<label>
+											<span class="visually-hidden">검색 종료일</span>
+											<input class="form-control" type="date" name="search-end-date">
+										</label>
+									</div>
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="multiple-supervising-department-code">감독부서</label>
+									<span class="form-search">
+										<input class="form-control" id="multiple-supervising-department-code"
+											type="text" name="supervising-department" readonly>
+										<button class="form-search__button" type="button" aria-label="감독부서 찾기"
+											aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="department-lookup"
+											data-lookup-popup-title="감독부서 검색"
+											data-lookup-popup-url="/pages/common/popup/popup-department.html"
+											data-lookup-popup-width="480" data-lookup-popup-height="640"></button>
+									</span>
+									<input class="form-control" type="text" aria-label="선택된 감독부서" readonly>
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="multiple-request-department-code">요청부서</label>
+									<span class="form-search">
+										<input class="form-control" id="multiple-request-department-code"
+											type="text" name="request-department" readonly>
+										<button class="form-search__button" type="button" aria-label="요청부서 찾기"
+											aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="department-lookup"
+											data-lookup-popup-title="요청부서 검색"
+											data-lookup-popup-url="/pages/common/popup/popup-department.html"
+											data-lookup-popup-width="480" data-lookup-popup-height="640"></button>
+									</span>
+									<input class="form-control" type="text" aria-label="선택된 요청부서" readonly>
+								</div>
+							</div>
+
+							<div class="filter-panel__actions">
+								<button class="button button--primary" type="submit">검색</button>
+							</div>
+						</div>
+
+						<section class="filter-panel__section"
+							aria-labelledby="tm-equipment-classification-title">
+								<h2 class="filter-panel__section-title visually-hidden" id="tm-equipment-classification-title">
+									설비분류체계
+								</h2>
+								<div class="tabs equipment-tree equipment-tree--responsive" data-tabs data-tab-content-loader>
+										<ul class="nav nav-tabs" id="tm-equipment-tabs" role="tablist" aria-label="설비분류체계 기준">
+											<li class="nav-item" role="presentation"><button class="nav-link active" id="tm-equipment-function-tab" data-bs-toggle="tab" data-bs-target="#tm-equipment-function-panel" type="button" role="tab" aria-controls="tm-equipment-function-panel" aria-selected="true">기능위치</button></li>
+											<li class="nav-item" role="presentation"><button class="nav-link" id="tm-equipment-system-tab" data-bs-toggle="tab" data-bs-target="#tm-equipment-system-panel" type="button" role="tab" aria-controls="tm-equipment-system-panel" aria-selected="false">계통</button></li>
+											<li class="nav-item" role="presentation"><button class="nav-link" id="tm-equipment-type-tab" data-bs-toggle="tab" data-bs-target="#tm-equipment-type-panel" type="button" role="tab" aria-controls="tm-equipment-type-panel" aria-selected="false">종류</button></li>
+										</ul>
+										<div class="tab-content equipment-tree__panel" id="tm-equipment-tab-content">
+											<div class="tab-pane fade show active" id="tm-equipment-function-panel" role="tabpanel" aria-labelledby="tm-equipment-function-tab" tabindex="0">
+												<div class="tree-explorer__tree" role="tree" tabindex="0"
+													aria-label="기능위치 트리 영역"></div>
+											</div>
+											<div class="tab-pane fade" id="tm-equipment-system-panel" role="tabpanel" aria-labelledby="tm-equipment-system-tab" tabindex="0">
+												<div class="tree-explorer__tree" role="tree" tabindex="0"
+													aria-label="계통 트리 영역"></div>
+											</div>
+											<div class="tab-pane fade" id="tm-equipment-type-panel" role="tabpanel" aria-labelledby="tm-equipment-type-tab" tabindex="0">
+												<div class="tree-explorer__tree" role="tree" tabindex="0"
+													aria-label="종류 트리 영역"></div>
+											</div>
+										</div>
+								</div>
+						</section>
+
+					</form>
+				</aside>
+
+				<section class="splitview__pane splitview__pane--content result-panel" aria-labelledby="tm-multiple-result-title">
+					<h1 class="page-content__heading">다발TM현황</h1>
+					<div class="result-panel__body">
+					<div class="result-header">
+						<h2 class="result-header__title" id="tm-multiple-result-title">
+							조회결과 <span class="result-header__count">(전체 6건)</span>
+						</h2>
+						<div class="result-header__actions">
+							<nav class="pagination" aria-label="페이지 이동">
+								<label class="visually-hidden" for="tm-multiple-current-page">현재 페이지</label>
+								<input class="form-control form-control--page" id="tm-multiple-current-page"
+									type="number" value="1" min="1" max="1">
+								<span aria-hidden="true">/</span><span>1</span>
+								<button class="button button--neutral" type="button">이동</button>
+								<button class="button button--neutral" type="button">이전</button>
+								<button class="button button--neutral" type="button">다음</button>
+							</nav>
+							<button class="button button--secondary" type="button">엑셀 다운로드</button>
+						</div>
+					</div>
+
+					<p class="visually-hidden" id="tm-multiple-sort-description">
+						계와 증상별 건수 열의 제목 버튼을 누르면 오름차순과 내림차순으로 정렬됩니다.
+					</p>
+					<p class="visually-hidden" data-sort-status aria-live="polite"></p>
+
+					<div class="table-responsive" tabindex="0">
+						<!-- 개발 연계: 행 클릭 시 data-detail-popup-url의 상세창을 엽니다. 제목 칼럼은 data-detail-popup-title-column으로 지정하며, data-detail-message가 있으면 안내문구만 표시합니다. -->
+						<table class="data-table data-table--list data-table--interactive"
+							aria-label="다발TM현황 조회결과"
+							aria-describedby="tm-multiple-sort-description"
+							data-detail-popup
+							data-detail-popup-title="다발TM현황-상세정보"
+							data-detail-popup-width="1280"
+							data-detail-popup-height="560"
+							data-detail-popup-url="/pages/tm/tm-multiple-status-detail.html"
+							data-detail-popup-title-column="1"
+							data-sortable-number-table>
+							<thead>
+								<tr>
+									<th scope="col" data-field="equipment-number">설비번호</th>
+									<th scope="col" data-field="equipment-name">설비명</th>
+									<th scope="col" data-field="total" aria-sort="none"><button type="button" data-sort-column="2">계</button></th>
+									<th scope="col" data-field="leakage" aria-sort="none"><button type="button" data-sort-column="3"
+											title="누설(Leakage)" aria-label="누설(Leakage) 정렬">누설</button></th>
+									<th scope="col" data-field="indication-error" aria-sort="none"><button type="button" data-sort-column="4"
+											title="오지시(Indication Error)" aria-label="오지시(Indication Error) 정렬">오지시</button></th>
+									<th scope="col" data-field="contamination" aria-sort="none"><button type="button" data-sort-column="5"
+											title="오염(Contamination)" aria-label="오염(Contamination) 정렬">오염</button></th>
+									<th scope="col" data-field="breakdown" aria-sort="none"><button type="button" data-sort-column="6"
+											title="손상/파손(Breakdown)" aria-label="손상/파손(Breakdown) 정렬">손상/파손</button></th>
+									<th scope="col" data-field="deformation" aria-sort="none"><button type="button" data-sort-column="7"
+											title="변형(Deformation)" aria-label="변형(Deformation) 정렬">변형</button></th>
+									<th scope="col" data-field="rupture" aria-sort="none"><button type="button" data-sort-column="8"
+											title="파열(Rupture)" aria-label="파열(Rupture) 정렬">파열</button></th>
+									<th scope="col" data-field="corrosion-erosion" aria-sort="none"><button type="button" data-sort-column="9"
+											title="부식/침식(Corrosion/Erosion)" aria-label="부식/침식(Corrosion/Erosion) 정렬">부식/침식</button></th>
+									<th scope="col" data-field="vibration" aria-sort="none"><button type="button" data-sort-column="10"
+											title="진동이상(Vibration)" aria-label="진동이상(Vibration) 정렬">진동이상</button></th>
+									<th scope="col" data-field="noise" aria-sort="none"><button type="button" data-sort-column="11"
+											title="이음(소음)(Noise)" aria-label="이음(소음)(Noise) 정렬">이음(소음)</button></th>
+									<th scope="col" data-field="disconnection-short-circuit" aria-sort="none"><button type="button" data-sort-column="12"
+											title="단선/단락(Disconnection/Short-circuit)"
+											aria-label="단선/단락(Disconnection/Short-circuit) 정렬">단선/단락</button></th>
+									<th scope="col" data-field="freezing" aria-sort="none"><button type="button" data-sort-column="13"
+											title="동결(Freezing)" aria-label="동결(Freezing) 정렬">동결</button></th>
+									<th scope="col" data-field="overload" aria-sort="none"><button type="button" data-sort-column="14"
+											title="과부하(Over Load)" aria-label="과부하(Over Load) 정렬">과부하</button></th>
+								</tr>
+							</thead>
+							<!-- 개발 시 조회 결과 유무에 따라 빈 상태와 데이터 tbody의 hidden 상태를 전환합니다. -->
+							<tbody data-table-body>
+								<tr>
+									<td colspan="15">
+										<div class="no-data">
+											조회된 데이터가 없습니다.
+										</div>
+									</td>
+								</tr>
+								<tr data-detail-row>
+									<td>86535</td>
+									<td class="data-table__cell--title">#1 TBN Master Trip Device</td>
+									<td>18</td><td>5</td><td>1</td><td>2</td><td>3</td><td>0</td><td>0</td><td>1</td><td>4</td><td>1</td><td>0</td><td>0</td><td>1</td>
+								</tr>
+								<tr data-detail-row>
+									<td>12322</td>
+									<td class="data-table__cell--title">#1 TBN NO1 BRG Cap</td>
+									<td>13</td><td>4</td><td>0</td><td>1</td><td>4</td><td>1</td><td>0</td><td>2</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td>
+								</tr>
+								<tr data-detail-row>
+									<td>64335</td>
+									<td class="data-table__cell--title">#2 LP TBN-A EXH Hood</td>
+									<td>21</td><td>2</td><td>3</td><td>1</td><td>2</td><td>0</td><td>1</td><td>3</td><td>7</td><td>2</td><td>0</td><td>0</td><td>0</td>
+								</tr>
+								<tr data-detail-row>
+									<td>85214</td>
+									<td class="data-table__cell--title">#2 Turning Gear Equipment</td>
+									<td>9</td><td>0</td><td>2</td><td>0</td><td>3</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td>
+								</tr>
+								<tr data-detail-row>
+									<td>65544</td>
+									<td class="data-table__cell--title">#1 LP TBN-A Journal Bearing</td>
+									<td>16</td><td>3</td><td>1</td><td>1</td><td>2</td><td>0</td><td>0</td><td>2</td><td>5</td><td>2</td><td>0</td><td>0</td><td>0</td>
+								</tr>
+								<tr data-detail-row>
+									<td>22313</td>
+									<td class="data-table__cell--title">#1 LP TBN Cross Over Pipe</td>
+									<td>7</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+
+	<script src="/resources/vendor/bootstrap-5.3.8/js/bootstrap-tab.js"></script>
+	<script src="/resources/js/html-common/tab-content-loader.js"></script>
+	<script src="/resources/js/html-common/components.js"></script>
+	<script src="/resources/js/html-common/winbox.js"></script>
+	<script src="/resources/js/html-common/data-table-detail.js"></script>
+</body>
+
+</html>

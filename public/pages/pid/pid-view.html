@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>P&amp;ID 보기</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content page-content--popup document-viewer-page">
+		<h1 class="page-content__heading visually-hidden">P&amp;ID 보기</h1>
+		<div class="page-content__placeholder page-content__placeholder--flex">
+			<div class="splitview">
+				<aside class="splitview__pane splitview__pane--sidebar" aria-label="P&amp;ID 정보 검색">
+					<form class="filter-panel">
+						<div class="filter-panel__header">
+							<span class="filter-panel__title">검색</span>
+							<button class="filter-panel__toggle" type="button"
+								aria-label="정보 검색 접기" aria-expanded="true"></button>
+						</div>
+						<div class="filter-panel__search" id="filter-panel-search">
+						<div class="filter-panel__fields">
+							<!-- 개발 연계: 검색 조건 영역은 filter-panel__fields를 사용하고, 각 조건은 form-field 단위로 추가·반복합니다. -->
+							<div class="form-field">
+								<label class="form-label" for="pid-equipment-tag-number">설비, 태그 번호</label>
+								<div class="form-control-group form-control-group--vertical">
+									<input class="form-control" id="pid-equipment-tag-number" type="search" name="keyword">
+									<input class="form-control" type="text" name="equipment-name"
+										aria-label="설비명" readonly>
+								</div>
+							</div>
+						</div>
+						<div class="filter-panel__actions">
+							<button class="button button--primary" type="submit">검색</button>
+							<button class="button button--secondary-outline" type="button" onclick="fnBtnPnidList();">연계정보 목록</button>
+						</div>
+						</div>
+					</form>
+				</aside>
+				<div class="splitview__pane" role="region" aria-label="P&amp;ID 이미지">
+					<div class="document-viewer document-viewer--fit-width"></div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="/resources/js/html-common/components.js"></script>
+	<script src="/resources/js/html-common/winbox.js"></script>
+	<script>
+		function fnBtnPnidList(target) {
+			var topWindow = window.top;
+			var box = new topWindow.WinBox("P&ID", {
+				root: topWindow.document.body,
+				url: "/pages/pid/pid-file-list.html",
+				width: Math.min(480, topWindow.innerWidth - 20) + "px",
+				height: Math.min(400, topWindow.innerHeight - 20) + "px",
+				x: "center",
+				y: "center",
+				class: ["no-full", "app-winbox", "app-winbox--detail"],
+				position: "center",
+				onresize: function () {
+					if (this.min) return;
+					this.move("center", "center");
+				},
+				onclose: function () {
+					topWindow.removeEventListener("resize", resizeHandler);
+				}
+			});
+
+			function resizeHandler() {
+				if (!box || !box.g || box.min) return;
+
+				var newWidth = Math.min(480, topWindow.innerWidth - 20);
+				var newHeight = Math.min(400, topWindow.innerHeight - 20);
+
+				box.resize(newWidth, newHeight);
+				box.move("center", "center");
+			}
+
+			topWindow.addEventListener("resize", resizeHandler);
+		}
+	</script>
+</body>
+
+</html>

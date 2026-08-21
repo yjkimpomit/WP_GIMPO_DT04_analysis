@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>일일안전 작업현황</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<!-- daily-safety-status-v1: 종합현황·달력·조회결과 기본 화면 구성 -->
+	<main class="winbox-layout page-content daily-status-page">
+		<h1 class="page-content__heading">일일안전 작업현황</h1>
+
+		<div class="result-panel">
+			<div class="result-panel__body">
+				<div class="section-header">
+					<h2 class="section-title">종합현황</h2>
+				</div>
+				<div class="daily-summary-grid">
+					<section class="daily-summary-card">
+						<h3 class="daily-summary-card__title">작업 현황</h3>
+						<div class="responsive-table"><table class="data-table data-table--list" aria-label="작업 현황"><tbody><tr><th scope="row">계획</th><td>12건</td></tr><tr><th scope="row">진행</th><td>8건</td></tr><tr><th scope="row">완료</th><td>4건</td></tr></tbody></table></div>
+					</section>
+					<section class="daily-summary-card">
+						<h3 class="daily-summary-card__title">작업자 현황</h3>
+						<div class="responsive-table"><table class="data-table data-table--list" aria-label="작업자 현황"><tbody><tr><th scope="row">투입 인원</th><td>42명</td></tr><tr><th scope="row">협력사</th><td>6개사</td></tr><tr><th scope="row">안전관리자</th><td>4명</td></tr></tbody></table></div>
+					</section>
+					<section class="daily-summary-card">
+						<h3 class="daily-summary-card__title">작업허가 현황</h3>
+						<div class="responsive-table"><table class="data-table data-table--list" aria-label="작업허가 현황"><tbody><tr><th scope="row">발행</th><td>10건</td></tr><tr><th scope="row">승인대기</th><td>2건</td></tr><tr><th scope="row">종료</th><td>5건</td></tr></tbody></table></div>
+					</section>
+					<section class="daily-summary-card">
+						<h3 class="daily-summary-card__title">위험성 관리</h3>
+						<div class="responsive-table"><table class="data-table data-table--list" aria-label="위험성 관리"><tbody><tr><th scope="row">고위험</th><td>3건</td></tr><tr><th scope="row">개선조치</th><td>2건</td></tr><tr><th scope="row">미조치</th><td>0건</td></tr></tbody></table></div>
+					</section>
+				</div>
+			</div>
+
+			<div class="result-panel__body">
+				<div class="section-header"><h2 class="section-title">작업일정</h2></div>
+				<div class="daily-calendar-placeholder" role="img" aria-label="가로형 작업일정 달력 영역">가로형 달력 영역</div>
+			</div>
+
+			<div class="result-panel__body">
+				<div class="result-header">
+					<h2 class="result-header__title">조회결과 <span class="result-header__count">(전체 12건)</span></h2>
+					<div class="result-header__actions">
+						<nav class="pagination" aria-label="조회결과 페이지 이동">
+							<label class="visually-hidden" for="daily-status-current-page">현재 페이지</label>
+							<input class="form-control form-control--page" id="daily-status-current-page" type="number" value="1" min="1" max="2">
+							<span aria-hidden="true">/</span><span>2</span>
+							<button class="button button--neutral" type="button">이동</button><button class="button button--neutral" type="button">이전</button><button class="button button--neutral" type="button">다음</button>
+						</nav>
+						<button class="button button--secondary" type="button">엑셀 다운로드</button>
+						<button class="button button--primary" type="button">등록현황 관리</button>
+					</div>
+				</div>
+				<div class="responsive-table responsive-table--list" tabindex="0">
+					<table class="data-table data-table--list" aria-label="일일안전 작업 조회결과">
+						<thead><tr><th>번호</th><th>작업일자</th><th>작업명</th><th>작업구역</th><th>작업부서</th><th>작업책임자</th><th>작업인원</th><th>작업상태</th><th>안전점검</th></tr></thead>
+						<tbody>
+							<tr><td>12</td><td>2026-08-15</td><td class="data-table__cell--title">보일러 급수펌프 정비</td><td>1호기 터빈동</td><td>기계기술부</td><td>김안전</td><td>8명</td><td>작업중</td><td>완료</td></tr>
+							<tr><td>11</td><td>2026-08-15</td><td class="data-table__cell--title">전기실 차단기 점검</td><td>전기실</td><td>전기기술부</td><td>이현장</td><td>4명</td><td>작업대기</td><td>완료</td></tr>
+							<tr><td>10</td><td>2026-08-15</td><td class="data-table__cell--title">석탄 이송설비 청소</td><td>저탄장</td><td>발전운영부</td><td>박관리</td><td>12명</td><td>작업중</td><td>완료</td></tr>
+							<tr><td>9</td><td>2026-08-15</td><td class="data-table__cell--title">소방설비 정기점검</td><td>보조기기동</td><td>안전환경부</td><td>최점검</td><td>3명</td><td>작업완료</td><td>완료</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

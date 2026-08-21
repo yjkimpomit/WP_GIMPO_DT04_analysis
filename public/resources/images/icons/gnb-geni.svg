@@ -1,0 +1,16 @@
+<svg width="24" height="88" viewBox="0 0 24 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 23V1H23V23H1ZM3 21H21V3H3V21Z" fill="#D3DAE4"/>
+<path d="M17 19H15V13H17V19Z" fill="#D3DAE4"/>
+<path d="M7 19H5V13H7V19Z" fill="#D3DAE4"/>
+<path d="M10 15H5V13H10V15Z" fill="#D3DAE4"/>
+<path d="M11 19H9V13H11V19Z" fill="#D3DAE4"/>
+<path d="M11 7L11 5L5 5L5 12L11 12L11 7.75L8 7.75L8 8.75L9.5 8.75L9.5 10L7 10L7 7L11 7Z" fill="#D3DAE4"/>
+<path d="M13 5L18.5 5V7H15V7.75H17.5V9.25H15V10H18.5V12H13V5Z" fill="#D3DAE4"/>
+<path d="M1 87V65H23V87H1ZM3 85H21V67H3V85Z" fill="white"/>
+<path d="M17 83H15V77H17V83Z" fill="white"/>
+<path d="M7 83H5V77H7V83Z" fill="white"/>
+<path d="M10 79H5V77H10V79Z" fill="white"/>
+<path d="M11 83H9V77H11V83Z" fill="white"/>
+<path d="M11 71L11 69L5 69L5 76L11 76L11 71.75L8 71.75L8 72.75L9.5 72.75L9.5 74L7 74L7 71L11 71Z" fill="white"/>
+<path d="M13 69L18.5 69V71H15V71.75H17.5V73.25H15V74H18.5V76H13V69Z" fill="white"/>
+</svg>

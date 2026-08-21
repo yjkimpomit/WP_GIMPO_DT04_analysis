@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>예방점검현황</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content tabs tabs--scrollable" data-tabs data-tab-content-loader>
+		<h1 class="page-content__heading">예방점검현황</h1>
+		<ul class="nav nav-tabs" id="preventive-inspection-tabs" role="tablist" aria-label="예방점검현황 메뉴">
+			<li class="nav-item" role="presentation"><button class="nav-link active" id="cost-trend-tab" data-bs-toggle="tab" data-bs-target="#cost-trend-panel" type="button" role="tab" aria-controls="cost-trend-panel" aria-selected="true" data-tab-key="cost-trend">정비비용 고장경향 분석</button></li>
+			<li class="nav-item" role="presentation"><button class="nav-link" id="report-tab" data-bs-toggle="tab" data-bs-target="#report-panel" type="button" role="tab" aria-controls="report-panel" aria-selected="false" data-tab-key="report">점검 보고서</button></li>
+			<li class="nav-item" role="presentation"><button class="nav-link" id="result-tab" data-bs-toggle="tab" data-bs-target="#result-panel" type="button" role="tab" aria-controls="result-panel" aria-selected="false" data-tab-key="result">점검 결과</button></li>
+			<li class="nav-item" role="presentation"><button class="nav-link" id="result-chart-tab" data-bs-toggle="tab" data-bs-target="#result-chart-panel" type="button" role="tab" aria-controls="result-chart-panel" aria-selected="false" data-tab-key="result-chart">점검 결과(chart)</button></li>
+			<li class="nav-item" role="presentation"><button class="nav-link" id="abnormal-tab" data-bs-toggle="tab" data-bs-target="#abnormal-panel" type="button" role="tab" aria-controls="abnormal-panel" aria-selected="false" data-tab-key="abnormal">이상 점검 결과</button></li>
+			<li class="nav-item" role="presentation"><button class="nav-link" id="unchecked-tab" data-bs-toggle="tab" data-bs-target="#unchecked-panel" type="button" role="tab" aria-controls="unchecked-panel" aria-selected="false" data-tab-key="unchecked">미점검 일정</button></li>
+		</ul>
+		<div class="tab-content" id="preventive-inspection-tab-content">
+			<section class="tab-pane fade show active" id="cost-trend-panel" role="tabpanel" aria-labelledby="cost-trend-tab" tabindex="0">
+				<div class="chart-placeholder" role="img" aria-label="정비비용과 고장경향 차트 영역">정비비용·고장경향 분석 차트</div>
+			</section>
+			<section class="tab-pane fade" id="report-panel" role="tabpanel" aria-labelledby="report-tab" tabindex="0">
+				<p class="status-message">점검 보고서 목록입니다.</p>
+			</section>
+			<section class="tab-pane fade" id="result-panel" role="tabpanel" aria-labelledby="result-tab" tabindex="0">
+				<p class="status-message">점검 결과 목록입니다.</p>
+			</section>
+			<section class="tab-pane fade" id="result-chart-panel" role="tabpanel" aria-labelledby="result-chart-tab" tabindex="0">
+				<div class="chart-placeholder" role="img" aria-label="점검 결과 차트 영역">점검 결과 차트</div>
+			</section>
+			<section class="tab-pane fade" id="abnormal-panel" role="tabpanel" aria-labelledby="abnormal-tab" tabindex="0">
+				<p class="status-message" role="status">이상 점검 결과가 없습니다.</p>
+			</section>
+			<section class="tab-pane fade" id="unchecked-panel" role="tabpanel" aria-labelledby="unchecked-tab" tabindex="0">
+				<p class="status-message">미점검 일정을 조회합니다.</p>
+			</section>
+		</div>
+	</main>
+	<script src="/resources/vendor/bootstrap-5.3.8/js/bootstrap-tab.js"></script>
+	<script src="/resources/js/html-common/tab-content-loader.js"></script>
+	<script src="/resources/js/html-common/components.js"></script>
+</body>
+
+</html>

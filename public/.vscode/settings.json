@@ -1,0 +1,42 @@
+{
+	"liveServer.settings.host": "10.4.131.9",
+	//"liveServer.settings.host": "192.168.68.100",
+
+	"liveServer.settings.port": 8046,
+
+	// 컬러테마
+	"window.titleBarStyle": "custom",
+	"workbench.colorCustomizations": {
+		"titleBar.activeBackground": "#0fa983",
+		"titleBar.activeForeground": "#e7e7e7",
+		"titleBar.inactiveBackground": "#0fa98399",
+		"titleBar.inactiveForeground": "#e7e7e799",
+		"menubar.selectionBackground": "#FFFFFF1A",
+		"menubar.selectionForeground": "#FFFFFF",
+		"activityBar.background": "#13d8a7",
+		"activityBar.foreground": "#15202b",
+		"activityBar.inactiveForeground": "#15202b99",
+		"activityBar.activeBackground": "#13d8a7",
+		"activityBarBadge.background": "#be32ed",
+		"activityBarBadge.foreground": "#e7e7e7",
+		"activityBarTop.activeBackground": "#13d8a7",
+		"activityBarTop.background": "#13d8a7",
+		"activityBarTop.foreground": "#15202b",
+		"activityBarTop.inactiveForeground": "#15202b99",
+		"sideBar.background": "#0d042cde",
+		"commandCenter.border": "#e7e7e799",
+		"commandCenter.foreground": "#e7e7e7",
+		"statusBar.background": "#0fa983",
+		"statusBar.debuggingBackground": "#0fa983",
+		"statusBar.debuggingForeground": "#e7e7e7",
+		"statusBar.foreground": "#e7e7e7",
+		"statusBarItem.hoverBackground": "#13d8a7",
+		"statusBarItem.remoteBackground": "#9f12cd",
+		"statusBarItem.remoteForeground": "#e7e7e7",
+		"scrollbarSlider.background": "#B90F40",
+		"panel.border": "#13d8a7",
+		"sash.hoverBorder": "#13d8a7",
+		"sideBar.border": "#13d8a7"
+	},
+	"peacock.color": "#0FA983"
+}

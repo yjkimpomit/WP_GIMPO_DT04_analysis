@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>작업요청 상세정보</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout detail-popup">
+		<header class="result-header detail-popup__header">
+			<h1 class="detail-popup__title">
+				상세정보 <small class="result-header__count">(전체 5건)</small>
+			</h1>
+			<div class="result-header__actions">
+				<nav class="pagination" aria-label="페이지 이동">
+					<input class="form-control form-control--page" type="number" value="1" min="1"
+						aria-label="현재 페이지">
+					<span aria-hidden="true">/</span><span>5</span>
+					<button class="button button--neutral" type="button">이동</button>
+					<button class="button button--neutral" type="button">이전</button>
+					<button class="button button--neutral" type="button">다음</button>
+				</nav>
+			</div>
+		</header>
+
+		<div class="table-responsive" tabindex="0">
+			<table class="data-table data-table--list" aria-label="작업요청 상세정보 목록">
+				<thead>
+					<tr>
+						<th>호기</th>
+						<th>요청번호</th>
+						<th>진행상태</th>
+						<th>요청명</th>
+						<th>설비번호</th>
+						<th>설비명</th>
+						<th>요청자</th>
+						<th>요청부서</th>
+						<th>요청일자</th>
+						<th>감독부서</th>
+						<th>작업중요도</th>
+						<th>우선순위</th>
+						<th>증상</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1호기</td>
+						<td>TM-260724-001</td>
+						<td>작업대기</td>
+						<td class="data-table__cell--title">#1 TCV 연결부 Water Leak</td>
+						<td>86535</td>
+						<td class="data-table__cell--title">#1 TBN Master Trip Device</td>
+						<td>홍길동</td>
+						<td>발전운영부</td>
+						<td>2026-07-24</td>
+						<td>터빈제어부</td>
+						<td>B등급</td>
+						<td>긴급</td>
+						<td>누설(Leak)</td>
+					</tr>
+					<tr>
+						<td>1호기</td>
+						<td>TM-260722-014</td>
+						<td>작업진행</td>
+						<td class="data-table__cell--title">#1 TBN NO1 BRG Cap Oil Leak 개선</td>
+						<td>12322</td>
+						<td class="data-table__cell--title">#1 TBN NO1 BRG Cap</td>
+						<td>김중부</td>
+						<td>기계기술부</td>
+						<td>2026-07-22</td>
+						<td>터빈제어부</td>
+						<td>A등급</td>
+						<td>일상</td>
+						<td>누유(Oil Leak)</td>
+					</tr>
+					<tr>
+						<td>2호기</td>
+						<td>TM-260719-008</td>
+						<td>자재대기</td>
+						<td class="data-table__cell--title">#2 LP TBN-A EXH Hood 진동 점검</td>
+						<td>64335</td>
+						<td class="data-table__cell--title">#2 LP TBN-A EXH Hood</td>
+						<td>이보령</td>
+						<td>발전운영부</td>
+						<td>2026-07-19</td>
+						<td>기계기술부</td>
+						<td>B등급</td>
+						<td>사후</td>
+						<td>진동(Vibration)</td>
+					</tr>
+					<tr>
+						<td>2호기</td>
+						<td>TM-260717-003</td>
+						<td>조치검토</td>
+						<td class="data-table__cell--title">#2 Turning Gear Equipment 작동 불량</td>
+						<td>85214</td>
+						<td class="data-table__cell--title">#2 Turning Gear Equipment</td>
+						<td>박서울</td>
+						<td>안전품질부</td>
+						<td>2026-07-17</td>
+						<td>기계기술부</td>
+						<td>A등급</td>
+						<td>긴급</td>
+						<td>작동불량(Malfunction)</td>
+					</tr>
+					<tr>
+						<td>1호기</td>
+						<td>TM-260715-021</td>
+						<td>작업완료</td>
+						<td class="data-table__cell--title">#1 LP TBN Cross Over Pipe 누설 보수</td>
+						<td>22313</td>
+						<td class="data-table__cell--title">#1 LP TBN Cross Over Pipe</td>
+						<td>최인천</td>
+						<td>정비기획부</td>
+						<td>2026-07-15</td>
+						<td>터빈제어부</td>
+						<td>C등급</td>
+						<td>일상</td>
+						<td>누설(Leak)</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+</body>
+
+</html>

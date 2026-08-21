@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>설비 정비이력</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content">
+
+		<section class="content-section">
+			<div class="section-header">
+				<h2 class="section-title">정비이력</h2>
+			</div>
+			<div class="table-responsive" tabindex="0">
+				<table class="data-table data-table--list data-table--interactive" aria-label="정비이력"
+					data-master-detail="maintenance-detail">
+					<thead>
+						<tr>
+							<th>설비번호</th>
+							<th>설비명</th>
+							<th>오더번호</th>
+							<th>오더타입</th>
+							<th>오더명</th>
+							<th>설계일</th>
+							<th>상태</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>2455248</td>
+							<td>#1 Front STD</td>
+							<td>18625</td>
+							<td>공사오더</td>
+							<td>#1 Front STD 공사 표준</td>
+							<td>2020-01-21</td>
+							<td>정산완료</td>
+						</tr>
+						<tr>
+							<td>2455248</td>
+							<td>#1 Front STD</td>
+							<td>158742</td>
+							<td>공사오더</td>
+							<td>#1 Front STD 공사 표준</td>
+							<td>2021-03-01</td>
+							<td>정산완료</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="content-section" id="maintenance-detail" aria-labelledby="maintenance-detail-title">
+			<div class="section-header">
+				<h2 class="section-title" id="maintenance-detail-title">정비상세정보</h2>
+			</div>
+			<div class="table-responsive">
+				<table class="data-table data-table--view" aria-labelledby="maintenance-detail-title">
+					<tbody>
+						<tr>
+							<th scope="row">오더번호</th>
+							<td>18625</td>
+							<th scope="row">오더명</th>
+							<td colspan="3">#1 Front STD 공사 표준</td>
+						</tr>
+						<tr>
+							<th scope="row">설비번호</th>
+							<td>2455248</td>
+							<th scope="row">설비명</th>
+							<td colspan="3">#1 Front STD</td>
+						</tr>
+						<tr>
+							<th scope="row">진행상태</th>
+							<td>정산완료</td>
+							<th scope="row">오더타입</th>
+							<td>공사오더</td>
+							<th scope="row">정비조건</th>
+							<td>Unit 정지중</td>
+						</tr>
+						<tr>
+							<th scope="row">요청번호</th>
+							<td></td>
+							<th scope="row">요청종류</th>
+							<td></td>
+							<th scope="row">요청일자</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th scope="row">요청명</th>
+							<td colspan="5"></td>
+						</tr>
+						<tr>
+							<th scope="row">요청내용</th>
+							<td colspan="5"></td>
+						</tr>
+						<tr>
+							<th scope="row">설계자 사번</th>
+							<td>2654254</td>
+							<th scope="row">설계자이름</th>
+							<td>홍길동</td>
+							<th scope="row">설계부서</th>
+							<td>1,2호기 보일러제어과</td>
+						</tr>
+						<tr>
+							<th scope="row">정비부서</th>
+							<td>기계부</td>
+							<th scope="row">작업 중요도</th>
+							<td colspan="3">B등급(일반작업)</td>
+						</tr>
+						<tr>
+							<th scope="row">설계시작일</th>
+							<td>2020-01-21</td>
+							<th scope="row">설계완료일</th>
+							<td>2020-02-15</td>
+							<th scope="row">WBS 코드</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th scope="row">작업내용</th>
+							<td colspan="5"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

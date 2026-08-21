@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>요청자 검색</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content page-content--popup requester-lookup">
+		<h1 class="visually-hidden">요청자 검색</h1>
+
+		<div class="splitview requester-lookup__splitview">
+			<aside class="splitview__pane splitview__pane--sidebar requester-lookup__sidebar"
+				aria-label="부서 선택">
+				<label class="form-choice">
+					<input type="checkbox" name="include-transferred">
+					<span>전출자 포함</span>
+				</label>
+
+				<div class="tree-explorer__tree" role="tree" tabindex="0" aria-label="부서 목록"></div>
+			</aside>
+
+			<section class="splitview__pane splitview__pane--content result-panel requester-lookup__result"
+				id="requester-result"
+				aria-labelledby="requester-result-title">
+				<h2 class="visually-hidden" id="requester-result-title">요청자 목록</h2>
+				<div class="result-panel__body">
+				<div class="detail-empty-state" role="status">
+					<p>부서를 선택해주세요.</p>
+				</div>
+
+				<div class="table-responsive" tabindex="0">
+					<table class="data-table data-table--list"
+						aria-label="요청자 목록">
+						<thead>
+							<tr>
+								<th scope="col">유저 ID</th>
+								<th scope="col">유저명</th>
+								<th scope="col">부서</th>
+								<th scope="col">보직코드</th>
+								<th scope="col">보직</th>
+								<th scope="col">근무여부</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>KOMIPO001</td>
+								<td>홍길동</td>
+								<td>터빈제어부</td>
+								<td>POS-103</td>
+								<td>대리</td>
+								<td>근무</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				</div>
+			</section>
+		</div>
+	</main>
+</body>
+
+</html>

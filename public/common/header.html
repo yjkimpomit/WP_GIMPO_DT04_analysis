@@ -1,0 +1,81 @@
+<header class="site-header">
+	<div class="site-header__primary">
+		<a class="site-header__mobile-brand" href="/#modelViewer" aria-label="김포열병합 디지털트윈 홈"><img
+				src="/resources/images/logo.svg" alt="" aria-hidden="true"></a>
+		<button class="site-header__menu-button" type="button" aria-label="전체 메뉴 열기" aria-expanded="false"
+			aria-controls="menuList">
+			<span aria-hidden="true"></span>
+		</button>
+		<div class="site-header__navigation-area">
+			<nav class="site-context" aria-label="사이트 위치">
+				<a class="site-context__home" href="/#modelViewer" aria-label="3D 모델뷰어 홈"></a>
+				<button type="button" aria-haspopup="listbox">SITE</button>
+			</nav>
+		</div>
+		<div class="site-header__utility-area">
+			<form class="site-search" role="search">
+				<label class="visually-hidden" for="site-search-query">통합검색</label>
+				<input id="site-search-query" type="search" placeholder="Tag, OWS, P&amp;ID, 설비번호 검색">
+				<button class="site-search__close" type="button" aria-label="검색 닫기"></button>
+				<button type="submit" aria-label="검색"></button>
+			</form>
+			<button class="ai-alert" type="button" aria-label="AI 알림 12건">AI 알림 <strong>12</strong></button>
+			<button class="panel-toggle" type="button" aria-pressed="false">패널보기 <span
+					aria-hidden="true"></span></button>
+			<button class="settings-button" type="button" aria-label="관리자"></button>
+		</div>
+	</div>
+</header>
+
+<aside id="realtime-panel" class="realtime-panel" aria-label="실시간 정보 패널" hidden>
+	<header class="realtime-panel__header">
+		<h2>실시간 정보</h2>
+		<button class="realtime-panel__close" type="button" aria-label="실시간 정보 패널 닫기"></button>
+	</header>
+	<div class="realtime-panel__body">
+		<section class="realtime-panel__section" aria-labelledby="realtime-status-title">
+			<h3 id="realtime-status-title">GT1 정비현황</h3>
+			<div class="realtime-panel__summary">
+				<span>TM발행 <strong>24건</strong></span>
+				<span>Red-Tag <strong>8건</strong></span>
+			</div>
+		</section>
+		<section class="realtime-panel__section" aria-labelledby="realtime-operation-title">
+			<h3 id="realtime-operation-title">주요 운영현황</h3>
+			<dl class="realtime-panel__metrics">
+				<div>
+					<dt>출력</dt>
+					<dd>472<small>MW</small></dd>
+				</div>
+				<div>
+					<dt>효율</dt>
+					<dd>58.2<small>%</small></dd>
+				</div>
+				<div>
+					<dt>주의 설비</dt>
+					<dd>7<small>EA</small></dd>
+				</div>
+				<div>
+					<dt>AI 알람</dt>
+					<dd>12<small>건</small></dd>
+				</div>
+			</dl>
+		</section>
+		<section class="realtime-panel__section" aria-labelledby="realtime-content-title">
+			<h3 id="realtime-content-title">태그 연계 콘텐츠</h3>
+			<div class="realtime-panel__links">
+				<a href="#">P&amp;ID</a><a href="#">OWS</a><a href="#">제어로직</a><a href="#">전기설비</a>
+				<a href="#" class="is-external">두케어 솔루션</a><a href="#" class="is-external">표준복합 솔루션</a>
+			</div>
+		</section>
+		<section class="realtime-panel__section" aria-labelledby="realtime-alert-title">
+			<h3 id="realtime-alert-title">실시간 알람</h3>
+			<ul class="realtime-panel__alerts">
+				<li class="is-warning"><time>10:48</time><span>Zone A 화학물질 작업 - CO 농도 주의</span></li>
+				<li class="is-danger"><time>10:24</time><span>CCTV-02 안전모 미착용 감지</span></li>
+				<li class="is-success"><time>09:46</time><span>패트롤 로봇 순찰 완료</span></li>
+				<li class="is-info"><time>09:12</time><span>GT-234 Red-Tag 발행</span></li>
+			</ul>
+		</section>
+	</div>
+</aside>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>설비정보</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content equipment-information-page">
+		<div class="equipment-heading">
+			<h1 class="page-content__heading">설비정보</h1>
+		</div>
+		<!-- 기존 설비정보 콘텐츠를 그대로 불러오도록 각 탭에 data-page를 지정합니다. -->
+		<div class="tabs tabs--scrollable" data-tabs data-tab-content-loader>
+			<ul class="nav nav-tabs" id="equipment-information-tabs" role="tablist" aria-label="설비정보 분류">
+				<li class="nav-item" role="presentation"><button class="nav-link active" id="equipment-general-tab" data-bs-toggle="tab" data-bs-target="#equipment-general-panel" type="button" role="tab" aria-controls="equipment-general-panel" aria-selected="true" data-tab-key="general" data-page="/pages/equipment/equipment-general.html">일반정보</button></li>
+				<li class="nav-item" role="presentation"><button class="nav-link" id="equipment-material-tab" data-bs-toggle="tab" data-bs-target="#equipment-material-panel" type="button" role="tab" aria-controls="equipment-material-panel" aria-selected="false" data-tab-key="material" data-page="/pages/equipment/equipment-material.html">자재정보</button></li>
+				<li class="nav-item" role="presentation"><button class="nav-link" id="equipment-maintenance-tab" data-bs-toggle="tab" data-bs-target="#equipment-maintenance-panel" type="button" role="tab" aria-controls="equipment-maintenance-panel" aria-selected="false" data-tab-key="maintenance" data-page="/pages/equipment/equipment-maintenance.html">정비이력</button></li>
+				<li class="nav-item" role="presentation"><button class="nav-link" id="equipment-tm-tab" data-bs-toggle="tab" data-bs-target="#equipment-tm-panel" type="button" role="tab" aria-controls="equipment-tm-panel" aria-selected="false" data-tab-key="tm" data-page="/pages/equipment/equipment-tm.html">TM정보</button></li>
+				<li class="nav-item" role="presentation"><button class="nav-link" id="equipment-operation-tab" data-bs-toggle="tab" data-bs-target="#equipment-operation-panel" type="button" role="tab" aria-controls="equipment-operation-panel" aria-selected="false" data-tab-key="operation" data-page="/pages/equipment/equipment-operation.html">운전정보</button></li>
+			</ul>
+			<div class="tab-content" id="equipment-information-tab-content" aria-live="polite">
+				<div class="tab-pane fade show active" id="equipment-general-panel" role="tabpanel" aria-labelledby="equipment-general-tab" tabindex="0"></div>
+				<div class="tab-pane fade" id="equipment-material-panel" role="tabpanel" aria-labelledby="equipment-material-tab" tabindex="0"></div>
+				<div class="tab-pane fade" id="equipment-maintenance-panel" role="tabpanel" aria-labelledby="equipment-maintenance-tab" tabindex="0"></div>
+				<div class="tab-pane fade" id="equipment-tm-panel" role="tabpanel" aria-labelledby="equipment-tm-tab" tabindex="0"></div>
+				<div class="tab-pane fade" id="equipment-operation-panel" role="tabpanel" aria-labelledby="equipment-operation-tab" tabindex="0"></div>
+			</div>
+		</div>
+	</main>
+	<script src="/resources/vendor/bootstrap-5.3.8/js/bootstrap-tab.js"></script>
+	<script src="/resources/js/html-common/tab-content-loader.js"></script>
+	<script src="/resources/js/html-common/components.js"></script>
+	<script src="/resources/js/html-common/winbox.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>DataPARC</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content dataparc-page">
+		<div class="page-content__placeholder">
+			<div class="splitview">
+				<aside class="splitview__pane splitview__pane--sidebar" aria-label="DataPARC 검색">
+					<form class="filter-panel">
+
+						<div class="filter-panel__header">
+							<span class="filter-panel__title">검색</span>
+							<button class="filter-panel__toggle" type="button"
+								aria-label="DataPARC 검색 접기" aria-expanded="true"></button>
+						</div>
+
+						<div class="filter-panel__search" id="filter-panel-search">
+						<div class="filter-panel__fields">
+							<label class="form-field">
+								<span class="form-label">설비, DataPARC 검색</span>
+								<input class="form-control" type="search" name="equipment">
+							</label>
+						</div>
+
+						<div class="filter-panel__actions">
+							<button class="button button--primary" type="submit">검색</button>
+							<!-- 개발 연계: 검색 결과가 없을 때 목록보기 버튼에 disabled 속성을 추가해주세요. -->
+							<button class="button button--secondary-outline" type="button"
+								data-winbox-popup data-winbox-popup-id="dataparc-list"
+								data-winbox-popup-title="DataPARC 목록"
+								data-winbox-popup-url="/pages/dataparc/dataparc-list.html"
+								data-winbox-popup-width="640" data-winbox-popup-height="640">목록보기</button>
+						</div>
+						</div>
+
+						<section class="filter-panel__section"
+							aria-labelledby="dataparc-category-title">
+							<h2 class="filter-panel__section-title" id="dataparc-category-title">카테고리</h2>
+
+							<fieldset class="form-field dataparc-unit-group">
+								<legend class="form-label">1호기</legend>
+								<div class="form-field__content dataparc-category-buttons"
+									data-pressed-button-group>
+									<button class="button button--primary-outline" type="button" aria-pressed="false">BOILER</button>
+									<button class="button button--primary-outline" type="button" aria-pressed="false">BOP</button>
+									<button class="button button--primary-outline" type="button" aria-pressed="false">PACKAGE</button>
+									<button class="button button--primary-outline" type="button" aria-pressed="false">COMMON</button>
+									<button class="button button--primary-outline" type="button" aria-pressed="false">TURBINE</button>
+									<button class="button button--primary-outline" type="button" aria-pressed="false">OVERVIEW</button>
+									<button class="button button--primary-outline" type="button" aria-pressed="false">ECMS</button>
+								</div>
+							</fieldset>
+
+							<fieldset class="form-field dataparc-unit-group">
+								<legend class="form-label">2호기</legend>
+								<div class="form-field__content dataparc-category-buttons"
+									data-pressed-button-group>
+									<button class="button button--info-outline" type="button" aria-pressed="false">BOILER</button>
+									<button class="button button--info-outline" type="button" aria-pressed="false">BOP</button>
+									<button class="button button--info-outline" type="button" aria-pressed="false">PACKAGE</button>
+									<button class="button button--info-outline" type="button" aria-pressed="false">COMMON</button>
+									<button class="button button--info-outline" type="button" aria-pressed="false">TURBINE</button>
+									<button class="button button--info-outline" type="button" aria-pressed="false">OVERVIEW</button>
+									<button class="button button--info-outline" type="button" aria-pressed="false">ECMS</button>
+								</div>
+							</fieldset>
+						</section>
+
+					</form>
+				</aside>
+
+				<section class="splitview__pane splitview__pane--content result-panel"
+					aria-labelledby="dataparc-title">
+					<!-- 개발 연계: 현재 보고 있는 파일명을 제목에 넣어주세요. -->
+					<h1 class="page-content__heading" id="dataparc-title">1호기 BOILER</h1>
+					<div class="document-viewer dataparc-viewer">
+						<img src="/resources/images/pid.svg" alt="DataPARC 계통 SVG">
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+	<script src="/resources/js/html-common/components.js"></script>
+	<script src="/resources/js/html-common/winbox.js"></script>
+</body>
+
+</html>

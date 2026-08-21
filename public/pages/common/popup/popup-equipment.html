@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>설비 검색</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content page-content--popup equipment-lookup">
+		<h1 class="visually-hidden">설비 검색</h1>
+
+		<div class="splitview equipment-lookup__splitview">
+			<aside class="splitview__pane splitview__pane--sidebar equipment-lookup__sidebar"
+				aria-label="설비 검색 및 설비분류체계">
+				<form class="filter-panel" data-popup-form>
+					<div class="filter-panel__header">
+						<span class="filter-panel__title">검색</span>
+						<button class="filter-panel__toggle" type="button"
+							aria-label="정보 검색 접기" aria-expanded="true"></button>
+					</div>
+
+					<div class="filter-panel__search" id="filter-panel-search">
+					<div class="filter-panel__fields">
+						<!-- 개발 연계: 검색 조건 영역은 filter-panel__fields를 사용하고, 각 조건은 form-field 단위로 추가·반복합니다. -->
+						<div class="form-field">
+								<label class="form-label" for="equipment-lookup-type-code">설비종류</label>
+								<span class="form-search">
+									<input class="form-control" id="equipment-lookup-type-code" type="text" readonly>
+									<button class="form-search__button" type="button" aria-label="설비종류 찾기"
+										aria-haspopup="dialog" data-lookup-popup
+										data-lookup-popup-id="equipment-type-lookup"
+										data-lookup-popup-title="설비종류 검색"
+										data-lookup-popup-url="/pages/common/popup/popup-equipment-type.html"
+										data-lookup-popup-width="640" data-lookup-popup-height="520"
+										></button>
+								</span>
+							<input class="form-control" type="text" aria-label="선택된 설비종류명" readonly>
+						</div>
+
+						<div class="form-field">
+							<span class="form-label">설비명</span>
+							<div class="equipment-name-query">
+								<input class="form-control" type="search" name="equipment-name-primary"
+									aria-label="설비명 검색어 1">
+								<fieldset class="equipment-name-query__operator">
+									<legend class="visually-hidden">설비명 검색조건 연결 방식</legend>
+									<label class="form-choice">
+										<input type="radio" name="equipment-name-operator" value="and" checked>
+										<span>AND</span>
+									</label>
+									<label class="form-choice">
+										<input type="radio" name="equipment-name-operator" value="or">
+										<span>OR</span>
+									</label>
+								</fieldset>
+								<input class="form-control" type="search" name="equipment-name-secondary"
+									aria-label="설비명 검색어 2">
+							</div>
+						</div>
+
+						<div class="form-field">
+								<label class="form-label" for="equipment-lookup-location-code">기능위치번호</label>
+								<span class="form-search">
+									<input class="form-control" id="equipment-lookup-location-code" type="text" readonly>
+									<button class="form-search__button" type="button" aria-label="기능위치번호 찾기"
+										aria-haspopup="dialog" data-lookup-popup
+										data-lookup-popup-id="functional-location-lookup"
+										data-lookup-popup-title="기능위치번호 검색"
+										data-lookup-popup-url="/pages/common/popup/popup-functional-location.html"
+										data-lookup-popup-width="640" data-lookup-popup-height="520"
+										></button>
+								</span>
+							<input class="form-control" type="text" aria-label="선택된 기능위치명" readonly>
+						</div>
+
+						<label class="form-field">
+							<span class="form-label">설비구분</span>
+							<select class="form-select" name="equipment-category">
+								<option value="">전체</option>
+								<option value="main">주설비</option>
+								<option value="auxiliary">보조설비</option>
+							</select>
+						</label>
+
+						<label class="form-field">
+							<span class="form-label">태그넘버</span>
+							<input class="form-control" type="text" name="tag-number">
+						</label>
+					</div>
+
+					<div class="filter-panel__actions">
+						<button class="button button--primary" type="submit">검색</button>
+					</div>
+					</div>
+
+					<section class="filter-panel__section"
+						aria-labelledby="equipment-classification-title">
+						<h2 class="filter-panel__section-title visually-hidden"
+							id="equipment-classification-title">설비분류체계</h2>
+				<div class="tree-explorer equipment-tree" role="group" aria-label="설비분류체계">
+					<!-- 개발 연계: Bootstrap Tab 버튼의 data-bs-target으로 각 탭 패널을 연결합니다. -->
+					<div class="tabs equipment-lookup__tree-tabs" data-tabs data-tab-content-loader>
+						<ul class="nav nav-tabs" id="equipment-lookup-tabs" role="tablist" aria-label="설비분류체계 기준">
+							<li class="nav-item" role="presentation"><button class="nav-link active" id="equipment-lookup-function-tab" data-bs-toggle="tab" data-bs-target="#equipment-lookup-function-panel" type="button" role="tab" aria-controls="equipment-lookup-function-panel" aria-selected="true">기능위치</button></li>
+							<li class="nav-item" role="presentation"><button class="nav-link" id="equipment-lookup-system-tab" data-bs-toggle="tab" data-bs-target="#equipment-lookup-system-panel" type="button" role="tab" aria-controls="equipment-lookup-system-panel" aria-selected="false">계통</button></li>
+							<li class="nav-item" role="presentation"><button class="nav-link" id="equipment-lookup-type-tab" data-bs-toggle="tab" data-bs-target="#equipment-lookup-type-panel" type="button" role="tab" aria-controls="equipment-lookup-type-panel" aria-selected="false">종류</button></li>
+						</ul>
+						<div class="tab-content" id="equipment-lookup-tab-content">
+							<div class="tab-pane fade show active" id="equipment-lookup-function-panel" role="tabpanel" aria-labelledby="equipment-lookup-function-tab" tabindex="0">
+								<div class="tree-explorer__tree" role="tree"
+									tabindex="0" aria-label="기능위치 트리 영역"
+									data-equipment-tree-sample>기능위치 트리영역</div>
+							</div>
+							<div class="tab-pane fade" id="equipment-lookup-system-panel" role="tabpanel" aria-labelledby="equipment-lookup-system-tab" tabindex="0">
+								<div class="tree-explorer__tree" role="tree"
+									tabindex="0" aria-label="계통 트리 영역"
+									data-equipment-tree-sample>계통 트리영역</div>
+							</div>
+							<div class="tab-pane fade" id="equipment-lookup-type-panel" role="tabpanel" aria-labelledby="equipment-lookup-type-tab" tabindex="0">
+								<div class="tree-explorer__tree" role="tree"
+									tabindex="0" aria-label="종류 트리 영역"
+									data-equipment-tree-sample>종류 트리영역</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					</section>
+				</form>
+			</aside>
+
+			<section class="splitview__pane splitview__pane--content result-panel equipment-lookup__result"
+				aria-labelledby="equipment-lookup-result-title">
+				<div class="result-panel__body">
+				<div class="result-header">
+					<h2 class="result-header__title" id="equipment-lookup-result-title">
+						조회결과 <span class="result-header__count">(전체 0건)</span>
+					</h2>
+					<div class="result-header__actions">
+						<nav class="pagination" aria-label="페이지 이동">
+							<label class="visually-hidden" for="equipment-current-page">현재 페이지</label>
+							<input class="form-control form-control--page" id="equipment-current-page"
+								type="number" value="1" min="1" max="1">
+							<span aria-hidden="true">/</span><span data-equipment-total-page>1</span>
+							<button class="button button--neutral" type="button">이동</button>
+							<button class="button button--neutral" type="button">이전</button>
+							<button class="button button--neutral" type="button">다음</button>
+						</nav>
+					</div>
+				</div>
+
+				<div class="detail-empty-state" role="status">
+					<p>검색 조건을 입력하거나 설비분류체계를 선택해주세요.</p>
+				</div>
+
+				<div class="table-responsive" tabindex="0">
+					<table class="data-table data-table--list"
+						aria-label="설비 조회결과">
+						<thead>
+							<tr>
+								<th scope="col">사업소</th>
+								<th scope="col">호기</th>
+								<th scope="col">설비번호</th>
+								<th scope="col">설비명</th>
+								<th scope="col">위치번호</th>
+								<th scope="col">위치명</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>신보령발전본부</td>
+								<td>1호기</td>
+								<td>86535</td>
+								<td class="data-table__cell--title">#1 TBN Master Trip Device</td>
+								<td>FL-001-01</td>
+								<td>1호기 터빈동</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				</div>
+			</section>
+		</div>
+	</main>
+	<script src="/resources/vendor/bootstrap-5.3.8/js/bootstrap-tab.js"></script>
+	<script src="/resources/js/html-common/tab-content-loader.js"></script>
+	<script src="/resources/js/html-common/components.js"></script>
+	<script src="/resources/js/html-common/winbox.js"></script>
+</body>
+
+</html>

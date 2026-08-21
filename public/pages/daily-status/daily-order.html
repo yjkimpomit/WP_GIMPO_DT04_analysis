@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>경상오더</title>
+</head>
+
+<body>
+	<main class="winbox-layout page-content">
+		<div class="page-content__placeholder">
+			<div class="splitview">
+				<aside class="splitview__pane splitview__pane--sidebar" aria-label="정보 검색">
+
+					<!-- 검색영역 -->
+					<form class="filter-panel filter-panel--with-section" id="searchWorkOrderForm" method="post"
+						autocomplete="off">
+
+						<div class="filter-panel__header">
+							<span class="filter-panel__title">검색</span>
+							<button class="filter-panel__toggle" type="button" aria-label="정보 검색 접기"
+								aria-expanded="true" aria-controls="filter-panel-search"></button>
+						</div>
+
+						<div class="filter-panel__search" id="filter-panel-search">
+							<!-- filter-panel__fields 안에서 form-field 단위로 반복 -->
+							<div class="filter-panel__fields" id="filter-panel-fields">
+								<input type="hidden" name="pageIndex" id="pageIndex" value="1">
+
+								<div class="form-field">
+									<label class="form-label" for="supvorOption">감독자</label>
+									<input class="form-control search-icon" id="supvorOption" name="planBy"
+										onclick="searchItemPopup($(this));">
+									<input class="form-control" type="text" id="supvorInput" name="planByName"
+										disabled="" aria-label="선택된 감독자명">
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="supvDeptOption">감독부서</label>
+									<input class="form-control search-icon" id="supvDeptOption" name="deptNo"
+										onclick="searchReqTreePopup($(this));">
+									<input class="form-control" type="text" id="supvDeptInput" name="deptName"
+										disabled="" aria-label="선택된 감독부서명">
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="maintDeptOption">정비부서</label>
+									<input class="form-control search-icon" id="maintDeptOption" name="workDeptNo"
+										onclick="searchmainDeptTreePopup($(this));">
+									<input class="form-control" type="text" id="maintDeptInput" name="workdeptName"
+										disabled="" aria-label="선택된 정비부서명">
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="orderNo">오더 번호</label>
+									<input class="form-control" type="text" id="orderNo" value="" name="woNo"
+										placeholder="오더번호 입력">
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="orderName">오더명</label>
+									<input class="form-control" type="text" id="orderName" name="description"
+										placeholder="오더명 입력">
+								</div>
+
+								<fieldset class="form-field">
+									<legend class="form-label">설계일</legend>
+
+									<div class="form-control-group">
+										<label>
+											<span class="visually-hidden">설계 시작일</span>
+											<input type="date" class="form-control" id="requestDateStart"
+												name="requestDateStart">
+										</label>
+
+										<label>
+											<span class="visually-hidden">설계 종료일</span>
+											<input type="date" class="form-control" id="requestDateEnd"
+												name="requestDateEnd">
+										</label>
+									</div>
+								</fieldset>
+
+							</div>
+
+							<div class="filter-panel__actions">
+								<button type="button" class="button button--primary"
+									onclick="fnSearchForm()">검색</button>
+							</div>
+						</div>
+
+						<section class="filter-panel__section" aria-labelledby="equipment-classification-title">
+							<h2 class="filter-panel__section-title visually-hidden" id="equipment-classification-title">
+								설비분류체계
+							</h2>
+
+
+
+
+
+
+
+
+							<div class="tabs tabs--pill equipment-tree equipment-tree--responsive">
+								<ul class="nav nav-tabs" id="pills-tab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<button class="nav-link active" id="pills-home-tab-1787018098200"
+											data-bs-toggle="pill" data-bs-target="#tree-tab-1787018098200" type="button"
+											role="tab" aria-controls="tree-tab-1787018098200"
+											aria-selected="true">기능위치</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="pills-system-tab-1787018098200"
+											data-bs-toggle="pill" data-bs-target="#system-tab-1787018098200"
+											type="button" role="tab" aria-controls="system-tab-1787018098200"
+											aria-selected="false">계통</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link" id="pills-category-tab-1787018098200"
+											data-bs-toggle="pill" data-bs-target="#category-tab-1787018098200"
+											type="button" role="tab" aria-controls="category-tab-1787018098200"
+											aria-selected="false">종류</button>
+									</li>
+								</ul>
+
+								<div class="tab-content" id="pills-tabContent">
+									<div class="tab-pane fade show active" id="tree-tab-1787018098200" role="tabpanel"
+										aria-labelledby="pills-home-tab-1787018098200" tabindex="0">
+										<div class="tree-explorer__tree" role="tree" tabindex="0" aria-label="기능위치 영역">
+											<!-- 기능위치 트리메뉴 -->
+											<div id="facTree1-1787018098200" class="ztree">
+												<li id="facTree1-1787018098200_1" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree1-1787018098200_1_switch" title=""
+														class="button level0 switch root_open"
+														treenode_switch=""></span><a id="facTree1-1787018098200_1_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[51909-00010]제9호기"><span
+															id="facTree1-1787018098200_1_ico" title="" treenode_ico=""
+															class="button ico_open" style="display:none;"></span><span
+															id="facTree1-1787018098200_1_span"
+															class="node_name">[51909-00010]제9호기</span></a>
+													<ul id="facTree1-1787018098200_1_ul" class="level0 " style="">
+														<li id="facTree1-1787018098200_2" class="level1" tabindex="0"
+															hidefocus="true" treenode=""><span
+																id="facTree1-1787018098200_2_switch" title=""
+																class="button level1 switch center_close"
+																treenode_switch=""></span><a
+																id="facTree1-1787018098200_2_a" class="level1"
+																treenode_a="" target="_blank" style=""
+																title="[51909-00020]보일러설비"><span
+																	id="facTree1-1787018098200_2_ico" title=""
+																	treenode_ico="" class="button ico_close"
+																	style="display:none;"></span><span
+																	id="facTree1-1787018098200_2_span"
+																	class="node_name">[51909-00020]보일러설비</span></a></li>
+														<li id="facTree1-1787018098200_286" class="level1" tabindex="0"
+															hidefocus="true" treenode=""><span
+																id="facTree1-1787018098200_286_switch" title=""
+																class="button level1 switch center_close"
+																treenode_switch=""></span><a
+																id="facTree1-1787018098200_286_a" class="level1"
+																treenode_a="" target="_blank" style=""
+																title="[51909-03530]터빈설비"><span
+																	id="facTree1-1787018098200_286_ico" title=""
+																	treenode_ico="" class="button ico_close"
+																	style="display:none;"></span><span
+																	id="facTree1-1787018098200_286_span"
+																	class="node_name">[51909-03530]터빈설비</span></a></li>
+														<li id="facTree1-1787018098200_610" class="level1" tabindex="0"
+															hidefocus="true" treenode=""><span
+																id="facTree1-1787018098200_610_switch" title=""
+																class="button level1 switch center_open"
+																treenode_switch=""></span><a
+																id="facTree1-1787018098200_610_a" class="level1"
+																treenode_a="" target="_blank" style=""
+																title="[51909-07480]전기설비"><span
+																	id="facTree1-1787018098200_610_ico" title=""
+																	treenode_ico="" class="button ico_open"
+																	style="display:none;"></span><span
+																	id="facTree1-1787018098200_610_span"
+																	class="node_name">[51909-07480]전기설비</span></a>
+															<ul id="facTree1-1787018098200_610_ul" class="level1 line"
+																style="">
+																<li id="facTree1-1787018098200_611" class="level2"
+																	tabindex="0" hidefocus="true" treenode=""><span
+																		id="facTree1-1787018098200_611_switch" title=""
+																		class="button level2 switch center_close"
+																		treenode_switch=""></span><a
+																		id="facTree1-1787018098200_611_a" class="level2"
+																		treenode_a="" target="_blank" style=""
+																		title="[51909-07490]발전기및보조계통"><span
+																			id="facTree1-1787018098200_611_ico" title=""
+																			treenode_ico="" class="button ico_close"
+																			style="display:none;"></span><span
+																			id="facTree1-1787018098200_611_span"
+																			class="node_name">[51909-07490]발전기및보조계통</span></a>
+																</li>
+																<li id="facTree1-1787018098200_645" class="level2"
+																	tabindex="0" hidefocus="true" treenode=""><span
+																		id="facTree1-1787018098200_645_switch" title=""
+																		class="button level2 switch center_close"
+																		treenode_switch=""></span><a
+																		id="facTree1-1787018098200_645_a" class="level2"
+																		treenode_a="" target="_blank" style=""
+																		title="[51909-07810]송수전계통"><span
+																			id="facTree1-1787018098200_645_ico" title=""
+																			treenode_ico="" class="button ico_close"
+																			style="display:none;"></span><span
+																			id="facTree1-1787018098200_645_span"
+																			class="node_name">[51909-07810]송수전계통</span></a>
+																</li>
+																<li id="facTree1-1787018098200_661" class="level2"
+																	tabindex="0" hidefocus="true" treenode=""><span
+																		id="facTree1-1787018098200_661_switch" title=""
+																		class="button level2 switch center_close"
+																		treenode_switch=""></span><a
+																		id="facTree1-1787018098200_661_a" class="level2"
+																		treenode_a="" target="_blank" style=""
+																		title="[51909-07930]기타전기설비(집중경보/조명/방식/동결방지/낙뢰/사무용전력)"><span
+																			id="facTree1-1787018098200_661_ico" title=""
+																			treenode_ico="" class="button ico_close"
+																			style="display:none;"></span><span
+																			id="facTree1-1787018098200_661_span"
+																			class="node_name">[51909-07930]기타전기설비(집중경보/조명/방식/동결방지/낙뢰/사무용전력)</span></a>
+																</li>
+																<li id="facTree1-1787018098200_690" class="level2"
+																	tabindex="0" hidefocus="true" treenode=""><span
+																		id="facTree1-1787018098200_690_switch" title=""
+																		class="button level2 switch center_close"
+																		treenode_switch=""></span><a
+																		id="facTree1-1787018098200_690_a" class="level2"
+																		treenode_a="" target="_blank" style=""
+																		title="[51909-08180]소내전력계통"><span
+																			id="facTree1-1787018098200_690_ico" title=""
+																			treenode_ico="" class="button ico_close"
+																			style="display:none;"></span><span
+																			id="facTree1-1787018098200_690_span"
+																			class="node_name">[51909-08180]소내전력계통</span></a>
+																</li>
+																<li id="facTree1-1787018098200_743" class="level2"
+																	tabindex="0" hidefocus="true" treenode=""><span
+																		id="facTree1-1787018098200_743_switch" title=""
+																		class="button level2 switch bottom_close"
+																		treenode_switch=""></span><a
+																		id="facTree1-1787018098200_743_a" class="level2"
+																		treenode_a="" target="_blank" style=""
+																		title="[51909-08185]전기설비보호반"><span
+																			id="facTree1-1787018098200_743_ico" title=""
+																			treenode_ico="" class="button ico_close"
+																			style="display:none;"></span><span
+																			id="facTree1-1787018098200_743_span"
+																			class="node_name">[51909-08185]전기설비보호반</span></a>
+																</li>
+															</ul>
+														</li>
+														<li id="facTree1-1787018098200_750" class="level1" tabindex="0"
+															hidefocus="true" treenode=""><span
+																id="facTree1-1787018098200_750_switch" title=""
+																class="button level1 switch center_close"
+																treenode_switch=""></span><a
+																id="facTree1-1787018098200_750_a" class="level1"
+																treenode_a="" target="_blank" style=""
+																title="[51909-09260]환경설비"><span
+																	id="facTree1-1787018098200_750_ico" title=""
+																	treenode_ico="" class="button ico_close"
+																	style="display:none;"></span><span
+																	id="facTree1-1787018098200_750_span"
+																	class="node_name">[51909-09260]환경설비</span></a></li>
+														<li id="facTree1-1787018098200_835" class="level1" tabindex="0"
+															hidefocus="true" treenode=""><span
+																id="facTree1-1787018098200_835_switch" title=""
+																class="button level1 switch center_close"
+																treenode_switch=""></span><a
+																id="facTree1-1787018098200_835_a" class="level1"
+																treenode_a="" target="_blank" style=""
+																title="[51909-10280]기타부대설비"><span
+																	id="facTree1-1787018098200_835_ico" title=""
+																	treenode_ico="" class="button ico_close"
+																	style="display:none;"></span><span
+																	id="facTree1-1787018098200_835_span"
+																	class="node_name">[51909-10280]기타부대설비</span></a>
+														</li>
+														<li id="facTree1-1787018098200_875" class="level1" tabindex="0"
+															hidefocus="true" treenode=""><span
+																id="facTree1-1787018098200_875_switch" title=""
+																class="button level1 switch bottom_close"
+																treenode_switch=""></span><a
+																id="facTree1-1787018098200_875_a" class="level1"
+																treenode_a="" target="_blank" style=""
+																title="[51909-10720]계측제어설비"><span
+																	id="facTree1-1787018098200_875_ico" title=""
+																	treenode_ico="" class="button ico_close"
+																	style="display:none;"></span><span
+																	id="facTree1-1787018098200_875_span"
+																	class="node_name">[51909-10720]계측제어설비</span></a>
+														</li>
+													</ul>
+												</li>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="system-tab-1787018098200" role="tabpanel"
+										aria-labelledby="pills-system-tab-1787018098200" tabindex="0">
+										<div class="tree-explorer__tree" role="tree" tabindex="0" aria-label="계통 영역">
+											<!-- 개발: 계통 트리메뉴 -->
+											<div id="facTree2-1787018098200" class="ztree">
+												<li id="facTree2-1787018098200_1" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_1_switch" title=""
+														class="button level0 switch roots_close"
+														treenode_switch=""></span><a id="facTree2-1787018098200_1_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[00000]종합기술 (Technology &amp; Science)"><span
+															id="facTree2-1787018098200_1_ico" title="" treenode_ico=""
+															class="button ico_close" style="display:none;"></span><span
+															id="facTree2-1787018098200_1_span"
+															class="node_name">[00000]종합기술 (Technology &amp;
+															Science)</span></a></li>
+												<li id="facTree2-1787018098200_71" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_71_switch" title=""
+														class="button level0 switch center_close"
+														treenode_switch=""></span><a id="facTree2-1787018098200_71_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[10000]에너지원 발생설비 (Energy Generation Facilties)"><span
+															id="facTree2-1787018098200_71_ico" title="" treenode_ico=""
+															class="button ico_close" style="display:none;"></span><span
+															id="facTree2-1787018098200_71_span"
+															class="node_name">[10000]에너지원 발생설비 (Energy Generation
+															Facilties)</span></a></li>
+												<li id="facTree2-1787018098200_739" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_739_switch" title=""
+														class="button level0 switch center_close"
+														treenode_switch=""></span><a id="facTree2-1787018098200_739_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[20000]연료보급설비 (Fuel Supply Facilities)"><span
+															id="facTree2-1787018098200_739_ico" title="" treenode_ico=""
+															class="button ico_close" style="display:none;"></span><span
+															id="facTree2-1787018098200_739_span"
+															class="node_name">[20000]연료보급설비 (Fuel Supply
+															Facilities)</span></a></li>
+												<li id="facTree2-1787018098200_985" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_985_switch" title=""
+														class="button level0 switch center_close"
+														treenode_switch=""></span><a id="facTree2-1787018098200_985_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[30000]전기발생설비 (Electric Generation Facilities)"><span
+															id="facTree2-1787018098200_985_ico" title="" treenode_ico=""
+															class="button ico_close" style="display:none;"></span><span
+															id="facTree2-1787018098200_985_span"
+															class="node_name">[30000]전기발생설비 (Electric Generation
+															Facilities)</span></a></li>
+												<li id="facTree2-1787018098200_1791" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_1791_switch" title=""
+														class="button level0 switch center_close"
+														treenode_switch=""></span><a id="facTree2-1787018098200_1791_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[40000]전력설비 (Electric Power Facilities)"><span
+															id="facTree2-1787018098200_1791_ico" title=""
+															treenode_ico="" class="button ico_close"
+															style="display:none;"></span><span
+															id="facTree2-1787018098200_1791_span"
+															class="node_name">[40000]전력설비 (Electric Power
+															Facilities)</span></a></li>
+												<li id="facTree2-1787018098200_3634" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_3634_switch" title=""
+														class="button level0 switch center_close"
+														treenode_switch=""></span><a id="facTree2-1787018098200_3634_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[50000]계측 및 제어설비 일반 (Instrumentation &amp; Control Gernal)"><span
+															id="facTree2-1787018098200_3634_ico" title=""
+															treenode_ico="" class="button ico_close"
+															style="display:none;"></span><span
+															id="facTree2-1787018098200_3634_span"
+															class="node_name">[50000]계측 및 제어설비 일반 (Instrumentation &amp;
+															Control Gernal)</span></a></li>
+												<li id="facTree2-1787018098200_3822" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_3822_switch" title=""
+														class="button level0 switch center_close"
+														treenode_switch=""></span><a id="facTree2-1787018098200_3822_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[60000]환경정화 설비 (Environment Purification Facilities)"><span
+															id="facTree2-1787018098200_3822_ico" title=""
+															treenode_ico="" class="button ico_close"
+															style="display:none;"></span><span
+															id="facTree2-1787018098200_3822_span"
+															class="node_name">[60000]환경정화 설비 (Environment Purification
+															Facilities)</span></a></li>
+												<li id="facTree2-1787018098200_3978" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_3978_switch" title=""
+														class="button level0 switch center_close"
+														treenode_switch=""></span><a id="facTree2-1787018098200_3978_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[70000]공용설비 (COMMON FACILITIES)"><span
+															id="facTree2-1787018098200_3978_ico" title=""
+															treenode_ico="" class="button ico_close"
+															style="display:none;"></span><span
+															id="facTree2-1787018098200_3978_span"
+															class="node_name">[70000]공용설비 (COMMON FACILITIES)</span></a>
+												</li>
+												<li id="facTree2-1787018098200_4363" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_4363_switch" title=""
+														class="button level0 switch center_close"
+														treenode_switch=""></span><a id="facTree2-1787018098200_4363_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[80000]건물/구조물 (Building/structure)"><span
+															id="facTree2-1787018098200_4363_ico" title=""
+															treenode_ico="" class="button ico_close"
+															style="display:none;"></span><span
+															id="facTree2-1787018098200_4363_span"
+															class="node_name">[80000]건물/구조물
+															(Building/structure)</span></a></li>
+												<li id="facTree2-1787018098200_4389" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_4389_switch" title=""
+														class="button level0 switch center_close"
+														treenode_switch=""></span><a id="facTree2-1787018098200_4389_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[90000]토지,부지 및 개선설비 (Land &amp; site, Improvements)"><span
+															id="facTree2-1787018098200_4389_ico" title=""
+															treenode_ico="" class="button ico_close"
+															style="display:none;"></span><span
+															id="facTree2-1787018098200_4389_span"
+															class="node_name">[90000]토지,부지 및 개선설비 (Land &amp; site,
+															Improvements)</span></a></li>
+												<li id="facTree2-1787018098200_4398" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_4398_switch" title=""
+														class="button level0 switch center_docu"
+														treenode_switch=""></span><a id="facTree2-1787018098200_4398_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[A0000]발전소 건설용 주기기"><span
+															id="facTree2-1787018098200_4398_ico" title=""
+															treenode_ico="" class="button ico_docu"
+															style="display:none;"></span><span
+															id="facTree2-1787018098200_4398_span"
+															class="node_name">[A0000]발전소 건설용 주기기</span></a></li>
+												<li id="facTree2-1787018098200_4399" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_4399_switch" title=""
+														class="button level0 switch center_docu"
+														treenode_switch=""></span><a id="facTree2-1787018098200_4399_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[ETC]ETC"><span id="facTree2-1787018098200_4399_ico"
+															title="" treenode_ico="" class="button ico_docu"
+															style="display:none;"></span><span
+															id="facTree2-1787018098200_4399_span"
+															class="node_name">[ETC]ETC</span></a></li>
+												<li id="facTree2-1787018098200_4400" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree2-1787018098200_4400_switch" title=""
+														class="button level0 switch bottom_docu"
+														treenode_switch=""></span><a id="facTree2-1787018098200_4400_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[T0000]공기구"><span id="facTree2-1787018098200_4400_ico"
+															title="" treenode_ico="" class="button ico_docu"
+															style="display:none;"></span><span
+															id="facTree2-1787018098200_4400_span"
+															class="node_name">[T0000]공기구</span></a></li>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="category-tab-1787018098200" role="tabpanel"
+										aria-labelledby="pills-category-tab-1787018098200" tabindex="0">
+										<div class="tree-explorer__tree" role="tree" tabindex="0" aria-label="종류 영역">
+											<!-- 개발: 종류 트리메뉴 -->
+											<div id="facTree3-1787018098200" class="ztree">
+												<li id="facTree3-1787018098200_1" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree3-1787018098200_1_switch" title=""
+														class="button level0 switch roots_close"
+														treenode_switch=""></span><a id="facTree3-1787018098200_1_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[E]전기설비"><span id="facTree3-1787018098200_1_ico" title=""
+															treenode_ico="" class="button ico_close"
+															style="display:none;"></span><span
+															id="facTree3-1787018098200_1_span"
+															class="node_name">[E]전기설비</span></a></li>
+												<li id="facTree3-1787018098200_120" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree3-1787018098200_120_switch" title=""
+														class="button level0 switch center_close"
+														treenode_switch=""></span><a id="facTree3-1787018098200_120_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[I]제어설비"><span id="facTree3-1787018098200_120_ico"
+															title="" treenode_ico="" class="button ico_close"
+															style="display:none;"></span><span
+															id="facTree3-1787018098200_120_span"
+															class="node_name">[I]제어설비</span></a></li>
+												<li id="facTree3-1787018098200_241" class="level0" tabindex="0"
+													hidefocus="true" treenode=""><span
+														id="facTree3-1787018098200_241_switch" title=""
+														class="button level0 switch bottom_close"
+														treenode_switch=""></span><a id="facTree3-1787018098200_241_a"
+														class="level0" treenode_a="" target="_blank" style=""
+														title="[M]기계설비"><span id="facTree3-1787018098200_241_ico"
+															title="" treenode_ico="" class="button ico_close"
+															style="display:none;"></span><span
+															id="facTree3-1787018098200_241_span"
+															class="node_name">[M]기계설비</span></a></li>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<script>
+								var packageTreeTabIdx = "-1787018098200";
+							</script>
+							<script src="/resources/js/tree/facility-package-LST.js"></script>
+						</section>
+					</form>
+
+				</aside>
+				<section class="splitview__pane splitview__pane--content result-panel" aria-label="검색 결과">
+					<h1 class="page-content__heading">경상오더</h1>
+
+
+					<div class="result-panel__body" id="_VIEW_RESULT_LIST">
+
+
+
+
+
+
+
+
+						<script>
+							var totalPage = 1;
+						</script>
+
+
+						<!-- data title -->
+						<div class="result-header">
+							<h2 class="result-header__title">조회결과<span class="result-header__count">(전체 0건)</span></h2>
+
+							<div class="result-header__actions">
+								<nav class="pagination" aria-label="페이지 이동">
+									<input type="number" id="currentPage" class="form-control form-control--page"
+										aria-label="이동할 페이지 번호" value="1">
+									<span aria-hidden="true">/</span>
+									<span class="total">1</span>
+									<button type="button" class="button button--neutral"
+										onclick="fnPageMove('M')">이동</button>
+									<button type="button" class="button button--neutral"
+										onclick="fnPageMove('P')">이전</button>
+									<button type="button" class="button button--neutral"
+										onclick="fnPageMove('N')">다음</button>
+
+
+									<button type="button" class="button button--secondary"
+										onclick="fnExcelDownloadWorkOrder()">엑셀 다운로드</button>
+
+								</nav>
+							</div>
+						</div>
+
+						<!-- data-grid -->
+						<div class="table-responsive">
+							<table class="data-table data-table--list data-table--interactive" aria-label="경상오더-조회결과">
+								<thead>
+
+									<tr>
+										<th scope="col" name="excelCol" data-field="첨부">첨부</th>
+										<th scope="col" name="excelCol" data-field="RBM검사">RBM검사</th>
+										<th scope="col" name="excelCol" data-field="오더타입">오더타입</th>
+										<th scope="col" name="excelCol" data-field="진행상태">진행상태</th>
+										<th scope="col" name="excelCol" data-field="작업오더">작업오더</th>
+										<th scope="col" name="excelCol" data-field="작업요청번호">작업요청번호</th>
+										<th scope="col" name="excelCol" data-field="오더명">오더명</th>
+										<th scope="col" name="excelCol" data-field="설계일">설계일</th>
+										<th scope="col" name="excelCol" data-field="감독자">감독자</th>
+										<th scope="col" name="excelCol" data-field="감독부서">감독부서</th>
+										<th scope="col" name="excelCol" data-field="운전부서">운전부서</th>
+										<th scope="col" name="excelCol" data-field="정비부서">정비부서</th>
+										<th scope="col" name="excelCol" data-field="승인일">승인일</th>
+										<th scope="col" name="excelCol" data-field="허가일(발전차장)">허가일(발전차장)</th>
+										<th scope="col" name="excelCol" data-field="중요도">중요도</th>
+										<th scope="col" name="excelCol" data-field="작업허가">작업허가</th>
+										<th scope="col" name="excelCol" data-field="정비조건">정비조건</th>
+										<th scope="col" name="excelCol" data-field="작업형태">작업형태</th>
+										<th scope="col" name="excelCol" data-field="설계일정(시작)">설계일정(시작)</th>
+										<th scope="col" name="excelCol" data-field="설계일정(종료)">설계일정(종료)</th>
+										<th scope="col" name="excelCol" data-field="잔여공기">잔여공기</th>
+										<th scope="col" name="excelCol" data-field="설계재료비">설계재료비</th>
+										<th scope="col" name="excelCol" data-field="설계노무비">설계노무비</th>
+										<th scope="col" name="excelCol" data-field="설계경비">설계경비</th>
+										<th scope="col" name="excelCol" data-field="설계금액계">설계금액계</th>
+										<th scope="col" name="excelCol" data-field="실적재료비">실적재료비</th>
+										<th scope="col" name="excelCol" data-field="실적노무비">실적노무비</th>
+										<th scope="col" name="excelCol" data-field="실적경비">실적경비</th>
+										<th scope="col" name="excelCol" data-field="실적금액계">실적금액계</th>
+										<th scope="col" name="excelCol" data-field="설비번호">설비번호</th>
+										<th scope="col" name="excelCol" data-field="설비명">설비명</th>
+										<th scope="col" name="excelCol" data-field="작업시간">작업시간</th>
+									</tr>
+								</thead>
+								<tbody>
+
+
+									<tr>
+										<td colspan="32">
+											<div class="no-data">
+												조회된 데이터가 없습니다.
+											</div>
+										</td>
+									</tr>
+
+
+
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+
+
+					<div class="result-panel__body" id="_VIEW_RESULT_SAFETY_QUALITY"></div>
+
+
+				</section>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

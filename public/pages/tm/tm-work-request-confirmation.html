@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>작업요청확정</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content tm-confirmation-page">
+		<div class="page-content__placeholder">
+			<div class="splitview">
+				<aside class="splitview__pane splitview__pane--sidebar" aria-label="정보 검색">
+					<form class="filter-panel">
+						<div class="filter-panel__header">
+							<span class="filter-panel__title">검색</span>
+							<button class="filter-panel__toggle" type="button"
+								aria-label="정보 검색 접기" aria-expanded="true"></button>
+						</div>
+						<div class="filter-panel__search" id="filter-panel-search">
+						<div class="filter-panel__fields">
+							<!-- 개발 연계: 검색 조건 영역은 filter-panel__fields를 사용하고, 각 조건은 form-field 단위로 추가·반복합니다. -->
+							<label class="form-field">
+								<span class="form-label">요청유형</span>
+								<select class="form-select" name="tm-type">
+									<option value="tm">TM</option>
+									<option value="equipment-improvement">설비개선</option>
+									<option value="ncr">NCR</option>
+									<option value="car">CAR</option>
+									<option value="similar-accident-prevention">유사사고방지</option>
+								</select>
+							</label>
+							<div class="form-field">
+									<label class="form-label" for="confirmation-supervising-department-code">감독부서</label>
+									<span class="form-search"><input class="form-control"
+											id="confirmation-supervising-department-code" type="text" readonly><button
+											class="form-search__button" type="button"
+											aria-label="감독부서 찾기" aria-haspopup="dialog"
+											data-lookup-popup
+											data-lookup-popup-id="department-lookup"
+											data-lookup-popup-title="감독부서 검색"
+											data-lookup-popup-url="/pages/common/popup/popup-department.html"
+											data-lookup-popup-width="480"
+											data-lookup-popup-height="640"
+											></button></span>
+								<input class="form-control" type="text" aria-label="선택된 감독부서명" readonly>
+							</div>
+							<div class="form-field">
+								<span class="form-label">요청기간</span>
+								<div class="form-control-group">
+									<label>
+										<span class="visually-hidden">요청 시작일</span>
+										<input class="form-control" type="date" name="request-start-date">
+									</label>
+									<label>
+										<span class="visually-hidden">요청 종료일</span>
+										<input class="form-control" type="date" name="request-end-date">
+									</label>
+								</div>
+							</div>
+							<div class="form-field">
+									<label class="form-label" for="confirmation-request-department-code">요청부서</label>
+									<span class="form-search"><input class="form-control"
+											id="confirmation-request-department-code" type="text" readonly><button
+											class="form-search__button" type="button"
+											aria-label="요청부서 찾기" aria-haspopup="dialog"
+											data-lookup-popup
+											data-lookup-popup-id="department-lookup"
+											data-lookup-popup-title="요청부서 검색"
+											data-lookup-popup-url="/pages/common/popup/popup-department.html"
+											data-lookup-popup-width="480"
+											data-lookup-popup-height="640"
+											></button></span>
+								<input class="form-control" type="text" aria-label="선택된 요청부서명" readonly>
+							</div>
+						</div>
+						<div class="filter-panel__actions"><button class="button button--primary"
+								type="submit">검색</button></div>
+						</div>
+					</form>
+				</aside>
+				<section class="splitview__pane splitview__pane--content result-panel" aria-label="검색 결과">
+					<h1 class="page-content__heading">작업요청확정</h1>
+					<div class="result-panel__body">
+						<div class="result-header">
+							<h2 class="result-header__title">조회결과 <span class="result-header__count">(전체 4,882건)</span></h2>
+							<div class="result-header__actions">
+								<nav class="pagination" aria-label="페이지 이동">
+									<input class="form-control form-control--page" type="number" value="1" min="1"
+										aria-label="현재 페이지">
+									<span aria-hidden="true">/</span><span>245</span>
+									<button class="button button--neutral" type="button">이동</button>
+									<button class="button button--neutral" type="button">이전</button>
+									<button class="button button--neutral" type="button">다음</button>
+								</nav>
+								<button class="button button--secondary" type="button">엑셀 다운로드</button>
+							</div>
+						</div>
+						<div class="table-responsive" tabindex="0">
+							<!-- 개발 연계: 행 클릭 시 data-detail-popup-url의 상세창을 엽니다. 제목 칼럼은 data-detail-popup-title-column으로 지정하며, data-detail-message가 있으면 안내문구만 표시합니다. -->
+							<table class="data-table data-table--list data-table--interactive data-table--wide-result" aria-label="작업요청확정 조회결과"
+								data-detail-popup data-detail-popup-title="TM 현황 상세보기" data-detail-popup-width="960"
+								data-detail-popup-height="480" data-detail-popup-url="/pages/tm/tm-work-request-detail.html"
+								data-detail-popup-title-column="5">
+								<thead>
+									<tr>
+										<th>유형</th>
+										<th>호기</th>
+										<th>승인일자</th>
+										<th>진행상태</th>
+										<th>요청번호</th>
+										<th>요청명</th>
+										<th>요청자</th>
+										<th>요청부서</th>
+										<th>감독부서</th>
+										<th>작업중요도</th>
+										<th>우선순위</th>
+										<th>RedTag 필요</th>
+										<th>증상</th>
+										<th>설비번호</th>
+										<th>설비명</th>
+									</tr>
+								</thead>
+								<!-- 개발 시 조회 결과 유무에 따라 빈 상태와 데이터 tbody의 hidden 상태를 전환합니다. -->
+								<tbody data-table-body>
+									<tr>
+										<td colspan="15">
+											<div class="no-data">
+												조회된 데이터가 없습니다.
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>TM</td>
+										<td>2321</td>
+										<td>2025-01-26</td>
+										<td>확정완료</td>
+										<td>21323</td>
+										<td class="data-table__cell--title">#1 TCV 연결부 Water Leak</td>
+										<td>홍길동</td>
+										<td>발전운영부</td>
+										<td>터빈제어부</td>
+										<td>B등급</td>
+										<td>일상</td>
+										<td></td>
+										<td>누설</td>
+										<td>86535</td>
+										<td class="data-table__cell--title">#1 TBN Master Trip Device</td>
+									</tr>
+									<tr>
+										<td>TM</td>
+										<td>2321</td>
+										<td>2025-01-26</td>
+										<td>확정완료</td>
+										<td>21324</td>
+										<td class="data-table__cell--title">#1 TBN NO1 BRG Cap Oil Leak</td>
+										<td>홍길동</td>
+										<td>발전운영부</td>
+										<td>터빈제어부</td>
+										<td>B등급</td>
+										<td>일상</td>
+										<td></td>
+										<td>손실/파손</td>
+										<td>12322</td>
+										<td class="data-table__cell--title">#1 TBN NO1 BRG Cap</td>
+									</tr>
+									<tr>
+										<td>TM</td>
+										<td>2321</td>
+										<td>2025-01-26</td>
+										<td>확정완료</td>
+										<td>21325</td>
+										<td class="data-table__cell--title">#1 LP TBN-A EXH Hood 진동 점검</td>
+										<td>홍길동</td>
+										<td>발전운영부</td>
+										<td>터빈제어부</td>
+										<td>B등급</td>
+										<td>일상</td>
+										<td></td>
+										<td>미작동</td>
+										<td>64335</td>
+										<td class="data-table__cell--title">#1 LP TBN-A EXH Hood</td>
+									</tr>
+									<tr>
+										<td>TM</td>
+										<td>2321</td>
+										<td>2025-01-26</td>
+										<td>확정완료</td>
+										<td>21326</td>
+										<td class="data-table__cell--title">#1 LP-A TBN 본체 이상음 점검</td>
+										<td>홍길동</td>
+										<td>발전운영부</td>
+										<td>터빈제어부</td>
+										<td>B등급</td>
+										<td>일상</td>
+										<td></td>
+										<td>미작동</td>
+										<td>65544</td>
+										<td class="data-table__cell--title">#1 LP-A TBN 본체</td>
+									</tr>
+									<tr>
+										<td>TM</td>
+										<td>2321</td>
+										<td>2025-01-26</td>
+										<td>확정완료</td>
+										<td>21327</td>
+										<td class="data-table__cell--title">#1 LP TBN-A Journal Bearing 온도 상승</td>
+										<td>홍길동</td>
+										<td>발전운영부</td>
+										<td>터빈제어부</td>
+										<td>B등급</td>
+										<td>일상</td>
+										<td></td>
+										<td>패싱</td>
+										<td>65544</td>
+										<td class="data-table__cell--title">#1 LP TBN-A Journal Bearing</td>
+									</tr>
+									<tr>
+										<td>TM</td>
+										<td>2321</td>
+										<td>2025-01-26</td>
+										<td>확정완료</td>
+										<td>21328</td>
+										<td class="data-table__cell--title">#1 TBN NO4 BRG Seal 손상 점검</td>
+										<td>홍길동</td>
+										<td>발전운영부</td>
+										<td>터빈제어부</td>
+										<td>B등급</td>
+										<td>일상</td>
+										<td></td>
+										<td>손실/파손</td>
+										<td>12221</td>
+										<td class="data-table__cell--title">#1 TBN NO4 BRG Seal</td>
+									</tr>
+									<tr>
+										<td>TM</td>
+										<td>2321</td>
+										<td>2025-01-26</td>
+										<td>확정완료</td>
+										<td>21329</td>
+										<td class="data-table__cell--title">#1 LP TBN 본체 Steam 누설</td>
+										<td>홍길동</td>
+										<td>발전운영부</td>
+										<td>터빈제어부</td>
+										<td>B등급</td>
+										<td>일상</td>
+										<td></td>
+										<td>패싱</td>
+										<td>65544</td>
+										<td class="data-table__cell--title">#1 LP TBN 본체</td>
+									</tr>
+									<tr>
+										<td>TM</td>
+										<td>2321</td>
+										<td>2025-01-26</td>
+										<td>확정완료</td>
+										<td>21330</td>
+										<td class="data-table__cell--title">#1 LP TBN-A EXH Hood Drain Leak</td>
+										<td>홍길동</td>
+										<td>발전운영부</td>
+										<td>터빈제어부</td>
+										<td>B등급</td>
+										<td>일상</td>
+										<td></td>
+										<td>누설</td>
+										<td>85214</td>
+										<td class="data-table__cell--title">#1 LP TBN-A EXH Hood</td>
+									</tr>
+									<tr>
+										<td>TM</td>
+										<td>2321</td>
+										<td>2025-01-26</td>
+										<td>확정완료</td>
+										<td>21331</td>
+										<td class="data-table__cell--title">#1 Turning Gear Equipment 작동 불량</td>
+										<td>홍길동</td>
+										<td>발전운영부</td>
+										<td>터빈제어부</td>
+										<td>B등급</td>
+										<td>일상</td>
+										<td></td>
+										<td>손실/파손</td>
+										<td>85214</td>
+										<td class="data-table__cell--title">#1 Turning Gear Equipment</td>
+									</tr>
+									<tr>
+										<td>TM</td>
+										<td>2321</td>
+										<td>2025-01-26</td>
+										<td>확정완료</td>
+										<td>21332</td>
+										<td class="data-table__cell--title">#1 LP TBN Cross Over Pipe 누설</td>
+										<td>홍길동</td>
+										<td>발전운영부</td>
+										<td>터빈제어부</td>
+										<td>B등급</td>
+										<td>일상</td>
+										<td></td>
+										<td>미작동</td>
+										<td>22313</td>
+										<td class="data-table__cell--title">#1 LP TBN Cross Over Pipe</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+	</main>
+	<script src="/resources/js/html-common/winbox.js"></script>
+</body>
+
+</html>
