@@ -183,7 +183,8 @@
 	--bg-accent-gray-deep: var(--neutral-400);
 	--bg-accent-gray-strong: var(--neutral-200);
 	--bg-accent-gray-stronger: var(--neutral-100);
-	--bg-accent-gray-subtle: var(--neutral-300a64);
+	--bg-accent-gray-subtle: var(--neutral-300a64);--bg-accent-gray-subtler: var(--neutral-600);
+	--bg-accent-gray-subtlest: var(--neutral-500);
 	
 	--bg-accent-mint-base: var(--mint-500);
 	--bg-accent-mint-deep: var(--mint-600);
@@ -211,6 +212,7 @@
 	
 	--bg-attention-emphasis: var(--orange-400);
 	--bg-attention-strong: var(--orange-500);
+
 	--bg-brand-base: var(--blue-500);
 	--bg-brand-deep: var(--blue-600);
 	--bg-brand-strong: var(--blue-400);
@@ -274,8 +276,12 @@
 	
 	--border-accent-gray-base: var(--border-neutral-default);
 	--border-accent-gray-subtle: var(--neutral-300a64);
+	--border-accent-gray-subtler: var(--neutral-500);
+	--border-accent-gray-subtlest: var(--neutral-400);
+
 	--border-accent-mint-base: var(--border-maintenance-subtle);
 	--border-accent-mint-subtle: var(--border-maintenance-base);
+	
 	--border-accent-teal-base: var(--teal-200);
 	--border-accent-teal-subtle: var(--teal-600);
 	
@@ -837,32 +843,43 @@
 	--tab-nav-pill-hover-border: var(--tab-active-border);
 	--tab-radius: var(--spacing-050);
 	--tab-error-fg: var(--fg-danger-subtle);
+	
 	--content-tabs-border-width: 1px;
 	--content-tabs-border-none: 0;
 	--content-tabs-transparent-bg: var(--bg-transparent);
-	--content-tabs-navigation-border: var(--tab-active-border);
-	--content-tabs-control-bg: var(--tab-default-bg);
-	--content-tabs-control-border: var(--tab-active-border);
-	--content-tabs-control-fg: var(--tab-default-fg);
-	--content-tabs-control-hover-bg: var(--tab-hover-bg);
-	--content-tabs-control-hover-fg: var(--tab-hover-fg);
+	--content-tabs-navigation-border: var(--border-elevated-2);
+	
+	--content-tabs-item-bg: var(--bg-accent-gray-subtler);
+	--content-tabs-item-border: var(--border-accent-gray-subtler);
+	--content-tabs-item-fg: var(--fg-muted);
+	--content-tabs-item-hover-bg: var(--bg-accent-gray-subtlest);
+	--content-tabs-item-hover-border: var(--border-accent-gray-subtlest);
+	--content-tabs-item-hover-fg: var(--fg-strong);
+	--content-tabs-item-active-bg: var(--bg-accent-gray-deep);
+	--content-tabs-item-active-border: var(--border-accent-gray-subtle);
+	--content-tabs-item-active-fg: var(--fg-emphasis);
+
 	--content-tabs-disabled-opacity: var(--opacity-disabled);
 	--content-tabs-focus-ring: var(--focus-ring);
-	--content-tabs-item-bg: var(--tab-default-bg);
-	--content-tabs-item-border: var(--tab-default-border);
-	--content-tabs-item-fg: var(--tab-default-fg);
-	--content-tabs-item-hover-bg: var(--tab-hover-bg);
-	--content-tabs-item-hover-border: var(--tab-hover-border);
-	--content-tabs-item-hover-fg: var(--tab-hover-fg);
-	--content-tabs-item-active-bg: var(--tab-active-bg);
-	--content-tabs-item-active-border: var(--tab-active-border);
-	--content-tabs-item-active-fg: var(--tab-active-fg);
-	--content-tabs-menu-bg: var(--bg-neutral-subtler);
-	--content-tabs-menu-border: var(--border-elevated-3);
+	
+	--content-tabs-control-bg: var(--bg-accent-gray-subtler);
+	--content-tabs-control-border: var(--border-accent-gray-subtler);
+	--content-tabs-control-fg: var(--fg-muted);
+	--content-tabs-control-hover-bg: var(--bg-accent-gray-subtle);
+	--content-tabs-control-hover-fg: var(--fg-strong);
+
+	--content-tabs-menu-bg: var(--bg-accent-gray-subtler);
+	--content-tabs-menu-border: var(--border-accent-gray-subtler);
 	--content-tabs-menu-fg: var(--fg-default);
-	--content-tabs-menu-item-hover-bg: var(--tab-hover-bg);
-	--content-tabs-menu-item-hover-fg: var(--tab-hover-fg);
+	--content-tabs-menu-item-hover-bg: var(--bg-accent-gray-subtlest);
+	--content-tabs-menu-item-hover-fg: var(--fg-strong);
 	--content-tabs-menu-shadow: var(--popover-shadow);
+	--content-tabs-previous-icon: url('/resources/images/icons/keyboard_arrow_left.svg');
+	--content-tabs-next-icon: url('/resources/images/icons/keyboard_arrow_right.svg');
+	--content-tabs-list-icon: url('/resources/images/icons/menu.svg');
+	--content-tabs-icon-size: 24px;
+	--content-tabs-icon-fg: var(--content-tabs-control-fg);
+	--content-tabs-icon-hover-fg: var(--fg-emphasis);
 	
 	--table-bg: var(--bg-elevated-1);
 	--table-empty-bg: var(--bg-ghost-subtle);

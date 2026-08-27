@@ -32,6 +32,7 @@
 
 .content-tabs__navigation-actions {
 	display: flex;
+	padding-inline-start: var(--spacing-050);
 	flex: 0 0 auto;
 }
 
@@ -43,16 +44,51 @@
 
 .content-tabs__scroll-button {
 	width: var(--tab-height);
-	height: var(--tab-height);
+	height: calc(var(--tab-height) + 1px);
 	padding: 0;
 	border: var(--content-tabs-border-width) solid var(--content-tabs-control-border);
+	border-bottom: none;
 	background-color: var(--content-tabs-control-bg);
 	color: var(--content-tabs-control-fg);
 	cursor: pointer;
 }
 
 .content-tabs__scroll-button+.content-tabs__scroll-button {
-	border-left: var(--content-tabs-border-none);
+	border-left: none;
+}
+
+.content-tabs__scroll-button--previous,
+.content-tabs__scroll-button--next,
+.content-tabs__list-button {
+	display: grid;
+	place-items: center;
+}
+
+.content-tabs__scroll-button--previous::before,
+.content-tabs__scroll-button--next::before,
+.content-tabs__list-button::before {
+	width: var(--content-tabs-icon-size);
+	height: var(--content-tabs-icon-size);
+	background-color: var(--content-tabs-icon-fg);
+	content: '';
+	mask: var(--content-tabs-icon) center / contain no-repeat;
+	-webkit-mask: var(--content-tabs-icon) center / contain no-repeat;
+}
+
+.content-tabs__scroll-button--previous {
+	--content-tabs-icon: var(--content-tabs-previous-icon);
+}
+
+.content-tabs__scroll-button--next {
+	--content-tabs-icon: var(--content-tabs-next-icon);
+}
+
+.content-tabs__list-button {
+	--content-tabs-icon: var(--content-tabs-list-icon);
+}
+
+.content-tabs__scroll-button:hover:not(:disabled)::before {
+	background-color: var(--content-tabs-icon-hover-fg);
 }
 
 .content-tabs__scroll-button:hover:not(:disabled) {

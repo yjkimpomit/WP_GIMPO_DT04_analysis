@@ -16,161 +16,629 @@
 					<form class="filter-panel">
 						<div class="filter-panel__header">
 							<span class="filter-panel__title">검색</span>
-							<button class="filter-panel__toggle" type="button" aria-label="검색 조건 접기" aria-expanded="true" aria-controls="filter-panel-search"></button>
+							<button class="filter-panel__toggle" type="button" aria-label="검색 조건 접기"
+								aria-expanded="true" aria-controls="filter-panel-search"></button>
 						</div>
 						<div class="filter-panel__search" id="filter-panel-search">
 							<div class="filter-panel__fields">
 								<div class="form-field">
 									<label class="form-label" for="inspection-requester-code">요청자</label>
 									<div class="form-control-group">
-										<input class="form-control form-control--search" id="inspection-requester-code" type="text">
+										<input class="form-control form-control--search" id="inspection-requester-code"
+											type="text">
 										<input class="form-control" type="text" aria-label="선택된 요청자" disabled>
 									</div>
 								</div>
 								<fieldset class="form-field">
 									<legend class="form-label">요청기간</legend>
 									<div class="form-control-group">
-										<label><span class="visually-hidden">요청 시작일</span><input class="form-control" type="date" name="request-start-date"></label>
-										<label><span class="visually-hidden">요청 종료일</span><input class="form-control" type="date" name="request-end-date"></label>
+										<label><span class="visually-hidden">요청 시작일</span><input class="form-control"
+												type="date" name="request-start-date"></label>
+										<label><span class="visually-hidden">요청 종료일</span><input class="form-control"
+												type="date" name="request-end-date"></label>
 									</div>
 								</fieldset>
 								<div class="form-field">
 									<label class="form-field">요청번호</label>
-									<input class="form-control" type="text" name="request-number" placeholder="요청 번호 입력">
+									<input class="form-control" type="text" name="request-number"
+										placeholder="요청 번호 입력">
 								</div>
 								<div class="form-field">
 									<label class="form-label" for="inspection-supervisor-code">감독자</label>
 									<div class="form-control-group">
-										<input class="form-control form-control--search" id="inspection-supervisor-code" type="text">
+										<input class="form-control form-control--search" id="inspection-supervisor-code"
+											type="text">
 										<input class="form-control" type="text" aria-label="선택된 감독자" disabled>
 									</div>
 								</div>
 								<label class="form-field">
 									<span class="form-label">종합의견</span>
-									<input class="form-control" type="text" name="overall-opinion" placeholder="종합의견 입력">
+									<input class="form-control" type="text" name="overall-opinion"
+										placeholder="종합의견 입력">
 								</label>
 								<label class="form-field">
 									<span class="form-label">제목</span>
 									<input class="form-control" type="text" name="title" placeholder="제목 입력">
 								</label>
 							</div>
-							<div class="filter-panel__actions"><button class="button button--primary" type="submit">검색</button></div>
+							<div class="filter-panel__actions"><button class="button button--primary"
+									type="submit">검색</button></div>
 						</div>
 					</form>
 				</aside>
 
-				<section class="splitview__pane splitview__pane--content result-panel" aria-labelledby="inspection-report-title">
+				<section class="splitview__pane splitview__pane--content result-panel"
+					aria-labelledby="inspection-report-title">
 					<h1 class="page-content__heading" id="inspection-report-title">점검보고서</h1>
+					
+					<!--  -->
 					<div class="content-tabs" data-content-tabs>
 						<div class="content-tabs__list" role="tablist" aria-label="점검보고서 상세 구분">
-							<span class="content-tabs__item" data-content-tab-depth="1"><button class="content-tabs__tab" id="inspection-report-list-tab" type="button" role="tab" aria-selected="true" aria-controls="inspection-report-list-panel">점검보고서</button></span>
+							<span class="content-tabs__item" data-content-tab-depth="1"><button
+									class="content-tabs__tab" id="inspection-report-list-tab" type="button" role="tab"
+									aria-selected="true" aria-controls="inspection-report-list-panel">목록</button></span>
 						</div>
 						<div class="content-tabs__panels">
-							<div class="content-tabs__panel" id="inspection-report-list-panel" role="tabpanel" aria-labelledby="inspection-report-list-tab">
-					<div class="result-panel__body">
-						<div class="result-header">
-								<h2 class="result-header__title" id="inspection-report-list-title">조회결과 <span class="result-header__count">(전체 276건)</span></h2>
-								<div class="result-header__actions">
-									<nav class="pagination" aria-label="점검보고서 페이지 이동">
-										<input class="form-control form-control--page" type="number" value="1" min="1" aria-label="현재 페이지"><span aria-hidden="true">/</span><span>28</span>
-										<button class="button button--neutral" type="button">이동</button><button class="button button--neutral" type="button">이전</button><button class="button button--neutral" type="button">다음</button>
-									</nav>
-									<button class="button button--secondary" type="button">엑셀 다운로드</button>
+							
+							<div class="content-tabs__panel" id="inspection-report-list-panel" role="tabpanel"
+								aria-labelledby="inspection-report-list-tab">
+<!--  -->
+
+								<div class="result-panel__body">
+									<div class="result-header">
+										<h2 class="result-header__title" id="inspection-report-list-title">조회결과 <span
+												class="result-header__count">(전체 276건)</span></h2>
+										<div class="result-header__actions">
+											<nav class="pagination" aria-label="점검보고서 페이지 이동">
+												<input class="form-control form-control--page" type="number" value="1"
+													min="1" aria-label="현재 페이지"><span
+													aria-hidden="true">/</span><span>28</span>
+												<button class="button button--neutral" type="button">이동</button><button
+													class="button button--neutral" type="button">이전</button><button
+													class="button button--neutral" type="button">다음</button>
+											</nav>
+											<button class="button button--secondary" type="button">엑셀 다운로드</button>
+										</div>
+									</div>
+									<div class="table-responsive" tabindex="0">
+										<table class="data-table data-table--list data-table--interactive"
+											aria-label="점검보고서-리스트"
+											data-content-tab-template="inspection-detail-template"
+											data-content-tab-title-field="제목">
+											<thead>
+												<tr>
+													<th scope="col">첨부</th>
+													<th scope="col">사업소</th>
+													<th scope="col">제목</th>
+													<th scope="col">종합의견</th>
+													<th scope="col">상태</th>
+													<th scope="col">요청일자</th>
+													<th scope="col">요청자</th>
+													<th scope="col">승인일자</th>
+													<th scope="col">감독자</th>
+													<th scope="col">요청번호</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>N</td>
+													<td>태안</td>
+													<td data-field="제목">9,10호기 보일러 일일예방 점검 결과 보고서</td>
+													<td data-field="종합의견">예방점검결과 이상없음</td>
+													<td>승인요청</td>
+													<td>2025-12-03</td>
+													<td>김에스더</td>
+													<td></td>
+													<td>황규원</td>
+													<td>269929</td>
+												</tr>
+												<tr>
+													<td>N</td>
+													<td>태안</td>
+													<td data-field="제목">#10 예방점검</td>
+													<td data-field="종합의견">예방점검 특이사항 없습니다.</td>
+													<td>승인요청</td>
+													<td>2025-12-03</td>
+													<td>구본휘</td>
+													<td></td>
+													<td>이지혁</td>
+													<td>269916</td>
+												</tr>
+												<tr>
+													<td>N</td>
+													<td>태안</td>
+													<td data-field="제목">9,10호기 설비제어 일일예방 점검 결과 보고서</td>
+													<td data-field="종합의견">예방점검결과 이상없음</td>
+													<td>승인요청</td>
+													<td>2025-12-03</td>
+													<td>김에스더</td>
+													<td></td>
+													<td>김채은</td>
+													<td>269930</td>
+												</tr>
+												<tr>
+													<td>N</td>
+													<td>태안</td>
+													<td data-field="제목">[2025-12-03] AVR 주간 예방점검 보고</td>
+													<td data-field="종합의견">점검 결과 양호합니다.</td>
+													<td>승인요청</td>
+													<td>2025-12-03</td>
+													<td>조영주</td>
+													<td></td>
+													<td>이상규</td>
+													<td>269925</td>
+												</tr>
+												<tr>
+													<td>N</td>
+													<td>태안</td>
+													<td data-field="제목">#9,10 예방점검</td>
+													<td data-field="종합의견">예방점검 특이사항 없습니다.</td>
+													<td>승인완료</td>
+													<td>2025-12-02</td>
+													<td>구본휘</td>
+													<td>2025-12-03</td>
+													<td>구준모</td>
+													<td>269864</td>
+												</tr>
+												<tr>
+													<td>N</td>
+													<td>태안</td>
+													<td data-field="제목">2025년 12월 2일 예방점검 보고서</td>
+													<td data-field="종합의견">12월 2일 예방점검 완료</td>
+													<td>승인완료</td>
+													<td>2025-12-02</td>
+													<td>주상민</td>
+													<td>2025-12-02</td>
+													<td>김채은</td>
+													<td>269853</td>
+												</tr>
+												<tr>
+													<td>N</td>
+													<td>태안</td>
+													<td data-field="제목">[2025-12-01] 전력용변압기 연간 예방점검 보고</td>
+													<td data-field="종합의견">특이사항 없습니다.</td>
+													<td>승인요청</td>
+													<td>2025-12-02</td>
+													<td>고현준</td>
+													<td></td>
+													<td>유병규</td>
+													<td>269897</td>
+												</tr>
+												<tr>
+													<td>N</td>
+													<td>태안</td>
+													<td data-field="제목">2025-12-02 9호기 터빈 설비 예방점검</td>
+													<td data-field="종합의견">예방점검결과 이상없음</td>
+													<td>승인요청</td>
+													<td>2025-12-02</td>
+													<td>최대희</td>
+													<td></td>
+													<td>류제룡</td>
+													<td>269870</td>
+												</tr>
+												<tr>
+													<td>N</td>
+													<td>태안</td>
+													<td data-field="제목">보일러 제어설비 정기 예방점검</td>
+													<td data-field="종합의견">점검 결과 정상입니다.</td>
+													<td>승인완료</td>
+													<td>2025-12-01</td>
+													<td>김에스더</td>
+													<td>2025-12-02</td>
+													<td>황규원</td>
+													<td>269842</td>
+												</tr>
+												<tr>
+													<td>N</td>
+													<td>태안</td>
+													<td data-field="제목">터빈 보조설비 일일 예방점검</td>
+													<td data-field="종합의견">이상 징후 없음</td>
+													<td>승인완료</td>
+													<td>2025-12-01</td>
+													<td>조영주</td>
+													<td>2025-12-01</td>
+													<td>이상규</td>
+													<td>269831</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
 								</div>
-						</div>
-						<div class="table-responsive" tabindex="0">
-								<table class="data-table data-table--list data-table--interactive" aria-label="점검보고서-리스트"
-									data-content-tab-template="inspection-detail-template"
-									data-content-tab-title-field="제목">
-									<thead><tr><th scope="col">첨부</th><th scope="col">사업소</th><th scope="col">제목</th><th scope="col">종합의견</th><th scope="col">상태</th><th scope="col">요청일자</th><th scope="col">요청자</th><th scope="col">승인일자</th><th scope="col">감독자</th><th scope="col">요청번호</th></tr></thead>
-									<tbody>
-										<tr><td>N</td><td>태안</td><td data-field="제목">9,10호기 보일러 일일예방 점검 결과 보고서</td><td data-field="종합의견">예방점검결과 이상없음</td><td>승인요청</td><td>2025-12-03</td><td>김에스더</td><td></td><td>황규원</td><td>269929</td></tr>
-										<tr><td>N</td><td>태안</td><td data-field="제목">#10 예방점검</td><td data-field="종합의견">예방점검 특이사항 없습니다.</td><td>승인요청</td><td>2025-12-03</td><td>구본휘</td><td></td><td>이지혁</td><td>269916</td></tr>
-										<tr><td>N</td><td>태안</td><td data-field="제목">9,10호기 설비제어 일일예방 점검 결과 보고서</td><td data-field="종합의견">예방점검결과 이상없음</td><td>승인요청</td><td>2025-12-03</td><td>김에스더</td><td></td><td>김채은</td><td>269930</td></tr>
-										<tr><td>N</td><td>태안</td><td data-field="제목">[2025-12-03] AVR 주간 예방점검 보고</td><td data-field="종합의견">점검 결과 양호합니다.</td><td>승인요청</td><td>2025-12-03</td><td>조영주</td><td></td><td>이상규</td><td>269925</td></tr>
-										<tr><td>N</td><td>태안</td><td data-field="제목">#9,10 예방점검</td><td data-field="종합의견">예방점검 특이사항 없습니다.</td><td>승인완료</td><td>2025-12-02</td><td>구본휘</td><td>2025-12-03</td><td>구준모</td><td>269864</td></tr>
-										<tr><td>N</td><td>태안</td><td data-field="제목">2025년 12월 2일 예방점검 보고서</td><td data-field="종합의견">12월 2일 예방점검 완료</td><td>승인완료</td><td>2025-12-02</td><td>주상민</td><td>2025-12-02</td><td>김채은</td><td>269853</td></tr>
-										<tr><td>N</td><td>태안</td><td data-field="제목">[2025-12-01] 전력용변압기 연간 예방점검 보고</td><td data-field="종합의견">특이사항 없습니다.</td><td>승인요청</td><td>2025-12-02</td><td>고현준</td><td></td><td>유병규</td><td>269897</td></tr>
-										<tr><td>N</td><td>태안</td><td data-field="제목">2025-12-02 9호기 터빈 설비 예방점검</td><td data-field="종합의견">예방점검결과 이상없음</td><td>승인요청</td><td>2025-12-02</td><td>최대희</td><td></td><td>류제룡</td><td>269870</td></tr>
-										<tr><td>N</td><td>태안</td><td data-field="제목">보일러 제어설비 정기 예방점검</td><td data-field="종합의견">점검 결과 정상입니다.</td><td>승인완료</td><td>2025-12-01</td><td>김에스더</td><td>2025-12-02</td><td>황규원</td><td>269842</td></tr>
-										<tr><td>N</td><td>태안</td><td data-field="제목">터빈 보조설비 일일 예방점검</td><td data-field="종합의견">이상 징후 없음</td><td>승인완료</td><td>2025-12-01</td><td>조영주</td><td>2025-12-01</td><td>이상규</td><td>269831</td></tr>
-									</tbody>
-								</table>
-						</div>
-					</div>
+
+								<!--  -->
 							</div>
 
 							<template id="inspection-detail-template">
-							<div class="content-tabs__panel" data-content-tab-template-panel role="tabpanel">
-					<div class="result-panel__body">
-						<div class="result-header"><h2 class="result-header__title" id="inspection-detail-title">점검보고서 상세 내용 <span class="result-header__count">(전체 253건)</span></h2></div>
-						<div class="table-responsive" tabindex="0">
-								<table class="data-table data-table--list data-table--interactive" aria-label="점검보고서 상세 내용"
-									data-content-tab-template="inspection-result-template"
-									data-content-tab-title-field="설비명">
-									<thead><tr><th scope="col">점검일</th><th scope="col">점검구분</th><th scope="col">점검부서</th><th scope="col">설비번호</th><th scope="col">설비명</th><th scope="col">점검결과</th><th scope="col">점검시간</th><th scope="col">점검자(코드)</th><th scope="col">점검자</th></tr></thead>
-									<tbody>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>18077580</td><td data-field="설비명">#9 Dilution Air BLWR Outlet FT-25A</td><td>O(양호)</td><td>13:13</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>17080210</td><td data-field="설비명">#9 Coal FDR-E Controller</td><td>O(양호)</td><td>13:13</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>17080190</td><td data-field="설비명">#9 Coal FDR-D Controller</td><td>O(양호)</td><td>13:13</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>17080180</td><td data-field="설비명">#9 Coal FDR-C Controller</td><td>O(양호)</td><td>13:13</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>17080170</td><td data-field="설비명">#9 Coal FDR-B Controller</td><td>O(양호)</td><td>13:13</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>17080160</td><td data-field="설비명">#9 Coal FDR-A Controller</td><td>O(양호)</td><td>13:13</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16819150</td><td data-field="설비명">#9 ECO-B Outlet Gas O2 AT-02B</td><td>O(양호)</td><td>13:13</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16819140</td><td data-field="설비명">#9 ECO-A Outlet Gas O2 AT-06A</td><td>O(양호)</td><td>13:13</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16819130</td><td data-field="설비명">#9 ECO-B Inlet Gas O2 AT-02A</td><td>O(양호)</td><td>13:12</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16819120</td><td data-field="설비명">#9 ECO-A Inlet Gas O2 AT-06B</td><td>O(양호)</td><td>13:12</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16584210</td><td data-field="설비명">#9 Secondary Air Duct PT-01A</td><td>O(양호)</td><td>13:12</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16584220</td><td data-field="설비명">#9 Secondary Air Duct PT-01B</td><td>O(양호)</td><td>13:12</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16477310</td><td data-field="설비명">#9 Furnace Draft PT-03A</td><td>O(양호)</td><td>13:11</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16477320</td><td data-field="설비명">#9 Furnace Draft PT-03B</td><td>O(양호)</td><td>13:11</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16366410</td><td data-field="설비명">#9 Windbox DP Transmitter A</td><td>O(양호)</td><td>13:11</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16366420</td><td data-field="설비명">#9 Windbox DP Transmitter B</td><td>O(양호)</td><td>13:11</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16255510</td><td data-field="설비명">#9 FD FAN-A Outlet Pressure</td><td>O(양호)</td><td>13:10</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16255520</td><td data-field="설비명">#9 FD FAN-B Outlet Pressure</td><td>O(양호)</td><td>13:10</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16144610</td><td data-field="설비명">#9 ID FAN-A Inlet Pressure</td><td>O(양호)</td><td>13:10</td><td>K2220167</td><td>김에스더</td></tr>
-										<tr><td>2025-12-03</td><td>일반예방점검</td><td>KPS 보일러제어담당</td><td>16144620</td><td data-field="설비명">#9 ID FAN-B Inlet Pressure</td><td>O(양호)</td><td>13:10</td><td>K2220167</td><td>김에스더</td></tr>
-									</tbody>
-								</table>
-						</div>
-					</div>
-							</div>
+								<div class="content-tabs__panel" data-content-tab-template-panel role="tabpanel">
+									<!--  -->
+
+									<div class="result-panel__body">
+										<div class="result-header">
+											<h2 class="result-header__title" id="inspection-detail-title">점검보고서 상세 내용
+												<span class="result-header__count">(전체 253건)</span></h2>
+										</div>
+										<div class="table-responsive" tabindex="0">
+											<table class="data-table data-table--list data-table--interactive"
+												aria-label="점검보고서 상세 내용"
+												data-content-tab-template="inspection-result-template"
+												data-content-tab-title-field="설비명">
+												<thead>
+													<tr>
+														<th scope="col">점검일</th>
+														<th scope="col">점검구분</th>
+														<th scope="col">점검부서</th>
+														<th scope="col">설비번호</th>
+														<th scope="col">설비명</th>
+														<th scope="col">점검결과</th>
+														<th scope="col">점검시간</th>
+														<th scope="col">점검자(코드)</th>
+														<th scope="col">점검자</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>18077580</td>
+														<td data-field="설비명">#9 Dilution Air BLWR Outlet FT-25A</td>
+														<td>O(양호)</td>
+														<td>13:13</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>17080210</td>
+														<td data-field="설비명">#9 Coal FDR-E Controller</td>
+														<td>O(양호)</td>
+														<td>13:13</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>17080190</td>
+														<td data-field="설비명">#9 Coal FDR-D Controller</td>
+														<td>O(양호)</td>
+														<td>13:13</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>17080180</td>
+														<td data-field="설비명">#9 Coal FDR-C Controller</td>
+														<td>O(양호)</td>
+														<td>13:13</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>17080170</td>
+														<td data-field="설비명">#9 Coal FDR-B Controller</td>
+														<td>O(양호)</td>
+														<td>13:13</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>17080160</td>
+														<td data-field="설비명">#9 Coal FDR-A Controller</td>
+														<td>O(양호)</td>
+														<td>13:13</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16819150</td>
+														<td data-field="설비명">#9 ECO-B Outlet Gas O2 AT-02B</td>
+														<td>O(양호)</td>
+														<td>13:13</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16819140</td>
+														<td data-field="설비명">#9 ECO-A Outlet Gas O2 AT-06A</td>
+														<td>O(양호)</td>
+														<td>13:13</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16819130</td>
+														<td data-field="설비명">#9 ECO-B Inlet Gas O2 AT-02A</td>
+														<td>O(양호)</td>
+														<td>13:12</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16819120</td>
+														<td data-field="설비명">#9 ECO-A Inlet Gas O2 AT-06B</td>
+														<td>O(양호)</td>
+														<td>13:12</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16584210</td>
+														<td data-field="설비명">#9 Secondary Air Duct PT-01A</td>
+														<td>O(양호)</td>
+														<td>13:12</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16584220</td>
+														<td data-field="설비명">#9 Secondary Air Duct PT-01B</td>
+														<td>O(양호)</td>
+														<td>13:12</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16477310</td>
+														<td data-field="설비명">#9 Furnace Draft PT-03A</td>
+														<td>O(양호)</td>
+														<td>13:11</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16477320</td>
+														<td data-field="설비명">#9 Furnace Draft PT-03B</td>
+														<td>O(양호)</td>
+														<td>13:11</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16366410</td>
+														<td data-field="설비명">#9 Windbox DP Transmitter A</td>
+														<td>O(양호)</td>
+														<td>13:11</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16366420</td>
+														<td data-field="설비명">#9 Windbox DP Transmitter B</td>
+														<td>O(양호)</td>
+														<td>13:11</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16255510</td>
+														<td data-field="설비명">#9 FD FAN-A Outlet Pressure</td>
+														<td>O(양호)</td>
+														<td>13:10</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16255520</td>
+														<td data-field="설비명">#9 FD FAN-B Outlet Pressure</td>
+														<td>O(양호)</td>
+														<td>13:10</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16144610</td>
+														<td data-field="설비명">#9 ID FAN-A Inlet Pressure</td>
+														<td>O(양호)</td>
+														<td>13:10</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+													<tr>
+														<td>2025-12-03</td>
+														<td>일반예방점검</td>
+														<td>KPS 보일러제어담당</td>
+														<td>16144620</td>
+														<td data-field="설비명">#9 ID FAN-B Inlet Pressure</td>
+														<td>O(양호)</td>
+														<td>13:10</td>
+														<td>K2220167</td>
+														<td>김에스더</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+									<!--  -->
+								</div>
 							</template>
 
 							<template id="inspection-result-template">
-							<div class="content-tabs__panel" data-content-tab-template-panel role="tabpanel">
-					<div class="result-panel__body">
-						<div class="result-header"><h2 class="result-header__title" id="inspection-result-title">점검보고서 상세 내용 점검결과 <span class="result-header__count">(전체 5건)</span></h2></div>
-						<div class="table-responsive" tabindex="0">
-								<table class="data-table data-table--list" aria-label="점검보고서 상세 점검결과">
-									<thead><tr><th scope="col">조치유무</th><th scope="col">점검일</th><th scope="col">점검시간</th><th scope="col">설비명</th><th scope="col">점검항목</th><th scope="col">점검부위</th><th scope="col">점검결과</th><th scope="col">점검값</th><th scope="col">하한값</th><th scope="col">상한값</th><th scope="col">기준값</th><th scope="col">단위</th><th scope="col">비고</th><th scope="col">설비특이사항</th></tr></thead>
-									<tbody>
-										<tr>
-											<td colspan="13">
-												<div class="no-data">
-													조회된 데이터가 없습니다.
-												</div>
-											</td>
-										</tr>
-										<tr><td>N</td><td>2025-12-03</td><td>13:13</td><td data-field="설비명">#9 Dilution Air BLWR Outlet FT-25A</td><td>외관 상태 확인</td><td data-field="점검부위">현장 계기</td><td>O(양호)</td><td>12.4</td><td>10.0</td><td>15.0</td><td>12.5</td><td>mA</td><td>정상</td><td>특이사항 없음</td></tr>
-										<tr><td>N</td><td>2025-12-03</td><td>13:14</td><td data-field="설비명">#9 Coal FDR-E Controller</td><td>출력 신호 확인</td><td data-field="점검부위">제어반</td><td>O(양호)</td><td>4.02</td><td>3.80</td><td>4.20</td><td>4.00</td><td>V</td><td>정상 범위</td><td>특이사항 없음</td></tr>
-										<tr><td>Y</td><td>2025-12-03</td><td>13:15</td><td data-field="설비명">#9 Coal FDR-D Controller</td><td>단자 체결 상태</td><td data-field="점검부위">입력 단자대</td><td>△(주의)</td><td>65</td><td>0</td><td>60</td><td>40</td><td>°C</td><td>온도 상승</td><td>단자 재체결 필요</td></tr>
-										<tr><td>N</td><td>2025-12-03</td><td>13:16</td><td data-field="설비명">#9 Coal FDR-C Controller</td><td>동작 상태 확인</td><td data-field="점검부위">구동 모듈</td><td>O(양호)</td><td>1.2</td><td>0.0</td><td>2.0</td><td>1.0</td><td>mm/s</td><td>정상</td><td>이상 진동 없음</td></tr>
-										<tr><td>Y</td><td>2025-12-03</td><td>13:17</td><td data-field="설비명">#9 Coal FDR-B Controller</td><td>절연 저항 측정</td><td data-field="점검부위">전원 케이블</td><td>X(불량)</td><td>0.8</td><td>1.0</td><td>999</td><td>5.0</td><td>MΩ</td><td>기준 미달</td><td>케이블 교체 검토</td></tr>
-									</tbody>
-								</table>
-						</div>
-					</div>
-							</div>
+								<div class="content-tabs__panel" data-content-tab-template-panel role="tabpanel">
+
+									<!--  -->
+									<div class="result-panel__body">
+										<div class="result-header">
+											<h2 class="result-header__title" id="inspection-result-title">점검보고서 상세 내용
+												점검결과 <span class="result-header__count">(전체 5건)</span></h2>
+										</div>
+										<div class="table-responsive" tabindex="0">
+											<table class="data-table data-table--list" aria-label="점검보고서 상세 점검결과">
+												<thead>
+													<tr>
+														<th scope="col">조치유무</th>
+														<th scope="col">점검일</th>
+														<th scope="col">점검시간</th>
+														<th scope="col">설비명</th>
+														<th scope="col">점검항목</th>
+														<th scope="col">점검부위</th>
+														<th scope="col">점검결과</th>
+														<th scope="col">점검값</th>
+														<th scope="col">하한값</th>
+														<th scope="col">상한값</th>
+														<th scope="col">기준값</th>
+														<th scope="col">단위</th>
+														<th scope="col">비고</th>
+														<th scope="col">설비특이사항</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td colspan="13">
+															<div class="no-data">
+																조회된 데이터가 없습니다.
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td>N</td>
+														<td>2025-12-03</td>
+														<td>13:13</td>
+														<td data-field="설비명">#9 Dilution Air BLWR Outlet FT-25A</td>
+														<td>외관 상태 확인</td>
+														<td data-field="점검부위">현장 계기</td>
+														<td>O(양호)</td>
+														<td>12.4</td>
+														<td>10.0</td>
+														<td>15.0</td>
+														<td>12.5</td>
+														<td>mA</td>
+														<td>정상</td>
+														<td>특이사항 없음</td>
+													</tr>
+													<tr>
+														<td>N</td>
+														<td>2025-12-03</td>
+														<td>13:14</td>
+														<td data-field="설비명">#9 Coal FDR-E Controller</td>
+														<td>출력 신호 확인</td>
+														<td data-field="점검부위">제어반</td>
+														<td>O(양호)</td>
+														<td>4.02</td>
+														<td>3.80</td>
+														<td>4.20</td>
+														<td>4.00</td>
+														<td>V</td>
+														<td>정상 범위</td>
+														<td>특이사항 없음</td>
+													</tr>
+													<tr>
+														<td>Y</td>
+														<td>2025-12-03</td>
+														<td>13:15</td>
+														<td data-field="설비명">#9 Coal FDR-D Controller</td>
+														<td>단자 체결 상태</td>
+														<td data-field="점검부위">입력 단자대</td>
+														<td>△(주의)</td>
+														<td>65</td>
+														<td>0</td>
+														<td>60</td>
+														<td>40</td>
+														<td>°C</td>
+														<td>온도 상승</td>
+														<td>단자 재체결 필요</td>
+													</tr>
+													<tr>
+														<td>N</td>
+														<td>2025-12-03</td>
+														<td>13:16</td>
+														<td data-field="설비명">#9 Coal FDR-C Controller</td>
+														<td>동작 상태 확인</td>
+														<td data-field="점검부위">구동 모듈</td>
+														<td>O(양호)</td>
+														<td>1.2</td>
+														<td>0.0</td>
+														<td>2.0</td>
+														<td>1.0</td>
+														<td>mm/s</td>
+														<td>정상</td>
+														<td>이상 진동 없음</td>
+													</tr>
+													<tr>
+														<td>Y</td>
+														<td>2025-12-03</td>
+														<td>13:17</td>
+														<td data-field="설비명">#9 Coal FDR-B Controller</td>
+														<td>절연 저항 측정</td>
+														<td data-field="점검부위">전원 케이블</td>
+														<td>X(불량)</td>
+														<td>0.8</td>
+														<td>1.0</td>
+														<td>999</td>
+														<td>5.0</td>
+														<td>MΩ</td>
+														<td>기준 미달</td>
+														<td>케이블 교체 검토</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+									<!--  -->
+								</div>
 							</template>
 						</div>
 					</div>
+					<!--  -->
+
 				</section>
 			</div>
 		</div>
 	</main>
 	<script src="/resources/js/html-common/components.js"></script>
-	<script src="/resources/js/html-common/content-tabs.js"></script>
 </body>
 
 </html>
