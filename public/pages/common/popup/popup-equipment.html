@@ -27,17 +27,15 @@
 						<!-- 개발 연계: 검색 조건 영역은 filter-panel__fields를 사용하고, 각 조건은 form-field 단위로 추가·반복합니다. -->
 						<div class="form-field">
 								<label class="form-label" for="equipment-lookup-type-code">설비종류</label>
-								<span class="form-search">
-									<input class="form-control" id="equipment-lookup-type-code" type="text" readonly>
-									<button class="form-search__button" type="button" aria-label="설비종류 찾기"
+								<div class="form-control-group">
+								<input class="form-control form-control--search" id="equipment-lookup-type-code" type="text"
 										aria-haspopup="dialog" data-lookup-popup
 										data-lookup-popup-id="equipment-type-lookup"
 										data-lookup-popup-title="설비종류 검색"
 										data-lookup-popup-url="/pages/common/popup/popup-equipment-type.html"
-										data-lookup-popup-width="640" data-lookup-popup-height="520"
-										></button>
-								</span>
+										data-lookup-popup-width="640" data-lookup-popup-height="520">
 							<input class="form-control" type="text" aria-label="선택된 설비종류명" readonly>
+								</div>
 						</div>
 
 						<div class="form-field">
@@ -63,17 +61,15 @@
 
 						<div class="form-field">
 								<label class="form-label" for="equipment-lookup-location-code">기능위치번호</label>
-								<span class="form-search">
-									<input class="form-control" id="equipment-lookup-location-code" type="text" readonly>
-									<button class="form-search__button" type="button" aria-label="기능위치번호 찾기"
+								<div class="form-control-group">
+								<input class="form-control form-control--search" id="equipment-lookup-location-code" type="text"
 										aria-haspopup="dialog" data-lookup-popup
 										data-lookup-popup-id="functional-location-lookup"
 										data-lookup-popup-title="기능위치번호 검색"
 										data-lookup-popup-url="/pages/common/popup/popup-functional-location.html"
-										data-lookup-popup-width="640" data-lookup-popup-height="520"
-										></button>
-								</span>
+										data-lookup-popup-width="640" data-lookup-popup-height="520">
 							<input class="form-control" type="text" aria-label="선택된 기능위치명" readonly>
+								</div>
 						</div>
 
 						<label class="form-field">
@@ -93,6 +89,7 @@
 
 					<div class="filter-panel__actions">
 						<button class="button button--primary" type="submit">검색</button>
+						<button type="button" class="button button--secondary">설비분류체계</button>
 					</div>
 					</div>
 

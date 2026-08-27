@@ -34,17 +34,13 @@
 							</label>
 							<div class="form-field">
 									<label class="form-label" for="pending-supervising-department-code">감독부서</label>
-									<span class="form-search">
-										<input class="form-control" id="pending-supervising-department-code"
-											type="text" readonly>
-										<button class="form-search__button" type="button" aria-label="감독부서 찾기"
-											aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="department-lookup"
-											data-lookup-popup-title="감독부서 검색"
-											data-lookup-popup-url="/pages/common/popup/popup-department.html"
-											data-lookup-popup-width="480" data-lookup-popup-height="640"
-											></button>
-									</span>
+									<div class="form-control-group">
+									<input class="form-control form-control--search" id="pending-supervising-department-code"
+										type="text" aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="department-lookup"
+										data-lookup-popup-title="감독부서 검색" data-lookup-popup-url="/pages/common/popup/popup-department.html"
+										data-lookup-popup-width="480" data-lookup-popup-height="640">
 								<input class="form-control" type="text" aria-label="선택된 감독부서" readonly>
+									</div>
 							</div>
 							<div class="form-field">
 								<span class="form-label">요청기간</span>
@@ -61,17 +57,13 @@
 							</div>
 							<div class="form-field">
 									<label class="form-label" for="pending-request-department-code">요청부서</label>
-									<span class="form-search">
-										<input class="form-control" id="pending-request-department-code"
-											type="text" readonly>
-										<button class="form-search__button" type="button" aria-label="요청부서 찾기"
-											aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="department-lookup"
-											data-lookup-popup-title="요청부서 검색"
-											data-lookup-popup-url="/pages/common/popup/popup-department.html"
-											data-lookup-popup-width="480" data-lookup-popup-height="640"
-											></button>
-									</span>
+									<div class="form-control-group">
+									<input class="form-control form-control--search" id="pending-request-department-code"
+										type="text" aria-haspopup="dialog" data-lookup-popup data-lookup-popup-id="department-lookup"
+										data-lookup-popup-title="요청부서 검색" data-lookup-popup-url="/pages/common/popup/popup-department.html"
+										data-lookup-popup-width="480" data-lookup-popup-height="640">
 								<input class="form-control" type="text" aria-label="선택된 요청부서" readonly>
+									</div>
 							</div>
 						</div>
 						<div class="filter-panel__actions">
@@ -103,7 +95,7 @@
 
 					<div class="table-responsive" tabindex="0">
 						<!-- 개발 연계: 행 클릭 시 data-detail-popup-url의 상세창을 엽니다. 제목 칼럼은 data-detail-popup-title-column으로 지정하며, data-detail-message가 있으면 안내문구만 표시합니다. -->
-						<table class="data-table data-table--list data-table--interactive data-table--wide-result" aria-label="미결TM현황 조회결과"
+						<table class="data-table data-table--list data-table--interactive" aria-label="미결TM현황 조회결과"
 							data-detail-popup data-detail-popup-title="미결TM 상세정보" data-detail-popup-width="960"
 							data-detail-popup-height="480" data-detail-popup-url="/pages/tm/tm-pending-status-detail.html"
 							data-detail-popup-title-column="5">

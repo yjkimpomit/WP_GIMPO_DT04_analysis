@@ -51,7 +51,7 @@
 .gnb__head {
 	display: none;
 	overflow: hidden;
-	padding-block: var(--spacing-300) 0;
+	padding-block: var(--spacing-150) 0;
 }
 
 .left-box.expand .gnb__head {
@@ -441,7 +441,7 @@
 	}
 
 	.left-box.expand .gnb__head {
-		padding-block: var(--spacing-300) 0;
+		padding-block: var(--spacing-150) 0;
 	}
 
 	.left-box.expand .gnb__brand {

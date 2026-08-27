@@ -600,7 +600,7 @@
 	--document-list-item-radius: var(--spacing-050);
 	--document-list-fg: var(--fg-default);
 	--document-list-equipment-name-fg: var(--fg-strong);
-	--document-viewer-bg: var(--bg-inverse);
+	--document-viewer-bg: var(--bg-neutral-subtlest);
 	--document-viewer-border: var(--border-transparent);
 	--document-viewer-border-width: 1px;
 	--document-viewer-fg: var(--fg-inverse);
@@ -648,7 +648,7 @@
 	--form-control-padding-y: var(--spacing-100);
 	--form-control-radius: var(--spacing-050);
 	--form-disabled-bg: var(--bg-neutral-subtle);
-	--form-disabled-border: var(--border-elevated-4);
+	--form-disabled-border: var(--border-elevated-1);
 	--form-disabled-fg: var(--fg-muted);
 	--form-disabled-opacity: var(--opacity-disabled);
 	--form-fg: var(--fg-default);
@@ -669,7 +669,6 @@
 	--form-page-control-width: var(--spacing-500);
 	--form-placeholder-fg: var(--fg-strong);
 	--form-required-fg: var(--fg-emphasis);
-	--form-search-result-bg: var(--bg-neutral-subtle);
 	--form-select-option-bg: var(--bg-neutral-subtle);
 	--form-select-control-padding-x: var(--spacing-400);
 	--form-select-icon-inset: var(--spacing-050);
@@ -838,6 +837,32 @@
 	--tab-nav-pill-hover-border: var(--tab-active-border);
 	--tab-radius: var(--spacing-050);
 	--tab-error-fg: var(--fg-danger-subtle);
+	--content-tabs-border-width: 1px;
+	--content-tabs-border-none: 0;
+	--content-tabs-transparent-bg: var(--bg-transparent);
+	--content-tabs-navigation-border: var(--tab-active-border);
+	--content-tabs-control-bg: var(--tab-default-bg);
+	--content-tabs-control-border: var(--tab-active-border);
+	--content-tabs-control-fg: var(--tab-default-fg);
+	--content-tabs-control-hover-bg: var(--tab-hover-bg);
+	--content-tabs-control-hover-fg: var(--tab-hover-fg);
+	--content-tabs-disabled-opacity: var(--opacity-disabled);
+	--content-tabs-focus-ring: var(--focus-ring);
+	--content-tabs-item-bg: var(--tab-default-bg);
+	--content-tabs-item-border: var(--tab-default-border);
+	--content-tabs-item-fg: var(--tab-default-fg);
+	--content-tabs-item-hover-bg: var(--tab-hover-bg);
+	--content-tabs-item-hover-border: var(--tab-hover-border);
+	--content-tabs-item-hover-fg: var(--tab-hover-fg);
+	--content-tabs-item-active-bg: var(--tab-active-bg);
+	--content-tabs-item-active-border: var(--tab-active-border);
+	--content-tabs-item-active-fg: var(--tab-active-fg);
+	--content-tabs-menu-bg: var(--bg-neutral-subtler);
+	--content-tabs-menu-border: var(--border-elevated-3);
+	--content-tabs-menu-fg: var(--fg-default);
+	--content-tabs-menu-item-hover-bg: var(--tab-hover-bg);
+	--content-tabs-menu-item-hover-fg: var(--tab-hover-fg);
+	--content-tabs-menu-shadow: var(--popover-shadow);
 	
 	--table-bg: var(--bg-elevated-1);
 	--table-empty-bg: var(--bg-ghost-subtle);

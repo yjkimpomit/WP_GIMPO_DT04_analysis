@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>설비분류체계</title>
+	<link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content page-content--popup">
+		<section class="filter-panel__section" aria-labelledby="tm-equipment-classification-title">
+			<h1 class="filter-panel__section-title visually-hidden" id="tm-equipment-classification-title">설비분류체계</h1>
+			<div class="tabs equipment-tree equipment-tree--responsive" data-tabs data-tab-content-loader>
+				<ul class="nav nav-tabs" id="tm-equipment-tabs" role="tablist" aria-label="설비분류체계 기준">
+					<li class="nav-item" role="presentation"><button class="nav-link active" id="tm-equipment-function-tab" data-bs-toggle="tab" data-bs-target="#tm-equipment-function-panel" type="button" role="tab" aria-controls="tm-equipment-function-panel" aria-selected="true">기능위치</button></li>
+					<li class="nav-item" role="presentation"><button class="nav-link" id="tm-equipment-system-tab" data-bs-toggle="tab" data-bs-target="#tm-equipment-system-panel" type="button" role="tab" aria-controls="tm-equipment-system-panel" aria-selected="false">계통</button></li>
+					<li class="nav-item" role="presentation"><button class="nav-link" id="tm-equipment-type-tab" data-bs-toggle="tab" data-bs-target="#tm-equipment-type-panel" type="button" role="tab" aria-controls="tm-equipment-type-panel" aria-selected="false">종류</button></li>
+				</ul>
+				<div class="tab-content equipment-tree__panel" id="tm-equipment-tab-content">
+					<div class="tab-pane fade show active" id="tm-equipment-function-panel" role="tabpanel" aria-labelledby="tm-equipment-function-tab" tabindex="0">
+						<div class="tree-explorer__tree" role="tree" tabindex="0" aria-label="기능위치 트리 영역"></div>
+					</div>
+					<div class="tab-pane fade" id="tm-equipment-system-panel" role="tabpanel" aria-labelledby="tm-equipment-system-tab" tabindex="0">
+						<div class="tree-explorer__tree" role="tree" tabindex="0" aria-label="계통 트리 영역"></div>
+					</div>
+					<div class="tab-pane fade" id="tm-equipment-type-panel" role="tabpanel" aria-labelledby="tm-equipment-type-tab" tabindex="0">
+						<div class="tree-explorer__tree" role="tree" tabindex="0" aria-label="종류 트리 영역"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<script src="/resources/vendor/bootstrap-5.3.8/js/bootstrap-tab.js"></script>
+	<script src="/resources/js/html-common/tab-content-loader.js"></script>
+	<script src="/resources/js/html-common/components.js"></script>
+</body>
+
+</html>

@@ -3,6 +3,11 @@
 .page-content__heading {
 	color: var(--section-title-fg);
 	font-size: var(--font-size-xl);
+	
+	position: absolute;
+	top: -9999em;
+	left: -9999em;
+	opacity: 0;
 }
 
 .page-content__subheading {
@@ -148,11 +153,6 @@
 	min-height: 0;
 }
 
-.data-table--wide-result {
-	min-width: 1640px;
-}
-
-.data-table--wide-result .data-table__cell--title,
 .data-table th[data-field="equipment-name"] {
 	min-width: 240px;
 }
@@ -196,12 +196,6 @@
 	.operation-trend__controls .button {
 		grid-column: auto;
 	}
-}
-
-.equipment-heading {
-	display: flex;
-	align-items: center;
-	gap: var(--spacing-100);
 }
 
 .facility-photo {

@@ -73,13 +73,16 @@ body {
 .toast-popup--success { border-color: var(--status-success-border); background: var(--status-success-bg); }
 .toast-popup--info { border-color: var(--status-info-subtle-border); background: var(--status-info-subtle-bg); }
 
+body {
+	background: url(/resources/images/login-visual-01.jpg) no-repeat center / cover;
+}
 .model-viewer {
 	position: fixed;
 	inset: 0;
 	left: 0;
 	width: 100%;
 	height: 100dvh;
-	background: url(/resources/images/bg.jpg) no-repeat center / cover;
+	/*background: url(/resources/images/bg.jpg) no-repeat center / cover;*/
 	z-index: 1;
 }
 
@@ -89,7 +92,6 @@ body {
 }
 
 @media (min-width: 992px) {
-
 	html,
 	body {
 		min-width: var(--layout-min-width);

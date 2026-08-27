@@ -233,7 +233,7 @@
 
 @media (min-width: 768px) {
 	.realtime-panel {
-		top: 88px;
+		top: 72px;
 		right: var(--spacing-200);
 		width: min(472px, calc(100vw - var(--spacing-400)));
 		max-height: calc(100dvh - 104px);

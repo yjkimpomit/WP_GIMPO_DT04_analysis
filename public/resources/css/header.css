@@ -394,12 +394,13 @@ body:has(.left-box.expand) .site-header__menu-button {
 @media (min-width: 768px) {
 	.site-header {
 		left: var(--gnb-width-collapsed);
-		padding: var(--spacing-300) var(--spacing-200);
+		padding: var(--spacing-200) var(--spacing-200);
 	}
 
 	.site-header__primary {
 		flex-wrap: nowrap;
 		gap: var(--spacing-300);
+		min-height: inherit;
 	}
 
 	.site-header__mobile-brand,
