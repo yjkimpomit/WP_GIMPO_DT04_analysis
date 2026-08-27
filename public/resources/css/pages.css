@@ -3,6 +3,11 @@
 .page-content__heading {
 	color: var(--section-title-fg);
 	font-size: var(--font-size-xl);
+	
+	position: absolute;
+	top: -9999em;
+	left: -9999em;
+	opacity: 0;
 }
 
 .page-content__subheading {
@@ -102,6 +107,18 @@
 
 .page-content__placeholder--flex {
 	display: flex;
+}
+
+@media (min-width: 992px) {
+	.page-content__placeholder:has(> .splitview) {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.page-content__placeholder > .splitview > .splitview__pane--content {
+		overflow-y: auto;
+		overscroll-behavior-y: contain;
+	}
 }
 
 .document-viewer-page .splitview {

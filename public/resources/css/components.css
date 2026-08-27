@@ -884,9 +884,9 @@ textarea.form-control {
 }
 
 /* The active tabpanel owns vertical scrolling; loaded page content stays fluid. */
-.tabs--scrollable .tabs__panel[role="tabpanel"] > .page-content > .page-content__placeholder,
-.tabs--scrollable .tabs__panel > [role="tabpanel"] > .page-content > .page-content__placeholder,
-.tabs--scrollable > .tab-content > [role="tabpanel"] > .page-content > .page-content__placeholder {
+.tabs--scrollable .tabs__panel[role="tabpanel"] > .page-content > .page-content__placeholder:not(:has(> .splitview)),
+.tabs--scrollable .tabs__panel > [role="tabpanel"] > .page-content > .page-content__placeholder:not(:has(> .splitview)),
+.tabs--scrollable > .tab-content > [role="tabpanel"] > .page-content > .page-content__placeholder:not(:has(> .splitview)) {
 	overflow: visible;
 }
 .tabs--flow-mobile {
@@ -1392,6 +1392,7 @@ textarea.form-control {
 	display: flex;
 	flex-direction: column;
 	gap: var(--spacing-200);
+	padding-inline-end: var(--panel-scroll-gap);
 }
 
 .result-panel__body {
@@ -1402,7 +1403,7 @@ textarea.form-control {
 	display: flex;
 	flex-direction: column;
 	min-width: 0;
-	gap: var(--spacing-200);
+	gap: var(--spacing-100);
 }
 
 .result-group {
@@ -1450,7 +1451,10 @@ textarea.form-control {
 		flex: 1 0 auto;
 		min-height: 220px;
 	}
-	.result-panel:has(> .result-panel__body ~ .result-panel__body) > .result-panel__body:first-of-type {
+	.result-panel__body:empty {
+		min-height: 0;
+	}
+	.result-panel__body + .result-panel__body:not(:has(> .result-header__actions)) {
 		max-height: 480px;
 	}
 	
