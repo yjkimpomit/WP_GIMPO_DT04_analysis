@@ -21,21 +21,17 @@
 								aria-label="정보 검색 접기" aria-expanded="true"></button>
 						</div>
 						<div class="filter-panel__search" id="filter-panel-search">
-						<div class="filter-panel__fields">
-							<!-- 개발 연계: 검색 조건 영역은 filter-panel__fields를 사용하고, 각 조건은 form-field 단위로 추가·반복합니다. -->
-							<div class="form-field">
-								<label class="form-label" for="pid-equipment-tag-number">설비, 태그 번호</label>
-								<div class="form-control-group form-control-group--vertical">
-									<input class="form-control" id="pid-equipment-tag-number" type="search" name="keyword">
-									<input class="form-control" type="text" name="equipment-name"
-										aria-label="설비명" readonly>
+							<div class="filter-panel__fields">
+								<!-- 개발 연계: 검색 조건 영역은 filter-panel__fields를 사용하고, 각 조건은 form-field 단위로 추가·반복합니다. -->
+								<div class="form-field">
+									<label class="form-label" for="pid-equipment-tag-number">설비, 태그 번호</label>
+									<div class="form-control-group form-control-group--vertical">
+										<input class="form-control form-control--return" id="pid-equipment-tag-number" type="search" name="keyword">
+										<input class="form-control" type="text" name="equipment-name"
+											aria-label="설비명" readonly>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="filter-panel__actions">
-							<button class="button button--primary" type="submit">검색</button>
-							<button class="button button--secondary-outline" type="button" onclick="fnBtnPnidList();">연계정보 목록</button>
-						</div>
 						</div>
 					</form>
 				</aside>

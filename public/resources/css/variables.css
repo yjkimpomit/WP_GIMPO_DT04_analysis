@@ -80,13 +80,13 @@
 	--navy-200: #BCD6F0;
 	--navy-300: #9BBBE9;
 	--navy-400: #5475AD;
-	--navy-500: #415A8B;
-	--navy-600: #37496C;
-	--navy-600a80: rgba(55, 73, 108, 0.80);
-	--navy-700: #2A3751;
-	--navy-800: #212A3B;
-	--navy-800a80: rgba(33, 42, 59, 0.80);
-	--navy-900: #1D212B;
+	--navy-500: #3E5C98;
+	--navy-600: #3A517E;
+	--navy-600a80: rgba(58, 81, 126, 0.80);
+	--navy-700: #37496B;
+	--navy-800: #293751;
+	--navy-800a80: rgba(41, 55, 81, 0.80);
+	--navy-900: #242F43;
 	
 	--neutral-000: #FFFFFF;
 	
@@ -451,7 +451,7 @@
 	--winbox-shadow: 0 0 16px 0 var(--bg-neutral-subtle);
 	
 	/* chart */
-	--chart-bg: var(--bg-accent-navy-deepest);
+	--chart-bg: var(--bg-accent-navy-deepest-subtle);
 	--chart-text-muted: var(--fg-default);
 	--chart-text: var(--fg-emphasis);
 	--chart-axis: var(--border-elevated-4);
@@ -877,7 +877,7 @@
 	--table-bg: var(--bg-elevated-1);
 	--table-empty-bg: var(--bg-ghost-subtle);
 	--table-empty-fg: var(--fg-muted);
-	--table-empty-min-height: 120px;
+	--table-empty-min-height: 140px;
 	--table-font-size: var(--font-size-base);
 	--table-list-tr-height: var(--form-control-height);
 	--table-primary-thead-bg: var(--bg-info-deep);
