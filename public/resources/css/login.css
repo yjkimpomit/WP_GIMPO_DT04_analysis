@@ -15,15 +15,15 @@
 
 :root {
 	--text-shadow: var(--effect-shadow-elevated-2);
-	--login-bg: var(--bg-accent-navy-darker);
+	--login-bg: var(--bg-accent-navy-subtle);
 	--login-box-shadow: var(--effect-shadow-elevated-2);
 	
 	--divider: var(--border-neutral-muted);
-	--form-input-bg: var(--bg-accent-navy-subtlest);
+	--form-input-bg: var(--bg-accent-navy-deepest);
 	
 	--login-error-text: var(--fg-danger-subtle);
 	--login-error-bg: var(--bg-danger-strong);
-	--login-error-border: var(--border-danger-soft);
+	--login-error-border: var(--border-danger-deep);
 	--login-radius: var(--spacing-100);
 }
 

@@ -404,9 +404,9 @@
 .calendar-box {
 	--calendar-bg: var(--panel-bg);
 	--calendar-border: var(--panel-border);
-	--calendar-today-bg: var(--bg-brand-base);
-	--calendar-active-bg: var(--bg-brand-subtler);
-	--calendar-hover-bg: var(--bg-brand-deep);
+	--calendar-today-bg: var(--bg-primary-base);
+	--calendar-active-bg: var(--bg-primary-deeper);
+	--calendar-hover-bg: var(--bg-primary-deep);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
