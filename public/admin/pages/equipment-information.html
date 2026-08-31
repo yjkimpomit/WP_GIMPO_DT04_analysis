@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>설비정보 | 관리자</title>
+	<link rel="stylesheet" href="/resources/admin/css/admin.css">
+</head>
+
+<body>
+	<div class="winbox-layout page-content">
+		<div class="page-content__placeholder">
+			<h1 class="page-content__heading visually-hidden">설비정보</h1>
+
+			<!-- 검색영역 -->
+			<form class="filter-panel" id="searchForm" method="post" autocomplete="off">
+				<div class="filter-panel__fields">
+					<div class="form-field">
+						<label class="form-label" for="iegNo">설비 번호</label>
+						<div class="form-control-group">
+							<input class="form-control form-control--return" list="iegNoList" id="iegNo"
+								name="searchKeyword" placeholder="설비번호, 명 입력 후 엔터">
+							<input type="hidden" id="iegCode">
+
+
+
+
+							<input class="form-control" type="text" id="iegDescription" value="" readonly="">
+						</div>
+
+
+						<datalist id="iegNoList"></datalist>
+					</div>
+
+					<div class="" id="_DIV_BTN_AREA">
+						<button type="button" class="button button--primary"
+							onclick="fnModifyInfoForm(this);">취소</button>
+					</div>
+				</div>
+			</form>
+
+			<div class="result-panel result-panel--master-detail" id="_FACILITY_DETAIL_VIEW_INFO">
+
+
+
+
+
+
+				<!-- 설비검색 결과 정보 -->
+
+
+
+
+
+				<div class="result-panel__body d-none" id="_DIV_FACILITY_INFO_VIEW">
+					<div class="splitview panel-split-layout panel-split-layout--two-to-one">
+						<div class="splitview__pane splitview__pane--sidebar panel-split-layout__sidebar"
+							aria-label="설비상세 정보">
+							<section class="panel-split-layout__group panel-split-layout__group--primary">
+								<div class="result-header">
+									<h2 class="result-header__title">설비상세 정보</h2>
+								</div>
+								<div class="table-responsive">
+									<table class="data-table data-table--view data-table--detail"
+										data-tab-id="modelTab01-pane" aria-label="설비상세">
+										<colgroup>
+											<col style="width: 200px;">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">설비명</th>
+												<td data-field="설비명">#9 FWH-8A EXT STM MOV</td>
+											</tr>
+											<tr>
+												<th scope="row">설비번호</th>
+												<td data-field="설비번호">15880310</td>
+											</tr>
+											<tr>
+												<th scope="row">설비레벨</th>
+												<td data-field="설비레벨">6</td>
+											</tr>
+											<tr>
+												<th scope="row">3D 모델 연결여부</th>
+												<td data-field="3D 모델 연결여부">
+
+													Y
+
+
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">파노라마 연결여부</th>
+												<td data-field="파노라마 연결여부">
+
+													Y
+
+
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">P&amp;ID 연결여부</th>
+												<td data-field="P&amp;ID 연결여부">
+
+													Y
+
+
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">dataPARC 연결여부</th>
+												<td data-field="dataPARC 연결여부">
+
+													Y
+
+
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</section>
+						</div>
+
+						<div class="splitview__pane splitview__pane--content panel-split-layout__content" role="region"
+							aria-label="설비사진">
+							<section class="panel-split-layout__group panel-split-layout__group--primary">
+								<div class="result-header">
+									<h2 class="result-header__title">설비 사진</h2>
+								</div>
+								<div class="facility-photo">
+									<img id="equipImage" src="/modelImages/15880310.jpg?t=1788163456928" alt="15880310">
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="result-panel__body" id="_DIV_FACILITY_INFO_FORM">
+					<form id="facilityInfoForm" name="facilityInfoForm" action="javascript:fnSaveInfo()" method="post"
+						enctype="multipart/form-data">
+						<input type="hidden" name="tmpIegNo" value="15880310">
+						<input type="hidden" name="iegNo" value="15880310">
+						<input type="hidden" name="iegLevel" value="6">
+						<div class="splitview panel-split-layout panel-split-layout--two-to-one">
+							<div class="splitview__pane splitview__pane--sidebar panel-split-layout__sidebar">
+								<section class="panel-split-layout__group panel-split-layout__group--primary">
+									<div class="result-header">
+										<h2 class="result-header__title">설비상세 정보 수정</h2>
+									</div>
+
+									<div class="table-responsive">
+										<table class="data-table data-table--view data-table--detail"
+											data-tab-id="modelTab01-pane" aria-label="설비상세 폼">
+											<colgroup>
+												<col style="width: 200px;">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row">설비명</th>
+													<td data-field="설비명">
+														<label for="iegDecription" class="visually-hidden">설비명</label>
+														<input type="text" class="form-control" id="iegDecription"
+															name="iegDecription" value="#9 FWH-8A EXT STM MOV"
+															required="">
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">설비번호</th>
+													<td data-field="설비번호">15880310</td>
+												</tr>
+												<tr>
+													<th scope="row">설비레벨</th>
+													<td data-field="설비레벨">6</td>
+												</tr>
+												<tr>
+													<th scope="row">3D 모델 연결여부</th>
+													<td data-field="3D 모델 연결여부">
+
+														Y
+
+
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">파노라마 연결여부</th>
+													<td data-field="파노라마 연결여부">
+
+														Y
+
+
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">P&amp;ID 연결여부</th>
+													<td data-field="P&amp;ID 연결여부">
+
+														Y
+
+
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">dataPARC 연결여부</th>
+													<td data-field="dataPARC 연결여부">
+
+														Y
+
+
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</section>
+							</div>
+
+							<div class="splitview__pane splitview__pane--content panel-split-layout__content">
+								<section class="panel-split-layout__group panel-split-layout__group--primary">
+									<div class="result-header">
+										<h2 class="result-header__title">설비 사진</h2>
+										<button type="button" class="button button--attention"
+											onclick="btnSaveFacility()">저장</button>
+									</div>
+
+									<div class="facility-photo">
+										<div class="dropzone dz-clickable dz-started dz-max-files-reached" id="myDropzone">
+											<div class="dz-preview dz-image-preview">
+												<div class="dz-image">
+													<img src="/resources/images/sample/52921-01240.jpg">
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</form>
+				</div>
+
+
+				<div class="result-group" style="flex-grow: 0;">
+					<div class="result-header">
+						<h2 class="result-header__title">GENi 설비상세 정보</h2>
+					</div>
+					<div class="table-responsive">
+						<table class="data-table data-table--view data-table--detail" data-tab-id="modelTab01-pane"
+							aria-label="설비상세">
+							<colgroup>
+								<col style="width: 200px;">
+								<col style="width: 240px;">
+								<col style="width: 200px;">
+								<col>
+								<col style="width: 160px;">
+								<col style="width: 200px;">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">설비번호</th>
+									<td data-field="설비번호">15880310</td>
+									<th scope="row">설비명</th>
+									<td data-field="설비명">#9 FWH-8A EXT STM MOV</td>
+									<th scope="row">상태</th>
+									<td data-field="상태">운전</td>
+								</tr>
+								<tr>
+									<th scope="row">기능위치번호</th>
+									<td data-field="기능위치번호">51909-04450</td>
+									<th scope="row">기능위치명</th>
+									<td data-field="기능위치명" colspan="3">HTR-8 Extraction Steam SYS</td>
+								</tr>
+								<tr>
+									<th scope="row">계통코드</th>
+									<td data-field="계통코드">31510</td>
+									<th scope="row">계통코드명</th>
+									<td data-field="계통코드명" colspan="3">고압급수가열기용 추기계통(High Pressure Feed Water Heater
+										Extraction Steam System)</td>
+								</tr>
+								<tr>
+									<th scope="row">종류코드</th>
+									<td data-field="종류코드">MVV2</td>
+									<th scope="row">종류코드명</th>
+									<td data-field="종류코드명" colspan="3">Gate Valve</td>
+								</tr>
+								<tr>
+									<th scope="row">TAG_NO</th>
+									<td data-field="TAG_NO">9-31510-J-HH-MV-01A</td>
+									<th scope="row">PNID_NO</th>
+									<td data-field="PNID_NO" colspan="3">J-31500-UM-105-001</td>
+								</tr>
+								<tr>
+									<th scope="row">자산번호</th>
+									<td data-field="자산번호"></td>
+									<th scope="row">자산명</th>
+									<td data-field="자산명" colspan="3"></td>
+								</tr>
+								<tr>
+									<th scope="row">계층구조</th>
+									<td data-field="계층구조" colspan="5">제9호기 &gt; 터빈설비 &gt; 터빈증기및추기/드레인계통 &gt; TBN
+										Extraction Steam SYS &gt; HTR-8 Extraction Steam SYS &gt; #9 FWH-8A EXT STM MOV
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+
+				<script>
+					loadCss("/resources/admin/js/fileupload/dropzone-5.9.3.min.css");
+					loadCss("/resources/admin/js/fileupload/dropzone.override.css");
+				</script>
+				<script src="/resources/admin/js/fileupload/dropzone-5.9.3.min.js"></script>
+				<script src="/resources/admin/js/file/custom-file.js"></script>
+				<script>
+					// Dropzone 설정
+					Dropzone.autoDiscover = false;  // 자동 초기화 방지
+					var myDropzoneInstance = new Dropzone("#myDropzone", {
+						url: "/admin/facility/file/saveFile.upload",
+
+						// 20260522 yjkim 썸네일이미지크기조정
+						thumbnailWidth: 400,
+						thumbnailHeight: 225,
+						// 비율 유지 여부
+						/* 			resizeWidth: 16,
+									resizeHeight: 9, */
+
+						// 업로드 해상도 설정
+						resizeWidth: 960,
+						resizeHeight: 540,
+
+						maxFiles: 1,
+						autoProcessQueue: false,
+						parallelUploads: 1,
+						maxFilesize: 5,
+						acceptedFiles: ".jpeg,.jpg,.png,.gif",
+						timeout: 0,
+						chunking: true,
+						forceChunking: true,
+						chunkSize: 20971520,
+						addRemoveLinks: true,
+						dictDefaultMessage: "이미지 파일을 이곳에 드래그하거나 클릭하여 업로드하세요.",
+						dictFallbackMessage: "브라우저가 드래그 앤 드롭 업로드를 지원하지 않습니다.",
+						dictFileTooBig: "파일이 너무 큽니다 ({{filesize}}MiB). 최대 허용 크기: {{maxFilesize}}MiB.",
+						dictInvalidFileType: "이미지(jpg, png, gif) 파일만 업로드 가능합니다.",
+						dictResponseError: "서버 응답 오류: {{statusCode}}",
+						dictCancelUpload: "업로드 취소",
+						dictCancelUploadConfirmation: "업로드를 취소하시겠습니까?",
+						dictRemoveFile: "파일 삭제",
+						dictMaxFilesExceeded: "더 이상 파일을 업로드할 수 없습니다.",
+						init: function () {
+							var isError = false;
+
+							this.on("addedfile", function (file) {
+							});
+
+							this.on("success", function (file, response) {
+								isError = false;
+
+								if (response.result === '1') {
+									// 다음 파일 자동업로드
+									if (this.getQueuedFiles().length > 0) {
+										this.processQueue();
+									}
+								}
+							});
+
+							this.on("error", function (file, errorMessage) {
+								isError = true;
+								myDropzoneInstance.removeFile(file);
+
+								title = "파일업로드";
+
+								var ext = file.name.split('.').pop().toLowerCase();
+								var allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+
+								if (allowedExtensions.indexOf(ext) === -1) {
+									content = "미미지 파일만 업로드 가능합니다.";
+									fnMsg();
+								}
+								else if (errorMessage === "") {
+									content = "오류가 발생했습니다.";
+									fnMsg();
+								}
+							});
+
+							this.on("sending", function (file, xhr, formData) {
+								formData.append("actionType", "facilityImage");
+								formData.append("iegNo", "15880310");
+
+								isError = false;
+							});
+
+							this.on("queuecomplete", function () {
+								if (!isError) {
+									$.alert({
+										title: "완료", content: "정상적으로 처리되었습니다.", type: 'green', buttons: {
+											'확인': {
+												btnClass: 'btn-green', action: function () {
+													myDropzoneInstance.removeAllFiles(true);
+
+													/* reload page */
+													fnSearchFacilityInfo();
+												}
+											}
+										}
+									});
+								}
+							});
+						}
+					});
+
+					function btnSaveFacility() {
+						content = "";
+
+						if ($("#iegDecription").val().trim() === "") {
+							content = "설비명을 입력하세요.";
+							title = "";
+							fnMsg();
+						} else {
+							fnSaveInfo();
+						}
+					}
+
+					$(function () {
+						// 수정버튼 보기
+						$("#_DIV_BTN_AREA").removeClass("d-none");
+					});
+				</script>
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

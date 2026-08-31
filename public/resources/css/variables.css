@@ -932,4 +932,37 @@
 	--ztree-padding-y: var(--spacing-050);
 	--ztree-radius: var(--spacing-100);
 	--ztree-item-radius: var(--radius-050);
+
+	/* error */
+	--error-link-fg: var(--fg-primary-subtle);
+	--error-link-hover-fg: var(--fg-emphasis);
+	--error-border: var(--border-danger-base);
+	--error-text: var(--fg-muted);
+	--error-font-family: var(--font-family-base), sans-serif;
+	--error-logo-width: var(--spacing-1000);
+	--error-logo-height: var(--spacing-600);
+	--error-logo-image-height: var(--spacing-400);
+	--error-content-max-width: 400px;
+	--error-content-max-width-wide: 960px;
+	--error-content-margin-top: var(--spacing-800);
+	--error-content-margin-top-wide: 256px;
+	--error-content-padding-x: var(--spacing-200);
+	--error-visual-width-wide: 320px;
+	--error-visual-size: var(--spacing-1000);
+	--error-visual-size-medium: 128px;
+	--error-visual-size-wide: 256px;
+	--error-visual-height: 160px;
+	--error-visual-height-medium: 200px;
+	--error-visual-height-wide: 256px;
+	--error-message-offset: -44px;
+	--error-code-size: var(--spacing-1000);
+	--error-code-size-wide: 120px;
+	--error-code-gap: var(--spacing-300);
+	--error-code-margin-bottom: var(--spacing-400);
+	--error-note-size: 17px;
+	--error-note-size-wide: 19px;
+	--error-note-opacity: 0.6;
+	--error-note-border-width: var(--spacing-050);
+	--error-note-offset: calc(var(--spacing-100) * -1);
+	--error-title-size: 21px;
 }

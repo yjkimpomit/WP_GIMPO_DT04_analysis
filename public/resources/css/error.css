@@ -8,39 +8,32 @@
  * 
  */
 
-@import url(/resources/css/bootstrap/dist/css/bootstrap.min.css);
-@import url(/resources/css/variables.css);
-@import url(/resources/css/variables.component.css);
-@import url(/resources/css/reset.css);
-
-/*#################### 폰트 ####################*/
-@import url(/resources/fonts/NotoSansKR/NotoSansKR.css);
-@import url(/resources/fonts/Roboto/Roboto.css);
-
+@import url('variables.css');
+@import url('reset.css');
 
 html, body {
 	height: inherit;
 }
 a {
-	color: var(--link-text);
+	color: var(--error-link-fg);
 	text-decoration: none;
 }
 a:hover {
-	color: var(--link-text-hover);
+	color: var(--error-link-hover-fg);
 }
 
 /* logo */
 body > .logo {
 	/*display: block;*/
-	width: 80px;
-	height: 48px;
+	width: var(--error-logo-width);
+	height: var(--error-logo-height);
 
 	background-image: url(/resources/images/logo.svg);
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: auto 32px;
+	background-size: auto var(--error-logo-image-height);
 	
-	font-size: 0;
+	font-size: var(--spacing-000);
 	
 	display: none;
 }
@@ -52,62 +45,62 @@ body > .logo {
 	align-items: flex-start;
 	justify-content: center;
 
-	margin: 4rem auto 0;
-	font-family: "Roboto", "Noto Sans KR", sans-serif;
-	max-width: 400px;
-	padding: 0 1rem;
+	margin: var(--error-content-margin-top) auto var(--spacing-000);
+	font-family: var(--error-font-family);
+	max-width: var(--error-content-max-width);
+	padding: var(--spacing-000) var(--error-content-padding-x);
 }
 .error-box::before {
 	content: '';
 
 	display: block;
 	background: url(/resources/images/icons/icon-webpage.svg) no-repeat left top;
-	background-size: 80px;
+	background-size: var(--error-visual-size);
 	width: 100%;
-	height: 160px;
+	height: var(--error-visual-height);
 }
 .error-message {
-	margin-top: -2.75rem;
+	margin-top: var(--error-message-offset);
 }
 h1 {
-	font-weight: 700;
-	font-size: 80px;
+	font-weight: var(--font-weight-bold);
+	font-size: var(--error-code-size);
 	display: flex;
 	align-items: center;
-	gap: 1.5rem;
+	gap: var(--error-code-gap);
 	
-	margin-bottom: 2rem;
+	margin-bottom: var(--error-code-margin-bottom);
 }
 h1 small {
-	font-size: 17px;
-	font-weight: 700 !important;
+	font-size: var(--error-note-size);
+	font-weight: var(--font-weight-bold) !important;
 	position: relative;
-	opacity: .6;
+	opacity: var(--error-note-opacity);
 }
 h1 small::after {
 	content: '';
 	position: absolute;
 	left: 0;
-	bottom: -.5rem;
+	bottom: var(--error-note-offset);
 
 	display: inline-block;
 	width: 100%;
-	border-bottom: solid 4px var(--error-border);
+	border-bottom: solid var(--error-note-border-width) var(--error-border);
 }
 .title {
-	font-size: 21px;
-	font-weight: 700;
+	font-size: var(--error-title-size);
+	font-weight: var(--font-weight-bold);
 }
 .text {
-	font-size: 15px;
-	font-weight: 500;
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-medium);
 	color: var(--error-text);
 }
 @media (min-width: 768px) {
 	.error-box::before {
 		background-position: left top;
-		background-size: 128px;
-		height: 200px;
+		background-size: var(--error-visual-size-medium);
+		height: var(--error-visual-height-medium);
 	}
 	
 }
@@ -116,21 +109,21 @@ h1 small::after {
 		flex-direction: row;
 		align-items: center;
 
-		margin: 16rem auto 0;
-		max-width: 960px;
+		margin: var(--error-content-margin-top-wide) auto var(--spacing-000);
+		max-width: var(--error-content-max-width-wide);
 	}
 
 	.error-box::before {
 		background-position: left top;
-		background-size: 256px;
-		width: 320px;
-		height: 256px;
+		background-size: var(--error-visual-size-wide);
+		width: var(--error-visual-width-wide);
+		height: var(--error-visual-height-wide);
 	}
 	h1 {
-		font-size: 120px;
+		font-size: var(--error-code-size-wide);
 	}
 	h1 small {
-		font-size: 19px;
+		font-size: var(--error-note-size-wide);
 	}
 }
 
