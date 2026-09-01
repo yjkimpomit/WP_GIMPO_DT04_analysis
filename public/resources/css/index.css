@@ -1,17 +1,16 @@
 @charset "utf-8";
 
-@import url('/resources/fonts/NotoSansKR/NotoSansKR.css');
-@import url(variables.css);
-@import url(reset.css);
-@import url(icons.css);
-@import url(components.css);
+@import url('/resources/css/variables.css');
+@import url('/resources/css/reset.css');
+@import url('/resources/css/icons.css');
+@import url('/resources/css/components.css');
 
-@import url(realtime-panel.css);
-@import url(header.css);
-@import url(menu.css);
+@import url('/resources/css/realtime-panel.css');
+@import url('/resources/css/header.css');
+@import url('/resources/css/menu.css');
 
-@import url(pages.css);
-@import url(winbox.css);
+@import url('/resources/css/pages.css');
+@import url('/resources/css/winbox.css');
 
 html,
 body {

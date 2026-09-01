@@ -212,7 +212,7 @@
 
 .facility-photo {
 	width: 100%;
-	aspect-ratio: 1920 / 1080;
+	aspect-ratio: 16 / 9;
 	overflow: hidden;
 }
 

@@ -76,7 +76,7 @@ fieldset.form-field > legend.form-label {
 .form-select {
 	min-inline-size: 0;
 	inline-size: var(--form-width-full);
-	height: var(--form-height);
+	min-height: var(--form-height);
 	padding: 0 var(--form-control-padding-x);
 	border: 1px solid var(--form-input-border);
 	border-radius: var(--form-control-radius);
@@ -258,6 +258,10 @@ textarea.form-control {
 .form-control--search:disabled {
 	background-image: url('/resources/images/icons/search-disabled.svg');
 	
+}
+
+.form-control--return::-webkit-calendar-picker-indicator {
+	display: none !important;
 }
 
 /* checkbox, radio */
@@ -472,6 +476,24 @@ textarea.form-control {
 	gap: var(--spacing-100);
 }
 
+.button--dark {
+	--button-current-fg: var(--button-dark-fg);
+	--button-current-bg: var(--button-dark-bg);
+	--button-current-border: var(--button-dark-border);
+	--button-current-fg-hover: var(--button-dark-fg-hover);
+	--button-current-bg-hover: var(--button-dark-bg-hover);
+	--button-current-border-hover: var(--button-dark-border-hover);
+}
+
+.button--light {
+	--button-current-fg: var(--button-light-fg);
+	--button-current-bg: var(--button-light-bg);
+	--button-current-border: var(--button-light-border);
+	--button-current-fg-hover: var(--button-light-fg-hover);
+	--button-current-bg-hover: var(--button-light-bg-hover);
+	--button-current-border-hover: var(--button-light-border-hover);
+}
+
 .button--primary {
 	--button-current-fg: var(--button-primary-fg);
 	--button-current-bg: var(--button-primary-bg);
@@ -562,6 +584,8 @@ textarea.form-control {
 	--button-current-bg-hover: var(--button-accent-teal-hover-bg);
 }
 
+.button--dark[aria-pressed='true'] { --button-current-bg-hover: var(--button-dark-pressed-bg); }
+.button--light[aria-pressed='true'] { --button-current-bg-hover: var(--button-light-pressed-bg); }
 .button--primary[aria-pressed='true'] { --button-current-bg-hover: var(--button-primary-pressed-bg); }
 .button--secondary[aria-pressed='true'] { --button-current-bg-hover: var(--button-secondary-pressed-bg); }
 .button--info-outline[aria-pressed='true'] { --button-current-bg-hover: var(--button-info-outline-pressed-bg); }
@@ -673,11 +697,14 @@ textarea.form-control {
 	min-width: 0;
 	padding: var(--filter-padding-y) var(--filter-padding-x);
 	gap: var(--filter-panel-gap);
+}
+
+.filter-panel__search + .filter-panel__section {
 	border-top: 1px solid var(--filter-title-border);
 	position: relative;
 }
 
-.filter-panel__section::before {
+.filter-panel__search + .filter-panel__section::before {
 	position: absolute;
 	top: 0;
 	left: 0;

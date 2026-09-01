@@ -67,7 +67,7 @@
 	overflow: visible;
 }
 
-.gnb__brand a {
+.gnb__brand .logo {
 	display: flex;
 	align-items: center;
 	width: 100%;
@@ -95,9 +95,11 @@
 	display: none;
 }
 
-.left-box:not(.expand) .gnb__brand a {
+.left-box:not(.expand) .gnb__brand .logo {
+	display: flex;
+	align-items: center;
 	justify-content: center;
-	padding-inline: var(--spacing-100);
+	padding: 0;
 }
 
 /* 메뉴 열기/닫기 */
@@ -414,6 +416,10 @@
 }
 
 /* 메뉴 아이콘 */
+.gnb .d1[data-class="app-service"] {
+	background-image: url('/resources/images/icons/gnb-icon07.svg');
+}
+
 .gnb .d1[data-class="data"] {
 	background-image: url('/resources/images/icons/gnb-icon02.svg');
 }

@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@import url(/resources/fonts/NotoSansKR/NotoSansKR.css);
+@import url('/resources/fonts/NotoSansKR/NotoSansKR.css');
 
 :root {
 	color-scheme: dark;
@@ -251,6 +251,7 @@
 	--bg-neutral-strong: var(--neutral-500);
 	--bg-neutral-base: var(--neutral-600);
 	--bg-neutral-deep: var(--neutral-700);
+	--bg-neutral-deeper: var(--neutral-800);
 	--bg-neutral-subtle: var(--neutral-800a94);
 	--bg-neutral-subtlest: var(--neutral-900);
 	--bg-pattern-placeholder: repeating-linear-gradient(135deg, var(--elevated-a12) 0 12px, var(--elevated-a24) 12px 24px);
@@ -531,7 +532,7 @@
 	--button-destructive-default-bg: var(--bg-destructive-strong);
 	--button-destructive-hover-bg: var(--bg-destructive-emphasis);
 	--button-destructive-pressed-bg: var(--bg-destructive-base);
-	--button-disabled-opacity: var(--opacity-disabled);
+	--button-disabled-opacity: 0.7;
 	
 	--button-gap: var(--spacing-100);
 	
@@ -552,8 +553,17 @@
 	--button-info-outline-fg-hover: var(--fg-emphasis);
 	--button-info-outline-pressed-bg: var(--bg-info-deep);
 
+	--button-dark-bg: var(--bg-neutral-deeper);
+	--button-dark-bg-hover: var(--bg-neutral-deep);
+	--button-dark-pressed-bg: var(--bg-neutral-subtlest);
+	--button-dark-border: var(--border-elevated-4);
+	--button-dark-border-hover: var(--border-elevated-5);
+	--button-dark-fg: var(--fg-emphasis);
+	--button-dark-fg-hover: var(--fg-emphasis);
+
 	--button-light-bg: var(--bg-neutral-strong);
 	--button-light-bg-hover: var(--bg-neutral-emphasis);
+	--button-light-pressed-bg: var(--bg-neutral-base);
 	--button-light-border: var(--border-elevated-2);
 	--button-light-border-hover: var(--border-elevated-2);
 	--button-light-fg: var(--fg-strong);
@@ -586,11 +596,10 @@
 	
 	--button-radius: var(--spacing-050);
 	
-	--button-secondary-bg: var(--bg-secondary-base);
-	--button-secondary-bg-hover: var(--bg-secondary-strong);
+	--button-secondary-bg: var(--bg-info-strong);
+	--button-secondary-bg-hover: var(--bg-info-base);
 	--button-secondary-border: var(--border-elevated-2);
 	--button-secondary-border-hover: var(--border-elevated-2);
-	--button-secondary-default-bg: var(--bg-info-base);
 	--button-secondary-fg: var(--fg-strong);
 	--button-secondary-fg-hover: var(--fg-emphasis);
 	--button-secondary-hover-bg: var(--bg-info-strong);
@@ -932,13 +941,12 @@
 	--ztree-padding-y: var(--spacing-050);
 	--ztree-radius: var(--spacing-100);
 	--ztree-item-radius: var(--radius-050);
-
+	
 	/* error */
 	--error-link-fg: var(--fg-primary-subtle);
 	--error-link-hover-fg: var(--fg-emphasis);
 	--error-border: var(--border-danger-base);
 	--error-text: var(--fg-muted);
-	--error-font-family: var(--font-family-base), sans-serif;
 	--error-logo-width: var(--spacing-1000);
 	--error-logo-height: var(--spacing-600);
 	--error-logo-image-height: var(--spacing-400);
