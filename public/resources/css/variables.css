@@ -12,7 +12,7 @@
 	--blue-300: #73BCF5;
 	--blue-400: #1B8CE0;
 	--blue-500: #0F73BD;
-	--blue-500a64: rgba(15, 115, 189, 0.64);
+	--blue-500a88: rgba(15, 115, 189, 0.88);
 	
 	--blue-600: #0060A9;
 	--blue-700: #004B84;
@@ -42,7 +42,7 @@
 	--green-400: #31B067;
 	--green-500: #0A8550;
 	--green-600: #007446;
-	--green-600a64: rgba(0, 116, 70, 0.64);
+	--green-600a88: rgba(0, 116, 70, 0.88);
 	
 	--green-700: #00593B;
 	--green-800: #004630;
@@ -57,7 +57,7 @@
 	--mint-400: #0FA983;
 	--mint-500: #077E6E;
 	--mint-600: #036359;
-	--mint-600a64: rgba(3, 99, 89, 0.64);
+	--mint-600a88: rgba(3, 99, 89, 0.88);
 	
 	/* size */
 	
@@ -71,7 +71,7 @@
 	--teal-400: #0F9CA9;
 	--teal-500: #07667F;
 	--teal-600: #034D63;
-	--teal-600a64: rgba(3, 77, 99, 0.64);
+	--teal-600a88: rgba(3, 77, 99, 0.88);
 	--teal-700: #00384D;
 	--teal-800: #002D3D;
 	--teal-900: #06212D;
@@ -82,10 +82,10 @@
 	--navy-400: #5475AD;
 	--navy-500: #3E5C98;
 	--navy-600: #3A517E;
-	--navy-600a80: rgba(58, 81, 126, 0.80);
+	--navy-600a88: rgba(58, 81, 126, 0.88);
 	--navy-700: #37496B;
 	--navy-800: #293751;
-	--navy-800a80: rgba(41, 55, 81, 0.80);
+	--navy-800a88: rgba(41, 55, 81, 0.88);
 	--navy-900: #242F43;
 	
 	--neutral-000: #FFFFFF;
@@ -114,6 +114,7 @@
 	--orange-500a48: rgba(255, 91, 20, 0.48);
 	
 	--orange-600: #F34900;
+	--orange-600a88: rgba(243, 73, 0, 0.88);
 	--orange-700: #CC3D00;
 	--orange-800: #8F2B00;
 	--orange-900: #702200;
@@ -131,7 +132,7 @@
 	--red-400: #F22C63;
 	--red-500: #DF134C;
 	--red-600: #B90F40;
-	--red-600a64: rgba(185, 15, 64, 0.64);
+	--red-600a88: rgba(185, 15, 64, 0.88);
 	
 	--red-700: #8C0C33;
 	--red-800: #6B0927;
@@ -170,7 +171,7 @@
 	--yellow-500: #F5AB00;
 	--yellow-600: #F59B00;
 	--yellow-700: #CC7A00;
-	--yellow-700a64: rgba(204, 122, 0, 0.64);
+	--yellow-700a88: rgba(204, 122, 0, 0.88);
 	
 	--yellow-800: #8F5600;
 	--yellow-900: #613A00;
@@ -187,13 +188,13 @@
 	--bg-accent-mint-strong: var(--mint-400);
 	--bg-accent-mint-base: var(--mint-500);
 	--bg-accent-mint-deep: var(--mint-600);
-	--bg-accent-mint-subtle: var(--mint-600a64);
+	--bg-accent-mint-subtle: var(--mint-600a88);
 
 	--bg-accent-teal-emphasis: var(--teal-300);
 	--bg-accent-teal-strong: var(--teal-400);
 	--bg-accent-teal-base: var(--teal-500);
 	--bg-accent-teal-deep: var(--teal-600);
-	--bg-accent-teal-subtle: var(--teal-600a64);
+	--bg-accent-teal-subtle: var(--teal-600a88);
 	
 	--bg-accent-navy-emphasis: var(--navy-300);
 	--bg-accent-navy-strong: var(--navy-400);
@@ -201,24 +202,25 @@
 	--bg-accent-navy-deep: var(--navy-600);
 	--bg-accent-navy-deeper: var(--navy-700);
 	--bg-accent-navy-deepest: var(--navy-800);
-	--bg-accent-navy-subtle: var(--navy-600a80);
-	--bg-accent-navy-deepest-subtle: var(--navy-800a80);
+	--bg-accent-navy-subtle: var(--navy-600a88);
+	--bg-accent-navy-deepest-subtle: var(--navy-800a88);
 	
 	--bg-attention-emphasis: var(--orange-400);
 	--bg-attention-strong: var(--orange-500);
 	--bg-attention-base: var(--orange-600);
 	--bg-attention-deep: var(--orange-700);
+	--bg-attention-subtle: var(--orange-600a88);
 
 	--bg-danger-emphasis: var(--red-400);
 	--bg-danger-strong: var(--red-500);
 	--bg-danger-base: var(--red-600);
 	--bg-danger-deep: var(--red-700);
-	--bg-danger-subtle: var(--red-600a64);
+	--bg-danger-subtle: var(--red-600a88);
 	--bg-destructive-emphasis: var(--red-400);
 	--bg-destructive-strong: var(--red-500);
 	--bg-destructive-base: var(--red-600);
 	--bg-destructive-deep: var(--red-700);
-	--bg-destructive-subtle: var(--red-600a64);
+	--bg-destructive-subtle: var(--red-600a88);
 
 	--bg-elevated-1: var(--elevated-a12);
 	--bg-elevated-2: var(--elevated-a24);
@@ -237,7 +239,7 @@
 	--bg-info-strong: var(--navy-500);
 	--bg-info-base: var(--navy-600);
 	--bg-info-deep: var(--navy-700);
-	--bg-info-subtle: var(--navy-600a80);
+	--bg-info-subtle: var(--navy-600a88);
 	
 	--bg-inverse: var(--neutral-000);
 	
@@ -245,7 +247,7 @@
 	--bg-maintenance-strong: var(--mint-500);
 	--bg-maintenance-base: var(--mint-600);
 	--bg-maintenance-deep: var(--mint-700);
-	--bg-maintenance-subtle: var(--mint-600a64);
+	--bg-maintenance-subtle: var(--mint-600a88);
 	
 	--bg-neutral-emphasis: var(--neutral-400);
 	--bg-neutral-strong: var(--neutral-500);
@@ -261,23 +263,25 @@
 	--bg-primary-base: var(--blue-500);
 	--bg-primary-deep: var(--blue-600);
 	--bg-primary-deeper: var(--blue-700);
-	--bg-primary-subtle: var(--blue-500a64);
+	--bg-primary-subtle: var(--blue-500a88);
 
 	--bg-secondary-emphasis: var(--navy-400);
 	--bg-secondary-strong: var(--navy-500);
 	--bg-secondary-base: var(--navy-600);
-	--bg-secondary-subtle: var(--navy-600a80);
+	--bg-secondary-subtle: var(--navy-600a88);
 	--bg-secondary-deep: var(--navy-700);
+
 	--bg-spatial-inverse: var(--neutral-000);
 	--bg-spatial-emphasis: var(--blue-400);
 	--bg-spatial-strong: var(--blue-500);
 	--bg-spatial-base: var(--blue-600);
 	--bg-spatial-deep: var(--blue-700);
+
 	--bg-success-emphasis: var(--green-400);
 	--bg-success-strong: var(--green-500);
 	--bg-success-base: var(--green-600);
 	--bg-success-deep: var(--green-700);
-	--bg-success-subtle: var(--green-600a64);
+	--bg-success-subtle: var(--green-600a88);
 	--bg-sunken-1: var(--sunken-a16);
 	--bg-sunken-2: var(--sunken-a36);
 	--bg-sunken-3: var(--sunken-a40);
@@ -288,7 +292,7 @@
 	--bg-warning-strong: var(--yellow-500);
 	--bg-warning-base: var(--yellow-600);
 	--bg-warning-deep: var(--yellow-700);
-	--bg-warning-subtle: var(--yellow-700a64);
+	--bg-warning-subtle: var(--yellow-700a88);
 	
 	
 	--border-accent-gray-subtle: var(--neutral-200);
@@ -303,6 +307,12 @@
 	--border-accent-teal-base: var(--teal-500);
 	--border-accent-teal-deep: var(--teal-600);
 	
+	--border-accent-navy-subtle: var(--navy-200);
+	--border-accent-navy-base: var(--navy-500);
+	--border-accent-navy-deep: var(--navy-700);
+	--border-accent-navy-deeper: var(--navy-800);
+	--border-accent-navy-deepest: var(--navy-900);
+
 	--border-attention-gradient-start: var(--orange-100);
 	--border-attention-gradient-mid-1: var(--orange-200);
 	--border-attention-gradient-mid-2: var(--orange-400);
@@ -359,7 +369,7 @@
 	
 	--effect-ai-glow-glow-mid: var(--orange-500a32);
 	--effect-ai-glow-glow-top: var(--orange-500a48);
-	--effect-primary-glow-base: var(--blue-500a64);
+	--effect-primary-glow-base: var(--blue-500a88);
 	
 	--effect-primary-glow-top: var(--blue-700);
 	--effect-shadow-elevated-1: 0 0 16px 8px rgb(26 34 46 / 24%);
@@ -396,7 +406,7 @@
 			4px 0 16px 0 var(--bg-neutral-subtlest);
 	
 	
-	--opacity-disabled: 0.4;
+	--opacity-disabled: 0.6;
 	--overlay-modal-bg: rgb(5 12 24 / 0.64);
 	
 	/* global foundation */
@@ -471,30 +481,9 @@
 	
 	/* component */
 	
-	--aside-bg: var(--bg-neutral-subtle);
-	--aside-border: var(--border-elevated-3);
-	--aside-radius: var(--spacing-100);
 	--aside-tab-font-size: var(--font-size-sm);
 	--aside-tab-height: var(--spacing-400);
 	
-	--badge-danger-bg: var(--bg-destructive-emphasis);
-	--badge-danger-border: var(--border-danger-subtle);
-	--badge-danger-fg: var(--fg-danger-subtle);
-	--badge-gap: var(--spacing-050);
-	--badge-info-bg: var(--bg-info-strong);
-	--badge-info-border: var(--border-info-subtle);
-	--badge-info-fg: var(--fg-info-subtle);
-	--badge-maintenance-bg: var(--bg-maintenance-strong);
-	--badge-maintenance-border: var(--border-inverse);
-	--badge-padding-x: var(--spacing-150);
-	--badge-padding-y: var(--spacing-100);
-	--badge-radius: var(--spacing-100);
-	--badge-success-bg: var(--bg-success-strong);
-	--badge-success-border: var(--border-success-subtle);
-	--badge-success-fg: var(--fg-success-subtle);
-	--badge-warning-bg: var(--bg-warning-base);
-	--badge-warning-border: var(--border-warning-subtle);
-	--badge-warning-fg: var(--fg-warning-inverse);
 	
 	--bg-base: var(--filter-field-default-bg);
 	
@@ -513,7 +502,6 @@
 	--board-list-item-padding-x: var(--spacing-300);
 	--board-list-item-padding-y: var(--spacing-200);
 	--board-list-radius: var(--spacing-050);
-	--board-list-title-line-height: 1.4;
 	
 	--button-accent-mint-default-bg: var(--bg-accent-mint-base);
 	--button-accent-mint-hover-bg: var(--bg-maintenance-strong);
@@ -526,7 +514,6 @@
 	--button-attention-pressed-bg: var(--bg-attention-deep);
 	
 	--button-border: var(--border-elevated-2);
-	--button-border-strong: var(--border-elevated-4);
 	--button-border-width: 1px;
 	
 	--button-destructive-default-bg: var(--bg-destructive-strong);
@@ -582,10 +569,8 @@
 	--button-primary-bg-hover: var(--bg-primary-strong);
 	--button-primary-border: var(--border-elevated-2);
 	--button-primary-border-hover: var(--border-elevated-2);
-	--button-primary-default-bg: var(--bg-spatial-strong);
 	--button-primary-fg: var(--fg-strong);
 	--button-primary-fg-hover: var(--fg-emphasis);
-	--button-primary-hover-bg: var(--bg-ghost-strong);
 	--button-primary-outline-bg: var(--bg-transparent);
 	--button-primary-outline-bg-hover: var(--bg-primary-base);
 	--button-primary-outline-border: var(--border-elevated-4);
@@ -602,7 +587,6 @@
 	--button-secondary-border-hover: var(--border-elevated-2);
 	--button-secondary-fg: var(--fg-strong);
 	--button-secondary-fg-hover: var(--fg-emphasis);
-	--button-secondary-hover-bg: var(--bg-info-strong);
 	--button-secondary-outline-bg: var(--bg-transparent);
 	--button-secondary-outline-bg-hover: var(--bg-secondary-base);
 	--button-secondary-outline-border: var(--border-elevated-4);
@@ -616,16 +600,8 @@
 	
 	--chart-placeholder-bg: var(--bg-pattern-placeholder);
 	
-	--data-table-border: var(--border-elevated-3);
-	--data-table-border-strong: var(--border-elevated-5);
-	--data-table-list-selected-bg: var(--bg-elevated-3);
-	--data-table-list-td-bg: var(--bg-ghost-subtle);
 	--data-table-list-th-bg: var(--bg-accent-navy-deeper);
-	--data-table-list-th-border: var(--border-elevated-2);
-	--data-table-view-desc-first-group-width: 280px;
-	--data-table-view-desc-th-width: 128px;
-	--data-table-view-td-bg: var(--bg-ghost-subtle);
-	--data-table-view-th-bg: var(--bg-accent-navy-deeper);
+	--data-table-list-th-border: var(--border-elevated-4);
 	
 	--detail-empty-state-bg: var(--bg-pattern-placeholder);
 	--detail-empty-state-border: var(--border-elevated-2);
@@ -653,14 +629,10 @@
 	
 	--filter-actions-gap: var(--spacing-100);
 	--filter-bg: var(--bg-neutral-subtle);
-	--filter-border: var(--border-elevated-3);
+	--filter-border: var(--border-accent-navy-deeper);
 	--filter-button-height: 32px;
 	--filter-double-border: var(--border-elevated-2);
-	--filter-field-border: var(--border-elevated-4);
 	--filter-field-default-bg: var(--bg-elevated-3);
-	--filter-field-disabled-opacity: var(--opacity-disabled);
-	--filter-field-hover-bg: var(--bg-elevated-2);
-	--filter-header-height: 40px;
 	--filter-padding-x: var(--spacing-200);
 	--filter-padding-y: var(--spacing-200);
 	--filter-panel-gap: var(--spacing-200);
@@ -683,17 +655,11 @@
 	--form-choice-checked-indicator: var(--bg-inverse);
 	--form-choice-gap-x: var(--spacing-200);
 	--form-choice-gap-y: var(--spacing-100);
-	--form-control-border-width: 1px;
-	--form-control-group-gap: var(--spacing-100);
 	--form-control-height: 32px;
 	--form-control-height-sm: 28px;
-	--form-control-height-lg: 36px;
 	--form-control-padding-x: var(--spacing-100);
 	--form-control-padding-y: var(--spacing-100);
 	--form-control-radius: var(--spacing-050);
-	--form-disabled-bg: var(--bg-neutral-deep);
-	--form-disabled-border: var(--border-elevated-1);
-	--form-disabled-fg: var(--fg-muted);
 	--form-disabled-opacity: var(--opacity-disabled);
 	--form-fg: var(--fg-default);
 	--form-field-gap: var(--spacing-100);
@@ -706,8 +672,8 @@
 	--form-height: var(--form-control-height);
 	--form-helper-fg: var(--fg-muted);
 	--form-icon-size: var(--spacing-250);
-	--form-input-bg: var(--bg-elevated-3);
-	--form-input-border: var(--border-elevated-4);
+	--form-input-bg: var(--bg-accent-navy-deepest);
+	--form-input-border: var(--border-accent-navy-base);
 	--form-label: var(--fg-strong);
 	--form-layout-gap: var(--spacing-200);
 	--form-page-control-width: var(--spacing-500);
@@ -725,10 +691,8 @@
 	--gnb-width-expanded: 240px;
 	--gnb-bg: var(--bg-neutral-subtle);
 	--gnb-border: var(--border-elevated-3);
-	--gnb-expanded-width: 240px;
 	--gnb-nav-item-active-icon-bg: var(--bg-elevated-3);
 	--gnb-nav-item-border: var(--border-elevated-4);
-	--gnb-nav-item-divider: var(--border-elevated-3);
 	--gnb-nav-item-height: 36px;
 	--gnb-nav-item-hover-bg: var(--bg-ghost-strong);
 	--gnb-submenu-active-bg: var(--bg-elevated-5);
@@ -740,13 +704,13 @@
 	--gnb-tooltip-bg: var(--bg-neutral-subtle);
 	--gnb-tooltip-border: var(--border-elevated-3);
 	
-	--header-button-bg: var(--bg-ghost-subtle);
+	--header-button-bg: var(--bg-accent-navy-deeper);
 	--header-button-border: var(--border-elevated-4);
 	--header-button-fg: var(--fg-emphasis);
 	--header-context-divider: var(--border-elevated-2);
 	--header-context-fg: var(--fg-default);
 	--header-context-icon-fg: var(--fg-muted);
-	--header-search-bg: var(--bg-elevated-2);
+	--header-search-bg: var(--bg-accent-navy-deeper);
 	--header-search-border: var(--border-elevated-3);
 	--header-search-close-icon-fg: var(--fg-strong);
 	--header-search-expanded-shadow: var(--effect-shadow-elevated-2);
@@ -775,12 +739,6 @@
 	--login-link-hover-fg: var(--fg-emphasis);
 	--login-title-fg: var(--fg-emphasis);
 	
-	--model-focus-ring: var(--border-inverse);
-	--model-focus-ring-subtle: var(--fg-primary-subtle);
-	--model-gizmo-front: var(--bg-elevated-4);
-	--model-gizmo-right: var(--bg-elevated-3);
-	--model-gizmo-fg: var(--fg-muted);
-	--model-gizmo-top: var(--bg-elevated-5);
 	
 	--panel-bg: var(--bg-neutral-subtle);
 	--panel-border: var(--border-elevated-3);
@@ -789,17 +747,16 @@
 	--panel-split-layout-header-min-height: 24px;
 	--panel-split-layout-title-gap: var(--spacing-100);
 	--panel-split-layout-title-size: 18px;
-	--panel-toggle-active-bg: var(--bg-primary-base);
-	--panel-toggle-active-border: var(--border-spatial-strong);
+	--panel-toggle-active-bg: var(--bg-primary-deeper);
+	--panel-toggle-active-border: var(--border-elevated-4);
 	--panel-toggle-active-fg: var(--fg-strong);
-	--panel-toggle-active-icon-fg: var(--bg-primary-base);
-	--panel-toggle-bg: var(--bg-ghost-subtle);
+	--panel-toggle-bg: var(--bg-accent-navy-deeper);
 	--panel-toggle-border: var(--border-elevated-4);
-	--panel-toggle-desktop-fg: var(--fg-muted);
+	--panel-toggle-desktop-fg: var(--fg-strong);
 	--panel-toggle-fg: var(--fg-strong);
 	--panel-toggle-switch-active-bg: var(--bg-inverse);
 	--panel-toggle-switch-active-thumb-bg: var(--fg-primary-inverse);
-	--panel-toggle-switch-bg: var(--bg-elevated-5);
+	--panel-toggle-switch-bg: var(--bg-accent-navy-deepest);
 	--panel-toggle-switch-thumb-bg: var(--fg-strong);
 	--panel-scroll-gap: var(--spacing-100);
 
@@ -807,11 +764,6 @@
 	
 	--popover-bg: var(--bg-neutral-base);
 	--popover-border: var(--border-neutral-subtle);
-	--popover-gap: var(--spacing-200);
-	--popover-item-gap: var(--spacing-100);
-	--popover-padding-x: var(--spacing-300);
-	--popover-padding-y: var(--spacing-300);
-	--popover-radius: var(--spacing-200);
 	--popover-shadow: var(--effect-shadow-elevated-1);
 	
 	--table-responsive-header-offset: 0;
@@ -829,21 +781,10 @@
 	--splitview-gap-x: var(--spacing-300);
 	--splitview-gap-y: var(--spacing-300);
 	
-	--status-attention-bg: var(--bg-attention-strong);
-	--status-attention-border: var(--border-sunken-2);
 	--status-danger-bg: var(--bg-danger-subtle);
 	--status-danger-border: var(--border-danger-base);
-	--status-gap-x: var(--spacing-200);
-	--status-gap-y: var(--spacing-100);
-	--status-indicator-base: var(--bg-destructive-base);
-	--status-indicator-border: var(--border-inverse);
-	--status-info-solid-bg: var(--bg-info-base);
-	--status-info-solid-border: var(--border-info-base);
 	--status-info-subtle-bg: var(--bg-info-subtle);
 	--status-info-subtle-border: var(--border-info-base);
-	--status-padding-x: var(--spacing-200);
-	--status-padding-y: var(--spacing-100);
-	--status-radius: var(--spacing-050);
 	--status-success-bg: var(--bg-success-subtle);
 	--status-success-border: var(--border-success-base);
 	--status-warning-bg: var(--bg-warning-subtle);
@@ -864,9 +805,7 @@
 	--tab-active-bg: var(--bg-info-strong);
 	--tab-active-border: var(--border-elevated-3);
 	--tab-active-fg: var(--fg-emphasis);
-	--tab-content-gap: var(--spacing-200);
 	--tab-default-bg: var(--bg-elevated-2);
-	--tab-default-border: var(--border-transparent);
 	--tab-default-fg: var(--fg-default);
 	--tab-gap: var(--spacing-200);
 	--tab-height: 32px;
@@ -879,17 +818,14 @@
 	--tab-nav-pill-active-border: var(--tab-active-border);
 	--tab-nav-pill-bg: var(--tab-default-bg);
 	--tab-nav-pill-hover-bg: var(--tab-default-bg);
-	--tab-nav-pill-hover-border: var(--tab-active-border);
 	--tab-radius: var(--spacing-050);
 	--tab-error-fg: var(--fg-danger-subtle);
 	
 	--table-bg: var(--bg-elevated-1);
-	--table-empty-bg: var(--bg-ghost-subtle);
 	--table-empty-fg: var(--fg-muted);
 	--table-empty-min-height: 140px;
 	--table-font-size: var(--font-size-base);
 	--table-list-tr-height: var(--form-control-height);
-	--table-primary-thead-bg: var(--bg-info-deep);
 	--table-primary-thead-border: var(--border-elevated-4);
 	--table-row-focus: var(--focus-ring);
 	--table-row-focus-width: var(--focus-ring-width);
@@ -899,16 +835,12 @@
 	--table-row-normal-fg: var(--fg-success-subtle);
 	--table-row-warning-fg: var(--fg-warning-subtle);
 	--table-row-selected-bg: var(--bg-elevated-1);
-	--table-secondary-thead-bg: var(--bg-elevated-2);
 	--table-secondary-thead-border: var(--border-elevated-3);
 	--table-tbody-fg: var(--fg-default);
 	--table-tbody-th-bg: var(--bg-elevated-2);
 	--table-tbody-tr-border: var(--border-elevated-3);
-	--table-thead-bg: var(--bg-info-deep);
 	--table-thead-border: var(--border-elevated-4);
 	--table-thead-fg: var(--fg-strong);
-	--table-thead-height: 40px;
-	--table-thead-th-bg: var(--bg-elevated-2);
 	--table-top-border: var(--border-elevated-4);
 	--table-view-tr-height: var(--form-control-height);
 	--table-responsive-bg: var(--bg-sunken-1);
@@ -918,11 +850,7 @@
 	--toast-fg: var(--fg-emphasis);
 	
 	--winbox-bg: var(--bg-neutral-deep);
-	--winbox-border: var(--border-elevated-3);
-	--winbox-gap: var(--spacing-250);
 	--winbox-header-bg: var(--bg-elevated-2);
-	--winbox-padding-x: var(--spacing-300);
-	--winbox-padding-y: var(--spacing-300);
 	--winbox-radius: var(--spacing-200);
 	--winbox-fg: var(--fg-default);
 	
@@ -930,11 +858,9 @@
 	--ztree-border: var(--border-elevated-3);
 	--ztree-fg: var(--fg-default);
 	--ztree-fg-hover: var(--fg-strong);
-	--ztree-font-size: var(--font-size-sm);
 	--ztree-item-bg-hover: var(--bg-elevated-2);
 	--ztree-item-bg-selected: var(--bg-elevated-3);
 	--ztree-item-height: 32px;
-	--ztree-item-gap: var(--spacing-050);
 	--ztree-icon-fg: var(--fg-muted);
 	--ztree-icon-size: var(--icon-size);
 	--ztree-padding-x: var(--spacing-000);

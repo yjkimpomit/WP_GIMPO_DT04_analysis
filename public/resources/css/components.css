@@ -98,9 +98,8 @@ fieldset.form-field > legend.form-label {
 .form-control:disabled,
 .form-control:read-only,
 .form-select:disabled {
-	border-color: var(--form-disabled-border);
-	background-color: var(--form-disabled-bg);
-	color: var(--form-disabled-fg);
+	cursor: not-allowed;
+	opacity: var(--form-disabled-opacity);
 }
 
 .form-select {
@@ -305,8 +304,6 @@ textarea.form-control {
 }
 
 :where(input[type='checkbox'], input[type='radio']):disabled {
-	border-color: var(--form-disabled-border);
-	background-color: var(--form-disabled-bg);
 	cursor: not-allowed;
 	opacity: var(--form-disabled-opacity);
 }
@@ -373,8 +370,6 @@ textarea.form-control {
 
 .form-choice input[type='checkbox']:disabled,
 .form-choice input[type='radio']:disabled {
-	border-color: var(--form-disabled-border);
-	background-color: var(--form-disabled-bg);
 	cursor: not-allowed;
 	opacity: var(--form-disabled-opacity);
 }
@@ -385,6 +380,7 @@ textarea.form-control {
 }
 
 .form-control--search-result {
+	cursor: not-allowed;
 	opacity: var(--form-disabled-opacity);
 }
 

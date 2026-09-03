@@ -14,14 +14,8 @@
 	<link rel="icon" href="/favicon.ico" sizes="any">
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
-	<!-- slick & jstree -->
-	<link rel="stylesheet" href="/resources/js/slick-1.8.1/slick/slick.css">
-	<link rel="stylesheet" href="/resources/js/slick-1.8.1/slick/slick-theme.css">
-	<link rel="stylesheet" href="/resources/js/jsTree/css/style.min.css">
-
 	<!-- slick & jsTree & highchart -->
 	<script src="/resources/js/jquery/jquery-3.6.1.js"></script>
-	<script src="/resources/js/slick-1.8.1/slick/slick.min.js"></script>
 
 	<!-- toastchart -->
 	<script src="/resources/js/toastchart/toastui-chart.js"></script>
@@ -33,6 +27,9 @@
 	<!-- ztree -->
 	<link rel="stylesheet" href="/resources/js/ztree/css/metroStyle/metroStyle.css" type="text/css">
 	<script src="/resources/js/ztree/js/jquery.ztree.all.min.js"></script>
+
+    <!-- 부트스트랩 JS -->
+    <script src="/resources/js/bootstrap/bootstrap.bundle.min.js"></script>
 
 	<!-- bPopup -->
 	<script src="/resources/js/jquery/jquery.bpopup.min.js"></script>
@@ -361,17 +358,27 @@
 	</div>
 
 	<!-- toast-popup : 활성화시 toast show 적용 -->
-	<div id="_EARLY_WARNING_ALARM_POPUP" class="toast-container" hidden>
-		<div class="toast bg-info-subtle">
+	<div id="_EARLY_WARNING_ALARM_POPUP" class="toast-container">
+		<div class="toast show bg-info-subtle" role="alert" aria-live="assertive" aria-atomic="true">
 			<div class="toast-header">
 				<!-- <strong class="badge bg-danger">9호기</strong> -->
        			<strong class="me-auto">조기 경보</strong>
 				<small class="time">발생시각: 2025-12-08 00:00:00</small>
-				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="닫기"></button>
 			</div>
 			<div class="toast-body">
 				순환펌프 유량이 기준치의 60% 이하로 떨어졌습니다. 냉각계통 점검이 필요합니다.
 			</div>
+		</div>
+	</div>
+
+	<div class="toast show toast-alert bg-attention-subtle _TOAST_EARLYWARNING_ALARM" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+		<div class="d-flex">
+			<div class="toast-body" data-bs-dismiss="toast" onclick="fnOpenPopup('/earlywarning/alarmHistory.do', $(this))" data-title="조기경보" aria-label="조기경보 이력화면으로 이동">
+				<span class="icon-popup"></span>
+				<span class="text-message">조기경보 알림이 <strong id="_ALARM_COUNT">0</strong>건 있습니다.</span>
+			</div>
+			<button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="닫기"></button>
 		</div>
 	</div>
 

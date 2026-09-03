@@ -478,7 +478,7 @@ body:has(.left-box.expand) .site-header__menu-button {
 		border: 1px solid var(--panel-toggle-border);
 		border-radius: var(--radius-full);
 		color: var(--panel-toggle-desktop-fg);
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-base);
 		white-space: nowrap;
 	}
 
