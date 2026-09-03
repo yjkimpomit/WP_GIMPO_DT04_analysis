@@ -70,6 +70,7 @@ fieldset.form-field > legend.form-label {
 	color: var(--form-label);
 	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-bold);
+	flex: 0 0 auto;
 }
 
 .form-control,
@@ -147,7 +148,7 @@ textarea.form-control {
 
 .form-control-group {
 	display: flex;
-	gap: var(--spacing-100);
+	gap: var(--filter-panel-gap);
 }
 
 .form-control-group--vertical {
@@ -158,6 +159,18 @@ textarea.form-control {
 	flex: 1;
 	min-width: 0;
 	display: flex;
+}
+.form-control-group > .buttons {
+	flex: 0 0 auto;
+}
+
+.form-control-group:has(> .form-control--return) > .form-control--return {
+	flex: 0 1 auto;
+	inline-size: auto;
+}
+
+.form-control-group:has(> .form-control--return) > .form-control:not(.form-control--return) {
+	flex: 1 1 0;
 }
 
 .form-control-group--vertical > * {
@@ -1176,7 +1189,7 @@ textarea.form-control {
 }
 
 .data-table {
-	--table-bg: var(--bg-accent-navy-deepest-subtle);
+	--table-bg: var(--bg-neutral-base);
 	width: 100%;
 	border-collapse: collapse;
 	background-color: var(--table-bg);
@@ -1828,33 +1841,21 @@ aside .tabs__tab {
 }
 
 .equipment-search__type {
-	flex: 0 0 80px;
-	width: 80px;
-	height: 100%;
-	padding: 0 var(--spacing-100);
-	border: 1px solid var(--form-button-border);
-	border-radius: var(--ztree-radius);
-	background-color: var(--bg-base);
-	color: inherit;
-	font: inherit;
+	flex: 1 0 96px;
+	max-width: 96px;
 }
 
-.equipment-search__controls input {
-	flex: 1 1 auto;
-	min-width: 0;
-	padding-inline: var(--spacing-100);
-	border: 1px solid var(--form-button-border);
-	border-radius: var(--ztree-radius);
-	background-color: var(--bg-base);
+.equipment-search__input {
+	flex: 1;
 }
 
 .equipment-search__expand-button {
 	flex: 0 0 var(--form-height);
 	width: var(--form-height);
 	height: var(--form-height);
-	border: 1px solid var(--form-button-border);
+	border: 1px solid var(--button-secondary-border);
 	border-radius: var(--ztree-radius);
-	background-color: var(--bg-base);
+	background-color: var(--button-secondary-bg);
 	background-size: var(--icon-size);
 	background-position: center;
 }

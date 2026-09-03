@@ -402,11 +402,6 @@
 
 
 .calendar-box {
-	--calendar-bg: var(--panel-bg);
-	--calendar-border: var(--panel-border);
-	--calendar-today-bg: var(--bg-primary-base);
-	--calendar-active-bg: var(--bg-primary-deeper);
-	--calendar-hover-bg: var(--bg-primary-deep);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -525,6 +520,7 @@
 /* today */
 .calendar-list .cell.today {
 	position: relative;
+	color: var(--calendar-cell-today) !important;
 }
 .calendar-list .cell.today::before {
 	content: '';
@@ -534,7 +530,7 @@
 	transform: translateX(-50%);
 	width: 8px;
 	height: 8px;
-	background-color: var(--calendar-today-indicator-bg);
+	background-color: var(--calendar-bg);
 	border-radius: var(--radius-full);
 }
 .calendar-list .cell.today::after {
@@ -545,7 +541,7 @@
 	transform: translateX(-50%);
 	width: 8px;
 	height: 8px;
-	background-color: var(--calendar-today-indicator-bg);
+	background-color: var(--calendar-bg);
 	border-radius: var(--radius-full);
 }
 

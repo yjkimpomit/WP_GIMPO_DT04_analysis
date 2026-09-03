@@ -462,7 +462,7 @@
 	--winbox-shadow: 0 0 16px 0 var(--bg-neutral-subtle);
 	
 	/* chart */
-	--chart-bg: var(--bg-accent-navy-deepest-subtle);
+	--chart-bg: var(--bg-neutral-base);
 	--chart-text-muted: var(--fg-default);
 	--chart-text: var(--fg-emphasis);
 	--chart-axis: var(--border-elevated-4);
@@ -629,7 +629,7 @@
 	
 	--filter-actions-gap: var(--spacing-100);
 	--filter-bg: var(--bg-neutral-subtle);
-	--filter-border: var(--border-accent-navy-deeper);
+	--filter-border: var(--border-elevated-2);
 	--filter-button-height: 32px;
 	--filter-double-border: var(--border-elevated-2);
 	--filter-field-default-bg: var(--bg-elevated-3);
@@ -759,16 +759,19 @@
 	--panel-toggle-switch-bg: var(--bg-accent-navy-deepest);
 	--panel-toggle-switch-thumb-bg: var(--fg-strong);
 	--panel-scroll-gap: var(--spacing-100);
-
-	--calendar-today-indicator-bg: var(--fg-inverse);
+	
+	--calendar-bg: var(--bg-neutral-base);
+	--calendar-border: var(--border-elevated-1);
+	--calendar-cell-text: var(--fg-default);
+	--calendar-cell-text-weekends: var(--fg-subtle);
+	--calendar-cell-today: var(--fg-emphasis);
+	--calendar-today-bg: var(--bg-primary-base);
+	--calendar-active-bg: var(--bg-primary-deeper);
+	--calendar-hover-bg: var(--bg-primary-deep);
 	
 	--popover-bg: var(--bg-neutral-base);
 	--popover-border: var(--border-neutral-subtle);
 	--popover-shadow: var(--effect-shadow-elevated-1);
-	
-	--table-responsive-header-offset: 0;
-	--table-responsive-header-z-index: 3;
-	--table-responsive-max-height: 100%;
 	
 	/* chart */
 	--result-chart-height: 560px;
@@ -821,6 +824,11 @@
 	--tab-radius: var(--spacing-050);
 	--tab-error-fg: var(--fg-danger-subtle);
 	
+	--table-responsive-header-offset: 0;
+	--table-responsive-header-z-index: 3;
+	--table-responsive-max-height: 100%;
+	--table-responsive-bg: var(--bg-sunken-1);
+	
 	--table-bg: var(--bg-elevated-1);
 	--table-empty-fg: var(--fg-muted);
 	--table-empty-min-height: 140px;
@@ -843,7 +851,6 @@
 	--table-thead-fg: var(--fg-strong);
 	--table-top-border: var(--border-elevated-4);
 	--table-view-tr-height: var(--form-control-height);
-	--table-responsive-bg: var(--bg-sunken-1);
 	
 	--th-button-bg: var(--bg-transparent);
 	--toast-stack-z-index: 10;
@@ -865,7 +872,7 @@
 	--ztree-icon-size: var(--icon-size);
 	--ztree-padding-x: var(--spacing-000);
 	--ztree-padding-y: var(--spacing-050);
-	--ztree-radius: var(--spacing-100);
+	--ztree-radius: var(--spacing-050);
 	--ztree-item-radius: var(--radius-050);
 	
 	/* error */
