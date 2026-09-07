@@ -1,0 +1,373 @@
+/* 파노라마 패널 */
+.panorama-panel {
+	position: fixed;
+	top: calc(100% - 36px);
+	right: 0;
+	border-radius: 0;
+	inline-size: 100%;
+	block-size: 100vh;
+	block-size: 100dvh;
+	border-left: 1px solid rgb(84 116 182 / 60%);
+	border-top: 1px solid rgb(84 116 182 / 60%);
+
+	min-inline-size: 0;
+	min-block-size: 0;
+
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.panorama-panel.is-active {
+	top: 0;
+	border-top: none;
+}
+
+@media (min-width: 576px) {
+	.panorama-panel {
+		inline-size: 320px;
+		border-top: none;
+		top: 0;
+	}
+}
+
+.panorama-section {
+	min-block-size: 0;
+	background: #161c27;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.panorama-section + .panorama-section {
+	border-top: 1px solid rgb(84 116 182 / 60%);
+}
+
+.panorama-section__search {
+	flex-shrink: 0;
+	padding: 0px 8px 8px;
+	background: #242f3c;
+}
+
+.panorama-section__header {
+	flex-shrink: 0;
+	padding: 8px;
+	background: #242f3c;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-block-size: 32px;
+}
+
+.panorama-section__header > h2 {
+	margin: 0;
+	flex: 1;
+	min-inline-size: 0;
+	color: #e4e8ef;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 16px;
+	overflow-wrap: break-word;
+}
+
+.panorama-section__header > button {
+	flex: 0 0 20px;
+	inline-size: 20px;
+	block-size: 20px;
+	padding: 0;
+	border: 0;
+	border-radius: 4px;
+	background: url('../images/popup-window.svg') center / contain no-repeat;
+	cursor: pointer;
+}
+
+.panorama-section__header > button:focus-visible {
+	outline: 2px solid #8fb3ff;
+	outline-offset: 2px;
+}
+
+.panorama-search {
+	display: flex;
+	align-items: center;
+
+	inline-size: 100%;
+	block-size: 32px;
+	padding-inline: 4px;
+
+	overflow: hidden;
+
+	border: 1px solid rgb(84 116 182 / 60%);
+	border-radius: 4px;
+	background: rgb(20 21 22 / 40%);
+}
+
+.panorama-search > div {
+	display: flex;
+	align-items: center;
+	block-size: 100%;
+}
+
+.panorama-search-field {
+	flex: 1;
+	min-inline-size: 0;
+}
+
+.panorama-search-input {
+	inline-size: 100%;
+	min-inline-size: 0;
+	block-size: 100%;
+	padding: 0 4px;
+
+	border: 0;
+	outline: 0;
+	background: transparent;
+
+	color: #e4e8ef;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 16px;
+}
+
+.panorama-search-input::placeholder {
+	color: #e4e8ef;
+	opacity: 1;
+}
+
+.panorama-search-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	inline-size: 24px;
+	block-size: 24px;
+	padding: 0;
+
+	border: 0;
+	background: transparent;
+
+	cursor: pointer;
+}
+
+.panorama-search-icon {
+	display: block;
+
+	inline-size: 24px;
+	block-size: 24px;
+
+	background-image: url("../images/search.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 24px 24px;
+}
+
+.panorama-section__body {
+	flex: 1;
+	min-block-size: 0;
+	padding: 8px;
+	overflow: auto;
+}
+
+/* panorama-tree */
+.panorama-tree {
+	flex: 1;
+}
+
+.panorama-tree__row--depth-1 > .panorama-tree__item {
+	margin-inline-start: 24px;
+}
+
+.panorama-tree__row--depth-2 > .panorama-tree__item {
+	margin-inline-start: 48px;
+}
+
+.panorama-tree__row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-block-size: 32px;
+	padding: 8px;
+	border-bottom: 1px solid rgb(84 116 182 / 12%);
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 16px;
+	overflow-wrap: break-word;
+	cursor: pointer;
+}
+
+.panorama-tree__item {
+	display: flex;
+	flex: 1;
+	min-inline-size: 0;
+	align-items: center;
+	gap: 0;
+}
+
+.panorama-tree__label {
+	flex: 1;
+	min-inline-size: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #c0c8d8;
+}
+
+.panorama-tree__arrow {
+	flex: 0 0 24px;
+	inline-size: 24px;
+	block-size: 24px;
+	background: url('../images/arrow_drop_down.svg') center / contain no-repeat;
+	cursor: pointer;
+}
+
+.panorama-tree__row--collapsed > .panorama-tree__item > .panorama-tree__arrow {
+	background-image: url('../images/arrow_right.svg');
+}
+
+.panorama-tree__tag {
+	flex: 0 0 24px;
+	inline-size: 20px;
+	block-size: 20px;
+	background: url('../images/panorama-tag.svg') left center / contain no-repeat;
+	cursor: pointer;
+}
+
+.panorama-tree__row:hover .panorama-tree__tag {
+	background-image: url('../images/panorama-tag-hover.svg');
+}
+
+.panorama-tree__row:hover .panorama-tree__label {
+	color: #FFFFFF;
+}
+
+/* MAP 2D */
+.panorama-map {
+	height: auto;
+}
+.panorama-map .panorama-section__body {
+	flex: 1;
+	min-block-size: 180px;
+	aspect-ratio: 16 / 9;
+	padding: 0;
+	height: auto;
+	overflow: hidden;
+}
+
+.panorama-map__area {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: #3a4653;
+}
+
+.map-viewer-tools {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+
+    padding: 4px;
+
+    border-radius: 9999px;
+    background: rgb(20 21 22 / 40%);
+}
+
+.map-viewer-tools__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    block-size: 24px;
+    padding-inline: 4px;
+
+    border: 0;
+    border-radius: 9999px;
+    background: rgb(26 34 46 / 94%);
+
+    color: #e4e8ef;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+
+    cursor: pointer;
+}
+
+.map-viewer-tools__text {
+    padding-inline: 4px;
+    white-space: nowrap;
+}
+
+.map-viewer-tools__icon {
+    display: block;
+
+    inline-size: 24px;
+    block-size: 24px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+
+	cursor: pointer;
+}
+
+.map-viewer-tools__icon--toggle {
+    background-image: url("../images/toggle_off.svg");
+}
+
+.map-viewer-tools__icon--follow {
+    background-image: url("../images/toggle_on.svg");
+}
+
+.map-viewer-tools__icon--position {
+    inline-size: 20px;
+    block-size: 20px;
+
+    background-image: url("../images/my_location.svg");
+    background-size: 20px 20px;
+}
+
+.map-viewer-tools__zoom {
+    inline-size: 36px;
+    padding-inline: 8px;
+    gap: 0;
+}
+
+.map-viewer-tools__item--icon {
+    inline-size: 24px;
+    padding: 2px;
+}
+
+.map-viewer-tools__item:hover {
+    background: rgb(84 116 182 / 48%);
+}
+
+.map-viewer-tools__item:focus-visible {
+    outline: 2px solid #73bcf5;
+    outline-offset: 2px;
+}
+
+.map-viewer-tools__input {
+	border: none;
+	background: transparent;
+	width: 100%;
+	color: #FFF;
+}
+
+.map-viewer-tools__input::placeholder {
+	color: #e4e8ef;
+	opacity: 1;
+}
+
+
+
+
+
+/******** 샘플용 - 개발시 사용안함 ********/
+body {
+	background-color: #1E2834;
+	padding: 16px;
+}
