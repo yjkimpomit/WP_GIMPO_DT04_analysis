@@ -113,6 +113,7 @@
 	border-end-start-radius: var(--winbox-radius);
 	border-end-end-radius: var(--winbox-radius);
 	background-color: var(--winbox-bg);
+	top: 40px;
 }
 
 /* 최소화 탭 */

@@ -683,12 +683,12 @@ textarea.form-control {
 	flex-direction: column;
 	gap: var(--filter-panel-gap);
 	min-width: 0;
-	min-height: 0;
+	min-height: 92px;
 	position: relative;
 }
 
 .filter-panel__fields {
-	 flex: 1;
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 	min-height: 0;
@@ -768,7 +768,7 @@ textarea.form-control {
 	.filter-panel {
 		height: 100%;
 	}
-
+	
 	.filter-panel > .filter-panel__fields {
 		flex: 1 1 auto;
 		min-height: 0;
@@ -1881,6 +1881,25 @@ aside .tabs__tab {
 	gap: var(--spacing-100);
 }
 
-.modal {
-	display: none;
+/* 연계정보 목록 */
+.linked-data {
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+	padding-inline-end: var(--spacing-050);
+	
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-200);
+}
+
+.doc-link {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-050);
+}
+.doc-link > span:last-child {
+	font-weight: var(--font-weight-light);
+	font-size: var(--font-size-sm);
+	color: var(--fg-muted);
 }

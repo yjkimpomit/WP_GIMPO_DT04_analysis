@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.tree-explorer__tree {
+.jstree-box {
 	flex: 1 1 auto;
 	min-height: 200px;
 	overflow: auto;
@@ -9,7 +9,7 @@
 	background-color: var(--ztree-bg);
 }
 
-.tree-explorer__tree .ztree {
+.jstree-box .ztree {
 	min-width: max-content;
 	margin: 0;
 	padding: var(--ztree-padding-y) var(--ztree-padding-x);
@@ -17,17 +17,17 @@
 	list-style: none;
 }
 
-.tree-explorer__tree .ztree * {
+.jstree-box .ztree * {
 	font-size: 14px;
 }
 
-.tree-explorer__tree .ztree ul {
+.jstree-box .ztree ul {
 	margin: 0;
 	padding-inline-start: var(--ztree-icon-size);
 	list-style: none;
 }
 
-.tree-explorer__tree .ztree li {
+.jstree-box .ztree li {
 	min-height: var(--ztree-item-height);
 	margin: 0;
 	padding: 0;
@@ -35,7 +35,7 @@
 	list-style: none;
 }
 
-.tree-explorer__tree .ztree li > a {
+.jstree-box .ztree li > a {
 	display: inline-flex;
 	align-items: center;
 	min-height: var(--ztree-item-height);
@@ -45,27 +45,27 @@
 	vertical-align: top;
 }
 
-.tree-explorer__tree .ztree li > a:hover {
+.jstree-box .ztree li > a:hover {
 	background-color: var(--ztree-item-bg-hover);
 	color: var(--ztree-fg-hover);
 }
 
-.tree-explorer__tree .ztree li > a.curSelectedNode {
+.jstree-box .ztree li > a.curSelectedNode {
 	background-color: var(--ztree-item-bg-selected);
 	color: var(--ztree-fg-hover);
 }
 
-.tree-explorer__tree .ztree li > a:focus-visible {
+.jstree-box .ztree li > a:focus-visible {
 	outline: var(--focus-ring-width) solid var(--focus-ring);
 	outline-offset: var(--focus-ring-offset);
 }
 
-.tree-explorer__tree .ztree li:focus-visible {
+.jstree-box .ztree li:focus-visible {
 	outline: var(--focus-ring-width) solid var(--focus-ring);
 	outline-offset: var(--focus-ring-offset);
 }
 
-.tree-explorer__tree .ztree .button.switch {
+.jstree-box .ztree .button.switch {
 	display: inline-block;
 	width: var(--ztree-icon-size);
 	height: var(--ztree-item-height);
@@ -77,37 +77,37 @@
 	background-image: none;
 }
 
-.tree-explorer__tree .ztree .button.switch[class*="_open"] {
+.jstree-box .ztree .button.switch[class*="_open"] {
 	-webkit-mask-image: url('/resources/images/icons/keyboard_arrow_down.svg');
 	mask-image: url('/resources/images/icons/keyboard_arrow_down.svg');
 }
 
-.tree-explorer__tree .ztree .button.switch[class*="_docu"] {
+.jstree-box .ztree .button.switch[class*="_docu"] {
 	width: var(--ztree-icon-size);
 	height: var(--ztree-item-height);
 }
 
-.tree-explorer__tree .ztree .button.switch.center_docu {
+.jstree-box .ztree .button.switch.center_docu {
 	mask-image: url(/resources/images/ztree/center_docu.svg);
 }
 
-.tree-explorer__tree .ztree .button.switch.bottom_docu {
+.jstree-box .ztree .button.switch.bottom_docu {
 	mask-image: url(/resources/images/ztree/bottom_docu.svg);
 }
 
-.tree-explorer__tree .ztree .node_name,
-.tree-explorer__tree .ztree .menu-item,
-.tree-explorer__tree .ztree .fac-name {
+.jstree-box .ztree .node_name,
+.jstree-box .ztree .menu-item,
+.jstree-box .ztree .fac-name {
 	display: inline-flex;
 	align-items: center;
 	gap: 0 .5rem;
 }
 
-.tree-explorer__tree .ztree :is( .icon-description, .icon-3d, .icon-pano ) {
+.jstree-box .ztree :is( .icon-description, .icon-3d, .icon-pano ) {
 	--icon-size: 1.25rem;
 }
 
-.tree-explorer__tree .ztree li ul.line {
+.jstree-box .ztree li ul.line {
 	background-image: url('/resources/images/ztree/line-y.svg');
 	background-repeat: repeat-y;
 }

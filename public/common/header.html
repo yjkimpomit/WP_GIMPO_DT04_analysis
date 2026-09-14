@@ -1,9 +1,7 @@
 <header class="site-header">
 	<div class="site-header__primary">
-		<div class="site-header__mobile-brand"><img
-				src="/resources/images/logo.svg" alt="" aria-hidden="true"></div>
-		<button class="site-header__menu-button" type="button" aria-label="전체 메뉴 열기" aria-expanded="false"
-			aria-controls="menuList">
+		<div class="site-header__mobile-brand"><img src="/resources/images/logo.svg" alt="" aria-hidden="true"></div>
+		<button class="site-header__menu-button" type="button" aria-label="전체 메뉴 열기" aria-expanded="false" aria-controls="menuList">
 			<span aria-hidden="true"></span>
 		</button>
 		
@@ -14,9 +12,11 @@
 				<button class="site-search__close" type="button" aria-label="검색 닫기"></button>
 				<button type="submit" aria-label="검색"></button>
 			</form>
-			<button class="ai-alert" type="button" aria-label="AI 알림 12건">AI 알림 <strong>12</strong></button>
-			<button class="panel-toggle" type="button" aria-pressed="false">패널보기 <span
-					aria-hidden="true"></span></button>
+			
+            <button class="ai-alert" type="button" aria-label="AI 알림 12건"><span class="text">AI 알림</span> <strong>12</strong></button>
+            <button class="panel-toggle realtime" type="button" aria-pressed="false"><span class="text">실시간 정보</span> <span aria-hidden="true"></span></button>
+            <button class="panel-toggle model-tree" type="button" aria-pressed="false"><span class="text">모델 트리</span> <span aria-hidden="true"></span></button>
+			
 			<button class="settings-button" type="button" aria-label="관리자"></button>
 		</div>
 	</div>

@@ -458,6 +458,7 @@
 		display: flex;
 		height: 100%;
 		flex-direction: column;
+		background-color: var(--gnb-bg);
 	}
 
 	.left-box .gnb {

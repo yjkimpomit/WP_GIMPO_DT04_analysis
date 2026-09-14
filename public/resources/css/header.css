@@ -2,9 +2,11 @@
 
 .site-header {
 	position: fixed;
-	inset: 0 var(--spacing-100) auto;
+	inset: 0 0 auto;
+	padding-inline: var(--spacing-100);
 	z-index: var(--header-z-index);
 	pointer-events: none;
+	background-color: var(--gnb-bg);
 }
 
 .site-header__primary {
@@ -23,28 +25,31 @@
 }
 
 .site-header__utility-area {
+	order: 3;
 	display: flex;
 	flex: 1;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-end;
 	gap: var(--spacing-100);
 	min-width: 0;
 }
 
 .site-header__mobile-brand {
+	order: 2;
 	display: flex;
 	align-items: center;
     justify-content: center;
-	width: 56px;
+	width: 36px;
 	height: 40px;
 }
 
 .site-header__mobile-brand img {
-	width: 48px;
+	width: 36px;
 	height: auto;
 }
 
 .site-header__menu-button {
+	order: 1;
 	display: grid;
 	place-items: center;
 	width: 40px;
@@ -158,8 +163,6 @@ body:has(.left-box.expand) .site-header__menu-button {
 	--icon-source: url('/resources/images/icons/search.svg');
 	--icon-size: 24px;
 	position: relative;
-	order: 2;
-	margin-inline-start: auto;
 }
 
 .site-search input {
@@ -282,11 +285,7 @@ body:has(.left-box.expand) .site-header__menu-button {
 .ai-alert {
 	--icon-source: url('/resources/images/icons/magic_sparkle.svg');
 	--icon-size: 18px;
-	position: absolute;
-	top: auto;
-	left: 50%;
 	display: inline-flex;
-	order: 1;
 	flex: 0 0 auto;
 	align-items: center;
 	gap: var(--spacing-050);
@@ -298,7 +297,6 @@ body:has(.left-box.expand) .site-header__menu-button {
 		box-shadow: 0 0 2px 0 var(--header-attention-glow-top), 0 0 8px 0 var(--header-attention-glow-mid), 0 0 32px 0 var(--header-attention-glow-base);
 	color: white;
 	white-space: nowrap;
-	transform: translateX(-50%);
 }
 
 .ai-alert::before {
@@ -309,6 +307,12 @@ body:has(.left-box.expand) .site-header__menu-button {
 	content: '';
 }
 
+.ai-alert > .text {
+	position: absolute;
+	top: -9999em;
+	left: -9999em;
+}
+
 .ai-alert strong {
 	font-size: var(--font-size-lg);
 }
@@ -317,7 +321,6 @@ body:has(.left-box.expand) .site-header__menu-button {
 	--icon-source: url('/resources/images/icons/toggle_off.svg');
 	--icon-size: 24px;
 	position: relative;
-	order: 3;
 	display: flex;
 	flex: 0 0 40px;
 	align-items: center;
@@ -342,14 +345,14 @@ body:has(.left-box.expand) .site-header__menu-button {
 	display: none;
 }
 
-.panel-toggle span {
+.panel-toggle span[aria-hidden] {
 	width: 24px;
 	height: 14px;
 	border-radius: var(--radius-full);
 	background: var(--panel-toggle-switch-bg);
 }
 
-.panel-toggle span::after {
+.panel-toggle span[aria-hidden]::after {
 	display: block;
 	width: 8px;
 	height: 8px;
@@ -395,6 +398,7 @@ body:has(.left-box.expand) .site-header__menu-button {
 	.site-header {
 		left: var(--gnb-width-collapsed);
 		padding: var(--spacing-200) var(--spacing-200);
+		background-color: transparent;
 	}
 
 	.site-header__primary {
@@ -457,6 +461,12 @@ body:has(.left-box.expand) .site-header__menu-button {
 		position: static;
 		order: initial;
 		transform: none;
+	}
+	
+	.ai-alert > .text {
+		position: unset;
+		top: unset;
+		left: unset;
 	}
 
 	.settings-button {

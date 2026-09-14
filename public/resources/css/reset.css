@@ -11,6 +11,10 @@
 	display: none !important;
 }
 
+[onclick] {
+	cursor: pointer;
+}
+
 html,
 body,
 div,
