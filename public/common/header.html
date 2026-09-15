@@ -13,8 +13,11 @@
 		</form>
 
 		<button class="ai-alert" type="button" aria-label="AI 알림 12건"><span class="text">AI 알림</span> <strong>12</strong></button>
-		<button class="panel-toggle realtime-button" type="button" aria-pressed="false"><span class="text">실시간 정보</span> <span aria-hidden="true"></span></button>
-		<button class="panel-toggle model-tree-button" type="button" aria-pressed="false"><span class="text">모델 트리</span> <span aria-hidden="true"></span></button>
+		
+		<div role="group" aria-label="패널 표시">
+			<button class="panel-toggle realtime-button" type="button" aria-pressed="false"><span class="text">실시간 정보</span> <span aria-hidden="true"></span></button>
+			<button class="panel-toggle model-tree-button" type="button" aria-pressed="false"><span class="text">모델 트리</span> <span aria-hidden="true"></span></button>
+		</div>
 
 		<button class="settings-button" type="button" aria-label="관리자"></button>
 	</div>
