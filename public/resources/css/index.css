@@ -44,6 +44,7 @@ body {
 	height: calc(100dvh - var(--mobile-header-height));
 	z-index: 1;
 	
+	/* mobile: top 56px / left 0 */
 	background:
 			radial-gradient(
 					circle 70vmax at 50vw calc(50vh - 56px),

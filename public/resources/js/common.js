@@ -14,7 +14,7 @@ var winboxHeight;
 // winbox device control
 var WINBOX_BREAKPOINT = 768;
 var WINBOX_DESKTOP_INSET = 16;
-var WINBOX_MOBILE_INSET = 8;
+var WINBOX_MOBILE_INSET = 0;
 var WINBOX_MOBILE_TOP = 56;
 var WINBOX_HEADER_HEIGHT = 40;
 var WINBOX_MINIMIZED_GAP = 8;
@@ -121,12 +121,8 @@ window.addEventListener("resize", function () {
         fnResizeOpenedWinbox();
     }, 100);
 
-    // 윈도우 리사이징 메뉴와 운전정보 버튼 초기화
-    $('.btn-status img').attr('src', '/resources/images/icons/icon-power.svg').attr('alt', '기타정보 열기');
-    //$('#toggle-button img').attr('src', '/resources/images/icons/icon-menu.svg').attr('alt', '메뉴 열기');
-    $('.operation-status').removeClass('visible');
-
 });
+
 /* end run resize */
 
 /**
@@ -172,7 +168,7 @@ function fnOpenPopup(url, target) {
     targetWinbox = new WinBox(title, Object.assign({}, base, {
         groupId: "winMain-group"
         , header: WINBOX_HEADER_HEIGHT
-        , class: ["no-full", "app-winbox"]
+        , class: ["app-winbox"]
         , url: url, onCreate: function (options) {
             options.autoResize = true;
         },
@@ -282,7 +278,7 @@ function fnOpenPopupStandard(url, title) {
         groupId: "winMain-group"
         , header: WINBOX_HEADER_HEIGHT
         , root: topWindow.document.body
-        , class: ["no-full", "app-winbox"]
+        , class: ["app-winbox"]
         , url: url, onCreate: function (options) {
             options.autoResize = true;
         },
@@ -483,23 +479,6 @@ function bringToFront($target) {
     $target.css('z-index', getMaxZIndex() + 1);
 }
 
-$(document).ready(function () {
-    // 사이드 패널 열고닫기
-    $('.js-panel-toggle').click(function () {
-
-        var $btn = $(this);
-        var $panel = $btn.closest('.panel-box').find('.side-panel');
-
-        $panel.toggleClass('is-open');
-
-        if ($panel.hasClass('is-open')) {
-            $btn.find('span').text('좌측패널 닫기');
-        } else {
-            $btn.find('span').text('좌측패널 열기');
-        }
-    });
-});
-
 //날짜 한달 전으로 세팅하는 공통 함수
 function setDateS() {
     //날짜 현재날짜 기준 한 달 전 세팅
@@ -659,41 +638,82 @@ function fnfacilityDetailPageMove(f) {
     }
 }
 
+// WinBox는 modal일 때 기본적으로 이동 및 리사이즈 pointer event를 차단하여 차단을 해제
+function fnEnableModalInteraction() {
+    var dragHandle = this.window.querySelector(".wb-drag");
+    var resizeHandles = this.window.querySelectorAll(".wb-body ~ div");
+
+    if (dragHandle) {
+        dragHandle.style.pointerEvents = "auto";
+    }
+
+    for (var i = 0; i < resizeHandles.length; i++) {
+        resizeHandles[i].style.pointerEvents = "auto";
+    }
+}
+
 // 검색박스내 설비종류 검색팝업
 function searchFacilityTypeTreePopup(target) {
-    $("#searchFacilityTypeTreePopup").bPopup({
-        modalClose: false, opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
-            $("#searchFacilityTypeTreePopup").addClass('show');
-        }, onClose: function () {
-            $("#searchFacilityTypeTreePopup").removeClass('show');
+    var box = new WinBox("설비종류 검색", {
+        url: "/common/modalSearchTreeFacilityType.do",
+        width: Math.min(700, window.innerWidth - 20) + "px",
+        height: Math.min(720, window.innerHeight - 20) + "px",
+        x: "center",
+        y: "center",
+        modal: true,
+        oncreate: fnEnableModalInteraction,
+        focus: true,
+        class: ["app-winbox", "app-winbox--detail"],
+        position: "center",
+        onresize: function (w, y) {
+            if (this.min) return;
+            this.move("center", "center");
+        },
+        onclose: function () {
         }
     });
 }
 
 // 검색박스내 설비기능위치 검색팝업
 function searchFacilityLocTreePopup(target) {
-    $("#searchFacilityLocTreePopup").bPopup({
-        modalClose: false, opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
-            $("#searchFacilityLocTreePopup").addClass('show');
-        }, onClose: function () {
-            $("#searchFacilityLocTreePopup").removeClass('show');
+    var box = new WinBox("기능위치번호 검색", {
+        url: "/common/modalSearchTreeFacilityLocation.do",
+        width: Math.min(700, window.innerWidth - 20) + "px",
+        height: Math.min(720, window.innerHeight - 20) + "px",
+        x: "center",
+        y: "center",
+        modal: true,
+        oncreate: fnEnableModalInteraction,
+        focus: true,
+        class: ["app-winbox", "app-winbox--detail"],
+        position: "center",
+        onresize: function (w, y) {
+            if (this.min) return;
+            this.move("center", "center");
+        },
+        onclose: function () {
         }
     });
 }
 
 // 검색박스내 감독부서 검색팝업
-function searchReqTreePopup(target) {
-    $("#searchReqTreePopup").bPopup({
-        modalClose: false, opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
-            // #searchTreePopup에 클래스 추가
-            $("#searchReqTreePopup").addClass('show');
-        }, onClose: function () {
-            var tree = $.fn.zTree.getZTreeObj('reqTree1');
-            if (tree) {
-                tree.expandAll(false);
-                tree.cancelSelectedNode();
-            }
-            $("#searchReqTreePopup").removeClass('show');
+function searchReqTreePopup(title) {
+    var box = new WinBox("감독부서 선택", {
+        url: "/common/modalSearchTreeOversightDept.do",
+        width: Math.min(700, window.innerWidth - 20) + "px",
+        height: Math.min(720, window.innerHeight - 20) + "px",
+        x: "center",
+        y: "center",
+        modal: true,
+        oncreate: fnEnableModalInteraction,
+        focus: true,
+        class: ["app-winbox", "app-winbox--detail"],
+        position: "center",
+        onresize: function (w, y) {
+            if (this.min) return;
+            this.move("center", "center");
+        },
+        onclose: function () {
         }
     });
 }
@@ -708,54 +728,81 @@ function searchdesignDeptTreePopup(target) {
     // 모달 제목 설정
     $("#searchdesignDeptTreeTitle").text(title);
 
-    $("#searchdesignDeptTreePopup").bPopup({
-        modalClose: false, //zIndex: 1200,
-        opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
-            // #searchTreePopup에 클래스 추가
-            $("#searchdesignDeptTreePopup").addClass('show');
-        }, onClose: function () {
-            var tree = $.fn.zTree.getZTreeObj('designDeptTree1');
-            if (tree) {
-                tree.expandAll(false);
-                tree.cancelSelectedNode();
-            }
-            $("#searchdesignDeptTreePopup").removeClass('show');
+    /* $("#searchdesignDeptTreePopup").bPopup({
+         modalClose: false, //zIndex: 1200,
+         opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
+             // #searchTreePopup에 클래스 추가
+             $("#searchdesignDeptTreePopup").addClass('show');
+         }, onClose: function () {
+             var tree = $.fn.zTree.getZTreeObj('designDeptTree1');
+             if (tree) {
+                 tree.expandAll(false);
+                 tree.cancelSelectedNode();
+             }
+             $("#searchdesignDeptTreePopup").removeClass('show');
+         }
+     });*/
+
+    var box = new WinBox("설계부서 선택", {
+        url: "/common/modalSearchTreeDesignDept.do",
+        width: Math.min(700, window.innerWidth - 20) + "px",
+        height: Math.min(720, window.innerHeight - 20) + "px",
+        x: "center",
+        y: "center",
+        modal: true,
+        oncreate: fnEnableModalInteraction,
+        focus: true,
+        class: ["app-winbox", "app-winbox--detail"],
+        position: "center",
+        onresize: function (w, y) {
+            if (this.min) return;
+            this.move("center", "center");
+        },
+        onclose: function () {
         }
     });
 }
 
 // 검색박스내 요청부서 검색팝업
 function searchReqDeptTreePopup(target) {
-
-    $("#searchReqDeptTreePopup").bPopup({
-        modalClose: false, opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
-            // #searchTreePopup에 클래스 추가
-            $("#searchReqDeptTreePopup").addClass('show');
-        }, onClose: function () {
-            var tree = $.fn.zTree.getZTreeObj('reqDeptTree1');
-            if (tree) {
-                tree.expandAll(false);
-                tree.cancelSelectedNode();
-            }
-            $("#searchReqDeptTreePopup").removeClass('show');
+    var box = new WinBox("요청부서 선택", {
+        url: "/common/modalSearchTreeRequestDept.do",
+        width: Math.min(700, window.innerWidth - 20) + "px",
+        height: Math.min(720, window.innerHeight - 20) + "px",
+        x: "center",
+        y: "center",
+        modal: true,
+        oncreate: fnEnableModalInteraction,
+        focus: true,
+        class: ["app-winbox", "app-winbox--detail"],
+        position: "center",
+        onresize: function (w, y) {
+            if (this.min) return;
+            this.move("center", "center");
+        },
+        onclose: function () {
         }
     });
 }
 
 // 검색박스내 운전부서 검색팝업
 function searchopDeptTreePopup(target) {
-    $("#searchopDeptTreePopup").bPopup({
-        modalClose: false, //zIndex: 1200,
-        opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
-            // #searchTreePopup에 클래스 추가
-            $("#searchopDeptTreePopup").addClass('show');
-        }, onClose: function () {
-            var tree = $.fn.zTree.getZTreeObj('opDeptTree1');
-            if (tree) {
-                tree.expandAll(false);
-                tree.cancelSelectedNode();
-            }
-            $("#searchopDeptTreePopup").removeClass('show');
+    var box = new WinBox("운전부서 선택", {
+        url: "/common/modalSearchTreeOperationsDept.do",
+        width: Math.min(700, window.innerWidth - 20) + "px",
+        height: Math.min(720, window.innerHeight - 20) + "px",
+        x: "center",
+        y: "center",
+        modal: true,
+        oncreate: fnEnableModalInteraction,
+        focus: true,
+        class: ["app-winbox", "app-winbox--detail"],
+        position: "center",
+        onresize: function (w, y) {
+            if (this.min) return;
+            this.move("center", "center");
+        },
+        onclose: function () {
         }
     });
 }
@@ -770,19 +817,22 @@ function searchmainDeptTreePopup(target) {
     // 모달 제목 설정
     $("#searchmainDeptTreeTitle").text(title);
 
-    $("#searchmainDeptTreePopup").bPopup({
-        modalClose: false, //zIndex: 1200,
-        opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
-            // #searchTreePopup에 클래스 추가
-            $("#searchmainDeptTreePopup").addClass('show');
-        }, onClose: function () {
-            // 모달이 닫힐 때 초기화 작업 수행
-            var tree = $.fn.zTree.getZTreeObj('mainDeptTree1');
-            if (tree) {
-                tree.expandAll(false);
-                tree.cancelSelectedNode();
-            }
-            $("#searchmainDeptTreePopup").removeClass('show');
+    var box = new WinBox("정비부서 선택", {
+        url: "/common/modalSearchTreeMaintenanceDept.do",
+        width: Math.min(700, window.innerWidth - 20) + "px",
+        height: Math.min(720, window.innerHeight - 20) + "px",
+        x: "center",
+        y: "center",
+        modal: true,
+        oncreate: fnEnableModalInteraction,
+        focus: true,
+        class: ["app-winbox", "app-winbox--detail"],
+        position: "center",
+        onresize: function (w, y) {
+            if (this.min) return;
+            this.move("center", "center");
+        },
+        onclose: function () {
         }
     });
 }
@@ -790,74 +840,89 @@ function searchmainDeptTreePopup(target) {
 // 검색박스내 사용자검색 팝업
 function searchItemPopup(target) {
     // 모달이 닫힐 때 초기화 작업 수행
-    $("#searchItemPopup #searchItemTitle").empty();
-    var title = target.siblings('label').text();
+    var title = target.prev('label').text().trim();
+    var chkTitleTree = "";
 
-    if (title == "요청자 검색") {
-        $("#chkTitleTree").val("1");
-    } else if (title == "감독자 검색") {
-        $("#chkTitleTree").val("2");
-    } else if (title == "점검자 검색") {
-        $("#chkTitleTree").val("3");
-    } else if (title == "발행자 검색") {
-        $("#chkTitleTree").val("4");
-    } else if (title == "회수자 검색") {
-        $("#chkTitleTree").val("5");
-    } else if (title == "설계자 검색") {
-        $("#chkTitleTree").val("6");
+    console.log("### searchItemPopup : " + title);
+
+    if (title === "요청자 검색") {
+        chkTitleTree = "1";
+    } else if (title === "감독자 검색") {
+        chkTitleTree = "2";
+    } else if (title === "점검자 검색") {
+        chkTitleTree = "3";
+    } else if (title === "발행자 검색") {
+        chkTitleTree = "4";
+    } else if (title === "회수자 검색") {
+        chkTitleTree = "5";
+    } else if (title === "설계자 검색") {
+        chkTitleTree = "6";
     }
 
-    // 모달 제목 설정
-    $("#searchItemTitle").text(title);
-    $("#searchItemPopup").bPopup({
-        modalClose: false, opacity: 0.2, speed: 0, closeClass: "close", onOpen: function () {
-            // #searchItemPopup에 클래스 추가
-            $("#searchItemPopup").addClass('show');
+    var url = "/common/modalSearchTreeUser.do?chkTitleTree=" + chkTitleTree;
 
-        }, onClose: function () {
-            // 모달이 닫힐 때 초기화 작업 수행
-            $("#userDetailList").html('');
-            $("#searchItemPopup").removeClass('show');
-            var tree = $.fn.zTree.getZTreeObj('divisionTree2');
-            if (tree) {
-                tree.cancelSelectedNode();
-                tree.expandAll(false);
-            }
-            $('#id_code1').prop('checked', false);
+    var box = new WinBox(title, {
+        url: url,
+        width: Math.min(700, window.innerWidth - 20) + "px",
+        height: Math.min(720, window.innerHeight - 20) + "px",
+        x: "center",
+        y: "center",
+        modal: true,
+        oncreate: fnEnableModalInteraction,
+        focus: true,
+        class: ["app-winbox", "app-winbox--detail"],
+        position: "center",
+        onresize: function (w, y) {
+            if (this.min) return;
+            this.move("center", "center");
+        },
+        onclose: function () {
         }
     });
 }
 
+// 사원 리스트
 function userDetailList(id) {
-    var chkVal = "";
+    var chkVal = "Y";
     var checkbox = document.getElementById('id_code1');
     if (checkbox.checked) {
         chkVal = "N"
-    } else {
-        chkVal = "Y"
     }
+
     var deptNo = id;
     $("#loadingBar").css("display", "");
     $.ajax({
-        type: "post", url: "/common/userList.do", data: {deptNo: deptNo, isJoin: chkVal}, dataType: "html", success: function (data) {
+        type: "post"
+        , url: "/common/userList.do"
+        , data: {deptNo: deptNo, isJoin: chkVal}
+        , dataType: "html", success: function (data) {
             $("#userDetailList").html(data);
-            $("#loadingBar").css("display", "none");
         }, error: function (request, status, error) {
             console.log("code:" + request.status + "\n error:" + error);
+        }, complete: function () {
+            $("#loadingBar").css("display", "none");
         }
     });
 }
 
-// 검색박스내 설비마스터 팝업
+// 검색박스내 설비검색 팝업
 function searchFacilityPopup(target) {
-    $("#searchFacilityPopup").bPopup({
-        modalClose: false, //zIndex: 1100,
-        opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
-            // #searchFacilityPopup에 클래스 추가
-            $("#searchFacilityPopup").addClass('show');
-
-        }, onClose: function () {
-            $("#searchFacilityPopup").removeClass('show');
+    var box = new WinBox("설비검색", {
+        url: "/common/modalSearchTreeFacility.do",
+        width: Math.min(1400, window.innerWidth - 20) + "px",
+        height: Math.min(720, window.innerHeight - 20) + "px",
+        x: "center",
+        y: "center",
+        modal: true,
+        oncreate: fnEnableModalInteraction,
+        focus: true,
+        class: ["app-winbox", "app-winbox--detail"],
+        position: "center",
+        onresize: function (w, y) {
+            if (this.min) return;
+            this.move("center", "center");
+        },
+        onclose: function () {
         }
     });
 }
@@ -875,15 +940,22 @@ function searchResultPopup(target) {
         }, complete: function () {
             $("#codeDetailList").html(setData);
 
-            $('#searchResultPopup').bPopup({
-                modalClose: false, position: [0, 0], opacity: 0.2, speed: 450, //zIndex: 1200,
-                closeClass: "close", onOpen: function () {
-                    $(this).addClass('show');
-                    $("#loadingBar").css("display", "none");
-                }, onClose: function () {
-                    $(this).removeClass('show');
-                    $('#inspectorTypeCode').val('');
-                    $('#inspectorTypeDesc').val('');
+            var box = new WinBox("점검종류", {
+                url: "/common/modalSearchTreeInspectionType.do",
+                width: Math.min(1400, window.innerWidth - 20) + "px",
+                height: Math.min(720, window.innerHeight - 20) + "px",
+                x: "center",
+                y: "center",
+                modal: true,
+                oncreate: fnEnableModalInteraction,
+                focus: true,
+                class: ["app-winbox", "app-winbox--detail"],
+                position: "center",
+                onresize: function (w, y) {
+                    if (this.min) return;
+                    this.move("center", "center");
+                },
+                onclose: function () {
                 }
             });
         }, error: function (request, status, error) {
@@ -930,11 +1002,11 @@ function fnOpenModal(url, title, x, y, width, height) {
     title = "Modal Window";
     x = "center";
     y = "center";
-    width = "50%";
-    height = "50%";
+    width = "80%";
+    height = "64%";
 
     new WinBox(title, {
-        modal: true, header: WINBOX_HEADER_HEIGHT, x: x, y: y, width: width, height: height, url: url
+        modal: true, oncreate: fnEnableModalInteraction, header: WINBOX_HEADER_HEIGHT, x: x, y: y, width: width, height: height, url: url
     });
 }
 
@@ -948,15 +1020,6 @@ function closeOtherPopups() {
             $(this).remove();
         }
     });
-}
-
-/* cctv nvl download file */
-function downloadCctvView() {
-    window.location.href = "/cctv/setupFilwDownload.do";
-
-    if ($('#cctvInstall.show').length > 0) {
-        $('#cctvInstall.show').find('.close').trigger('click');
-    }
 }
 
 /* root의 winbox 창 최소화 */
@@ -993,7 +1056,7 @@ $(document).ready(function () {
 });
 
 // 헤더 > 발전소 선택
-function initPlantSelect() {
+/*function initPlantSelect() {
     const $plantGroup = $('.plant-group');
     const $selectBtn = $('.select-plant .icon-arrow');
 
@@ -1009,7 +1072,7 @@ function initPlantSelect() {
         const plantName = $(this).text().trim();
         const plantCode = $(this).attr("data-code");
 
-        /* 이동 */
+        /!* 이동 *!/
         const $form = $('<form>', {method: 'POST', action: '/index.do'})
             .append($('<input>', {type: 'hidden', name: 'eqOrgNo', value: plantCode}));
 
@@ -1022,7 +1085,7 @@ function initPlantSelect() {
             $plantGroup.removeClass('active');
         }
     });
-}
+}*/
 
 /* 3D Model/운전정보 데이터 연계 박스 start */
 let operationInfoInterval = null;
@@ -1069,9 +1132,9 @@ function fnOpDataBoxToggle(targetId) {
 /* 3D Model/운전정보 데이터 연계 박스 End */
 
 // 페이지 로드 후 실행
-$(document).ready(function () {
+/*$(document).ready(function () {
     initPlantSelect();
-});
+});*/
 
 // ESC로 모달 닫히는거 방지
 document.addEventListener('keydown', function (e) {
@@ -1152,7 +1215,7 @@ function fnSetWinboxTop(target, isOpen, isFlag) {
         $element.css(layoutCss);
 
         if (instance) {
-            if(instance.resize && isFullLayout) {
+            if (instance.resize && isFullLayout) {
                 instance.resize(width, height, true);
             }
 
@@ -1184,6 +1247,12 @@ function fnAndroidShowUnity() {
 }
 
 /* 외부라이브러리 오버라이드용 스타일 헤더에 추가로드시 사용 */
+
+/*
+<script>
+    loadCss("${pageContext.request.contextPath}/resources/js/svgviewer/css/svg-wrapper.css");
+</script>
+* */
 function loadCss(url) {
     if (!document.querySelector(`link[href="${url}"]`)) {
         const link = document.createElement("link");
@@ -1191,19 +1260,6 @@ function loadCss(url) {
         link.href = url;
         document.head.appendChild(link);
     }
-}
-
-/* 테이블 내에 해당클래스(auto-size) 적용시 value 값에 따라 자동 너비 조정 */
-document.querySelectorAll(".form-control.auto-size").forEach(input => {
-    resizeInput(input);
-
-    input.addEventListener("input", () => {
-        resizeInput(input);
-    });
-});
-
-function resizeInput(input) {
-    input.size = Math.max(input.value.length + 1, 1);
 }
 
 /* view test model */
@@ -1233,4 +1289,45 @@ function fnAppMainWinboxOpen(url, t) {
     fnCloseAllWinbox();
 
     fnOpenPopup(url, t);
+}
+
+/**
+ * 메세지 팝업 처리
+ * @type {string}
+ */
+var title = "";
+var content = "";
+
+function fnAlert() {
+    $.alert({
+        title: title,
+        content: content,
+        type: 'red',
+        buttons: {
+            '확인': {
+                btnClass: 'btn-red',
+                action: function () {
+                }
+            }
+        }
+    });
+}
+
+/**
+ * 확인 팝업 처리
+ */
+function fnAlertConfirm() {
+    $.alert({
+        title: title,
+        content: content,
+        type: 'red',
+        buttons: {
+            '확인': {
+                btnClass: 'btn-red',
+                action: function () {
+                    window.parent.$(".winbox.app-winbox.app-winbox--detail.focus").find(".wb-close").trigger("click");
+                }
+            }
+        }
+    });
 }

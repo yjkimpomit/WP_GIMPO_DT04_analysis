@@ -5,7 +5,6 @@
 }
 
 .winbox.app-winbox {
-	border-radius: var(--winbox-radius);
 	border: 1px solid var(--winbox-header-border);
 	background: var(--winbox-bg);
 }
@@ -53,8 +52,6 @@
 	height: var(--winbox-header-height);
 	padding-inline: var(--winbox-header-padding-x);
 	overflow: hidden;
-	border-start-start-radius: var(--winbox-radius);
-	border-start-end-radius: var(--winbox-radius);
 	border-bottom: 1px solid var(--winbox-header-border);
 	background-color: var(--winbox-header-bg);
 	color: var(--winbox-header-fg);
@@ -110,10 +107,22 @@
 
 .app-winbox .wb-body {
 	overflow: hidden;
-	border-end-start-radius: var(--winbox-radius);
-	border-end-end-radius: var(--winbox-radius);
 	background-color: var(--winbox-bg);
 	top: 40px;
+}
+
+@media(min-width: 768px) {
+	.winbox.app-winbox {
+		border-radius: var(--winbox-radius);
+	}
+	.app-winbox .wb-header {
+		border-start-start-radius: var(--winbox-radius);
+		border-start-end-radius: var(--winbox-radius);
+	}
+	.app-winbox .wb-body {
+		border-end-start-radius: var(--winbox-radius);
+		border-end-end-radius: var(--winbox-radius);
+	}
 }
 
 /* 최소화 탭 */
