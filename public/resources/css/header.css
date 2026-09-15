@@ -3,18 +3,18 @@
 .site-header {
 	position: fixed;
 	inset: 0 0 auto;
-	padding-inline: var(--spacing-100);
 	z-index: var(--header-z-index);
 	pointer-events: none;
-	background-color: var(--gnb-bg);
-}
-
-.site-header__primary {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+	justify-content: flex-end;
 	gap: var(--spacing-050);
+	padding-inline: var(--spacing-200);
 	min-height: var(--mobile-header-height);
+}
+
+.site-header > * {
 	pointer-events: auto;
 }
 
@@ -318,7 +318,6 @@ body:has(.left-box.expand) .site-header__menu-button {
 }
 
 .panel-toggle {
-	--icon-source: url('/resources/images/icons/toggle_off.svg');
 	--icon-size: 24px;
 	position: relative;
 	display: flex;
@@ -341,11 +340,27 @@ body:has(.left-box.expand) .site-header__menu-button {
 	color: var(--panel-toggle-active-fg);
 }
 
+.panel-toggle.realtime-button {
+	--icon-source: url('/resources/images/icons/operation.svg');
+}
+
+.panel-toggle.model-tree-button {
+	--icon-source: url('/resources/images/icons/account_tree.svg');
+}
+
 .panel-toggle::before {
-	display: none;
+	display: block;
+	flex: 0 0 var(--icon-size);
+	width: var(--icon-size);
+	height: var(--icon-size);
+	background-color: currentColor;
+	-webkit-mask: var(--icon-source) no-repeat center / contain;
+	mask: var(--icon-source) no-repeat center / contain;
+	content: '';
 }
 
 .panel-toggle span[aria-hidden] {
+	display: none;
 	width: 24px;
 	height: 14px;
 	border-radius: var(--radius-full);
@@ -362,11 +377,11 @@ body:has(.left-box.expand) .site-header__menu-button {
 	content: '';
 }
 
-.panel-toggle[aria-pressed='true'] span {
+.panel-toggle[aria-pressed='true'] span[aria-hidden] {
 	background: var(--panel-toggle-switch-active-bg);
 }
 
-.panel-toggle[aria-pressed='true'] span::after {
+.panel-toggle[aria-pressed='true'] span[aria-hidden]::after {
 	background: var(--panel-toggle-switch-active-thumb-bg);
 	transform: translateX(10px);
 }
@@ -397,14 +412,9 @@ body:has(.left-box.expand) .site-header__menu-button {
 @media (min-width: 768px) {
 	.site-header {
 		left: var(--gnb-width-collapsed);
-		padding: var(--spacing-200) var(--spacing-200);
-		background-color: transparent;
-	}
-
-	.site-header__primary {
 		flex-wrap: nowrap;
 		gap: var(--spacing-300);
-		min-height: inherit;
+		min-height: var(--header-height);
 	}
 
 	.site-header__mobile-brand,
@@ -470,6 +480,14 @@ body:has(.left-box.expand) .site-header__menu-button {
 	}
 
 	.settings-button {
+		display: block;
+	}
+
+	.panel-toggle::before {
+		display: none;
+	}
+
+	.panel-toggle span[aria-hidden] {
 		display: block;
 	}
 

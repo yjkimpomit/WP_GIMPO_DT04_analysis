@@ -46,7 +46,8 @@
 	<script src="/resources/js/common.js" defer></script>
 	<script src="/resources/js/index/menu.js?v=20260813-3" defer></script>
 	<script src="/resources/js/index/header-search.js" defer></script>
-	<script src="/resources/js/index/realtime-panel.js" defer></script>
+	<script src="/resources/js/index/header-realtime-panel.js" defer></script>
+	<script src="/resources/js/index/header-model-tree.js" defer></script>
 
 	<!-- 변수 선언 -->
 	<script>
@@ -195,7 +196,10 @@
 	<!-- 유니티 시작 - Data 폴더 Path-->
 	<!-- 
 	<input id="dataPath" type="hidden" value="unity3DViewer"> -->
-	<div id="model-viewer" class="model-viewer"></div>
+	<div id="model-viewer" class="model-viewer">
+		<div id="model-tree-panel" class="model-tree" hidden style="position: absolute; top: auto; right: 16px; width: 320px; height: 240px; background-color: rgba(255, 0, 125, 0.6);">Toggle Tester</div>
+		<div style="width:360px; height: 320px; background-color: rgba(255, 0, 125, 0.6); margin: 48px auto;">model-viewer tester</div>
+	</div>
 	<!--
 	<script src="/resources/js/unity/unity3DViewer.js"></script>
 	<script src="/resources/js/unity/unityUtil.js"></script>
