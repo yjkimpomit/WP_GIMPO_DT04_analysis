@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .winbox.app-winbox * {
-	font-family: var(--font-family-base);
+	font-family: var(--font-family-base), sans-serif;
 }
 
 .winbox.app-winbox {

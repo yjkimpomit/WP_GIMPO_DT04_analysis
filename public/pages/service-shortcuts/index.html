@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#161c27">
+  <title>서비스 바로가기</title>
+  <link rel="stylesheet" href="/resources/css/winbox-content.css">
+  <link rel="stylesheet" href="/resources/css/app-main.css">
+</head>
+<body>
+  <main class="winbox-layout page-content service-hub" aria-labelledby="service-hub-title">
+    <div class="page-content__placeholder">
+    <h1 id="service-hub-title" class="visually-hidden">서비스 바로가기</h1>
+
+    <section class="service-hub__section" aria-labelledby="service-hub-core">
+      <div class="service-hub__section-heading">
+        <h2 id="service-hub-core">설비·도면 정보</h2>
+        <span aria-hidden="true">01 / 03</span>
+      </div>
+      <div class="service-hub__grid">
+        <button type="button" class="service-hub__card" data-title="설비검색" onclick="window.parent.fnOpenPopupFacilityMenu('/pages/equipment/equipment-search.html', window.parent.$(this))">
+          <span class="service-hub__index" aria-hidden="true">01</span>
+          <span class="service-hub__card-content"><strong>설비검색</strong><span>설비명 또는 설비번호로 필요한 설비를 빠르게 찾습니다.</span></span>
+          <span class="service-hub__arrow" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="service-hub__card" data-title="P&amp;ID" onclick="window.parent.fnOpenPopup('/pages/pid/pid.html?tabIdx=3', window.parent.$(this))">
+          <span class="service-hub__index" aria-hidden="true">02</span>
+          <span class="service-hub__card-content"><strong>P&amp;ID</strong><span>배관·계장 도면에서 설비 연결 관계를 확인합니다.</span></span>
+          <span class="service-hub__arrow" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="service-hub__card" data-title="DataPARC" onclick="window.parent.fnOpenPopup('/pages/dataparc/dataparc.html?tabIdx=4', window.parent.$(this))">
+          <span class="service-hub__index" aria-hidden="true">03</span>
+          <span class="service-hub__card-content"><strong>DataPARC</strong><span>설비 운전 데이터를 조회하고 변화 추이를 확인합니다.</span></span>
+          <span class="service-hub__arrow" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="service-hub__section" aria-labelledby="service-hub-diagnosis">
+      <div class="service-hub__section-heading">
+        <h2 id="service-hub-diagnosis">설비진단</h2>
+        <span aria-hidden="true">02 / 03</span>
+      </div>
+      <div class="service-hub__grid">
+        <a href="#" class="service-hub__card" data-title="두케어" onclick="return false;">
+          <span class="service-hub__index" aria-hidden="true">04</span>
+          <span class="service-hub__card-content"><strong>두케어</strong><span>두케어에서 설비 진단 정보와 상태를 확인합니다.</span></span>
+          <span class="service-hub__arrow" aria-hidden="true"></span>
+        </a>
+        <a href="#" class="service-hub__card" data-title="표준복합" onclick="return false;">
+          <span class="service-hub__index" aria-hidden="true">05</span>
+          <span class="service-hub__card-content"><strong>표준복합</strong><span>표준복합에서 설비 진단 자료를 확인합니다.</span></span>
+          <span class="service-hub__arrow" aria-hidden="true"></span>
+        </a>
+        <a href="#" class="service-hub__card" data-title="가상시뮬레이션" onclick="return false;">
+          <span class="service-hub__index" aria-hidden="true">06</span>
+          <span class="service-hub__card-content"><strong>가상시뮬레이션</strong><span>가상 환경에서 설비 운전 시나리오를 살펴봅니다.</span></span>
+          <span class="service-hub__arrow" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="service-hub__section" aria-labelledby="service-hub-more">
+      <div class="service-hub__section-heading">
+        <h2 id="service-hub-more">현장·운영 서비스</h2>
+        <span aria-hidden="true">03 / 03</span>
+      </div>
+      <div class="service-hub__grid">
+        <button type="button" class="service-hub__card" data-title="일일안전현황" onclick="window.parent.fnOpenPopup('/pages/daily-status/daily-status.html?tabIdx=0', window.parent.$(this))">
+          <span class="service-hub__index" aria-hidden="true">07</span>
+          <span class="service-hub__card-content"><strong>일일안전현황</strong><span>일자별 안전작업 현황과 주요 작업 내용을 확인합니다.</span></span>
+          <span class="service-hub__arrow" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="service-hub__card" data-title="파노라마" onclick="window.parent.fnOpenPopup('/pages/panorama/panorama.html', window.parent.$(this))">
+          <span class="service-hub__index" aria-hidden="true">08</span>
+          <span class="service-hub__card-content"><strong>파노라마</strong><span>현장 파노라마 화면을 통해 설비 위치와 주변 환경을 확인합니다.</span></span>
+          <span class="service-hub__arrow" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="service-hub__card" data-title="위치/건강 모니터링" onclick="window.parent.fnOpenPopup('/pages/health-monitoring/location-health-monitoring.html', window.parent.$(this))">
+          <span class="service-hub__index" aria-hidden="true">09</span>
+          <span class="service-hub__card-content"><strong>위치/건강 모니터링</strong><span>현장 인력의 위치와 건강 상태를 확인합니다.</span></span>
+          <span class="service-hub__arrow" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="service-hub__card" data-title="AR 현장점검" onclick="window.parent.fnOpenPopup('/pages/ar-site-inspection/ar-site-inspection.html', window.parent.$(this))">
+          <span class="service-hub__index" aria-hidden="true">10</span>
+          <span class="service-hub__card-content"><strong>AR 현장점검</strong><span>증강현실 화면으로 현장 설비를 확인하고 점검 정보를 살펴봅니다.</span></span>
+          <span class="service-hub__arrow" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+    </div>
+  </main>
+</body>
+</html>
+

@@ -1,17 +1,9 @@
 @charset "utf-8";
 
-/* 
- * 포미트 - 서부 iPOS 공통 스타일시트
- * 작성자 : 김윤지
- * 작성일 : 2024.11.20
- * 임포트 파일 : 리셋, 부트스트랩, 폰트
- * 
- */
-
-@import url(/resources/fonts/NotoSansKR/NotoSansKR.css);
-@import url(/resources/css/variables.css);
-@import url(/resources/css/reset.css);
-@import url(/resources/css/components.css);
+@import url('/resources/css/variables.css');
+@import url('/resources/css/reset.css');
+@import url('/resources/css/icons.css');
+@import url('/resources/css/components.css');
 
 :root {
 	--text-shadow: var(--effect-shadow-elevated-2);

@@ -676,7 +676,7 @@
 	--form-placeholder-fg: var(--fg-strong);
 	--form-required-fg: var(--fg-emphasis);
 	--form-select-option-bg: var(--bg-neutral-deep);
-	--form-select-control-padding-x: var(--spacing-100);
+	--form-select-control-padding-x: var(--spacing-400);
 	--form-select-icon-inset: var(--spacing-050);
 	--form-select-icon-size: var(--spacing-250);
 	--form-textarea-min-height: 120px;
@@ -685,7 +685,7 @@
 	--gnb-z-index: 10;
 	--gnb-width-collapsed: 80px;
 	--gnb-width-expanded: 240px;
-	--gnb-bg: var(--bg-neutral-subtle);
+	--gnb-bg: var(--bg-neutral-deeper);
 	--gnb-border: var(--border-elevated-3);
 	--gnb-nav-item-active-icon-bg: var(--bg-elevated-3);
 	--gnb-nav-item-border: var(--border-elevated-4);
@@ -823,7 +823,7 @@
 	
 	--table-responsive-header-offset: 0;
 	--table-responsive-header-z-index: 3;
-	--table-responsive-max-height: 100%;
+	--table-responsive-max-height: 400px;
 	--table-responsive-bg: var(--bg-sunken-1);
 	
 	--table-bg: var(--bg-elevated-1);

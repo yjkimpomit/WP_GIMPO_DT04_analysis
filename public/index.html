@@ -49,6 +49,15 @@
 	<script src="/resources/js/index/header-realtime-panel.js" defer></script>
 	<script src="/resources/js/index/header-model-tree.js" defer></script>
 
+	<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		fnOpenPopup(
+		'/pages/service-shortcuts/index.html',
+		$('<span data-title="서비스 바로가기">')
+		);
+	});
+	</script>
+
 	<!-- 변수 선언 -->
 	<script>
 		/* <%-- 999/0 : mobile --%> */
