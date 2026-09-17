@@ -106,12 +106,25 @@
 .app-winbox .wb-close { background-image: url('/resources/images/icons/winbox-close.svg'); }
 
 .app-winbox .wb-body {
-	overflow: hidden;
+	box-sizing: border-box;
+	overflow: auto;
 	background-color: var(--winbox-bg);
 	top: 40px;
 }
 
+/* 최소화 창이 있을 때 최대화·설비 창에만 도킹 공간을 확보한다. */
+body:has(.winbox.app-winbox.min) {
+	--winbox-dock-space: calc(40px + max(8px, env(safe-area-inset-bottom)));
+}
+
+.winbox.app-winbox:is(.max, .facility):not(.min):not(.fullscreen) > .wb-body {
+	padding-bottom: var(--winbox-dock-space, 0px);
+}
+
 @media(min-width: 768px) {
+	body:has(.winbox.app-winbox.min) {
+		--winbox-dock-space: 40px;
+	}
 	.winbox.app-winbox {
 		border-radius: var(--winbox-radius);
 	}
@@ -149,7 +162,11 @@
 	overflow: hidden;
 }
 
-.app-winbox .wb-frame {
+.app-winbox .wb-frame,
+.app-winbox .wb-body > iframe {
+	/* vendor의 absolute 배치를 해제해 부모 패딩 안쪽 높이를 사용한다. */
+	position: static;
+	display: block;
 	width: 100%;
 	height: 100%;
 	border: 0;
@@ -162,3 +179,115 @@
 }
 
 .app-winbox .wb-control > button:hover { opacity: 1; }
+
+/* 모바일 최소화 창 목록 */
+[data-winbox-dock-ready] .winbox.app-winbox.min { display: none; }
+
+[data-winbox-dock] {
+	position: fixed;
+	inset-inline: 8px;
+	inset-block-end: max(8px, env(safe-area-inset-bottom));
+	z-index: 2147483647;
+	color: var(--winbox-fg);
+}
+
+[data-winbox-dock][hidden],
+[data-winbox-dock] [hidden] { display: none; }
+
+[data-winbox-dock] button {
+	min-height: 40px;
+	padding: 4px 12px;
+	border: 1px solid var(--winbox-header-border);
+	border-radius: var(--winbox-radius);
+	background: var(--winbox-bg);
+	color: inherit;
+	font: inherit;
+	text-align: start;
+	cursor: pointer;
+}
+
+[data-winbox-dock] > button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	width: 100%;
+	border-color: var(--winbox-dock-border);
+	background: var(--winbox-dock-bg);
+	color: var(--fg-emphasis);
+	font-weight: var(--font-weight-bold);
+	box-shadow: var(--winbox-dock-shadow);
+}
+[data-winbox-dock] > button:hover,
+[data-winbox-dock] > button[aria-expanded="true"] { background: var(--winbox-dock-bg-active); }
+[data-winbox-dock] > button::after {
+	content: '';
+	flex: 0 0 24px;
+	width: 24px;
+	height: 24px;
+	background-color: currentColor;
+	-webkit-mask: url('/resources/images/icons/keyboard_arrow_up.svg') center / contain no-repeat;
+	mask: url('/resources/images/icons/keyboard_arrow_up.svg') center / contain no-repeat;
+}
+[data-winbox-dock] > button[aria-expanded="true"]::after { transform: rotate(180deg); }
+[data-winbox-dock] button:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: -3px;
+}
+
+[data-winbox-dock] > ul {
+	position: absolute;
+	inset-inline: 0;
+	inset-block-end: 100%;
+	max-height: 50dvh;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	margin: 0 0 8px;
+	padding: 0;
+	list-style: none;
+	border: 1px solid var(--winbox-dock-list-border);
+	border-radius: var(--winbox-radius);
+	background: var(--winbox-dock-bg);
+	box-shadow: var(--winbox-shadow);
+}
+
+[data-winbox-dock] li { display: flex; align-items: stretch; }
+[data-winbox-dock] li + li { border-block-start: 1px solid var(--winbox-header-border); }
+[data-winbox-dock] li > button {
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	color: var(--neutral-100);
+}
+[data-winbox-dock] li > button:hover,
+[data-winbox-dock] li > button:focus-visible { background: var(--winbox-header-bg-hover); }
+[data-winbox-dock] li > button:first-child {
+	flex: 1;
+	min-width: 0;
+	padding: 10px 12px;
+	overflow-wrap: anywhere;
+}
+[data-winbox-dock] li > button:last-child {
+	flex: 0 0 44px;
+	display: grid;
+	place-items: center;
+	padding: 8px;
+}
+[data-winbox-dock] li > button:last-child::before {
+	content: '';
+	width: 24px;
+	height: 24px;
+	background-color: currentColor;
+	-webkit-mask: url('/resources/images/icons/close_small.svg') center / contain no-repeat;
+	mask: url('/resources/images/icons/close_small.svg') center / contain no-repeat;
+}
+
+@media (min-width: 768px) {
+	.winbox.app-winbox.min {
+		/* WinBox가 포커스 시 지정하는 인라인 z-index보다 도킹을 우선한다. */
+		z-index: 2147483646 !important;
+		box-shadow: var(--winbox-shadow);
+	}
+	[data-winbox-dock-ready] .winbox.app-winbox.min { display: block; }
+	[data-winbox-dock] { display: none; }
+}

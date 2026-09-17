@@ -450,6 +450,11 @@
 	--winbox-min-header-border: var(--border-elevated-3);
 	--winbox-min-header-fg: var(--fg-strong);
 	--winbox-min-header-radius: var(--spacing-200);
+	--winbox-dock-bg: var(--bg-accent-navy-subtle);
+	--winbox-dock-bg-active: var(--bg-accent-navy-deepest);
+	--winbox-dock-border: var(--navy-600);
+	--winbox-dock-list-border: var(--navy-400);
+	--winbox-dock-shadow: 0 3px 12px rgb(0 0 0 / 30%);
 	
 	--winbox-modal-border: var(--border-elevated-4);
 	--winbox-modal-overlay-bg: var(--overlay-modal-bg);
@@ -842,8 +847,8 @@
 	--table-row-selected-bg: var(--bg-elevated-1);
 	--table-secondary-thead-border: var(--border-elevated-3);
 	--table-tbody-fg: var(--fg-default);
-	--table-tbody-th-bg: var(--bg-elevated-2);
-	--table-tbody-tr-border: var(--border-elevated-3);
+	--table-tbody-th-bg: var(--bg-elevated-1);
+	--table-tbody-tr-border: var(--border-elevated-2);
 	--table-thead-border: var(--border-elevated-4);
 	--table-thead-fg: var(--fg-strong);
 	--table-top-border: var(--border-elevated-4);

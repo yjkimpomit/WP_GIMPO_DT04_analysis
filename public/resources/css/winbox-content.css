@@ -28,7 +28,6 @@ body {
 }
 
 .winbox-layout {
-	/* winbox-body-fill-v1: iframe viewport → layout → page content 높이 체인을 유지한다. */
 	--winbox-layout-gutter: var(--spacing-200);
 	--page-content-gap: var(--spacing-200);
 	--winbox-bottom-space: 0px;
@@ -48,18 +47,6 @@ body > .winbox-layout--flush {
 
 .winbox-layout__gutter {
 	padding-inline: var(--winbox-layout-gutter);
-}
-
-.page-content {
-	display: flex;
-	flex-direction: column;
-	gap: var(--page-content-gap);
-	height: calc(100% - var(--winbox-bottom-space));
-	min-height: 0;
-}
-
-.page-content--popup {
-	height: 100%;
 }
 
 @media (min-width: 768px) {
