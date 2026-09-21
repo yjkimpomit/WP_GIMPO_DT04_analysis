@@ -649,14 +649,14 @@
 	--form-disabled-opacity: var(--opacity-disabled);
 	--form-fg: var(--fg-neutral-subtlest);
 	--form-field-gap: var(--spacing-100);
+	--form-field-bg-strong: rgba(var(--teal-rgb), 100%);
+	--form-field-bg-subtle: rgba(var(--teal-rgb), 40%);
 	--form-grid-bg: var(--bg-transparent);
 	--form-grid-border: var(--border-transparent);
 	--form-grid-item-border: var(--border-elevated-2);
-	--form-grid-label-width: 6rem;
+	--form-grid-label-width: 8rem;
 	--form-grid-label-bg: var(--table-tbody-th-bg);
 	--form-grid-cell-padding: var(--spacing-100);
-	--form-grid-item-bg-strong: rgba(var(--mint-rgb), 100%);
-	--form-grid-item-bg-subtle: rgba(var(--teal-rgb), 40%);
 	--date-selection-max-height: 10rem;
 	--form-grid-column-gap: var(--spacing-200);
 	--form-grid-padding: var(--spacing-200);

@@ -50,6 +50,15 @@ html {
 	gap: var(--form-field-gap);
 }
 
+.form-field--strong {
+	background-color: var(--form-field-bg-strong);
+}
+
+.form-field--subtle {
+	background-color: var(--form-field-bg-subtle);
+}
+
+
 fieldset.form-field > legend.form-label {
 	margin-block-end: var(--form-field-gap);
 }
@@ -156,7 +165,7 @@ textarea.form-control {
 .form-grid > .form-field > .form-label {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-end;
 	flex-wrap: wrap;
 	gap: var(--spacing-025);
 	margin: 0;
@@ -183,25 +192,33 @@ textarea.form-control {
 	justify-content: center;
 }
 
-.form-grid > .form-field--strong {
-	background-color: var(--form-grid-item-bg-strong);
-}
-
-.form-grid > .form-field--subtle {
-	background-color: var(--form-grid-item-bg-subtle);
-}
-
-.form-grid--adaptive {
+.form-grid.form-grid--adaptive {
+	--form-grid-item-span: 12;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
 	align-content: start;
 	align-items: stretch;
 }
 
-.form-grid--adaptive > .form-field > div {
-	min-width: 0;
+.form-grid--adaptive > .form-field:not(.form-field--wide) {
+	grid-column: span var(--form-grid-item-span);
 }
 
-.form-grid--adaptive .form-control-group {
-	flex-wrap: wrap;
+.form-grid--adaptive > .form-field--strong:not(.form-field--wide) {
+	grid-column: span 6;
+}
+
+.form-grid--adaptive > .form-field--wide {
+	grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+	.form-grid.form-grid--adaptive {
+		--form-grid-item-span: 6;
+	}
+}
+
+.form-grid--adaptive > .form-field > div {
+	min-width: 0;
 }
 
 .form-grid--adaptive .form-control-group > .form-field,
@@ -240,10 +257,10 @@ textarea.form-control {
 	align-content: flex-start;
 	gap: var(--spacing-100);
 	min-height: 0;
-	max-height: var(--date-selection-max-height);
 	padding: var(--spacing-050);
+	/* max-height: var(--date-selection-max-height);
 	overflow-y: auto;
-	overscroll-behavior-y: contain;
+	overscroll-behavior-y: contain; */
 }
 
 .date-selection--body > button {
@@ -256,13 +273,13 @@ textarea.form-control {
 
 @media (min-width: 1280px) {
 	.form-grid.form-grid--adaptive {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		--form-grid-item-span: 4;
 	}
 }
 
 @media (min-width: 1600px) {
 	.form-grid.form-grid--adaptive {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
+		--form-grid-item-span: 3;
 	}
 }
 
@@ -847,10 +864,6 @@ textarea.form-control {
 @media (min-width: 768px) {
 	.form-control[type='date'] {
 		inline-size: var(--form-width-full);
-	}
-	
-	.form-grid--adaptive {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 	
 	.form-field--wide {
