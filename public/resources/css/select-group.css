@@ -63,7 +63,7 @@ a {
 }
 
 .logo .bi .branch {
-	color: var(--fg-emphasis);
+	color: var(--fg-white);
 }
 
 @media (min-width: 1680px) {

@@ -214,7 +214,7 @@ body:has(.winbox.app-winbox.min) {
 	width: 100%;
 	border-color: var(--winbox-dock-border);
 	background: var(--winbox-dock-bg);
-	color: var(--fg-emphasis);
+	color: var(--fg-white);
 	font-weight: var(--font-weight-bold);
 	box-shadow: var(--winbox-dock-shadow);
 }

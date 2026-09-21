@@ -117,7 +117,7 @@ section {
 
 /* 기본 설정 */
 body {
-	color: var(--fg);
+	color: var(--body-fg);
 	font-size: var(--font-size-md);
 }
 
@@ -236,3 +236,14 @@ button:focus-visible {
     position: absolute !important;
 }
 
+/* Chrome, Edge, Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	margin: 0;
+	-webkit-appearance: none;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}

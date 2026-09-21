@@ -35,7 +35,7 @@ body > .winbox-layout.service-hub {
 
 .service-hub__header>p:last-child {
 	margin: var(--spacing-150) 0 0;
-	color: var(--fg-muted);
+	color: var(--fg-neutral-subtler);
 }
 
 .service-hub__section+.service-hub__section {
@@ -59,7 +59,7 @@ body > .winbox-layout.service-hub {
 }
 
 .service-hub__section-heading span {
-	color: var(--fg-muted);
+	color: var(--fg-neutral-subtler);
 	font-size: var(--font-size-xs);
 	white-space: nowrap;
 }
@@ -111,7 +111,7 @@ button.service-hub__card:hover {
 }
 
 .service-hub__card-content span {
-	color: var(--fg-muted);
+	color: var(--fg-neutral-subtler);
 	font-size: var(--font-size-sm);
 	overflow-wrap: anywhere;
 }

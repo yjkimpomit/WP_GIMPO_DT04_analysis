@@ -1,6 +1,4 @@
 # 에외처리
-public/resources/css/bootstrap/
-public/resources/css/pano/
 public/resources/fonts/
 
 public/resources/admin/
@@ -14,9 +12,5 @@ public/resources/js/**
 !public/resources/js/common.js
 
 **/.DS_Store
-
-
-
-
 
 

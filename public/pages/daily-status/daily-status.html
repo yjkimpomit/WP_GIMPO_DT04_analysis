@@ -4,16 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>일일안전현황</title>
+    <link rel="stylesheet" href="/resources/js/winbox/winbox.min.css">
     <link rel="stylesheet" href="/resources/css/winbox-content.css">
 </head>
 <body>
     <main class="winbox-layout page-content daily-status-page tabs tabs--scrollable" data-tabs data-tab-content-loader>
         <h1 class="page-content__heading">일일안전현황</h1>
         <ul class="nav nav-tabs" role="tablist" aria-label="일일안전현황 분류">
-            <li class="nav-item" role="presentation"><button class="nav-link active" id="daily-safety-tab" data-bs-toggle="tab" data-bs-target="#daily-safety-panel" type="button" role="tab" aria-controls="daily-safety-panel" aria-selected="true" tabindex="0" data-page="/pages/daily-status/daily-safety.html">일일안전작업현황</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link" id="daily-order-tab" data-bs-toggle="tab" data-bs-target="#daily-order-panel" type="button" role="tab" aria-controls="daily-order-panel" aria-selected="false" tabindex="-1" data-page="/pages/daily-status/daily-order.html">경상오더</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link active" id="daily-safety-tab" data-bs-toggle="tab" data-bs-target="#daily-safety-panel" type="button" role="tab" aria-controls="daily-safety-panel" aria-selected="true" tabindex="0" data-page="/pages/daily-status/workReport.html">일일안전작업현황</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="daily-order-tab" data-bs-toggle="tab" data-bs-target="#daily-order-panel" type="button" role="tab" aria-controls="daily-order-panel" aria-selected="false" tabindex="-1" data-page="/pages/daily-status/routineWorkOrder.html">경상오더</button></li>
             <li class="nav-item" role="presentation"><button class="nav-link" id="daily-construction-tab" data-bs-toggle="tab" data-bs-target="#daily-construction-panel" type="button" role="tab" aria-controls="daily-construction-panel" aria-selected="false" tabindex="-1" data-page="/pages/daily-status/construction-order.html">공사오더</button></li>
-            <li class="nav-item" role="presentation"><button class="nav-link" id="daily-overhaul-tab" data-bs-toggle="tab" data-bs-target="#daily-overhaul-panel" type="button" role="tab" aria-controls="daily-overhaul-panel" aria-selected="false" tabindex="-1" data-page="/pages/daily-status/overhaul-order.html">공사오더(OH)</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="daily-overhaul-tab" data-bs-toggle="tab" data-bs-target="#daily-overhaul-panel" type="button" role="tab" aria-controls="daily-overhaul-panel" aria-selected="false" tabindex="-1" data-page="/pages/daily-status/maintenanceOrder.html">공사오더(OH)</button></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="daily-safety-panel" role="tabpanel" aria-labelledby="daily-safety-tab" tabindex="0"></div>
@@ -25,5 +26,7 @@
     <script src="/resources/vendor/bootstrap-5.3.8/js/bootstrap-tab.js"></script>
     <script src="/resources/js/common/tab-content-loader.js"></script>
     <script src="/resources/js/common/components.js"></script>
+    <script src="/resources/js/winbox/winbox.min.js"></script>
+    <script src="/resources/js/common/work-report-popup.js"></script>
 </body>
 </html>

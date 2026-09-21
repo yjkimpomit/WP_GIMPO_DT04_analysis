@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>설비 TM정보</title>
+	<link rel="stylesheet" href="/resources/js/winbox/winbox.min.css">
 	<link rel="stylesheet" href="/resources/css/winbox-content.css">
 </head>
 
@@ -14,7 +15,7 @@
 		<section class="content-section">
 			<div class="section-header">
 				<h2 class="section-title">TM정보</h2>
-				<button class="button button--primary" type="button" data-winbox-popup
+				<button class="button button--primary" type="button" data-winbox-popup aria-haspopup="dialog"
 					data-winbox-popup-id="tm-issue" data-winbox-popup-title="TM발행"
 					data-winbox-popup-url="/pages/equipment/equipment-tm-issue.html" data-winbox-popup-width="960"
 					data-winbox-popup-height="580">TM발행</button>
@@ -121,6 +122,8 @@
 			</div>
 		</section>
 	</main>
+	<script src="/resources/js/winbox/winbox.min.js"></script>
+	<script src="/resources/js/common/equipment-tm-popup.js"></script>
 </body>
 
 </html>

@@ -6,16 +6,16 @@
 @import url('/resources/css/components.css');
 
 :root {
-	--text-shadow: var(--effect-shadow-elevated-2);
-	--login-bg: var(--bg-accent-navy-subtle);
-	--login-box-shadow: var(--effect-shadow-elevated-2);
+	--text-shadow: var(--shadow-2);
+	--login-bg: var(--bg-navy-strong-tint);
+	--login-box-shadow: var(--shadow-2);
 	
 	--divider: var(--border-neutral-muted);
-	--form-input-bg: var(--bg-accent-navy-deepest);
+	--form-input-bg: var(--bg-navy-strongest);
 	
-	--login-error-text: var(--fg-danger-subtle);
-	--login-error-bg: var(--bg-danger-strong);
-	--login-error-border: var(--border-danger-deep);
+	--login-error-text: var(--fg-danger-emphasis);
+	--login-error-bg: var(--bg-danger-default);
+	--login-error-border: var(--border-danger-strong);
 	--login-radius: var(--spacing-100);
 }
 

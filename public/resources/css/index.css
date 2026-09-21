@@ -150,8 +150,8 @@ body {
 
 .toast-container > .toast,
 .toast.toast-alert {
-	--toast-alert-bg: var(--bg-info-subtle);
-	--toast-alert-border: var(--border-info-base);
+	--toast-alert-bg: var(--bg-info-strong-tint);
+	--toast-alert-border: var(--border-info-default);
 	width: 100%;
 	overflow: hidden;
 	border: 1px solid var(--toast-alert-border);
@@ -168,32 +168,32 @@ body {
 
 .toast-container > .bg-attention-subtle,
 .toast.toast-alert.bg-attention-subtle {
-	--toast-alert-bg: var(--bg-attention-subtle);
-	--toast-alert-border: var(--bg-attention-base);
+	--toast-alert-bg: var(--bg-attention-strong-tint);
+	--toast-alert-border: var(--bg-attention-strong);
 }
 
 .toast-container > .bg-warning-subtle,
 .toast.toast-alert.bg-warning-subtle {
-	--toast-alert-bg: var(--bg-warning-subtle);
-	--toast-alert-border: var(--border-warning-base);
+	--toast-alert-bg: var(--bg-warning-stronger-tint);
+	--toast-alert-border: var(--border-warning-default);
 }
 
 .toast-container > .bg-danger-subtle,
 .toast.toast-alert.bg-danger-subtle {
-	--toast-alert-bg: var(--bg-danger-subtle);
-	--toast-alert-border: var(--border-danger-base);
+	--toast-alert-bg: var(--bg-danger-strong-tint);
+	--toast-alert-border: var(--border-danger-default);
 }
 
 .toast-container > .bg-success-subtle,
 .toast.toast-alert.bg-success-subtle {
-	--toast-alert-bg: var(--bg-success-subtle);
-	--toast-alert-border: var(--border-success-base);
+	--toast-alert-bg: var(--bg-success-strong-tint);
+	--toast-alert-border: var(--border-success-default);
 }
 
 .toast-container > .bg-info-subtle,
 .toast.toast-alert.bg-info-subtle {
-	--toast-alert-bg: var(--bg-info-subtle);
-	--toast-alert-border: var(--border-info-base);
+	--toast-alert-bg: var(--bg-info-strong-tint);
+	--toast-alert-border: var(--border-info-default);
 }
 
 .toast-container .toast-header {

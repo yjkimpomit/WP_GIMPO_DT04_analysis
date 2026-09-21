@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>일일안전작업현황</title>
+	<link rel="stylesheet" href="/resources/js/winbox/winbox.min.css">
+    <link rel="stylesheet" href="/resources/css/winbox-content.css">
+</head>
+
+<body>
+	<!-- daily-safety-status-v1: 종합현황·달력·조회결과 기본 화면 구성 -->
+	<div class="winbox-layout page-content daily-status-page">
+
+		<h1 class="page-content__heading">일일안전 작업현황</h1>
+
+		<section class="daily-status-section">
+			<div class="section-header">
+				<h2 class="section-title">종합현황</h2>
+			</div>
+			<div class="daily-summary-grid">
+				<div class="daily-summary-card">
+					<div class="table-responsive">
+						<table class="data-table data-table--list" aria-label="종합현황-위험작업">
+							<thead>
+							<tr>
+								<th scope="colgroup" colspan="13">안전작업허가서 주요 위험작업(건수)</th>
+							</tr>
+							<tr>
+								<th scope="col" data-field="구분">구분</th>
+								<th scope="col" data-field="일반">일반</th>
+								<th scope="col" data-field="화기">화기</th>
+								<th scope="col" data-field="밀폐">밀폐</th>
+								<th scope="col" data-field="고소">고소</th>
+								<th scope="col" data-field="중량물">중량물</th>
+								<th scope="col" data-field="정전">정전</th>
+								<th scope="col" data-field="굴착">굴착</th>
+								<th scope="col" data-field="잠수">잠수</th>
+								<th scope="col" data-field="방사선">방사선</th>
+								<th scope="col" data-field="화학물질">화학물질</th>
+								<th scope="col" data-field="기타">기타</th>
+								<th scope="col" data-field="합계">합계</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<th scope="row" data-field="구분">(건)</th>
+								<td data-field="일반" class="_WR_HAZARD" id="_WR_G">0</td>
+								<td data-field="화기" class="_WR_HAZARD" id="_WR_HW">0</td>
+								<td data-field="밀폐" class="_WR_HAZARD" id="_WR_C">0</td>
+								<td data-field="고소" class="_WR_HAZARD" id="_WR_H">0</td>
+								<td data-field="중량물" class="_WR_HAZARD" id="_WR_HO">0</td>
+								<td data-field="정전" class="_WR_HAZARD" id="_WR_PO">0</td>
+								<td data-field="굴착" class="_WR_HAZARD" id="_WR_E">0</td>
+								<td data-field="잠수" class="_WR_HAZARD" id="_WR_D">0</td>
+								<td data-field="방사선" class="_WR_HAZARD" id="_WR_R">0</td>
+								<td data-field="화학물질" class="_WR_HAZARD" id="_WR_CS">0</td>
+								<td data-field="기타" class="_WR_HAZARD" id="_WR_O">0</td>
+								<td data-field="합계" class="text-bg-light _WR_HAZARD" id="_WR_TOT">0</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="daily-summary-card">
+					<div class="table-responsive">
+						<table class="data-table data-table--list" aria-label="종합현황-인력현황">
+							<thead>
+							<tr>
+								<th scope="colgroup" colspan="3">인력현황(명)</th>
+							</tr>
+							<tr>
+								<th scope="col" data-field="경상">경상</th>
+								<th scope="col" data-field="외부">외부</th>
+								<th scope="col" data-field="합계">합계</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td data-field="경상" id="_WR_SUM_NUMBER_ONSITE">0</td>
+								<td data-field="외부" id="_WR_SUM_NUMBER_OUTSIDE">0</td>
+								<td data-field="합계" class="text-bg-light" id="_WR_SUM_NUMBER">0</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="daily-summary-card">
+					<div class="table-responsive">
+						<table class="data-table data-table--list" aria-label="종합현황-전체작업">
+							<thead>
+							<tr>
+								<th scope="col" rowspan="2" style="height: 80px;">전체작업(건)</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td data-field="전체작업" id="_WR_SUM_WORK">0</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="daily-summary-card">
+					<div class="table-responsive">
+						<table class="data-table data-table--list" aria-label="종합현황-등록현황">
+							<thead>
+							<tr>
+								<th scope="colgroup" colspan="3">등록현황(건)</th>
+							</tr>
+							<tr>
+								<th scope="col" data-field="등록작업">등록작업</th>
+								<th scope="col" data-field="GENi 작업">GENi 작업</th>
+								<th scope="col" data-field="미등록">미등록</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td data-field="등록작업" id="_WR_STATUS_P">0</td>
+								<td data-field="GENi 작업" id="_WR_STATUS_D">0</td>
+								<td data-field="미등록" id="_WR_STATUS_C">0</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="daily-status-section">
+			<div class="section-header"><h2 class="section-title">현황등록</h2></div>
+
+			<div class="calendar-box">
+				<div class="calendar-header">
+					<div class="form-choice-list">
+						<label class="visually-hidden" for="selectYear">연도 선택</label>
+						<select class="form-select" aria-label="연도 선택" id="selectYear">
+							<option selected>2026</option>
+						</select>
+						<label class="visually-hidden" for="selectMonth">월 선택</label>
+						<select class="form-select" aria-label="월 선택" id="selectMonth">
+							<option selected>9월</option>
+						</select>
+					</div>
+
+					<button type="button" class="button button--primary" data-work-report-popup aria-haspopup="dialog">현황 등록하기</button>
+				</div>
+
+				<div class="calendar-body">
+					<div class="calendar-list date" id="calendar-list"></div>
+				</div>
+			</div>
+		</section>
+		<script src="/resources/js/dailysafety/calendar.js"></script>
+
+		<div class="result-panel" id="_SAFETY_WORK_REPORT_LIST">
+			
+			<div class="result-header">
+				<h2 class="result-header__title">조회결과<span class="result-header__count">(전체 <fmt:formatNumber value="${listCount}" type="number"/>건)</span></h2>
+				
+				<div class="result-header__actions">
+					<div class="form-choice-list">
+						<label class="visually-hidden" for="selectSearchCondition">검색옵션선택</label>
+						<select class="form-select form-select--auto" aria-label="검색옵션 선택" id="selectSearchCondition">
+							<option value="all" selected="selected">전체</option>
+							<option value="model_type_name">구분</option>
+							<option value="sv_dept_name">감독부서</option>
+							<option value="work_location">작업장소</option>
+							<option value="work_name">공사/작업명</option>
+							<option value="work_sv_name">공사감독</option>
+						</select>
+						<label class="visually-hidden" for="txtSearchKeyword">검색어 입력</label>
+						<input class="form-control form-control--return" type="text" id="txtSearchKeyword" placeholder="검색어 입력" onkeydown="fnSearchKeyword(event)">
+					</div>
+					
+					<nav class="pagination" aria-label="페이지 이동">
+						<input type="number" id="currentPage" class="form-control form-control--page" aria-label="이동할 페이지 번호" value="5">
+						<span aria-hidden="true">/</span>
+						<span class="total">20</span>
+						<button type="button" class="button button--neutral" onclick="fnPageMove('M')">이동</button>
+						<button type="button" class="button button--neutral" onclick="fnPageMove('P')">이전</button>
+						<button type="button" class="button button--neutral" onclick="fnPageMove('N')">다음</button>
+						<button type="button" class="button button--secondary" onclick="fnExcelDownloadWorkReport()">엑셀 다운로드</button>
+						<button type="button" class="button button--secondary" onclick="fnWorkReportUnRegistPop()">등록현황 관리</button>
+					</nav>
+				</div>
+			</div>
+
+			<!-- data-grid -->
+			<div class="table-responsive">
+				<table class="data-table data-table--list data-table--interactive" aria-label="종합현황-일별조회결과">
+					<thead>
+						<tr>
+							<th scope="col" data-field="순번">순번</th>
+							<th scope="col" data-field="구분" class="sort icon-down _WORK_ORDER_CLASS" data-order-column="model_type_name" data-order-type="asc"  onclick="fnWorkReportOrder($(this))">구분</th>
+							<th scope="col" data-field="감독부서" class="sort icon-down _WORK_ORDER_CLASS" data-order-column="sv_dept_name" data-order_type="asc" onclick="fnWorkReportOrder($(this))">감독부서</th>
+							<th scope="col" data-field="작업장소">작업장소</th>
+							<th scope="col" data-field="공사/작업명">공사/작업명</th>
+							<th scope="col" data-field="위험작업 (허가서)">위험작업 (허가서)</th>
+							<th scope="col" data-field="위험도">위험도</th>
+							<th scope="col" data-field="공사업체명">공사업체명</th>
+							<th scope="col" data-field="공사구분">공사구분</th>
+							<th scope="col" data-field="오더번호">오더번호</th>
+							<th scope="colgroup" colspan="2" data-field="작업인원">작업인원</th>
+							<th scope="colgroup" colspan="2" data-field="작업시간/진행현황">작업시간/진행현황</th>
+							<th scope="colgroup" colspan="2" data-field="연락처">연락처</th>
+						</tr>
+					</thead>
+					<!-- <tbody>
+						<tr>
+							<td colspan="16">
+								<div class="no-data">
+									조회된 데이터가 없습니다.
+								</div>
+							</td>
+						</tr>
+					</tbody> -->
+					<tbody>
+						<tr class="_TR_WORK_REPORT" onclick="fnShowDetail($(this), 93)">
+							<th rowspan="3" scope="row" data-field="순번">10</th>
+							<td rowspan="3" data-field="구분">9호기</td>
+							<td rowspan="3" data-field="감독부서">발전운영부</td>
+							<td rowspan="3" data-field="작업장소" class="ws-reset ws-start">SLP 현장</td>
+							<td rowspan="3" data-field="공사/작업명" class="ws-reset ws-start">SLP 해수 이물질 폐기용 점보상자 운반 작업</td>
+							<td rowspan="3" data-field="위험작업 (허가서)" class="ws-reset ws-start"></td>
+							<td rowspan="3" data-field="위험도">상</td>
+							<td rowspan="3" data-field="공사업체명" class="ws-reset ws-start">발전운영부</td>
+							<td rowspan="3" data-field="공사구분">경상정비</td>
+							<td rowspan="3" data-field="오더번호"></td>
+							<th scope="row" data-field="경상">경상</th>
+							<td data-field="경상값">2</td>
+							<th scope="col" data-field="시작">시작</th>
+							<th scope="col" data-field="종료">종료</th>
+							<th scope="col" data-field="공사감독">공사감독</th>
+							<th scope="col" data-field="책임자">(현장)책임자</th>
+						</tr>
+						<tr>
+							<th scope="row" data-field="외부">외부</th>
+							<td data-field="외부값">0</td>
+							<td data-field="시작">09:00</td>
+							<td data-field="종료">18:00</td>
+							<td data-field="공사감독">정구인</td>
+							<td data-field="책임자">책임자</td>
+						</tr>
+						<tr>
+							<th scope="row" data-field="합계">합계</th>
+							<td data-field="합계값">2</td>
+							<td colspan="2" data-field="진행현황">완료</td>
+							<td data-field="공사감독">010-1234-5678</td>
+							<td data-field="책임자">010-1234-5678</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="buttons">
+				<button type="button" class="button button--neutral" onclick="fnPageMove('P')">이전</button>
+				<button type="button" class="button button--neutral" onclick="fnPageMove('N')">다음</button>
+			</div>
+
+		</div>
+	</div>
+    <script src="/resources/js/winbox/winbox.min.js"></script>
+    <script src="/resources/js/common/work-report-popup.js"></script>
+</body>
+
+</html>

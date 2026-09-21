@@ -14,10 +14,10 @@
 		<p class="form-helper"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>표시는 필수입력 항목입니다.</p>
 
 		<form class="form-dialog" data-popup-form>
-			<div class="form-grid form-grid--three-columns">
+			<div class="form-grid form-grid--adaptive">
 				<label class="form-field form-field--wide">
 					<span class="form-label"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>요청명</span>
-					<input class="form-control" type="text" name="requestTitle" required>
+					<span class="form-field__body"><input class="form-control" type="text" name="requestTitle" required></span>
 				</label>
 
 				<div class="form-field">
@@ -86,57 +86,57 @@
 
 				<label class="form-field">
 					<span class="form-label"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>우선순위</span>
-					<select class="form-select" name="priority" required>
+					<span class="form-field__body"><select class="form-select" name="priority" required>
 						<option value="">선택</option>
 						<option value="urgent">긴급</option>
 						<option value="routine">일상</option>
 						<option value="post">사후</option>
-					</select>
+					</select></span>
 				</label>
 
 				<label class="form-field">
 					<span class="form-label"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>작업중요도</span>
-					<select class="form-select" name="workImportance" required>
+					<span class="form-field__body"><select class="form-select" name="workImportance" required>
 						<option value="">선택</option>
 						<option value="a">A등급</option>
 						<option value="b">B등급</option>
 						<option value="c">C등급</option>
-					</select>
+					</select></span>
 				</label>
 
-				<fieldset class="form-field">
-					<legend class="form-label">Red TAG</legend>
+				<div class="form-field" role="group" aria-labelledby="tm-issue-red-tag-label">
+					<span class="form-label" id="tm-issue-red-tag-label">Red TAG</span>
 					<div class="form-field__content">
 						<label class="form-choice">
 							<input type="checkbox" name="redTag">
 							Red TAG 필요
 						</label>
 					</div>
-				</fieldset>
+				</div>
 
 				<label class="form-field">
 					<span class="form-label"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>증상</span>
-					<select class="form-select" name="symptom" required>
+					<span class="form-field__body"><select class="form-select" name="symptom" required>
 						<option value="">선택</option>
 						<option value="leak">누설 (Leak)</option>
 						<option value="vibration">진동 (Vibration)</option>
 						<option value="overheating">과열 (Overheating)</option>
-					</select>
+					</select></span>
 				</label>
 
 				<label class="form-field">
 					<span class="form-label"><span class="form-required" aria-hidden="true">*</span><span class="visually-hidden">필수</span>사업자코드</span>
-					<select class="form-select" name="businessCode" required>
+					<span class="form-field__body"><select class="form-select" name="businessCode" required>
 						<option value="">선택</option>
 						<option value="unit-1">1호기</option>
 						<option value="unit-2">2호기</option>
 						<option value="common">공통</option>
-					</select>
+					</select></span>
 				</label>
 
 				<label class="form-field form-field--wide">
 					<span class="form-label">요청내용</span>
-					<textarea class="form-control" name="requestContent"></textarea>
+					<span class="form-field__body"><textarea class="form-control" name="requestContent"></textarea></span>
 				</label>
 			</div>
 

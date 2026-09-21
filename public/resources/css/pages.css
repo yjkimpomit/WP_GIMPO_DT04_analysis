@@ -1,5 +1,28 @@
 @charset "utf-8";
 
+/* 작업기간: 날짜와 시간을 짝지어 배치하고 넓은 화면에서는 한 줄로 표시한다. */
+#dailyRiskEntryForm .form-control-group:has(#workStartDate) {
+	display: grid;
+	grid-template-columns: minmax(0, 10rem) minmax(0, 6rem);
+	align-items: center;
+}
+
+#dailyRiskEntryForm .form-control-group:has(#workStartDate) > .form-field:has(> .form-control-plaintext) {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	#dailyRiskEntryForm .form-control-group:has(#workStartDate) {
+		grid-template-columns: minmax(0, 10rem) minmax(0, 6rem) auto minmax(0, 10rem) minmax(0, 6rem);
+		width: fit-content;
+		max-width: 100%;
+	}
+
+	#dailyRiskEntryForm .form-control-group:has(#workStartDate) > .form-field:has(> .form-control-plaintext) {
+		display: flex;
+	}
+}
+
 .page-content {
 	display: flex;
 	flex-direction: column;
@@ -144,6 +167,7 @@
 }
 
 .document-viewer-page .splitview__pane:not(.splitview__pane--sidebar) {
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 }
@@ -268,6 +292,20 @@
 	display: flex;
 }
 
+.filter-panel--with-section {
+	overflow: hidden;
+}
+
+.filter-panel__section-body {
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+	
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-200);
+}
+
 @media (min-width: 992px) {
 	.dataparc-category-buttons {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -278,35 +316,10 @@
 		flex-direction: column;
 		min-height: 0;
 	}
-	/*
-	.filter-panel--with-section > .filter-panel__search {
-		flex: 0 0 auto;
-		max-height: 50%;
-		display: flex;
-		flex-direction: column;
-		overflow: hidden;
-	}
-	.filter-panel--with-section > .filter-panel__section {
-		flex: 1;
-		min-height: 0;
-	}*/
 
 	.filter-panel--with-section.is-collapsed > .filter-panel__search {
 		display: flex;
 	}
-	
-	/*
-	.filter-panel--with-section > .filter-panel__search > .filter-panel__fields {
-		flex: 1 1 auto;
-		min-height: 0;
-		overflow-y: auto;
-	}
-	.filter-panel--with-section > .filter-panel__search > .filter-panel__actions {
-		flex: 0 0 auto;
-	}
-	.filter-panel--with-section > .filter-panel__section {
-		overflow: hidden;
-	}*/
 
 	.filter-panel--with-section .equipment-tree--responsive > .tab-content > .tab-pane.active {
 		display: flex;
@@ -335,11 +348,11 @@
 .daily-status-page {
 	--daily-status-card-bg: var(--panel-bg);
 	--daily-status-card-border: var(--panel-border);
-	--daily-status-card-title-fg: var(--fg-strong);
-	--daily-status-date-fg: var(--fg-muted);
+	--daily-status-card-title-fg: var(--fg-neutral-emphasis);
+	--daily-status-date-fg: var(--fg-neutral-subtler);
 	--daily-status-placeholder-bg: var(--chart-placeholder-bg);
 	--daily-status-placeholder-border: var(--panel-border);
-	--daily-status-placeholder-fg: var(--fg-muted);
+	--daily-status-placeholder-fg: var(--fg-neutral-subtler);
 	--daily-status-section-gap: var(--spacing-100);
 	--daily-status-card-gap: var(--spacing-100);
 }
