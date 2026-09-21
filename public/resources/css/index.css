@@ -100,7 +100,7 @@ body {
 	min-width: 0;
 	min-height: 36px;
 	padding-inline: var(--spacing-200) var(--spacing-100);
-	border: 1px solid transparent;
+	border: 1px solid var(--toast-border);
 	border-radius: var(--radius-050);
 	color: var(--toast-fg);
 	font-size: var(--font-size-sm);
@@ -120,10 +120,10 @@ body {
 .toast-popup__close::after { position: absolute; top: 50%; left: 50%; width: 12px; height: 2px; background: currentColor; content: ''; }
 .toast-popup__close::before { transform: translate(-50%, -50%) rotate(45deg); }
 .toast-popup__close::after { transform: translate(-50%, -50%) rotate(-45deg); }
-.toast-popup--warning { border-color: var(--status-warning-border); background: var(--status-warning-bg); }
-.toast-popup--danger { border-color: var(--status-danger-border); background: var(--status-danger-bg); }
-.toast-popup--success { border-color: var(--status-success-border); background: var(--status-success-bg); }
-.toast-popup--info { border-color: var(--status-info-subtle-border); background: var(--status-info-subtle-bg); }
+.toast-popup--warning { border-color: var(--toast-warning-border); background: var(--toast-warning-bg); }
+.toast-popup--danger { border-color: var(--toast-danger-border); background: var(--toast-danger-bg); }
+.toast-popup--success { border-color: var(--toast-success-border); background: var(--toast-success-bg); }
+.toast-popup--info { border-color: var(--toast-info-border); background: var(--toast-info-bg); }
 
 .is-mobile-menu-open .gnb {
 	transform: translateX(0);
@@ -150,15 +150,15 @@ body {
 
 .toast-container > .toast,
 .toast.toast-alert {
-	--toast-alert-bg: var(--bg-info-strong-tint);
-	--toast-alert-border: var(--border-info-default);
+	--toast-alert-bg: var(--toast-info-bg);
+	--toast-alert-border: var(--toast-info-border);
 	width: 100%;
 	overflow: hidden;
 	border: 1px solid var(--toast-alert-border);
 	border-radius: var(--radius-050);
 	background-color: var(--toast-alert-bg);
-	box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
-	color: #fff;
+	box-shadow: var(--toast-shadow);
+	color: var(--toast-fg);
 	font-size: var(--font-size-sm);
 }
 
@@ -168,32 +168,32 @@ body {
 
 .toast-container > .bg-attention-subtle,
 .toast.toast-alert.bg-attention-subtle {
-	--toast-alert-bg: var(--bg-attention-strong-tint);
-	--toast-alert-border: var(--bg-attention-strong);
+	--toast-alert-bg: var(--toast-attention-bg);
+	--toast-alert-border: var(--toast-attention-border);
 }
 
 .toast-container > .bg-warning-subtle,
 .toast.toast-alert.bg-warning-subtle {
-	--toast-alert-bg: var(--bg-warning-stronger-tint);
-	--toast-alert-border: var(--border-warning-default);
+	--toast-alert-bg: var(--toast-warning-bg);
+	--toast-alert-border: var(--toast-warning-border);
 }
 
 .toast-container > .bg-danger-subtle,
 .toast.toast-alert.bg-danger-subtle {
-	--toast-alert-bg: var(--bg-danger-strong-tint);
-	--toast-alert-border: var(--border-danger-default);
+	--toast-alert-bg: var(--toast-danger-bg);
+	--toast-alert-border: var(--toast-danger-border);
 }
 
 .toast-container > .bg-success-subtle,
 .toast.toast-alert.bg-success-subtle {
-	--toast-alert-bg: var(--bg-success-strong-tint);
-	--toast-alert-border: var(--border-success-default);
+	--toast-alert-bg: var(--toast-success-bg);
+	--toast-alert-border: var(--toast-success-border);
 }
 
 .toast-container > .bg-info-subtle,
 .toast.toast-alert.bg-info-subtle {
-	--toast-alert-bg: var(--bg-info-strong-tint);
-	--toast-alert-border: var(--border-info-default);
+	--toast-alert-bg: var(--toast-info-bg);
+	--toast-alert-border: var(--toast-info-border);
 }
 
 .toast-container .toast-header {
@@ -201,8 +201,8 @@ body {
 	align-items: center;
 	gap: var(--spacing-100);
 	padding: var(--spacing-150) var(--spacing-200);
-	border-bottom: 1px solid rgb(255 255 255 / 20%);
-	background-color: transparent;
+	border-bottom: 1px solid var(--toast-header-border);
+	background-color: var(--toast-header-bg);
 }
 
 .toast-container .toast-header > strong {
@@ -227,7 +227,7 @@ body {
 	height: var(--spacing-300);
 	padding: 0;
 	border: 0;
-	background: transparent url('/resources/images/icons/close.svg') no-repeat center / var(--spacing-300);
+	background: var(--toast-close-bg) var(--toast-close-icon) no-repeat center / var(--spacing-300);
 	color: inherit;
 }
 

@@ -849,6 +849,22 @@
 	--th-button-bg: var(--bg-transparent);
 	--toast-stack-z-index: 10;
 	--toast-fg: var(--fg-white);
+	--toast-border: var(--border-transparent);
+	--toast-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+	--toast-header-bg: var(--bg-transparent);
+	--toast-header-border: rgb(255 255 255 / 20%);
+	--toast-close-bg: var(--bg-transparent);
+	--toast-close-icon: url('/resources/images/icons/close.svg');
+	--toast-attention-bg: var(--bg-attention-strong-tint);
+	--toast-attention-border: var(--bg-attention-strong);
+	--toast-warning-bg: var(--bg-warning-stronger-tint);
+	--toast-warning-border: var(--border-warning-default);
+	--toast-danger-bg: var(--bg-danger-strong-tint);
+	--toast-danger-border: var(--border-danger-default);
+	--toast-success-bg: var(--bg-success-strong-tint);
+	--toast-success-border: var(--border-success-default);
+	--toast-info-bg: var(--bg-info-strong-tint);
+	--toast-info-border: var(--border-info-default);
 	
 	--winbox-bg: var(--bg-neutral-stronger);
 	--winbox-header-bg: var(--bg-elevated-2);
