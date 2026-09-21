@@ -631,13 +631,7 @@
 	--form-actions-gap: var(--spacing-100);
 	--form-button-border: var(--border-elevated-4);
 
-	--form-check-checked-bg: var(--bg-neutral-stronger);
-	--form-check-bg: rgb(47 64 90);
-	--form-check-border: var(--fg-boldest);
 	--form-check-size: var(--spacing-200);
-	--form-check-indicator: var(--fg-primary-default);
-	--form-check-icon-size: 12px;
-	--form-check-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3.5 8.5 3 3 6-7' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/%3E%3C/svg%3E");
 	
 	--form-choice-gap-x: var(--spacing-200);
 	--form-choice-gap-y: var(--spacing-100);

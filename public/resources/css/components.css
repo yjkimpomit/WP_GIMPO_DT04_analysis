@@ -439,45 +439,25 @@ textarea.form-control {
 /* checkbox, radio */
 :where(input[type='checkbox'], input[type='radio']) {
 	flex-shrink: 0;
-	appearance: none;
 	inline-size: var(--form-check-size);
 	block-size: var(--form-check-size);
 	margin: 0;
-	border: 1px solid var(--form-check-border);
-	background-color: var(--form-check-bg);
+	accent-color: var(--fg-primary-default);
 	vertical-align: middle;
 	cursor: pointer;
 }
 
-:where(input[type='checkbox']) {
-	display: inline-grid;
-	place-items: center;
-	border-radius: var(--form-control-radius);
-}
+@media (forced-colors: none) {
+	:where(input[type='checkbox']:not(:indeterminate), input[type='radio']):not(:checked) {
+		appearance: none;
+		border: 1px solid var(--form-input-border);
+		border-radius: var(--form-control-radius);
+		background-color: var(--form-input-bg);
+	}
 
-:where(input[type='radio']) {
-	border-radius: var(--radius-full);
-}
-
-:where(input[type='checkbox'], input[type='radio']):checked {
-	border-color: var(--form-check-checked-bg);
-	background-color: var(--form-check-checked-bg);
-}
-
-:where(input[type='checkbox']):checked::after {
-	content: '';
-	inline-size: var(--form-check-icon-size);
-	block-size: var(--form-check-icon-size);
-	background-color: var(--form-check-indicator);
-	mask-image: var(--form-check-icon);
-	mask-repeat: no-repeat;
-	mask-position: center;
-	mask-size: contain;
-	pointer-events: none;
-}
-
-:where(input[type='radio']):checked {
-	background-image: radial-gradient(circle, var(--form-check-indicator) 0 3px, transparent 4px);
+	:where(input[type='radio']):not(:checked) {
+		border-radius: var(--radius-full);
+	}
 }
 
 :where(input[type='checkbox'], input[type='radio']):focus-visible {
