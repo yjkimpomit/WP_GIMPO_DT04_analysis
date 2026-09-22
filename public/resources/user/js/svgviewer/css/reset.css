@@ -1,0 +1,129 @@
+@charset "utf-8";
+
+/* 
+ * POMIT reset.css
+ * 2025-11-27
+ * 부트스트랩 이전에 적용되어야 하는 스타일만 정의하고 나머지 스타일은 common.css 에 정의한다
+ */
+
+a {
+	text-decoration: none;
+}
+button {
+	border-width: 0;
+	padding: 0;
+}
+
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+li {
+	padding: 0;
+	margin: 0;
+}
+
+.box-shadow-light {
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
+}
+.box-shadow-medium {
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+}
+.box-shadow-large {
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
+}
+
+small {
+	font-weight: 400 !important;
+}
+
+strong {
+	font-weight: 700;
+}
+
+.alert {
+	padding: .75rem 1rem;
+}
+
+/* line-clamp */
+.line-clamp {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.line-clamp.single {
+	-webkit-line-clamp: 1;
+}
+
+.line-clamp.double {
+	-webkit-line-clamp: 2;
+}
+
+.d-none {
+	display: none !important;
+}
+
+#viewport-info {
+	position: fixed;
+	left: 0;
+	bottom: 4rem;
+
+	padding: .5rem .75rem;
+	font-size: 14px;
+	font-weight: 500;
+	background-color: var(--surface-primary-subtle);
+	
+	z-index: 300;
+	cursor: pointer;
+}
+
+#viewport-info.hide {
+	width: 2rem;
+	height: 2rem;
+	overflow: hidden;
+	text-indent: -9999em;
+	
+	padding: 0;
+}
+
+#viewport-info::after {
+	content: '';
+	display: flex;
+	
+	position: absolute;
+	top: 0;
+	right: 0;
+	
+	width: 2rem;
+	height: 2rem;
+	background-color: #F6F7F9;
+	overflow: hidden;
+	
+	background-image: url('/resources/user/images/icons/icon-remove-gray.svg');
+	background-size: auto;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#viewport-info.hide::after {
+	background-color: #FFFFFF;
+	background-image: url('/resources/user/images/icons/icon-add-gray.svg');
+}
+
+#viewport-info {
+	display: none !important;
+}
+
+/* focus */
+*:focus:not(:focus-visible) {
+	outline: none;
+	box-shadow: none;
+}
+
+
+

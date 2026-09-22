@@ -1,0 +1,293 @@
+@charset "utf-8";
+
+.winbox.app-winbox * {
+	font-family: var(--font-family-base), sans-serif;
+}
+
+.winbox.app-winbox {
+	border: 1px solid var(--winbox-header-border);
+	background: var(--winbox-bg);
+}
+
+.winbox.app-winbox--detail {
+	border-color: var(--winbox-detail-border);
+}
+
+.winbox.app-winbox.modal {
+	border-color: var(--winbox-modal-border);
+}
+
+.winbox.app-winbox.modal::after {
+	background: var(--winbox-modal-overlay-bg);
+	animation: winbox-modal-fade-in 0.2s ease-out forwards;
+}
+
+.winbox.app-winbox.modal::before {
+	background: transparent;
+	box-shadow: inset 0 0 0 1px var(--winbox-modal-border);
+	pointer-events: none;
+	z-index: 3;
+}
+
+@keyframes winbox-modal-fade-in {
+	from { opacity: 0; }
+	to { opacity: var(--winbox-modal-overlay-opacity); }
+}
+
+.winbox.app-winbox:not(.min):not(.max),
+.winbox.app-winbox.focus:not(.min):not(.max),
+.winbox.app-winbox.focus.max {
+	box-shadow: var(--winbox-shadow);
+}
+
+.winbox.app-winbox--detail:not(.min):not(.max),
+.winbox.app-winbox--detail.focus:not(.min):not(.max) {
+	box-shadow: var(--winbox-detail-shadow);
+}
+
+.app-winbox .wb-header {
+	display: flex;
+	align-items: center;
+	gap: var(--winbox-header-gap);
+	height: var(--winbox-header-height);
+	padding-inline: var(--winbox-header-padding-x);
+	overflow: hidden;
+	border-bottom: 1px solid var(--winbox-header-border);
+	background-color: var(--winbox-header-bg);
+	color: var(--winbox-header-fg);
+}
+
+.app-winbox .wb-header:hover { background-color: var(--winbox-header-bg-hover); }
+
+.app-winbox--detail .wb-header {
+	border-block-end-color: var(--winbox-detail-border);
+}
+
+.app-winbox .wb-header .wb-drag {
+	order: 1;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	min-width: 0;
+	overflow: hidden;
+}
+
+.app-winbox .wb-title {
+	display: block;
+	min-width: 0;
+	overflow: hidden;
+	font-weight: var(--font-weight-bold);
+	font-size: var(--font-size-base);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.app-winbox .wb-control {
+	order: 2;
+	display: flex;
+	align-items: center;
+	gap: var(--winbox-header-gap);
+}
+
+.app-winbox .wb-min,
+.app-winbox .wb-max,
+.app-winbox .wb-full,
+.app-winbox .wb-close {
+	width: var(--icon-size);
+	height: var(--icon-size);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: var(--icon-size);
+}
+
+.app-winbox .wb-min { background-image: url('/resources/user/images/icons/winbox-min.svg'); }
+.app-winbox .wb-max { background-image: url('/resources/user/images/icons/winbox-max.svg'); }
+.app-winbox .wb-full { background-image: url('/resources/user/images/icons/winbox-full.svg'); }
+.app-winbox .wb-close { background-image: url('/resources/user/images/icons/winbox-close.svg'); }
+
+.app-winbox .wb-body {
+	box-sizing: border-box;
+	overflow: auto;
+	background-color: var(--winbox-bg);
+	top: 40px;
+}
+
+/* 최소화 창이 있을 때 최대화·설비 창에만 도킹 공간을 확보한다. */
+body:has(.winbox.app-winbox.min) {
+	--winbox-dock-space: calc(40px + max(8px, env(safe-area-inset-bottom)));
+}
+
+.winbox.app-winbox:is(.max, .facility):not(.min):not(.fullscreen) > .wb-body {
+	padding-bottom: var(--winbox-dock-space, 0px);
+}
+
+@media(min-width: 768px) {
+	body:has(.winbox.app-winbox.min) {
+		--winbox-dock-space: 40px;
+	}
+	.winbox.app-winbox {
+		border-radius: var(--winbox-radius);
+	}
+	.app-winbox .wb-header {
+		border-start-start-radius: var(--winbox-radius);
+		border-start-end-radius: var(--winbox-radius);
+	}
+	.app-winbox .wb-body {
+		border-end-start-radius: var(--winbox-radius);
+		border-end-end-radius: var(--winbox-radius);
+	}
+}
+
+/* 최소화 탭 */
+.winbox.app-winbox.min {
+	box-shadow: none;
+	overflow: hidden;
+}
+
+.winbox.app-winbox.min .wb-header {
+	padding-inline: calc(var(--winbox-header-padding-x) * 0.5);
+	background-color: transparent;
+}
+.winbox.app-winbox.min .wb-control { flex: 0 0 auto; }
+.winbox.app-winbox.min .wb-control > span {
+	flex: 0 0 var(--spacing-300);
+	width: var(--spacing-300);
+	height: var(--spacing-300);
+}
+.winbox.app-winbox.min .wb-title,
+.winbox.app-winbox.min .wb-control { color: var(--winbox-min-header-fg); }
+.winbox.app-winbox.min .wb-title { font-size: var(--font-size-sm); }
+.winbox.app-winbox.min .wb-drag {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.app-winbox .wb-frame,
+.app-winbox .wb-body > iframe {
+	/* vendor의 absolute 배치를 해제해 부모 패딩 안쪽 높이를 사용한다. */
+	position: static;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	background: var(--winbox-bg);
+}
+
+.app-winbox .wb-control > button {
+	display: block;
+	opacity: .85;
+}
+
+.app-winbox .wb-control > button:hover { opacity: 1; }
+
+/* 모바일 최소화 창 목록 */
+[data-winbox-dock-ready] .winbox.app-winbox.min { display: none; }
+
+[data-winbox-dock] {
+	position: fixed;
+	inset-inline: 8px;
+	inset-block-end: max(8px, env(safe-area-inset-bottom));
+	z-index: 2147483647;
+	color: var(--winbox-fg);
+}
+
+[data-winbox-dock][hidden],
+[data-winbox-dock] [hidden] { display: none; }
+
+[data-winbox-dock] button {
+	min-height: 40px;
+	padding: 4px 12px;
+	border: 1px solid var(--winbox-header-border);
+	border-radius: var(--winbox-radius);
+	background: var(--winbox-bg);
+	color: inherit;
+	font: inherit;
+	text-align: start;
+	cursor: pointer;
+}
+
+[data-winbox-dock] > button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	width: 100%;
+	border-color: var(--winbox-dock-border);
+	background: var(--winbox-dock-bg);
+	color: var(--fg-white);
+	font-weight: var(--font-weight-bold);
+	box-shadow: var(--winbox-dock-shadow);
+}
+[data-winbox-dock] > button:hover,
+[data-winbox-dock] > button[aria-expanded="true"] { background: var(--winbox-dock-bg-active); }
+[data-winbox-dock] > button::after {
+	content: '';
+	flex: 0 0 24px;
+	width: 24px;
+	height: 24px;
+	background-color: currentColor;
+	-webkit-mask: url('/resources/user/images/icons/keyboard_arrow_up.svg') center / contain no-repeat;
+	mask: url('/resources/user/images/icons/keyboard_arrow_up.svg') center / contain no-repeat;
+}
+[data-winbox-dock] > button[aria-expanded="true"]::after { transform: rotate(180deg); }
+[data-winbox-dock] button:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: -3px;
+}
+
+[data-winbox-dock] > ul {
+	position: absolute;
+	inset-inline: 0;
+	inset-block-end: 100%;
+	max-height: 50dvh;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	margin: 0 0 8px;
+	padding: 0;
+	list-style: none;
+	border: 1px solid var(--winbox-dock-list-border);
+	border-radius: var(--winbox-radius);
+	background: var(--winbox-dock-bg);
+	box-shadow: var(--winbox-shadow);
+}
+
+[data-winbox-dock] li { display: flex; align-items: stretch; }
+[data-winbox-dock] li + li { border-block-start: 1px solid var(--winbox-header-border); }
+[data-winbox-dock] li > button {
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	color: var(--neutral-100);
+}
+[data-winbox-dock] li > button:hover,
+[data-winbox-dock] li > button:focus-visible { background: var(--winbox-header-bg-hover); }
+[data-winbox-dock] li > button:first-child {
+	flex: 1;
+	min-width: 0;
+	padding: 10px 12px;
+	overflow-wrap: anywhere;
+}
+[data-winbox-dock] li > button:last-child {
+	flex: 0 0 44px;
+	display: grid;
+	place-items: center;
+	padding: 8px;
+}
+[data-winbox-dock] li > button:last-child::before {
+	content: '';
+	width: 24px;
+	height: 24px;
+	background-color: currentColor;
+	-webkit-mask: url('/resources/user/images/icons/close_small.svg') center / contain no-repeat;
+	mask: url('/resources/user/images/icons/close_small.svg') center / contain no-repeat;
+}
+
+@media (min-width: 768px) {
+	.winbox.app-winbox.min {
+		/* WinBox가 포커스 시 지정하는 인라인 z-index보다 도킹을 우선한다. */
+		z-index: 2147483646 !important;
+		box-shadow: var(--winbox-shadow);
+	}
+	[data-winbox-dock-ready] .winbox.app-winbox.min { display: block; }
+	[data-winbox-dock] { display: none; }
+}

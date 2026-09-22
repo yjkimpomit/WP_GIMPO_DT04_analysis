@@ -5,13 +5,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>일일안전작업현황</title>
-	<link rel="stylesheet" href="/resources/css/winbox-content.css">
-	<link rel="stylesheet" href="/resources/js/timepicker/jquery.timepicker.min.css">
-	<link rel="stylesheet" href="/resources/js/daterangepicker/daterangepicker.css">
-	<script src="/resources/js/jquery/jquery-3.6.1.js"></script>
-	<script src="/resources/js/daterangepicker/moment/moment-with-locales.min.js"></script>
-	<script src="/resources/js/daterangepicker/daterangepicker.js"></script>
-	<script src="/resources/js/timepicker/jquery.timepicker.min.js"></script>
+	<link rel="stylesheet" href="/resources/user/css/winbox-content.css">
+	<link rel="stylesheet" href="/resources/user/js/timepicker/jquery.timepicker.min.css">
+	<link rel="stylesheet" href="/resources/user/js/daterangepicker/daterangepicker.css">
+	<script src="/resources/user/js/jquery/jquery-3.6.1.js"></script>
+	<script src="/resources/user/js/daterangepicker/moment/moment-with-locales.min.js"></script>
+	<script src="/resources/user/js/daterangepicker/daterangepicker.js"></script>
+	<script src="/resources/user/js/timepicker/jquery.timepicker.min.js"></script>
 </head>
 
 <body>
@@ -52,7 +52,7 @@
 								<input type="number" class="form-control form-control--search" id="orderNoOption"
 									name="workOrderNo" value="" required maxlength="10">
 								<input type="hidden" id="orderNoInput" name="workOrderDescription" value="" disabled>
-								<button type="button" class="button button-ghost" id="btnSearchWorkOrder"><span
+								<button type="button" class="button button--ghost" id="btnSearchWorkOrder"><span
 										class="visually-hidden">검색</span></button>
 							</div>
 
@@ -78,7 +78,7 @@
 								<label class="visually-hidden" for="supvorOption">감독자 검색</label>
 								<input type="text" class="form-control form-control--search" list="workSvListOptions"
 									id="supvorOption" name="workSvCode" value="" required maxlength="10">
-								<button type="button" class="button button-ghost" data-search="supervisor"><span
+								<button type="button" class="button button--ghost" data-search="supervisor"><span
 										class="visually-hidden">검색</span></button>
 							</div>
 							<div class="form-field">
@@ -178,7 +178,7 @@
 								<input type="text" class="form-control form-control--search"
 									list="workSvDeptListOptions" id="supvDeptOption" name="svDeptCode" value=""
 									maxlength="20" required>
-								<button type="button" class="button button-ghost" data-search="department"><span
+								<button type="button" class="button button--ghost" data-search="department"><span
 										class="visually-hidden">검색</span></button>
 							</div>
 							<div class="form-field">

@@ -1,0 +1,391 @@
+@charset "utf-8";
+
+/* 
+ * 포미트 - 서부 iPOS 공통 컬러시스템
+ * 작성자 : 김윤지
+ * 작성일 : 2025.10.16
+ */
+
+:root {
+	--black-050: #11111105;
+	--black-100: #1111110D;
+	--black-200: #11111133;
+	--black-300: #1111114D;
+	--black-400: #11111166;
+	--black-500: #111111A3;
+	--black-600: #111111B7;
+	--black-700: #111111D6;
+	--black-800: #111111EB;
+	--black-900: #111111FF;
+	
+	--white-050: #ffffff0D;
+	--white-100: #ffffff1A;
+	--white-200: #ffffff33;
+	--white-300: #ffffff4D;
+	--white-400: #ffffff66;
+	--white-500: #ffffffA3;
+	--white-600: #ffffffB7;
+	--white-700: #ffffffD6;
+	--white-800: #ffffffEB;
+	--white-900: #ffffffFF;
+	
+	--blue-050: #F0F9FF;
+	--blue-100: #E0F2FF;
+	--blue-200: #A3D9FF;
+	--blue-300: #73BDFA;
+	--blue-400: #45A5F5;
+	--blue-500: #0078D4;
+	--blue-600: #0060A9;
+	--blue-700: #054576;
+	--blue-800: #093353;
+	--blue-900: #0A2133;
+	
+	--red-050: #FFEAF4;
+	--red-100: #FFD5EA;
+	--red-200: #FFB2D2;
+	--red-300: #FF8CB2;
+	--red-400: #FA2661;
+	--red-500: #DF134C;
+	--red-600: #B20C3C;
+	--red-700: #90002A;
+	--red-800: #520019;
+	--red-900: #3F0011;
+	
+	--green-050: #F7FAF9;
+	--green-100: #E2F6E7;
+	--green-200: #BBE6C5;
+	--green-300: #91E0A2;
+	--green-400: #34A34C;
+	--green-500: #26873B;
+	--green-600: #207733;
+	--green-700: #185626;
+	--green-800: #21582D;
+	--green-900: #254B2D;
+	
+	--orange-050: #FFF6F0;
+	--orange-100: #FFE8D9;
+	--orange-200: #FFD1B3;
+	--orange-300: #FFAA66;
+	--orange-400: #FF7A00;
+	--orange-500: #CC6100;
+	--orange-600: #A34D00;
+	--orange-700: #7A3900;
+	--orange-800: #522600;
+	--orange-900: #331800;
+	
+	--pink-050: #FFF0FB;
+	--pink-100: #F5D3EB;
+	--pink-200: #FFB8EB;
+	--pink-300: #FF99E2;
+	--pink-400: #FF66D2;
+	--pink-500: #CC0092;
+	--pink-600: #99006D;
+	--pink-700: #650B4C;
+	--pink-800: #450C35;
+	--pink-900: #260D1F;
+
+	--yellow-050: #FFF8D6;
+	--yellow-100: #FFF3B8;
+	--yellow-200: #FFDF72;
+	--yellow-300: #FFC933;
+	--yellow-400: #FFB300;
+	--yellow-500: #E76500;
+	--yellow-600: #C35500;
+	--yellow-700: #A93E00;
+	--yellow-800: #8D2A00;
+	--yellow-900: #6D1900;
+	
+	--purple-050: #FDF5FF;
+	--purple-100: #FAE5FF;
+	--purple-200: #F7CCFF;
+	--purple-300: #EE99FF;
+	--purple-400: #E770FF;
+	--purple-500: #CC00F5;
+	--purple-600: #AB00CC;
+	--purple-700: #7F0099;
+	--purple-800: #550066;
+	--purple-900: #33003D;
+	
+	--cyan-050: #EFFBFE;
+	--cyan-100: #DCF3F9;
+	--cyan-200: #A5E3F3;
+	--cyan-300: #66D8F5;
+	--cyan-400: #28BCE2;
+	--cyan-500: #0080A0;
+	--cyan-600: #016983;
+	--cyan-700: #015165;
+	--cyan-800: #013947;
+	--cyan-900: #012832;
+	
+	--slate-050: #F6F7F9;
+	--slate-100: #ECEFF4;
+	--slate-200: #D3DAE4;
+	--slate-300: #C1CAD7;
+	--slate-400: #A5B1C0;
+	--slate-500: #5E6978;
+	--slate-600: #4F5764;
+	--slate-700: #40464F;
+	--slate-800: #31343A;
+	--slate-900: #1D2023;
+	
+	--chart-orange-rgb: rgb(254, 80, 0);
+	--chart-red-rgb: rgb(228, 0, 43);
+	--chart-magenta-rgb: rgb(165, 24, 144);
+	--chart-teallight-rgb: rgb(0, 150, 170);
+	--chart-tealmid-rgb: rgb(0, 86, 112);
+	--chart-tealdark-rgb: rgb(0, 119, 200);
+	--chart-green-rgb: rgb(0, 159, 77);
+	--chart-yellow-rgb: rgb(200, 160, 0);
+	--chart-blue-rgb: rgb(0, 102, 204);
+	--chart-lime-rgb: rgb(110, 160, 0);
+}
+
+:root {
+	--font-family: "Noto Sans KR";
+	--font-family-en: "Roboto", "Noto Sans KR", sans-serif;
+	
+	--transition-custom: all 0.4s ease-in-out;
+	--transition-custom2: all 0.8s ease-in-out;
+	
+	/* 테두리 */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 16px;
+	--radius-full: 9999px;
+	
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-bold: 700;
+	
+	/* nav */
+	--nav-link-padding-y: 4px;
+	
+	/* space */
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	
+	/* box-shadow */
+	--box-shadow-1: 0 0px 8px 0 rgba(0, 0, 0, 0.24);
+	--box-shadow-2: 0 0px 4px 0 rgba(0, 0, 0, 0.24);
+	--box-shadow-3: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+	--winbox-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.64);
+	
+	--white: var(--white-900);
+	--white-rgb: 255, 255, 255;
+	--black-rgb: 0, 0, 0;
+	--primary-rgb: 0, 120, 212;
+	--primary-rgb-light: 69, 165, 245;
+	--primary-rgb-strong: 0, 96, 169;
+	--secondary-rgb: 94, 105, 120;
+	--danger-rgb: 223, 19, 76;
+	--success-rgb: 54, 164, 29;
+	--warning-rgb: 255, 179, 0;
+	--info-rgb: 0, 128, 160;
+
+	/* chart : --chart-[scope]-[series]-[role]*/
+	/* 1: neutral */
+	--chart-series-1-bg: var(--slate-050);
+	--chart-series-1-border: var(--slate-100);
+	--chart-series-1-fill: var(--slate-500);
+	--chart-series-1-fill-strong: var(--slate-600);
+	--chart-series-1-text: var(--slate-700);
+
+	/* 2: cyan */
+	--chart-series-2-bg: var(--cyan-050);
+	--chart-series-2-border: var(--cyan-100);
+	--chart-series-2-fill: var(--cyan-400);
+	--chart-series-2-fill-strong: var(--cyan-500);
+	--chart-series-2-text: var(--cyan-600);
+
+	/* 3: orange */
+	--chart-series-3-bg: var(--orange-050);
+	--chart-series-3-border: var(--orange-100);
+	--chart-series-3-fill: var(--orange-400);
+	--chart-series-3-fill-strong: var(--orange-500);
+	--chart-series-3-text: var(--orange-600);
+
+	/* 4: blue */
+	--chart-series-4-bg: var(--blue-050);
+	--chart-series-4-border: var(--blue-100);
+	--chart-series-4-fill: var(--blue-500);
+	--chart-series-4-fill-strong: var(--blue-600);
+	--chart-series-4-text: var(--blue-700);
+
+	/* ext */
+	--chart-series-ext-01: var(--chart-orange-rgb);
+	--chart-series-ext-02: var(--chart-red-rgb);
+	--chart-series-ext-03: var(--chart-magenta-rgb);
+	--chart-series-ext-04: var(--chart-teallight-rgb);
+	--chart-series-ext-05: var(--chart-tealmid-rgb);
+	--chart-series-ext-06: var(--chart-tealdark-rgb);
+	--chart-series-ext-07: var(--chart-green-rgb);
+	--chart-series-ext-08: var(--chart-yellow-rgb);
+	--chart-series-ext-09: var(--chart-blue-rgb);
+	--chart-series-ext-10: var(--chart-lime-rgb);
+}
+
+/* 2026-04-09 : 시맨틱과 컴포넌트로 분리 */
+/* Semantic Tokens */
+:root {
+	--bg-base: var(--white-900);
+	
+	/* Neutral */
+	--surface-base: var(--white-900);
+	--surface-subtle: var(--slate-050);
+	--surface-muted: var(--slate-100);
+	--surface-strong: var(--slate-200);
+	--surface-stronger: var(--slate-300);
+	--surface-emphasis: var(--slate-400);
+	--surface: var(--slate-500);
+	--surface-inverse: var(--slate-900);
+	
+	/* Primary */
+	--surface-primary-subtle: var(--blue-050);
+	--surface-primary-muted: var(--blue-100);
+	--surface-primary-soft: var(--blue-500);
+	--surface-primary: var(--blue-600);
+	--surface-primary-strong: var(--blue-700);
+	--surface-primary-stronger: var(--blue-800);
+	--surface-primary-emphasis: var(--blue-900);
+	
+	/* Secondary */
+	--surface-secondary-subtle: var(--slate-050);
+	--surface-secondary-muted: var(--slate-100);
+	--surface-secondary-soft: var(--slate-500);
+	--surface-secondary: var(--slate-600);
+	--surface-secondary-strong: var(--slate-700);
+	--surface-secondary-stronger: var(--slate-800);
+	--surface-secondary-emphasis: var(--slate-900);
+	
+	/* Status */
+	--surface-danger-subtle: var(--red-050);
+	--surface-danger-muted: var(--red-100);
+	--surface-danger-soft: var(--red-500);
+	--surface-danger: var(--red-600);
+	--surface-danger-strong: var(--red-700);
+	
+	--surface-warning-subtle: var(--yellow-050);
+	--surface-warning-muted: var(--yellow-100);
+	--surface-warning-soft: var(--yellow-500);
+	--surface-warning: var(--yellow-600);
+	--surface-warning-strong: var(--yellow-700);
+	
+	--surface-success-subtle: var(--green-050);
+	--surface-success-muted: var(--green-100);
+	--surface-success-soft: var(--green-500);
+	--surface-success: var(--green-600);
+	--surface-success-strong: var(--green-700);
+	--surface-success-stronger: var(--green-800);
+	--surface-success-emphasis: var(--green-900);
+	
+	--surface-info-subtle: var(--cyan-050);
+	--surface-info-muted: var(--cyan-100);
+	--surface-info-soft: var(--cyan-500);
+	--surface-info: var(--cyan-600);
+	--surface-info-strong: var(--cyan-700);
+	--surface-info-stronger: var(--cyan-800);
+	--surface-info-emphasis: var(--cyan-900);
+	
+	/* Neutral */
+	--border-subtle: var(--slate-100);
+	--border-muted: var(--slate-200);
+	--border-strong: var(--slate-300);
+	--border: var(--slate-500);
+	--border-white: var(--white-900);
+	
+	/* Primary */
+	--border-primary-subtle: var(--blue-100);
+	--border-primary-muted: var(--blue-200);
+	--border-primary-soft: var(--blue-500);
+	--border-primary: var(--blue-600);
+	--border-primary-subtle: var(--blue-700);
+	--border-primary-emphasis: var(--blue-900);
+	
+	/* Secondary */
+	--border-secondary-subtle: var(--slate-100);
+	--border-secondary-muted: var(--slate-200);
+	--border-secondary-soft: var(--slate-500);
+	--border-secondary: var(--slate-600);
+	--border-secondary-strong: var(--slate-700);
+	--border-secondary-stronger: var(--slate-800);
+	--border-secondary-emphasis: var(--slate-900);
+	
+	/* Status */
+	--border-danger-subtlest: var(--red-100);
+	--border-danger-muted: var(--red-200);
+	--border-danger-soft: var(--red-500);
+	--border-danger: var(--red-600);
+	--border-danger-strong: var(--red-700);
+	
+	--border-warning-subtlest: var(--yellow-100);
+	--border-warning-muted: var(--yellow-200);
+	--border-warning-soft: var(--yellow-500);
+	--border-warning: var(--yellow-600);
+	--border-warning-strong: var(--yellow-700);
+	
+	--border-success-subtlest: var(--green-100);
+	--border-success-muted: var(--green-200);
+	--border-success-soft: var(--green-500);
+	--border-success: var(--green-600);
+	--border-success-strong: var(--green-700);
+	
+	--border-info-subtlest: var(--cyan-100);
+	--border-info-muted: var(--cyan-200);
+	--border-info-soft: var(--cyan-500);
+	--border-info: var(--cyan-600);
+	--border-info-strong: var(--cyan-700);
+	
+	
+	/* Neutral */
+	--text-base: var(--slate-900);
+	--text-subtle: var(--slate-800);
+	--text-muted: var(--slate-700);
+	--text-weak: var(--slate-600);
+	--text-weaker: var(--slate-500);
+	
+	/* Inverse */
+	--text-inverse: var(--white-900);
+	--text-inverse-muted: var(--slate-200);
+	--text-inverse-subtle: var(--slate-100);
+	
+	/* Primary */
+	--text-primary-soft: var(--blue-500);
+	--text-primary: var(--blue-600);
+	--text-primary-strong: var(--blue-700);
+	--text-primary-stronger: var(--blue-800);
+	--text-primary-emphasis: var(--blue-900);
+	
+	/* Secondary */
+	--text-secondary-soft: var(--slate-500);
+	--text-secondary: var(--slate-600);
+	--text-secondary-strong: var(--slate-700);
+	--text-secondary-stronger: var(--slate-800);
+	--text-secondary-emphasis: var(--slate-900);
+	
+	/* Status */
+	--text-danger-soft: var(--red-500);
+	--text-danger: var(--red-600);
+	--text-danger-strong: var(--red-700);
+	--text-danger-stronger: var(--red-800);
+	--text-danger-emphasis: var(--red-900);
+	--text-danger-inverse: var(--red-200);
+	
+	--text-warning-soft: var(--yellow-500);
+	--text-warning: var(--yellow-600);
+	--text-warning-strong: var(--yellow-700);
+	--text-warning-stronger: var(--yellow-800);
+	--text-warning-emphasis: var(--yellow-900);
+	
+	--text-success-soft: var(--green-500);
+	--text-success: var(--green-600);
+	--text-success-strong: var(--green-700);
+	--text-success-stronger: var(--green-800);
+	--text-success-emphasis: var(--green-900);
+	
+	--text-info-soft: var(--cyan-500);
+	--text-info: var(--cyan-600);
+	--text-info-strong: var(--cyan-700);
+	--text-info-stronger: var(--cyan-800);
+	--text-info-emphasis: var(--cyan-900);
+}

@@ -1,0 +1,129 @@
+@charset "utf-8";
+
+/* 
+ * 포미트 - 서부 iPOS 공통 스타일시트
+ * 작성자 : 김윤지
+ * 작성일 : 2024.11.26
+ * 임포트 파일 : 리셋, 부트스트랩, 폰트
+ * 
+ */
+
+@import url('variables.css');
+@import url('reset.css');
+
+html, body {
+	height: inherit;
+}
+a {
+	color: var(--error-link-fg);
+	text-decoration: none;
+}
+a:hover {
+	color: var(--error-link-hover-fg);
+}
+
+/* logo */
+body > .logo {
+	/*display: block;*/
+	width: var(--error-logo-width);
+	height: var(--error-logo-height);
+
+	background-image: url('/resources/user/images/logo.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto var(--error-logo-image-height);
+	
+	font-size: var(--spacing-000);
+	
+	display: none;
+}
+
+/* error */
+.error-box {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+
+	margin: var(--error-content-margin-top) auto var(--spacing-000);
+	font-family: var(--error-font-family);
+	max-width: var(--error-content-max-width);
+	padding: var(--spacing-000) var(--error-content-padding-x);
+}
+.error-box::before {
+	content: '';
+
+	display: block;
+	background: url('/resources/user/images/icons/icon-webpage.svg') no-repeat left top;
+	background-size: var(--error-visual-size);
+	width: 100%;
+	height: var(--error-visual-height);
+}
+.error-message {
+	margin-top: var(--error-message-offset);
+}
+h1 {
+	font-weight: var(--font-weight-bold);
+	font-size: var(--error-code-size);
+	display: flex;
+	align-items: center;
+	gap: var(--error-code-gap);
+	
+	margin-bottom: var(--error-code-margin-bottom);
+}
+h1 small {
+	font-size: var(--error-note-size);
+	font-weight: var(--font-weight-bold) !important;
+	position: relative;
+	opacity: var(--error-note-opacity);
+}
+h1 small::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: var(--error-note-offset);
+
+	display: inline-block;
+	width: 100%;
+	border-bottom: solid var(--error-note-border-width) var(--error-border);
+}
+.title {
+	font-size: var(--error-title-size);
+	font-weight: var(--font-weight-bold);
+}
+.text {
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-medium);
+	color: var(--error-text);
+}
+@media (min-width: 768px) {
+	.error-box::before {
+		background-position: left top;
+		background-size: var(--error-visual-size-medium);
+		height: var(--error-visual-height-medium);
+	}
+	
+}
+@media (min-width: 1024px) {
+	.error-box {
+		flex-direction: row;
+		align-items: center;
+
+		margin: var(--error-content-margin-top-wide) auto var(--spacing-000);
+		max-width: var(--error-content-max-width-wide);
+	}
+
+	.error-box::before {
+		background-position: left top;
+		background-size: var(--error-visual-size-wide);
+		width: var(--error-visual-width-wide);
+		height: var(--error-visual-height-wide);
+	}
+	h1 {
+		font-size: var(--error-code-size-wide);
+	}
+	h1 small {
+		font-size: var(--error-note-size-wide);
+	}
+}
+
