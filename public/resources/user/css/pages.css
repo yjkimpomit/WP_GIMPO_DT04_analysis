@@ -3,7 +3,7 @@
 /* 작업기간: 날짜와 시간을 짝지어 배치하고 넓은 화면에서는 한 줄로 표시한다. */
 #dailyRiskEntryForm .form-control-group:has(#workStartDate) {
 	display: grid;
-	grid-template-columns: minmax(0, 6rem) minmax(0, 4rem);
+	grid-template-columns: minmax(0, 8rem) minmax(0, 4rem);
 	align-items: center;
 }
 
@@ -13,7 +13,7 @@
 
 @media (min-width: 768px) {
 	#dailyRiskEntryForm .form-control-group:has(#workStartDate) {
-		grid-template-columns: minmax(0, 6rem) minmax(0, 4rem) auto minmax(0, 6rem) minmax(0, 4rem);
+		grid-template-columns: minmax(0, 8rem) minmax(0, 4rem) auto minmax(0, 6rem) minmax(0, 4rem);
 		width: fit-content;
 		max-width: 100%;
 	}
@@ -55,13 +55,11 @@
 .page-content--popup {
 	height: 100%;
 	padding: var(--spacing-200);
+	overflow-y: auto;
 }
 
-.page-content--popup .splitview .result-panel:has(.table-responsive) {
-	background-color: var(--bg-elevated-1);
-}
-.page-content--popup .splitview .table-responsive {
-	max-height: 100%;
+.page-content--popup .splitview {
+	min-height: unset;
 }
 
 .content-section {
@@ -591,3 +589,4 @@
 .calendar-list .cell.today {
 	background-color: var(--calendar-today-bg);
 }
+

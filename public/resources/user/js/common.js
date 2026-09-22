@@ -12,9 +12,9 @@ var winboxTop;
 var winboxHeight;
 
 // winbox device control
-var WINBOX_BREAKPOINT = 768;
+var WINBOX_BREAKPOINT = 576;
 var WINBOX_DESKTOP_INSET = 16;
-var WINBOX_MOBILE_INSET = 0;
+var WINBOX_MOBILE_INSET = 8;
 var WINBOX_MOBILE_TOP = 56;
 var WINBOX_HEADER_HEIGHT = 40;
 var WINBOX_MINIMIZED_GAP = 8;
@@ -494,9 +494,10 @@ function bringToFront($target) {
 	$target.css('z-index', getMaxZIndex() + 1);
 }
 
-//날짜 한달 전으로 세팅하는 공통 함수
+/**
+ * 날짜검색 : 날짜 한달 전으로 세팅하는 공통 함수
+ */
 function setDateS() {
-	//날짜 현재날짜 기준 한 달 전 세팅
 	var today = new Date();
 	var yyyy = today.getFullYear();
 	var mm = ("0" + (today.getMonth() + 1)).slice(-2); // 월은 0부터 시작하므로 +1
@@ -510,63 +511,27 @@ function setDateS() {
 	$('#designDateStart').val(lastMonthDate); // 두 번째 input에 한 달 전 날짜 설정
 }
 
-function fnWoSearchForm() {
-	$.ajax({
-		type: "POST", url: "/common/wolInfo.do", dataType: "html", beforeSend: function () {
-			$("#loadingBar").css("display", "");
-		}, success: function (data) {
-			$("#woSearchListForm").html(data);
-		}, error: function (request, status, error) {
-			console.log("code:" + request.status + "\n message:" + request.responseText + "\n error:" + error);
-		}, complete: function () {
-			$("#loadingBar").css("display", "none");
-		}
-	});
-}
-
-// 검색박스내 W/O  팝업
+/**
+ * 검색박스내 W/O  팝업
+ * @param target
+ */
 function searchWoTreePopup(target) {
-	$("#searchWoTreePopup").bPopup({
-		modalClose: false, opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
-			$("#searchWoTreePopup").addClass('show');
-			fnWoSearchForm();
-		}, onClose: function () {
-			$("#searchWoTreePopup").removeClass('show');
-			$("#woSearchListForm").html('');
-		}
-	});
-}
-
-//W/O 상세 검색
-function fnWoDetailSearch() {
-	var startVal = "";
-	var endVal = "";
-
-	//조회 시작일
-	startVal = document.getElementById("designDateStart").value;
-	//조회 종료일
-	endVal = document.getElementById("designDateEnd").value;
-
-	if (startVal !== "" && endVal === "") {
-		alert("조회 종료일을 선택해주세요");
-		return false;
-	} else if (startVal === "" && endVal !== "") {
-		alert("조회 시작일을 선택해주세요");
-		return false;
-	} else if (startVal > endVal) {
-		alert("조회 종료일을 시작일 이전으로 설정할 수 없습니다.\n조회 종료일을 다시 선택해주세요.");
-		return false;
-	}
-
-	$.ajax({
-		type: "POST", url: "/common/wolList.do", data: $("#form_search_woresult1").serialize(), dataType: "html", beforeSend: function () {
-			$("#loadingBar").css("display", "");
-		}, success: function (data) {
-			$("#_VIEW_WO_RESULTS_LIST").html(data);
-		}, error: function (request, status, error) {
-			console.log("code:" + request.status + "\n message:" + request.responseText + "\n error:" + error);
-		}, complete: function () {
-			$("#loadingBar").css("display", "none");
+	var box = new WinBox("W/O 검색", {
+		url: "/common/modalSearchTreeWo.do",
+		width: Math.min(1400, window.innerWidth - 20) + "px",
+		height: Math.min(720, window.innerHeight - 20) + "px",
+		x: "center",
+		y: "center",
+		modal: true,
+		oncreate: fnEnableModalInteraction,
+		focus: true,
+		class: ["app-winbox", "app-winbox--detail"],
+		position: "center",
+		onresize: function (w, y) {
+			if (this.min) return;
+			this.move("center", "center");
+		},
+		onclose: function () {
 		}
 	});
 }
@@ -655,6 +620,37 @@ function fnfacilityDetailPageMove(f) {
 
 // WinBox는 modal일 때 기본적으로 이동 및 리사이즈 pointer event를 차단하여 차단을 해제
 function fnEnableModalInteraction() {
+	var modal = this.window;
+	if (modal.classList.contains("modal") && !modal.hasAttribute("data-modal-overlay")) {
+		var parent = modal.parentNode;
+		var overlay = modal.ownerDocument.createElement("div");
+		overlay.className = "app-winbox-overlay";
+		overlay.setAttribute("aria-hidden", "true");
+		modal.setAttribute("data-modal-overlay", "");
+		// 같은 z-index에서 DOM 순서를 이용해 해당 모달 바로 아래에 배치한다.
+		parent.insertBefore(overlay, modal);
+		var syncOverlay = function () {
+			if (modal.parentNode !== parent) {
+				observer.disconnect();
+				overlay.remove();
+				modal.removeAttribute("data-modal-overlay");
+				return;
+			}
+			overlay.style.zIndex = modal.style.zIndex || "0";
+			overlay.hidden = modal.classList.contains("hide") || modal.hidden;
+		};
+		var observer = new MutationObserver(syncOverlay);
+		observer.observe(modal, { attributes: true, attributeFilter: ["style", "class", "hidden"] });
+		// 실제 DOM 제거를 감시하므로 onclose가 닫기를 취소하면 오버레이를 유지한다.
+		observer.observe(parent, { childList: true });
+		syncOverlay();
+		["pointerdown", "mousedown", "click", "dblclick", "contextmenu", "wheel", "touchmove"].forEach(function (type) {
+			overlay.addEventListener(type, function (event) {
+				event.preventDefault();
+				event.stopPropagation();
+			}, { passive: false });
+		});
+	}
 	var dragHandle = this.window.querySelector(".wb-drag");
 	var resizeHandles = this.window.querySelectorAll(".wb-body ~ div");
 
@@ -671,7 +667,7 @@ function fnEnableModalInteraction() {
 function searchFacilityTypeTreePopup(target) {
 	var box = new WinBox("설비종류 검색", {
 		url: "/common/modalSearchTreeFacilityType.do",
-		width: Math.min(700, window.innerWidth - 20) + "px",
+		width: Math.min(720, window.innerWidth - 20) + "px",
 		height: Math.min(720, window.innerHeight - 20) + "px",
 		x: "center",
 		y: "center",
@@ -693,7 +689,7 @@ function searchFacilityTypeTreePopup(target) {
 function searchFacilityLocTreePopup(target) {
 	var box = new WinBox("기능위치번호 검색", {
 		url: "/common/modalSearchTreeFacilityLocation.do",
-		width: Math.min(700, window.innerWidth - 20) + "px",
+		width: Math.min(720, window.innerWidth - 20) + "px",
 		height: Math.min(720, window.innerHeight - 20) + "px",
 		x: "center",
 		y: "center",
@@ -715,7 +711,7 @@ function searchFacilityLocTreePopup(target) {
 function searchReqTreePopup(title) {
 	var box = new WinBox("감독부서 선택", {
 		url: "/common/modalSearchTreeOversightDept.do",
-		width: Math.min(700, window.innerWidth - 20) + "px",
+		width: Math.min(1080, window.innerWidth - 20) + "px",
 		height: Math.min(720, window.innerHeight - 20) + "px",
 		x: "center",
 		y: "center",
@@ -735,32 +731,9 @@ function searchReqTreePopup(title) {
 
 // 검색박스내 설계부서 검색팝업
 function searchdesignDeptTreePopup(target) {
-	// 모달이 닫힐 때 초기화 작업 수행
-	$("#searchdesignDeptTreePopup #searchdesignDeptTreeTitle").empty();
-
-	var title = target.siblings('label').text();
-
-	// 모달 제목 설정
-	$("#searchdesignDeptTreeTitle").text(title);
-
-	/* $("#searchdesignDeptTreePopup").bPopup({
-		 modalClose: false, //zIndex: 1200,
-		 opacity: 0.2, speed: 450, closeClass: "close", onOpen: function () {
-			 // #searchTreePopup에 클래스 추가
-			 $("#searchdesignDeptTreePopup").addClass('show');
-		 }, onClose: function () {
-			 var tree = $.fn.zTree.getZTreeObj('designDeptTree1');
-			 if (tree) {
-				 tree.expandAll(false);
-				 tree.cancelSelectedNode();
-			 }
-			 $("#searchdesignDeptTreePopup").removeClass('show');
-		 }
-	 });*/
-
 	var box = new WinBox("설계부서 선택", {
 		url: "/common/modalSearchTreeDesignDept.do",
-		width: Math.min(700, window.innerWidth - 20) + "px",
+		width: Math.min(720, window.innerWidth - 20) + "px",
 		height: Math.min(720, window.innerHeight - 20) + "px",
 		x: "center",
 		y: "center",
@@ -782,7 +755,7 @@ function searchdesignDeptTreePopup(target) {
 function searchReqDeptTreePopup(target) {
 	var box = new WinBox("요청부서 선택", {
 		url: "/common/modalSearchTreeRequestDept.do",
-		width: Math.min(700, window.innerWidth - 20) + "px",
+		width: Math.min(720, window.innerWidth - 20) + "px",
 		height: Math.min(720, window.innerHeight - 20) + "px",
 		x: "center",
 		y: "center",
@@ -804,7 +777,7 @@ function searchReqDeptTreePopup(target) {
 function searchopDeptTreePopup(target) {
 	var box = new WinBox("운전부서 선택", {
 		url: "/common/modalSearchTreeOperationsDept.do",
-		width: Math.min(700, window.innerWidth - 20) + "px",
+		width: Math.min(720, window.innerWidth - 20) + "px",
 		height: Math.min(720, window.innerHeight - 20) + "px",
 		x: "center",
 		y: "center",
@@ -824,17 +797,9 @@ function searchopDeptTreePopup(target) {
 
 // 검색박스내 정비부서 검색팝업
 function searchmainDeptTreePopup(target) {
-	// 모달이 닫힐 때 초기화 작업 수행
-	$("#searchmainDeptTreePopup #searchmainDeptTreeTitle").empty();
-
-	var title = target.siblings('label').text();
-
-	// 모달 제목 설정
-	$("#searchmainDeptTreeTitle").text(title);
-
 	var box = new WinBox("정비부서 선택", {
 		url: "/common/modalSearchTreeMaintenanceDept.do",
-		width: Math.min(700, window.innerWidth - 20) + "px",
+		width: Math.min(720, window.innerWidth - 20) + "px",
 		height: Math.min(720, window.innerHeight - 20) + "px",
 		x: "center",
 		y: "center",
@@ -854,11 +819,8 @@ function searchmainDeptTreePopup(target) {
 
 // 검색박스내 사용자검색 팝업
 function searchItemPopup(target) {
-	// 모달이 닫힐 때 초기화 작업 수행
-	var title = target.prev('label').text().trim();
+	var title = target.prevAll('label').first().text().trim();
 	var chkTitleTree = "";
-
-	console.log("### searchItemPopup : " + title);
 
 	if (title === "요청자 검색") {
 		chkTitleTree = "1";
@@ -944,59 +906,57 @@ function searchFacilityPopup(target) {
 
 //검색박스내 점검종류 팝업
 function searchResultPopup(target) {
-	$("#loadingBar").css("display", "");
-	//ajax detail load
-	var setData = "";
-	$.ajax({
-		url: "/common/pmlList.do", type: "POST", dataType: "html", success: function (data) {
-			if (data !== "") {
-				setData = data;
-			}
-		}, complete: function () {
-			$("#codeDetailList").html(setData);
-
-			var box = new WinBox("점검종류", {
-				url: "/common/modalSearchTreeInspectionType.do",
-				width: Math.min(1400, window.innerWidth - 20) + "px",
-				height: Math.min(720, window.innerHeight - 20) + "px",
-				x: "center",
-				y: "center",
-				modal: true,
-				oncreate: fnEnableModalInteraction,
-				focus: true,
-				class: ["app-winbox", "app-winbox--detail"],
-				position: "center",
-				onresize: function (w, y) {
-					if (this.min) return;
-					this.move("center", "center");
-				},
-				onclose: function () {
-				}
-			});
-		}, error: function (request, status, error) {
-			console.log("code:" + request.status + "\n message:" + request.responseText + "\n error:" + error);
+	var box = new WinBox("점검종류", {
+		url: "/common/modalSearchTreeInspectionType.do",
+		width: Math.min(1400, window.innerWidth - 20) + "px",
+		height: Math.min(720, window.innerHeight - 20) + "px",
+		x: "center",
+		y: "center",
+		modal: true,
+		oncreate: fnEnableModalInteraction,
+		focus: true,
+		class: ["app-winbox", "app-winbox--detail"],
+		position: "center",
+		onresize: function (w, y) {
+			if (this.min) return;
+			this.move("center", "center");
+		},
+		onclose: function () {
 		}
 	});
 }
 
-//검색박스내 점검종류 검색기능
-function fnCodeSearch() {
-	$("#loadingBar").css("display", "");
-	$.ajax({
-		type: "post", url: "/common/pmlList.do", data: $("#form_search_result2").serialize(), dataType: "html", success: function (data) {
-			$("#codeDetailList").html(data);
-			$("#loadingBar").css("display", "none");
-		}, error: function (request, status, error) {
-			console.log("code:" + request.status + "\n error:" + error);
+/**
+ * 설비분류체계 팝업창
+ */
+function fnShowFacilityPackageTreeList() {
+	var url = "/common/facilityPackageTreeList.do";
+	var box = new WinBox("설비분류체계", {
+		url: url,
+		width: Math.min(720, window.innerWidth - 20) + "px",
+		height: Math.min(640, window.innerHeight - 20) + "px",
+		x: "center",
+		y: "center",
+		modal: true,
+		oncreate: fnEnableModalInteraction,
+		focus: true,
+		class: ["app-winbox", "app-winbox--detail"],
+		position: "center",
+		onresize: function (w, y) {
+			if (this.min) return;
+			this.move("center", "center");
+		},
+		onclose: function () {
 		}
 	});
 }
+
 
 /* 메인페이지 왼쪽 메뉴에서 도면보기 팝업 */
 function fnOpenDrawing(url) {
 	$('#menuList').removeClass('show');
 	$("#toggle-button").attr('aria-expanded', 'false');
-	$('#toggle-button img').attr('src', '/resources/images/icons/gnb-menu.svg').attr('alt', '메뉴 열기');
+	$('#toggle-button img').attr('src', '/resources/user/images/icons/gnb-menu.svg').attr('alt', '메뉴 열기');
 
 	var popup = window.open(url, '_viewDrawing', 'height=' + screen.height + ',width=' + screen.width + 'fullscreen=yes');
 	popup.focus();
@@ -1006,7 +966,7 @@ function fnOpenDrawing(url) {
 function fnOpenPano() {
 	$('#menuList').removeClass('show');
 	$("#toggle-button").attr('aria-expanded', 'false');
-	$('#toggle-button img').attr('src', '/resources/images/icons/gnb-menu.svg').attr('alt', '메뉴 열기');
+	$('#toggle-button img').attr('src', '/resources/user/images/icons/gnb-menu.svg').attr('alt', '메뉴 열기');
 
 	var popup = window.open("/pcm/vi/main.do?pct_sn=84&pci_tag=Taean9_10", '_viewPano', 'height=' + screen.height + ',width=' + screen.width + 'fullscreen=yes');
 	popup.focus();
@@ -1022,18 +982,6 @@ function fnOpenModal(url, title, x, y, width, height) {
 
 	new WinBox(title, {
 		modal: true, oncreate: fnEnableModalInteraction, header: WINBOX_HEADER_HEIGHT, x: x, y: y, width: width, height: height, url: url
-	});
-}
-
-// closeOtherPopups
-// 메인 화면에 종속된 모달 이외의 추가로 생성된 팝업 제거
-function closeOtherPopups() {
-	$('.modal').each(function () {
-		const popupId = $(this).attr('id');
-
-		if (popupId !== 'externalPopup' && popupId !== 'externalPopup2' && popupId !== 'cctvInstall' && popupId !== 'searchItemPopup' && popupId !== 'searchReqTreePopup' && popupId !== 'searchReqDeptTreePopup' && popupId !== 'searchFacilityPopup' && popupId !== 'searchResultPopup' && popupId !== 'searchopDeptTreePopup' && popupId !== 'searchmainDeptTreePopup' && popupId !== 'searchdesignDeptTreePopup' && popupId !== 'searchFacilityTypeTreePopup' && popupId !== 'searchFacilityLocTreePopup' && popupId !== 'searchWoTreePopup') {
-			$(this).remove();
-		}
 	});
 }
 
@@ -1069,38 +1017,6 @@ $(document).ready(function () {
 	checkTouchDevice();
 	window.addEventListener('resize', checkTouchDevice);
 });
-
-// 헤더 > 발전소 선택
-/*function initPlantSelect() {
-	const $plantGroup = $('.plant-group');
-	const $selectBtn = $('.select-plant .icon-arrow');
-
-	// 발전소 선택 버튼 클릭 시 (토글 방식)
-	$selectBtn.on('click', function (e) {
-		e.stopPropagation();
-		$plantGroup.toggleClass('active');
-	});
-
-	// 발전소 목록(span) 클릭 시
-	$plantGroup.on('click', 'span', function (e) {
-		e.stopPropagation();
-		const plantName = $(this).text().trim();
-		const plantCode = $(this).attr("data-code");
-
-		/!* 이동 *!/
-		const $form = $('<form>', {method: 'POST', action: '/index.do'})
-			.append($('<input>', {type: 'hidden', name: 'eqOrgNo', value: plantCode}));
-
-		$form.appendTo('body').submit();
-	});
-
-	// 외부 클릭 시 active 제거
-	$(document).on('click', function (e) {
-		if (!$plantGroup.is(e.target) && $plantGroup.has(e.target).length === 0 && !$selectBtn.is(e.target)) {
-			$plantGroup.removeClass('active');
-		}
-	});
-}*/
 
 /* 3D Model/운전정보 데이터 연계 박스 start */
 let operationInfoInterval = null;
@@ -1143,13 +1059,7 @@ function fnOpDataBoxToggle(targetId) {
 		$(targetId).addClass('active');
 	}
 }
-
 /* 3D Model/운전정보 데이터 연계 박스 End */
-
-// 페이지 로드 후 실행
-/*$(document).ready(function () {
-	initPlantSelect();
-});*/
 
 // ESC로 모달 닫히는거 방지
 document.addEventListener('keydown', function (e) {
@@ -1263,10 +1173,9 @@ function fnAndroidShowUnity() {
 }
 
 /* 외부라이브러리 오버라이드용 스타일 헤더에 추가로드시 사용 */
-
 /*
 <script>
-	loadCss("${pageContext.request.contextPath}/resources/js/svgviewer/css/svg-wrapper.css");
+	loadCss("${pageContext.request.contextPath}/resources/user/js/svgviewer/css/svg-wrapper.css");
 </script>
 * */
 function loadCss(url) {

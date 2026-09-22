@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>설비검색</title>
+	<link rel="stylesheet" href="/resources/user/css/winbox-content.css">
+</head>
+<body>
+	<!-- 로딩박스 -->
+	<div class="loading-box" id="loadingBar" style="display: none;">
+		<div class="loader"></div>
+	</div>
+
+	<main class="winbox-layout page-content page-content--popup" id="searchFacilityPopup">
+		<h1 class="page-content__heading visually-hidden">설비검색</h1>
+
+		<div class="splitview">
+			<aside class="splitview__pane splitview__pane--sidebar" aria-label="설비마스터-검색">
+				
+				<!-- 검색영역 -->
+				<form class="filter-panel filter-panel--with-section" id="form_search_result1" method="post" autocomplete="off">
+
+					<div class="filter-panel__header">
+						<span class="filter-panel__title">검색</span>
+						<button class="filter-panel__toggle"
+								type="button"
+								aria-label="설비마스터 검색 접기"
+								aria-expanded="true"
+								aria-controls="filter-panel-search"></button>
+					</div>
+
+					<div class="filter-panel__search" id="filter-panel-search">
+
+						<!-- filter-panel__fields 안에서 form-field 단위로 반복 -->
+						<div class="filter-panel__fields">
+
+							<div class="form-field">
+								<label class="form-label" for="equipTypeOption">설비종류</label>
+								<div class="form-control-group">
+									<input class="form-control form-control--search" id="equipTypeOption" name="eqType" onclick="searchFacilityTypeTreePopup($(this));">
+									<input class="form-control" type="text" value="" id="equipTypeInput" disabled="">
+								</div>
+							</div>
+
+							<fieldset class="form-field">
+								<legend class="form-label">설비명</legend>
+
+								<label class="visually-hidden" for="equipNameOption">설비명 선택1</label>
+								<input class="form-control" id="equipNameOption" name="searchKeywordTo">
+
+								<div class="form-field--inline">
+									<label class="form-choice">
+										<input type="radio" value="0" id="rbAnd" name="searchCondition">
+										<span>AND</span>
+									</label>
+									<label class="form-choice">
+										<input type="radio" value="1" name="searchCondition" id="rbOr" checked>
+										<span>OR</span>
+									</label>
+								</div>
+
+								<label class="visually-hidden" for="equipNameOption2">설비명 선택2</label>
+								<input class="form-control" id="equipNameOption2" name="searchKeywordFrom">
+							</fieldset>
+
+							<div class="form-field">
+								<label class="form-label" id="fnLocation">기능위치번호</label>
+								<div class="form-control-group">
+									<input class="form-control form-control--search" id="fnLocationOption" name="locNo" onclick="searchFacilityLocTreePopup($(this));">
+									<input class="form-control" type="text" value="" id="fnLocationInput" disabled="">
+								</div>
+							</div>
+
+							<div class="form-control-group">
+								<div class="form-field">
+									<label class="form-label" for="facType">설비구분</label>
+									<select class="form-select" id="facType">
+										<option value="----------------------------------">----------------------------------</option>
+									</select>
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="tagNo">TagNo</label>
+									<input class="form-control" id="tagNo" type="text" name="tagNo">
+								</div>
+							</div>
+
+						</div>
+
+						<div class="filter-panel__actions">
+							<button type="button" class="button button--primary" onclick="fnFacilityDetailSearch()">검색</button>
+						</div>
+					</div>
+					<div class="filter-panel__section">
+						<div class="tabs equipment-lookup__tree-tabs" data-tabs data-tab-content-loader data-tabs-collapsible role="group" aria-label="설비분류체계">
+							<!-- 맨 아래 3개의 js 사용 -->
+							<ul class="nav nav-tabs" id="pills-tab2" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" id="equipment-lookup-function-tab" data-bs-toggle="pill" data-bs-target="#equipment-lookup-function-panel" type="button" role="tab" aria-controls="equipment-lookup-function-panel" aria-selected="true">기능위치</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="equipment-lookup-system-tab" data-bs-toggle="pill" data-bs-target="#equipment-lookup-system-panel" type="button" role="tab" aria-controls="equipment-lookup-system-panel" aria-selected="false">계통</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="equipment-lookup-type-tab" data-bs-toggle="pill" data-bs-target="#equipment-lookup-type-panel" type="button" role="tab" aria-controls="equipment-lookup-type-panel" aria-selected="false">종류</button>
+								</li>
+							</ul>
+							<button type="button" data-tabs-toggle aria-expanded="false" aria-controls="equipment-lookup-tab-content filter-panel-search" aria-label="설비분류체계 펼치기"></button>
+
+							<div class="tab-content" id="equipment-lookup-tab-content">
+								<div class="tab-pane fade show active" id="equipment-lookup-function-panel" role="tabpanel" aria-labelledby="equipment-lookup-function-tab" tabindex="0">
+									<!-- 트리메뉴 데이터 들어가는 영역 START -->
+									<div class="jstree-box" role="tree">
+										<div id="facilityMaster1" class="ztree">기능위치 트리</div>
+									</div>
+									<!-- 트리메뉴 데이터 들어가는 영역 END -->
+								</div>
+								<div class="tab-pane fade" id="equipment-lookup-system-panel" role="tabpanel" aria-labelledby="equipment-lookup-system-tab" tabindex="0">
+									<!-- 트리메뉴 데이터 들어가는 영역 START -->
+									<div class="jstree-box" role="tree">
+										<div id="facilityMaster2" class="ztree">계통 트리</div>
+									</div>
+									<!-- 트리메뉴 데이터 들어가는 영역 END -->
+								</div>
+								<div class="tab-pane fade" id="equipment-lookup-type-panel" role="tabpanel" aria-labelledby="equipment-lookup-type-tab" tabindex="0">
+									<!-- 트리메뉴 데이터 들어가는 영역 START -->
+									<div class="jstree-box" role="tree">
+										<div id="facilityMaster3" class="ztree">종류 트리</div>
+									</div>
+									<!-- 트리메뉴 데이터 들어가는 영역 END -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</aside>
+
+			<div class="splitview__pane splitview__pane--content">
+				<div class="result-panel" id="facilityMasterList">검색결과 영역</div>
+			</div>
+		</div>
+	</main>
+	
+
+	<script src="/resources/user/vendor/bootstrap-5.3.8/js/bootstrap-tab.js"></script>
+	<script src="/resources/user/js/common/tab-content-loader.js"></script>
+	<script src="/resources/user/js/common/components.js"></script>
+
+	<script>
+		(function () {
+			const button = document.querySelector('[data-tabs-toggle]');
+			const search = document.getElementById('filter-panel-search');
+			button.addEventListener('click', () => {
+				const expanded = button.getAttribute('aria-expanded') !== 'true';
+				search.inert = expanded;
+				button.setAttribute('aria-expanded', String(expanded));
+				button.setAttribute('aria-label', '설비분류체계 ' + (expanded ? '접기' : '펼치기'));
+			});
+		}());
+	</script>
+</body>
+</html>

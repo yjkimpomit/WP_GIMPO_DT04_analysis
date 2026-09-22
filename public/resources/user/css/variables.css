@@ -498,17 +498,18 @@
 	--button-border: var(--border-elevated-2);
 	--button-border-width: 1px;
 	
-	--button-destructive-default-bg: var(--bg-danger-default);
-	--button-destructive-hover-bg: var(--bg-danger-emphasis);
-	--button-destructive-pressed-bg: var(--bg-danger-strong);
+	--button-danger-default-bg: var(--bg-danger-default);
+	--button-danger-hover-bg: var(--bg-danger-emphasis);
+	--button-danger-pressed-bg: var(--bg-danger-strong);
+	
 	--button-disabled-opacity: 0.7;
 	
 	--button-gap: var(--spacing-100);
 	
-	--button--ghost-default-bg: var(--bg-elevated-1);
-	--button--ghost-hover-bg: var(--bg-primary-default);
-	--button--ghost-pressed-bg: var(--bg-primary-default);
-	--button--ghost-fg: var(--fg-neutral-subtler);
+	--button-ghost-default-bg: var(--bg-elevated-1);
+	--button-ghost-hover-bg: var(--bg-primary-default);
+	--button-ghost-pressed-bg: var(--bg-primary-default);
+	--button-ghost-fg: var(--fg-neutral-subtler);
 	
 	--button-height: 32px;
 	--button-height-sm: 24px;
@@ -670,7 +671,7 @@
 	--form-select-control-padding-x: var(--spacing-400);
 	--form-select-icon-inset: var(--spacing-050);
 	--form-select-icon-size: var(--spacing-250);
-	--form-textarea-min-height: 120px;
+	--form-textarea-min-height: 80px;
 	--form-width-full: 100%;
 	
 	--gnb-z-index: 10;
@@ -874,8 +875,8 @@
 	--ztree-item-height: 32px;
 	--ztree-icon-fg: var(--fg-neutral-subtler);
 	--ztree-icon-size: var(--icon-size);
-	--ztree-padding-x: var(--spacing-000);
-	--ztree-padding-y: var(--spacing-050);
+	--ztree-padding-x: var(--spacing-050);
+	--ztree-padding-y: var(--spacing-025);
 	--ztree-radius: var(--spacing-050);
 	--ztree-item-radius: var(--radius-050);
 	

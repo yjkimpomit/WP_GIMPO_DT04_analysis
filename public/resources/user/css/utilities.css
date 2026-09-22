@@ -1,0 +1,15 @@
+/* 텍스트 정렬과 같이 범용으로 사용하는 클래스 전용 */
+
+.text-start {
+	text-align: left !important;
+}
+.text-center {
+	text-align: center !important;
+}
+.text-end {
+	text-align: right !important;
+}
+
+.ws-reset {
+	white-space: wrap !important;
+}

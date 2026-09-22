@@ -1,25 +1,7 @@
 @charset "utf-8";
 
-/* 
- * 포미트 - 그룹선택화면 업데이트
- * 작성자 : 김윤지
- * 작성일 : 2026-04-15
- */
-
-@import url('/resources/user/css/variables.css');
-@import url('/resources/user/css/reset.css');
-
-/*#################### 폰트 ####################*/
-@import url('/resources/user/fonts/NotoSansKR/NotoSansKR.css');
-
-body {
-	font-family: var(--font-family), sans-serif;
-	color: var(--select-group-text);
-}
-
-a {
-	color: var(--select-group-text);
-}
+@import url('variables.css');
+@import url('reset.css');
 
 /* logo */
 .logo {
@@ -149,11 +131,8 @@ html[data-theme='dark'] .logo .bi .select-plant .icon-arrow {
 /* map-bg */
 html,
 body {
-	margin: 0;
-	padding: 0;
 	height: 100%;
 	background: #081521;
-	font-family: "Noto Sans KR", Arial, sans-serif;
 	overflow-x: hidden;
 }
 
@@ -161,11 +140,6 @@ body {
 	min-width: 320px;
 	background: url('/resources/user/images/group/map-bg.jpg') no-repeat center 0;
 	background-size: cover;
-}
-
-a {
-	color: var(--link-text);
-	text-decoration: none;
 }
 
 .map-section {
@@ -400,7 +374,6 @@ a {
 	line-height: 1.2;
 	font-weight: 700;
 	word-break: keep-all;
-	color: var(--info-box-text-inverse);
 	
 	display: flex;
 	align-items: center;

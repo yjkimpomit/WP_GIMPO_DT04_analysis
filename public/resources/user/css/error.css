@@ -11,50 +11,23 @@
 @import url('variables.css');
 @import url('reset.css');
 
-html, body {
-	height: inherit;
-}
-a {
-	color: var(--error-link-fg);
-	text-decoration: none;
-}
-a:hover {
-	color: var(--error-link-hover-fg);
-}
-
-/* logo */
-body > .logo {
-	/*display: block;*/
-	width: var(--error-logo-width);
-	height: var(--error-logo-height);
-
-	background-image: url('/resources/user/images/logo.svg');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: auto var(--error-logo-image-height);
-	
-	font-size: var(--spacing-000);
-	
-	display: none;
-}
-
 /* error */
 .error-box {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: center;
-
+	
 	margin: var(--error-content-margin-top) auto var(--spacing-000);
-	font-family: var(--error-font-family);
+	font-family:var(--font-family-base), sans-serif;
 	max-width: var(--error-content-max-width);
 	padding: var(--spacing-000) var(--error-content-padding-x);
 }
 .error-box::before {
 	content: '';
-
+	
 	display: block;
-	background: url('/resources/user/images/icons/icon-webpage.svg') no-repeat left top;
+	background: url('/resources/user/images/icons/webpage.svg') no-repeat left top;
 	background-size: var(--error-visual-size);
 	width: 100%;
 	height: var(--error-visual-height);
@@ -62,6 +35,7 @@ body > .logo {
 .error-message {
 	margin-top: var(--error-message-offset);
 }
+
 h1 {
 	font-weight: var(--font-weight-bold);
 	font-size: var(--error-code-size);
@@ -82,7 +56,7 @@ h1 small::after {
 	position: absolute;
 	left: 0;
 	bottom: var(--error-note-offset);
-
+	
 	display: inline-block;
 	width: 100%;
 	border-bottom: solid var(--error-note-border-width) var(--error-border);
@@ -108,11 +82,11 @@ h1 small::after {
 	.error-box {
 		flex-direction: row;
 		align-items: center;
-
+		
 		margin: var(--error-content-margin-top-wide) auto var(--spacing-000);
 		max-width: var(--error-content-max-width-wide);
 	}
-
+	
 	.error-box::before {
 		background-position: left top;
 		background-size: var(--error-visual-size-wide);

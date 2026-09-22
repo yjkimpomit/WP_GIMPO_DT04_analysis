@@ -2,7 +2,7 @@
 
 .jstree-box {
 	flex: 1 1 auto;
-	min-height: 200px;
+	min-height: 0;
 	overflow: auto;
 	border: 1px dashed var(--ztree-border);
 	border-radius: var(--ztree-radius);
@@ -36,6 +36,7 @@
 }
 
 .jstree-box .ztree li > a {
+	padding-inline: var(--spacing-050);
 	display: inline-flex;
 	align-items: center;
 	min-height: var(--ztree-item-height);

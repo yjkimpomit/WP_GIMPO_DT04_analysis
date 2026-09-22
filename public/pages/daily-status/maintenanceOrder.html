@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>공사오더(OH)</title>
+	<title>일일안전작업현황</title>
+	<link rel="stylesheet" href="/resources/user/js/winbox/winbox.min.css">
+    <link rel="stylesheet" href="/resources/user/css/winbox-content.css">
 </head>
 <body>
-	<main class="page-content daily-status-page">
-		<h1 class="page-content__heading">공사오더(OH)</h1>
-		
 		
 <div class="winbox-layout page-content">
     <div class="page-content__placeholder">
@@ -126,9 +126,11 @@
                             </fieldset>
 
                             <div class="form-field">
-                                <label class="form-label" for="equipNoOption">설비번호</label>
+                                <label class="form-label" for="equipNoOption">설비마스터</label>
                                 <div class="form-control-group">
-                                    <input class="form-control form-control--search" id="equipNoOption" name="equipNo" onclick="searchFacilityPopup($(this));">
+                                    <input class="form-control form-control--search" type="text" id="equipNoOption" name="equipNo"
+                                        aria-haspopup="dialog" onclick="window.parent.searchFacilityPopup(this);"
+                                        onkeydown="if (event.key === 'Enter') { event.preventDefault(); this.click(); }">
                                     <input class="form-control" type="text" value="" id="equipNoInput" disabled="" aria-label="선택된 설비번호">
                                 </div>
                             </div>
@@ -149,14 +151,6 @@
                             <button type="button" class="button button--secondary" onclick="javascript: alert('설비분류체계 윈박스 오픈예정');">설비분류체계</button>
                         </div>
                     </div>
-
-                    <%--<section class="filter-panel__section" aria-labelledby="equipment-classification-title">
-                        <h2 class="filter-panel__section-title visually-hidden" id="equipment-classification-title">
-                            설비분류체계
-                        </h2>
-                        <!-- &lt;%&ndash; tree list view : 기능위치/계통/종류 &ndash;%&gt; -->
-                        <c:import url="/common/facilityPackageTreeList.do"/>
-                    </section>--%>
                 </form>
 
             </aside>
@@ -164,23 +158,22 @@
                 <h1 class="page-content__heading">공사오더(OH)</h1>
                 
                 <div class="result-panel">
-                    <%-- data-grid : 결과 리스트 뷰 --%>
+                    <!-- data-grid : 결과 리스트 뷰 -->
                     <div class="result-panel__body" id="_VIEW_RESULT_LIST">
-                        <%-- 조회결과 리스트 뷰 : /detail/maintenanceWorkOrder_list.jsp --%>
+                        <!-- 조회결과 리스트 뷰 : /detail/maintenanceWorkOrder_list.jsp -->
     
                     </div>
     
-                    <%-- 품질안전설계 시작 --%>
+                    <!-- 품질안전설계 시작 -->
                     <div class="result-panel__body" id="_VIEW_RESULT_SAFETY_QUALITY">
-                        <%-- 품질안전설계 뷰 : /detail/routineWorkOrder_safety_quality.jsp --%>
+                        <!-- 품질안전설계 뷰 : /detail/routineWorkOrder_safety_quality.jsp -->
                     </div>
-                    <%-- 품질안전설계 끝 --%>
+                    <!-- 품질안전설계 끝 -->
                 </div>
 
             </section>
         </div>
     </div>
-</div>
-	</main>
+
 </body>
 </html>

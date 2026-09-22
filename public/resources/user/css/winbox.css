@@ -22,6 +22,21 @@
 	animation: winbox-modal-fade-in 0.2s ease-out forwards;
 }
 
+.winbox.modal[data-modal-overlay]::after {
+	content: none;
+}
+
+.app-winbox-overlay {
+	position: fixed;
+	inset: 0;
+	background: var(--winbox-modal-overlay-bg);
+	animation: winbox-modal-fade-in 0.2s ease-out forwards;
+	touch-action: none;
+	overscroll-behavior: contain;
+}
+
+.app-winbox-overlay[hidden] { display: none; }
+
 .winbox.app-winbox.modal::before {
 	background: transparent;
 	box-shadow: inset 0 0 0 1px var(--winbox-modal-border);
