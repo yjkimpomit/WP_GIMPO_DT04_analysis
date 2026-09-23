@@ -153,7 +153,8 @@
 
 	--size-radius-full: var(--radius-full);
 	
-	--mint-rgb: 3, 99, 89;
+	--green-rgb: 15, 169, 131;
+	--mint-rgb: 15, 156, 169;
 	--teal-rgb: 3, 77, 99;
 	--navy-rgb: 62, 92, 152;
 	--orange-rgb: 255, 91, 20;
@@ -356,22 +357,33 @@
 	--fg-primary-strong: var(--blue-600);
 
 	--fg-success-emphasis: var(--green-100);
+	--fg-success-subtler: var(--green-300);
+	--fg-success-strong: var(--green-600);
 	
 	--fg-warning-emphasis: var(--yellow-100);
+	--fg-warning-subtler: var(--yellow-300);
+	--fg-warning-strong: var(--yellow-600);
 	--fg-warning-contrast: var(--yellow-900);
 	
 	--fg-danger-emphasis: var(--red-100);
 	--fg-danger-subtler: var(--red-300);
+	--fg-danger-strong: var(--red-600);
 
 	--fg-info-emphasis: var(--navy-100);
+	--fg-info-subtler: var(--navy-300);
+	--fg-info-strong: var(--navy-600);
 	
 	--fg-mint-emphasis: var(--mint-100);
+	--fg-mint-subtler: var(--mint-300);
+	--fg-mint-strong: var(--mint-600);
 	--fg-mint-stronger: var(--mint-700);
 
 	--fg-navy-emphasis: var(--navy-100);
+	--fg-navy-subtler: var(--navy-300);
 	--fg-navy-strong: var(--navy-600);
 
 	--fg-teal-emphasis: var(--teal-100);
+	--fg-teal-subtler: var(--teal-300);
 	--fg-teal-strong: var(--teal-600);
 
 	
@@ -722,6 +734,10 @@
 	
 	--mobile-header-height: 56px;
 	--header-height: 72px;
+	
+	--info-message-fg: var(--fg-neutral-subtler);
+	--info-message-border: var(--border-elevated-2);
+	--info-message-bg: var(--bg-elevated-1);
 
 	--login-fg: var(--fg-neutral-subtlest);
 	--login-link-fg: var(--fg-neutral-subtlest);
@@ -819,6 +835,15 @@
 	--table-responsive-bg: var(--bg-sunken-1);
 	
 	--table-bg: var(--bg-elevated-1);
+	--table-bg-positive: rgba(var(--green-rgb), 0.2);
+	--table-text-positive: var(--fg-success-subtler);
+	--table-bg-negative: rgba(var(--red-rgb), 0.2);
+	--table-text-negative: var(--fg-danger-subtler);
+	--table-cell-compact-min-width: 72px;
+	--table-cell-description-min-width: 320px;
+	--table-cell-name-min-width: 360px;
+	--table-cell-name-max-width: 640px;
+	--table-cell-work-min-width: 380px;
 	--table-empty-fg: var(--fg-neutral-subtler);
 	--table-empty-min-height: 140px;
 	--table-font-size: var(--font-size-base);
@@ -863,7 +888,7 @@
 	
 	--winbox-bg: var(--bg-neutral-stronger);
 	--winbox-header-bg: var(--bg-elevated-2);
-	--winbox-radius: var(--spacing-200);
+	--winbox-radius: var(--radius-100);
 	--winbox-fg: var(--fg-neutral-subtlest);
 	
 	--ztree-bg: var(--bg-neutral-strongest-tint);

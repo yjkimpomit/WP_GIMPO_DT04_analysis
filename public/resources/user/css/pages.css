@@ -538,7 +538,6 @@
 
 .calendar-list .cell .date {
 	font-size: 1.25rem;
-	font-family: var(--font-family-en), sans-serif;
 	font-weight: 700;
 	z-index: 2;
 }

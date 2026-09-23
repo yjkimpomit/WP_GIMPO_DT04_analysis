@@ -107,50 +107,27 @@ function fnFacilityDetailMaterial(e, partNo, equipNo) {
  * @param iegNo
  */
 function fnFacilityIncludePopup(e, iegNo) {
-    console.log("## custom-facility.js : fnFacilityIncludePopup ## " + iegNo);
+    $('._TR_INFO_INCLUDE').removeClass('active');
+    $(e).addClass('active');
 
-    $("#externalPopup2").bPopup({
-        modalClose: false,
-        opacity: 0.2,
-        speed: 450,
-        closeClass: "modal-close",
-        onOpen: function () {
-            //모달창 열릴때 클래스 추가
-            $("#externalPopup2").addClass('modal fade facility show external-popup');
-            $("#externalPopup2 .modal-dialog").addClass("modal-fullscreen");
-            $("#modalTitle2").text('설비정보');
+    var url = "/facility/mainInclude.do?iegNo=" + iegNo;
+
+    var box = new WinBox("설비정보", {
+        url: url,
+        width: Math.min(1400, window.innerWidth - 20) + "px",
+        height: Math.min(720, window.innerHeight - 20) + "px",
+        x: "center",
+        y: "center",
+        modal: true,
+        oncreate: fnEnableModalInteraction,
+        focus: true,
+        class: ["app-winbox", "app-winbox--detail"],
+        position: "center",
+        onresize: function (w, y) {
+            if (this.min) return;
+            this.move("center", "center");
         },
-        onClose: function () {
-            // 모달이 닫힐 때 초기화 작업 수행
-            $("#externalPopup2 #modalTitle2").empty();
-            $("#externalPopup2 #modalBodyContent2").empty();
-
-            $("#externalPopup2").removeClass();
-            $("#externalPopup2").find(".modal-dialog").removeClass("modal-fullscreen");
-
-            closeOtherPopups();
+        onclose: function () {
         }
-    }, function () {
-        $('._TR_INFO_INCLUDE').removeClass('active');
-        $(e).addClass('active');
-
-        // AJAX 요청으로 modalContent에 HTML 로드
-        $.ajax({
-            url: "/facility/mainInclude.do?iegNo=" + iegNo,
-            dataType: "html",
-            type: "post",
-            beforeSend: function () {
-                $("#loadingBar").css("display", "");
-            },
-            success: function (data) {
-                $("#modalBodyContent2").html(data);
-            },
-            error: function () {
-                alert("오류가 발생했습니다.\n잠시 후 다시 시도해 주시기 바랍니다.");
-            }
-            , complete: function () {
-                $("#loadingBar").css("display", "none");
-            }
-        });
     });
 }

@@ -751,6 +751,10 @@
 	--tab-error-fg: var(--fg-danger-emphasis);
 	
 	--table-bg: var(--bg-elevated-1);
+	--table-bg-primary: var(--bg-primary-stronger);
+	--table-bg-danger: var(--bg-danger-stronger);
+	--table-text-positive: var(--fg-primary-emphasis);
+	--table-text-negative: var(--fg-danger-emphasis);
 	--table-empty-fg: var(--fg-neutral-subtler);
 	--table-empty-min-height: 140px;
 	--table-font-size: var(--font-size-base);

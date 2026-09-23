@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DataPARC 트렌드</title>
+	<link rel="stylesheet" href="/resources/user/css/winbox-content.css">
+</head>
+<body>
+	<main class="winbox-layout page-content page-content--popup trend-chart-page" id="searchResultPopup" aria-labelledby="trend-title">
+		<!-- 개발 연계: 태그 제목과 iegTagno 값에 facilityOperationVO.iegTagno를 적용합니다. -->
+		<h1 class="result-header__title" id="trend-title">DataPARC 트렌드</h1>
+		<!-- 개발 연계: 날짜·시간 값을 주입하고 submit 이벤트에 fnTrendSearch를 연결합니다. -->
+		<form id="formTrendSearch" name="formTrendSearch" method="post" data-popup-form>
+			<input type="hidden" name="searchCnd" value="run">
+			<input type="hidden" name="iegTagno" value="">
+			<div class="search-fields">
+				<span class="form-label" id="dateRangePicker">조회 기간</span>
+				<div class="form-field">
+					<label><span class="visually-hidden">시작일</span><input type="date" class="form-control form-control--calendar" id="startDate01" name="startDate"></label>
+					<label><span class="visually-hidden">시작시각</span><input type="time" class="form-control" id="startTime01" name="startTime"></label>
+					<span aria-hidden="true">~</span>
+					<label><span class="visually-hidden">종료일</span><input type="date" class="form-control form-control--calendar" id="endDate01" name="endDate"></label>
+					<label><span class="visually-hidden">종료시각</span><input type="time" class="form-control" id="endTime01" name="endTime"></label>
+				</div>
+				<button type="submit" class="button button--primary">검색</button>
+			</div>
+		</form>
+		<div class="result-chart result-group">
+			<div class="result-header">
+				<div class="data-group">
+					<dl class="text-group"><dt>최소</dt><dd id="trendMin">-</dd></dl>
+					<dl class="text-group"><dt>최대</dt><dd id="trendMax">-</dd></dl>
+					<dl class="text-group"><dt>현재</dt><dd id="trendCurrent">-</dd></dl>
+				</div>
+			</div>
+			<div class="chart-container" id="viewChart" role="region" aria-label="DataPARC 트렌드 차트">
+				<!-- 개발 연계: 차트와 최소·최대·현재 값을 조회 결과로 갱신합니다. -->
+			</div>
+		</div>
+	</main>
+	<script src="/resources/user/js/common/components.js"></script>
+</body>
+</html>

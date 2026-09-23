@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>DataPARC</title>
+	<link rel="stylesheet" href="/resources/user/js/winbox/winbox.min.css">
 	<link rel="stylesheet" href="/resources/user/css/winbox-content.css">
 </head>
 
@@ -37,6 +38,12 @@
 								data-winbox-popup-title="DataPARC 목록"
 								data-winbox-popup-url="/pages/dataparc/dataparc-list.html"
 								data-winbox-popup-width="640" data-winbox-popup-height="640">목록보기</button>
+							<button class="button button--secondary-outline" type="button"
+								data-winbox-popup data-winbox-popup-id="dataparc-trend"
+								data-winbox-popup-title="DataPARC 트렌드"
+								data-winbox-popup-url="/pages/dataparc/dataparc-trend.html"
+								data-winbox-popup-width="1100" data-winbox-popup-height="720"
+								aria-haspopup="dialog">트렌드 조회</button>
 						</div>
 						</div>
 
@@ -88,6 +95,8 @@
 		</div>
 	</main>
 	<script src="/resources/user/js/common/components.js"></script>
+	<script src="/resources/user/js/winbox/winbox.min.js"></script>
+	<script src="/resources/user/js/common/dataparc-popup.js"></script>
 </body>
 
 </html>
