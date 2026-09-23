@@ -1,0 +1,388 @@
+
+
+
+<canvas class="chart-placeholder" id="chartTrend" style="width: 100%; max-height: 320px;">
+    <%--차트 영역--%>
+</canvas>
+
+<script>
+    var trendChart = null;
+    
+    function formatDate(date) {
+        const pad = value => String(value).padStart(2, '0');
+
+        return date.getFullYear() + '-' +
+            pad(date.getMonth() + 1) + '-' +
+            pad(date.getDate());
+    }
+
+    function formatTime(date) {
+        const pad = value => String(value).padStart(2, '0');
+
+        return pad(date.getHours()) + ':' +
+            pad(date.getMinutes());
+    }
+
+    function updateRangeDate(chart) {
+        const minDate = new Date(chart.scales.x.min);
+        const maxDate = new Date(chart.scales.x.max);
+
+        $("#startDate01").val(formatDate(minDate));
+        $("#startTime01").val(formatTime(minDate));
+        $("#endDate01").val(formatDate(maxDate));
+        $("#endTime01").val(formatTime(maxDate));
+    }
+    
+    window.hoverLinePlugin = window.hoverLinePlugin || {
+        id: 'hoverLine',
+
+        afterDatasetsDraw(chart) {
+            if (!chart.$hoverLineEnabled) {
+                return;
+            }
+
+            const tooltip = chart.tooltip;
+            const activeElements = tooltip?.getActiveElements();
+
+            if (!activeElements || activeElements.length === 0) {
+                return;
+            }
+
+            const x = activeElements[0].element.x;
+            const ctx = chart.ctx;
+            const area = chart.chartArea;
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(x, area.top);
+            ctx.lineTo(x, area.bottom);
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = 'rgba(80, 80, 80, 0.7)';
+            ctx.stroke();
+            ctx.restore();
+        }
+    };
+    
+    function getTrendSummary(chart) {
+        const xScale = chart.scales.x;
+
+        const visibleData = chart.data.labels
+            .map(function (label, index) {
+                return {
+                    time: new Date(label).getTime(),
+                    value: Number(chart.data.datasets[0].data[index])
+                };
+            })
+            .filter(function (item) {
+                return item.time >= xScale.min &&
+                       item.time <= xScale.max &&
+                       Number.isFinite(item.value);
+            });
+
+        if (visibleData.length === 0) {
+            return {
+                min: '-',
+                max: '-',
+                current: '-'
+            };
+        }
+
+        const values = visibleData.map(function (item) {
+            return item.value;
+        });
+
+        return {
+            min: Math.min(...values),
+            max: Math.max(...values),
+            current: visibleData[visibleData.length - 1].value
+        };
+    }
+    
+    function updateTrendSummary(chart) {
+        const summary = getTrendSummary(chart);
+
+        $("#trendMin").text(summary.min);
+        $("#trendMax").text(summary.max);
+        $("#trendCurrent").text(summary.current);
+    }
+    
+    function initializeTrendChart(chartId) {
+        // loading
+        $("#loadingBar").css("display", "");
+
+        <c:if test="${not empty list and list ne '[]'}">
+        const startDate = new Date('${facilityOperationVO.startDate}T${facilityOperationVO.startTime}:00');
+        const endDate = new Date('${facilityOperationVO.endDate}T${facilityOperationVO.endTime}:00');
+
+        const labels = [];
+        const data = [];
+        let currentDate = new Date(startDate);
+
+        // set datas
+        const jsonDatas = JSON.parse('${list}');
+        const jsonDatasLen = jsonDatas.length;
+
+        for (let i = 0; i < jsonDatasLen; i++) {
+        	labels.push(new Date(jsonDatas[i]['__time']).getTime() - 32400000); // 한국시간 매칭
+            data.push(jsonDatas[i]['${paramTagNo}']);
+        }
+
+        const totalDuration = 1000; // 전체 애니메이션 시간 (1초)
+        const delayBetweenPoints = totalDuration / data.length; // 각 포인트 간의 지연 시간
+
+        // y값을 점진적으로 설정
+        const previousY = (ctx) => ctx.index === 0
+            ? ctx.chart.scales.y.getPixelForValue(50) // 첫 번째 값은 50으로 시작
+            : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+
+        // 애니메이션 설정
+        const animation = {
+            x: {
+                type: 'number',
+                easing: 'linear',
+                duration: delayBetweenPoints,
+                from: NaN, // 처음에는 점을 생략
+                delay(ctx) {
+                    if (ctx.type !== 'data' || ctx.xStarted) {
+                        return 0;
+                    }
+                    ctx.xStarted = true;
+                    return ctx.index * delayBetweenPoints;
+                }
+            },
+            y: {
+                type: 'number',
+                easing: 'linear',
+                duration: delayBetweenPoints,
+                from: previousY,
+                delay(ctx) {
+                    if (ctx.type !== 'data' || ctx.yStarted) {
+                        return 0;
+                    }
+                    ctx.yStarted = true;
+                    return ctx.index * delayBetweenPoints;
+                }
+            }
+        };
+        
+        Chart.Tooltip.positioners.cursorSide = function (elements, eventPosition) {
+            const chart = this.chart;
+            const area = chart.chartArea;
+
+            if (
+                eventPosition.x < area.left ||
+                eventPosition.x > area.right ||
+                eventPosition.y < area.top ||
+                eventPosition.y > area.bottom
+            ) {
+                return false;
+            }
+
+            const tooltipWidth = 140;
+            const tooltipHeight = 70;
+            const offset = 3;
+
+            // 기본은 오른쪽, 오른쪽 공간 부족 시 왼쪽
+            const shouldShowLeft =
+                eventPosition.x + tooltipWidth + offset > area.right;
+
+            // 위쪽 공간 부족 시 커서 아래로 전환
+            const shouldShowBelow =
+                eventPosition.y - tooltipHeight - offset < area.top;
+
+            return {
+                x: shouldShowLeft
+                    ? eventPosition.x - offset
+                    : eventPosition.x + offset,
+
+                y: shouldShowBelow
+                    ? eventPosition.y + offset
+                    : eventPosition.y - offset,
+
+                xAlign: shouldShowLeft ? 'right' : 'left',
+                yAlign: shouldShowBelow ? 'top' : 'bottom'
+            };
+        };
+        
+        trendChart = new Chart(chartId, {
+            type: 'line',
+            plugins: [window.hoverLinePlugin],
+            data: {
+                labels: labels, // x축 레이블 (1시간 간격)
+                datasets: [{
+                	label: '${paramTagNo}',
+                    borderColor: 'rgba(112, 193, 255, 1)', // 선 색
+                    borderWidth: 1,
+                    pointRadius: 0,
+                    pointHoverRadius: 0,
+                    pointHitRadius: 0,
+                    data: data, // y값 (랜덤 값)
+                    fill: false
+                }]
+            },
+            options: {
+                transitions: {
+                    active: {
+                        animation: {
+                            duration: 0
+                        }
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false, // 부모 높이에 맞추려면 false 권장
+                animations: animation,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                    axis: 'x'
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'index',
+                        intersect: false,
+                        position: 'cursorSide',
+                        animation: {
+                            duration: 0
+                        },
+                        callbacks: {
+                            label: function (context) {
+                                return context.dataset.label + ' : ' + context.formattedValue;
+                            }
+                        }
+                    },
+                    zoom: {
+                        zoom: {
+                            mode: 'x',
+                            drag: {
+                                enabled: true,
+                                backgroundColor: 'rgba(112, 193, 255, 0.2)',
+                                borderColor: 'rgba(112, 193, 255, 1)',
+                                borderWidth: 1
+                            },
+                            wheel: {
+                                enabled: false
+                            },
+                            pinch: {
+                                enabled: false
+                            },
+                            onZoomComplete: function ({ chart }) {
+                                updateRangeDate(chart);
+                                updateTrendSummary(chart);
+                            }
+                        },
+                    }
+                },
+                scales: {
+                    x: {
+                        reserve: false,
+                        type: 'time', // x축을 시간으로 설정
+                        time: {
+                            unit: 'hour', // 1시간 간격으로 데이터 표시
+                            tooltipFormat: 'yyyy-MM-dd HH:mm', // 툴팁 포맷
+                            displayFormats: {
+                                hour: 'HH:mm' // x축에 표시되는 형식
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: "Trend"
+                        },
+                        ticks: {
+                            autoSkip: true, // 자동으로 레이블 간격 조정
+                            maxTicksLimit: 12, // 최대 12개의 x축 레이블 표시
+                            callback: function (value, index, values) {
+                                const date = new Date(value);
+
+                                if (date.getHours() % 3 === 0) {
+                                    //24:00에 날짜 표시
+                                    if (date.getHours() === 0) {
+                                        return date.toLocaleDateString();// 날짜 표시
+                                    }
+                                    //return date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+                                    return date.toLocaleDateString();// 날짜 표시
+                                }
+                                return '';
+                                //return data.toLocaleString();
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: false,
+                        min: -99,
+                        grace: '5%',
+                        title: {
+                            display: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value < 0 ? '' : value;
+                            }
+                        },
+                    }
+                }
+            }
+        });
+        
+        trendChart.$hoverLineEnabled = false;
+        updateTrendSummary(trendChart);
+        
+        setTimeout(function () {
+            trendChart.$hoverLineEnabled = true;
+            trendChart.draw();
+        }, totalDuration);
+        
+        </c:if>
+        
+        <c:if test="${empty list or list eq '[]'}">
+        // 데이터가 없을 경우 표기
+        const noDataPlugin = {
+            id: 'noDataPlugin',
+            beforeDraw: function (chart) {
+                if (chart.data.datasets.length === 0 || chart.data.labels.length === 0) {
+                    const ctx = chart.ctx;
+                    const width = chart.width;
+                    const height = chart.height;
+                    const fontSize = 30;
+					const fontFamily = '"Noto Sans KR", sans-serif';
+                    const text = '데이터가 없습니다.';
+
+                    ctx.save();
+                    ctx.font = fontSize + "px " + fontFamily;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)'; // 텍스트 색상
+
+                    // 텍스트를 중앙에 위치시킴
+                    ctx.fillText(text, width / 2, height / 2);
+                    ctx.restore();
+                }
+            }
+        };
+
+        // 차트 생성 예시
+        const ctx = document.getElementById('chartTrend').getContext('2d');
+        Chart.register(noDataPlugin);  // 플러그인 등록
+
+        const msgChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [], // 빈 라벨
+                datasets: [] // 빈 데이터셋
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false // 부모 높이에 맞추려면 false 권장
+            }
+        });
+        </c:if>
+    }
+
+    $(function () {
+       initializeTrendChart('chartTrend');
+       $("#loadingBar").css("display", "none");
+    });
+</script>

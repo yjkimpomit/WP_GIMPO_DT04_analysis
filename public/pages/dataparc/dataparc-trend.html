@@ -15,8 +15,8 @@
 			<input type="hidden" name="searchCnd" value="run">
 			<input type="hidden" name="iegTagno" value="">
 			<div class="search-fields">
-				<span class="form-label" id="dateRangePicker">조회 기간</span>
-				<div class="form-field">
+				<span id="dateRangePicker">조회 기간</span>
+				<div class="form-field--group">
 					<label><span class="visually-hidden">시작일</span><input type="date" class="form-control form-control--calendar" id="startDate01" name="startDate"></label>
 					<label><span class="visually-hidden">시작시각</span><input type="time" class="form-control" id="startTime01" name="startTime"></label>
 					<span aria-hidden="true">~</span>
@@ -28,7 +28,7 @@
 		</form>
 		<div class="result-chart result-group">
 			<div class="result-header">
-				<div class="data-group">
+				<div class="trend-data-group">
 					<dl class="text-group"><dt>최소</dt><dd id="trendMin">-</dd></dl>
 					<dl class="text-group"><dt>최대</dt><dd id="trendMax">-</dd></dl>
 					<dl class="text-group"><dt>현재</dt><dd id="trendCurrent">-</dd></dl>
