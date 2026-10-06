@@ -27,11 +27,11 @@
                     <tbody>
                     <tr>
                         <th scope="row"><label for="requestName05" class="form-label">* 요청명</label></th>
-                        <td colspan="3" data-field="요청명"><input class="form-control" type="text" name="description" value="" id="requestName05"></td>
+                        <td colspan="3" data-field="*-요청명"><input class="form-control" type="text" name="description" value="" id="requestName05"></td>
                     </tr>
                     <tr>
                         <th scope="row"><label for="equipNoOption" class="form-label">* 설비번호</label></th>
-                        <td colspan="3" data-field="설비번호">
+                        <td colspan="3" data-field="*-설비번호">
                             <div class="form-control-group">
                                 <label class="visually-hidden" for="equipNoOption">설비번호 검색</label>
                                 <input class="form-control form-control--search" id="equipNoOption" name="equipNo" value="15880310" onclick="searchFacilityPopup($(this));">
@@ -44,7 +44,7 @@
                     </tr>
                     <tr>
                         <th scope="row"><label class="form-label" for="issuerOption">* 요청자</label></th>
-                        <td data-field="요청자">
+                        <td data-field="*-요청자">
                             <div class="form-control-group">
                                 <label class="visually-hidden" for="issuerOption">요청자 검색</label>
                                 <input class="form-control form-control--search" id="issuerOption" name="reqBy" onclick="searchItemPopup($(this));">
@@ -55,7 +55,7 @@
                             </div>
                         </td>
                         <th scope="row"><label class="form-label" for="reqDeptOption">* 요청부서</label></th>
-                        <td data-field="요청부서">
+                        <td data-field="*-요청부서">
                             <div class="form-control-group">
                                 <label class="visually-hidden" for="reqDeptOption">요청부서 검색</label>
                                 <input class="form-control form-control--search" id="reqDeptOption" name="reqDeptNo" onclick="searchReqDeptTreePopup($(this));">
@@ -68,7 +68,7 @@
                     </tr>
                     <tr>
                         <th scope="row"><label class="col-form-label" for="supvDeptOption">* 감독부서</label></th>
-                        <td data-field="감독부서">
+                        <td data-field="*-감독부서">
                             <div class="form-control-group">
                                 <label class="visually-hidden" for="supvDeptOption">감독부서 검색</label>
                                 <input class="form-control form-control--search" id="supvDeptOption" name="deptNo" onclick="searchReqTreePopup($(this));">
@@ -79,7 +79,7 @@
                             </div>
                         </td>
                         <th scope="row"><label for="priority05" class="form-label">* 우선순위</label></th>
-                        <td data-field="우선순위">
+                        <td data-field="*-우선순위">
                             <select class="form-select" id="priority05" name="priority">
                                 <option value="E" selected="">긴급</option>
                                 <option value="G">일상</option>
@@ -89,7 +89,7 @@
                     </tr>
                     <tr>
                         <th scope="row"><label for="taskPriority02" class="form-label">* 작업중요도</label></th>
-                        <td data-field="작업중요도">
+                        <td data-field="*-작업중요도">
                             <select class="form-select" id="taskPriority02" name="woGrade">
                                 <option value="A" selected="">A등급(중요작업)</option>
                                 <option value="B">B등급(일반작업)</option>
@@ -106,7 +106,7 @@
                     </tr>
                     <tr>
                         <th scope="row"><label for="symptom05" class="form-label">* 증상</label></th>
-                        <td data-field="증상">
+                        <td data-field="*-증상">
                             <select class="form-select" id="symptom05" name="symptom">
                                 <option value="S010" selected="">누설 (Leakage)</option>
                                 <option value="S020">오지시 (Indication Error)</option>
@@ -123,7 +123,7 @@
                             </select>
                         </td>
                         <th scope="row"><label for="businessCode05" class="form-label">* 사업자코드</label></th>
-                        <td data-field="사업자코드">
+                        <td data-field="*-사업자코드">
                             <select class="form-select" id="businessCode05" name="eqOrgNo">
                                 <option value="5000" selected="">태안 9,10호기</option>
                             </select>
