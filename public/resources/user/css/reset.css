@@ -149,16 +149,6 @@ body {
 	background-color: var(--scrollbar-bg);
 }
 
-/* Scroll remains available while its visual indicator is hidden. */
-.scrollbar-hidden {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
-.scrollbar-hidden::-webkit-scrollbar {
-	display: none;
-}
-
 input,
 select,
 textarea {

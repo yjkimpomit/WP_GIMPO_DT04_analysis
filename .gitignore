@@ -1,8 +1,6 @@
 # 에외처리
 public/resources/admin/fonts/
-public/resources/admin/js/
 public/resources/user/fonts/
-public/resources/user/js/
 
 
 **/.DS_Store

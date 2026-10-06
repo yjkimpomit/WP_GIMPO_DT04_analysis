@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TM발행</title>
+	<link rel="stylesheet" href="/resources/user/css/winbox-content.css">
+</head>
+
+<body>
+	<main class="winbox-layout page-content page-content--popup" aria-labelledby="tm-issue-title">
+		<h1 class="detail-popup__title visually-hidden" id="tm-issue-title">TM발행</h1>
+		<div class="info-message">
+			<strong class="text-danger">*</strong> 표시는 필수입력 항목입니다.
+		</div>
+
+		<form class="form-dialog" data-popup-form>
+			<div class="table-responsive">
+                <table class="data-table data-table--view data-table--detail" aria-label="TM-발행-정보입력">
+                    <colgroup>
+                        <col style="width: 8rem;">
+                        <col>
+                        <col style="width: 8rem;">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th scope="row"><label for="requestName05" class="form-label">* 요청명</label></th>
+                        <td colspan="3" data-field="요청명"><input class="form-control" type="text" name="description" value="" id="requestName05"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="equipNoOption" class="form-label">* 설비번호</label></th>
+                        <td colspan="3" data-field="설비번호">
+                            <div class="form-control-group">
+                                <label class="visually-hidden" for="equipNoOption">설비번호 검색</label>
+                                <input class="form-control form-control--search" id="equipNoOption" name="equipNo" value="15880310" onclick="searchFacilityPopup($(this));">
+                                
+                                <label class="visually-hidden" for="equipNoInput">설비명</label>
+                                <input class="form-control" type="text" value="#9 FWH-8A EXT STM MOV" id="equipNoInput" readonly="">
+                                <input type="hidden" value="" name="equipNm" id="equipNoInput_hideen">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label class="form-label" for="issuerOption">* 요청자</label></th>
+                        <td data-field="요청자">
+                            <div class="form-control-group">
+                                <label class="visually-hidden" for="issuerOption">요청자 검색</label>
+                                <input class="form-control form-control--search" id="issuerOption" name="reqBy" onclick="searchItemPopup($(this));">
+                                
+                                <label class="visually-hidden" for="issuerInput">요청자명</label>
+                                <input class="form-control" type="text" value="" disabled="" id="issuerInput">
+                                <input type="hidden" value="" name="reqByNm" id="issuerInput_hideen">
+                            </div>
+                        </td>
+                        <th scope="row"><label class="form-label" for="reqDeptOption">* 요청부서</label></th>
+                        <td data-field="요청부서">
+                            <div class="form-control-group">
+                                <label class="visually-hidden" for="reqDeptOption">요청부서 검색</label>
+                                <input class="form-control form-control--search" id="reqDeptOption" name="reqDeptNo" onclick="searchReqDeptTreePopup($(this));">
+                                
+                                <label class="visually-hidden" for="reqDeptInput">요청부서명</label>
+                                <input class="form-control" type="text" value="" disabled="" id="reqDeptInput">
+                                <input type="hidden" value="" name="reqDeptNm" id="reqDeptInput_hideen">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label class="col-form-label" for="supvDeptOption">* 감독부서</label></th>
+                        <td data-field="감독부서">
+                            <div class="form-control-group">
+                                <label class="visually-hidden" for="supvDeptOption">감독부서 검색</label>
+                                <input class="form-control form-control--search" id="supvDeptOption" name="deptNo" onclick="searchReqTreePopup($(this));">
+                                
+                                <label class="visually-hidden" for="supvDeptInput">감독부서명</label>
+                                <input class="form-control" type="text" disabled="" value="" id="supvDeptInput">
+                                <input type="hidden" value="" name="deptNm" id="supvDeptInput_hideen">
+                            </div>
+                        </td>
+                        <th scope="row"><label for="priority05" class="form-label">* 우선순위</label></th>
+                        <td data-field="우선순위">
+                            <select class="form-select" id="priority05" name="priority">
+                                <option value="E" selected="">긴급</option>
+                                <option value="G">일상</option>
+                                <option value="S">사후</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="taskPriority02" class="form-label">* 작업중요도</label></th>
+                        <td data-field="작업중요도">
+                            <select class="form-select" id="taskPriority02" name="woGrade">
+                                <option value="A" selected="">A등급(중요작업)</option>
+                                <option value="B">B등급(일반작업)</option>
+                                <option value="C">C등급(경미한작업)</option>
+                            </select>
+                        </td>
+                        <th scope="row">Red Tag</th>
+                        <td data-field="Red-Tag">
+                            <div class="form-choice">
+                                <input type="checkbox" name="isWorkConfirm" value="Y" id="redTag">
+                                <label for="redTag" class="form-label"> Red Tag 필요 </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="symptom05" class="form-label">* 증상</label></th>
+                        <td data-field="증상">
+                            <select class="form-select" id="symptom05" name="symptom">
+                                <option value="S010" selected="">누설 (Leakage)</option>
+                                <option value="S020">오지시 (Indication Error)</option>
+                                <option value="S030">오염 (Contamination)</option>
+                                <option value="S040">손상/파손 (Breakdown)</option>
+                                <option value="S050">변형 (Deformation)</option>
+                                <option value="S060">파열 (Rupture)</option>
+                                <option value="S070">부식/침식 (Corrosion/Erosion)</option>
+                                <option value="S080">진동이상 (Vibration)</option>
+                                <option value="S090">이음(소음) (Noise)</option>
+                                <option value="S100">단선/단락 (Disconnection/Short-circuit)</option>
+                                <option value="S110">동결 (Freezing)</option>
+                                <option value="S120">과부하 (Over Load)</option>
+                            </select>
+                        </td>
+                        <th scope="row"><label for="businessCode05" class="form-label">* 사업자코드</label></th>
+                        <td data-field="사업자코드">
+                            <select class="form-select" id="businessCode05" name="eqOrgNo">
+                                <option value="5000" selected="">태안 9,10호기</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="requestDetails05" class="form-label">요청내용</label></th>
+                        <td colspan="3" data-field="요청내용"><textarea class="form-control" placeholder="요청내용 입력" id="requestDetails05" name="remark"></textarea></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+		</form>
+	</main>
+	<script src="/resources/user/js/common/components.js"></script>
+</body>
+
+</html>

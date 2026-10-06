@@ -1,3 +1,9 @@
+var cssVar = function (name) {
+    return getComputedStyle(document.documentElement)
+        .getPropertyValue(name)
+        .trim();
+};
+
 if (chartType === "1") {
     //TM현황 작업요청 건수 요청유형 차트
     var jobreq_data = {
@@ -64,7 +70,7 @@ var jobreq_chartoptions = {
 		height: '100%',
         title: {
             text: '호기별 작업요청 건수',
-            offsetY: -5,
+            offsetY: 10,
             align: 'center'
         }
     },
@@ -72,12 +78,14 @@ var jobreq_chartoptions = {
         eventDetectType: 'grouped'
     },
     xAxis: {
+        height: 200,
         label: {
             //categories 글자 가로로 변경하는 옵션
             rotatable: true
         }
     },
     yAxis: {
+        width: 50,
         scale: {
             min: 0,
             max: maxValue,
@@ -88,22 +96,46 @@ var jobreq_chartoptions = {
         visible: false,
     },
     theme: {
-        title: {
+        title:{
             fontSize: 16,
-            fontWeight: 700
+            fontWeight: 700,
+            color: cssVar('--chart-text')
         },
-		xAxis: {
-			label: {
-				fontSize: 12
-			}
-		},
-		yAxis: {
-			label: {
-				fontSize: 12
-			}
-		},
+        xAxis: {
+            title: {
+                color: cssVar('--chart-text')
+            },
+            label: {
+                color: cssVar('--chart-text-muted'),
+                fontSize: 12
+            },
+            color: cssVar('--chart-axis'),
+            width: 1
+        },
+        yAxis: {
+            title: {
+                color: cssVar('--chart-text')
+            },
+            label: {
+                color: cssVar('--chart-text-muted'),
+                fontSize: 12
+            },
+            color: cssVar('--chart-axis'),
+            width: 1
+        },
+        chart: {
+            backgroundColor: cssVar('--chart-bg')
+        },
+
         series: {
-            colors: ['rgb(0, 102, 204)', 'rgb(0, 150, 170)', 'rgb(200, 160, 0)', 'rgb(0, 159, 77)', 'rgb(254, 80, 0)', 'rgb(0, 86, 112)'],
+            colors: [
+                cssVar('--chart-1'),
+                cssVar('--chart-7'),
+                cssVar('--chart-8'),
+                cssVar('--chart-2'),
+                cssVar('--chart-4'),
+                cssVar('--chart-11')
+            ],
             //barWidth: 24
         }
     },
@@ -132,7 +164,7 @@ function updateChart() {
         jobreq_chartoptions.chart.title.text = "요청부서별 & 감독부서별 작업요청 건수";
     }
     jobreq_chartoptions.chart.title.align = "center";
-    jobreq_chartoptions.chart.title.offsetY = -5;
+    jobreq_chartoptions.chart.title.offsetY = 10;
 
     //차트 검색 개수가 20개 이상 일 경우 글자 세로로 변경
     var reqListCnt = chartList.length;

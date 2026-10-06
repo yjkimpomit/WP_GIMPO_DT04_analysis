@@ -61,11 +61,11 @@
                 const contentValue = getMatchedOrFallbackValues(el, pvDefs, value, id);
                 //API 절대 값
                 const absValue = formatTextValue(Math.abs(value), formatPattern);
-                // console.log(`여기니? contentValue=${contentValue}, absValue=${absValue}, value=${value}, formatPattern=${formatPattern}`);
-                if (value === "------" || value === "1" || value === "0") {
+                if (value === "------") {
                     tspan.textContent = value < 0 ? `${contentValue}-` : contentValue;
-                }
-                else {
+                }else if (value === "1" || value === "0") {
+    				tspan.textContent = value;
+    			}else {
                     tspan.textContent = value < 0 ? `${absValue}-` : absValue;
                 }
 
@@ -80,7 +80,6 @@
 
             if (tspan) {
                 const absValue = formatTextValue(Math.abs(value), formatPattern)
-                console.log(`아니니?? , absValue=${absValue}, value=${value}, formatPattern=${formatPattern}`);
 
                 if (value === "------" || value === "1" || value === "0") {
                     tspan.textContent = value < 0 ? `${contentValue}-` : contentValue;
@@ -129,16 +128,12 @@
                 return true; // ← 함수에서 종료 (continue 아님)
             }
             else {
-			console.warn(`PVLevelFillControl 요소가 있습니다: ${id}`);
-			console.warn(`PVLevelFillControl 요소가`);
                 for (const el of pvLFC) {
-
                     levelMax = el.getAttribute("LevelMax");
                     levelMin = el.getAttribute("LevelMin")
                     levelBrush = el.getAttribute("LevelBrush");
                     levelDir = el.getAttribute("LevelDirection");
                     levelStart = el.getAttribute("LevelStart");
- 				
                 }
             }
 
@@ -247,7 +242,6 @@
                 const max = parseFloat(levelMax);
                 const min = parseFloat(levelMin);
                 const span = Math.max(1e-9, max - min);
-                console.log(`LevelStart 미지정, LevelMin/Max 사용: min=${min}, max=${max}, span=${span}`);
 
                 let checkValue = parseFloat(value);
                 if (isNaN(checkValue)) checkValue = min;                    // NaN 방어 값없으면 min 값 사용 
@@ -281,7 +275,6 @@
                     progressRect.setAttribute("height", fillHeightFromMin);
                 }
 
-                console.log(`Rect [${id}] - percent: ${percent}, fillHeight: ${fillHeight}, fillY: ${fillY}, fillWidth: ${fillWidth}, min: ${min}, max: ${max}, span: ${span}`);
             }
             else {
                 // 기본: 아래 → 위로 채움
@@ -298,7 +291,6 @@
             return true;
 
         } else {
-            console.log(`Color setting rect ${id} (not a pbBarBoundingRectEl)`);
             const fillColor = getMatchedOrFallbackValues(el, pvDefs, value, id);
             if (fillColor) el.style.fill = fillColor;
             return true;

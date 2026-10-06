@@ -47,15 +47,17 @@ function facilityMaster3(zNodes) {
                     var code = node.id;
                     var code_name = String(node.text).replace(/^\[[^\]]+\]/, '').trim();
 
-                    $('#equipTypeOption').val(code);
-                    $('#equipTypeInput').val(code_name);
+                    window.parent.$('#equipTypeOption').val(code);
+                    window.parent.$('#equipTypeInput').val(code_name);
 
                     var treeObj = $.fn.zTree.getZTreeObj('facilityType1');
                     if (treeObj) {
                         treeObj.cancelSelectedNode();
                         treeObj.expandAll(false);
                     }
-                    $('#searchFacilityTypeTreePopup').find('.close').trigger('click');
+
+                    // 모달 닫기
+                    window.parent.$(".winbox.app-winbox.app-winbox--detail.focus").find(".wb-close").trigger("click");
                 }
             }
         }

@@ -1,16 +1,16 @@
 (function () {
-	
+
     const DRAG_THRESHOLD = 5; // px 단위, 이 이상 움직이면 "드래그"로 간주
     const CHUNK_SIZE = 100;// 한 번에 보낼 tag 개수
     const REQUEST_INTERVAL_MS = 60000; // 1분 요청 간 간격 (ms)
     const DRAG_SUPPRESS_MS = 250;
-   
+
     let isDragging = false;
     let isPinching = false;
-	let lastPinchAt = 0;
-	let lastDragAt = 0;  
-	
-	let LAST_SELECTED_NODE = null;
+    let lastPinchAt = 0;
+    let lastDragAt = 0;
+
+    let LAST_SELECTED_NODE = null;
     let TIME_NODES = [];     // { el }
     let TIME_TIMER = null;
     let UTAG_TO_ELEMENT_LIST = [];   // [{uTag, elementName, description}, ...]
@@ -83,10 +83,8 @@
     function determineZoomLevel(panZoom, bbox) {
         if (bbox.width < 75 && bbox.height < 100) {
             panZoom.zoom(7);
-            console.log('panZoom.zoom(7);')
         } else {
             panZoom.zoom(4);
-            console.log('panZoom.zoom(4);')
         }
     }
 
@@ -105,11 +103,10 @@
             const desc = utagInfos[i].getAttribute("Description") || "";
 
             if (!uTag || !elName) {
-                console.log('[extractUtagToElementMap] skip (uTag/elName missing):', {uTag, elName});
                 continue;
             }
             //const skipTags = ["SYS.Sample_Boiler.FC100.PV", "SYS.Sample_Boiler.FC100.OP","T3.C1.time"]
-            const skipTags = ["SYS.Sample_Boiler.FC100.PV", "T3.C1.time"]
+            const skipTags = ["SYS.Sample_Boiler.FC100.PV", "SYS.Sample_Boiler.FC100.OP", "T3.C1.time"]
 
             // 특정 태그를 제외 : 굳이 받아와야할 필요가 없는 예) 시간 데이터 제외
             if (skipTags.includes(uTag)) continue;
@@ -221,7 +218,6 @@
             console.timeEnd('[fetchDataFromServer] total');
             return {};
         }
-        /*console.log("[fetchDataFromServer] 정규화된 dataList:", dataList);*/
 
         const tagToElementMap = []; // 배열
 
@@ -231,13 +227,12 @@
 
         // tagToElementMap : Utag 값을 ElementName 값과 맵핑해줘야함
         // { std_tag: 'PT.DCS.CC2-P.GTC1.21CEDM-H401_02', elementName: 'Greenvessel_5' }
-        /*  console.log("변환 데이터 [ tagToElementMap ]:", tagToElementMap);*/
 
         const result = {};
 
         dataList.forEach(({std_tag, Val}) => {
             tagToElementMap.forEach(({std_tag: uTag, elementName}) => {
-                if (uTag === std_tag) {
+                if (uTag.toUpperCase() === std_tag.toUpperCase()) {
                     result[elementName] = Val;
                 }
 
@@ -247,7 +242,6 @@
         tagToElementMap.forEach(({elementName}) => {
             if (!(elementName in result)) {
                 result[elementName] = "----";
-                /* console.log("elementName NAN failed mapping : ", elementName)*/
             }
         });
 
@@ -287,20 +281,12 @@
                             try {
                                 dataList = JSON.parse(fixedJson);
                                 if (!Array.isArray(dataList)) {
-                                    console.log(
-                                        '[getApiData] payload is not array, try data:',
-                                        typeof dataList,
-                                        dataList
-                                    );
                                     dataList = (dataList && Array.isArray(dataList.data))
                                         ? dataList.data
                                         : [];
                                 }
                                 cleaned_dataList = dataList.map(({id, ...rest}) => rest);
-                                console.log("비정형 JSON 파싱 성공:", cleaned_dataList);
                             } catch (nestedErr) {
-                                console.error("JSON 포맷이 잘못되었습니다:", nestedErr);
-                                console.warn("원시 응답 내용:", rawText);
                                 return resolve([]);
                             }
                         } else {
@@ -308,16 +294,28 @@
                             try {
                                 dataList = JSON.parse(trimmedText);
                                 if (!Array.isArray(dataList)) {
-                                    console.log('[getApiData] payload is not array, try data:', typeof dataList, dataList);
                                     dataList = (dataList && Array.isArray(dataList.data))
                                         ? dataList.data : [];
                                 }
                                 cleaned_dataList = dataList.map(({id, ...rest}) => rest);
-                                /*console.log("정형 JSON 파싱 성공:", cleaned_dataList);*/
                             } catch (error) {
                                 console.error("JSON 파싱 실패 (정형):", error);
                                 console.warn("원시 응답 내용:", rawText);
-                                return resolve([]);
+
+                                const chunks = trimmedText.match(/\{[^}]+\}/g) || [];
+                                let dataList = [];
+
+                                for (const chunk of chunks) {
+                                    try {
+                                        dataList.push(JSON.parse(chunk));
+                                    } catch (e) {
+                                        // 깨진 데이터는 무시
+                                    }
+                                }
+
+                                const cleaned_dataList = dataList.map(({id, ...rest}) => rest);
+
+                                return resolve(cleaned_dataList);
                             }
                         }
 
@@ -357,41 +355,43 @@
             reader.readAsText(file);
         });
     }
-	// SVG 파일 존재 여부 체크 (HEAD 요청)
-	async function checkSvgExists(url) {
-		try {
-			const res = await fetch(url, { method: "HEAD" });
-			return res.ok;                // 200, 304 등 → true
-		} catch (e) {
-			console.warn("checkSvgExists 실패:", e);
-			return false;
-		}
-	}
-	// URL 접근 시 파라미터로부터 SVG 또는 PDF 파일을 로드하는 함수
-   async function initFromUrlParams() {
+
+    // SVG 파일 존재 여부 체크 (HEAD 요청)
+    async function checkSvgExists(url) {
+        try {
+            const res = await fetch(url, {method: "HEAD"});
+            return res.ok;                // 200, 304 등 → true
+        } catch (e) {
+            console.warn("checkSvgExists 실패:", e);
+            return false;
+        }
+    }
+
+    // URL 접근 시 파라미터로부터 SVG 또는 PDF 파일을 로드하는 함수
+    async function initFromUrlParams() {
         const params = new URLSearchParams(window.location.search);
         const dataPath = params.get("dataPath");
         const searchTag = params.get("searchTag");
         if (!dataPath) return;
 
-		// 파일 존재 여부 먼저 확인
-		const exists = await checkSvgExists(dataPath);
+        // 파일 존재 여부 먼저 확인
+        const exists = await checkSvgExists(dataPath);
 
-		 if (!exists) {
-		    $.alert({
-		      icon: 'bi bi-exclamation-triangle',
-		      title: 'DataPARC',
-		      content: '해당 파일이 존재하지 않습니다.',
-		      animation: 'scale',
-		      type: 'red'
-		    });
-		    return;
-		  }
+        if (!exists) {
+            $.alert({
+                icon: 'bi bi-exclamation-triangle',
+                title: 'DataPARC',
+                content: '해당 파일이 존재하지 않습니다.',
+                animation: 'scale',
+                type: 'red'
+            });
+            return;
+        }
 
         if (dataPath) createAndLoadSVG(dataPath, searchTag);
     }
 
-    // 미사용함수 : fallbackValue 사용
+    // 미사용함수 : fallbackValue 사용`
     function formatTextValue(val, format = "0.00") {
         const num = parseFloat(val);
 
@@ -433,6 +433,32 @@
         const numVal = parseFloat(value);
         let matchedValue = null;
 
+        const rawValue = (value ?? "").toString().trim();
+        const wpftagName = el.getAttribute("wpftagname")?.toLowerCase() || "";
+        const isTextTag = wpftagName.includes("pvtextblock");
+
+        // 텍스트 태그는 제외
+        if (!isTextTag) {
+            // 플래그값에 따라 색 지정 (태그없음: 회색, 0: 녹색, 0 초과~ 100이하: 빨강)
+            if (
+                rawValue === "" ||
+                rawValue === "-" ||
+                rawValue === "----" ||
+                rawValue === "___" ||
+                rawValue.toLowerCase() === "null" ||
+                rawValue.toLowerCase() === "undefined" ||
+                isNaN(numVal)
+            ) {
+                return "#C0C0C0";
+            } else if (numVal === 0) {
+                return "#00FF00";
+            } else if (numVal > 0 && numVal <= 100) {
+                return "#FF0000";
+            } else if (numVal < 0 || numVal > 100) {
+                return "#C0C0C0";
+            }
+        }
+
         if (pvCvtMapItems.length > 0) {
             const itemsArray = Array.from(pvCvtMapItems);
             const prioritizedItems = itemsArray.filter(i => i.getAttribute("Oper"));
@@ -451,7 +477,6 @@
                 const maxVal = max === "" ? +Infinity : parseFloat(max);
 
                 let match = false;
-                /*console.log(`검사 중: Oper=${oper}, minVal=${minVal}, maxVal=${maxVal}, numVal=${numVal}`);*/
 
                 switch (oper) {
                     case "LELE":  // <= ~ <=
@@ -730,17 +755,38 @@
             alert("ID  : " + targetId + "에 해당하는 요소를 찾을 수 없습니다.");
             return;
         }
-     
-        const bbox = item.getBBox();
-        
+
+        let focusItem = item.closest('g[wpftagname="Viewbox"]') || item;
+
+        const isTextItem =
+            item.tagName.toLowerCase() === "text" ||
+            item.getAttribute("wpftagname")?.toLowerCase() === "pvtextblock";
+
+        if (isTextItem) {
+            // text 자체에 transform이 있으면 자기 자신 기준
+            if (item.hasAttribute("transform")) {
+                focusItem = item;
+            } else {
+                // 기존 SVG 구조 유지
+                focusItem = item.closest("g[transform]") || focusItem;
+            }
+        }
+
+        const bbox = focusItem.getBBox();
+        const tr = parseTranslate(focusItem.getAttribute("transform"));
+        if (tr) {
+            bbox.x += tr.x;
+            bbox.y += tr.y;
+        }
+
         const baked = !!item?.querySelector?.('text[data-baked-translate="1"]');
-      
-          //  bake면 더 크게, 아니면 기존 로직
-		  if (baked) {
-		    panZoom.zoom(10);
-		  } else {
-		    determineZoomLevel(panZoom, bbox); // 기존
-		  }
+
+        //  bake면 더 크게, 아니면 기존 로직
+        if (baked) {
+            panZoom.zoom(10);
+        } else {
+            determineZoomLevel(panZoom, bbox); // 기존
+        }
 
         panZoom.pan({x: 0, y: 0});
 
@@ -902,39 +948,64 @@
             }
         }
 
-       (async () => {
-		    const mergedData = {};
+        (async () => {
+            const mergedData = {};
 
-		    for (let i = 0; i < chunks.length; i++) {
-		        const currentChunk = chunks[i];
-		        try {
-		            const partialData = await fetchDataFromServer(currentChunk);
-		            Object.assign(mergedData, partialData);  // 결과 누적
-		        } catch (e) {
-		            console.error("[초기 chunk 병합 중 에러]:", e);
-		        }
-		    }
+            for (let i = 0; i < chunks.length; i++) {
+                const currentChunk = chunks[i];
+                try {
+                    const partialData = await fetchDataFromServer(currentChunk);
+                    Object.assign(mergedData, partialData);  // 결과 누적
+                } catch (e) {
+                    console.error("[초기 chunk 병합 중 에러]:", e);
+                }
+            }
 
-		    // 여기서 모든 병합된 데이터를 한 번에 반영
-		    upDateTagValues(svgDoc, mergedData);
+            // 여기서 모든 병합된 데이터를 한 번에 반영
+            upDateTagValues(svgDoc, mergedData);
 
-		    // 이후부터는 기존처럼 chunk 순차 업데이트 시작
-		    chunkIndex = 0;
-		    window.updateTimer = setInterval(async () => {
-		        await processChunkByIndex(chunkIndex);
-		        chunkIndex = (chunkIndex + 1) % chunks.length;
-		    }, intervalMs);
-		})();
+            // 이후부터는 기존처럼 chunk 순차 업데이트 시작
+            chunkIndex = 0;
+            window.updateTimer = setInterval(async () => {
+                await processChunkByIndex(chunkIndex);
+                chunkIndex = (chunkIndex + 1) % chunks.length;
+            }, intervalMs);
+        })();
     }
 
     // g태그에서 data-utag-key 추출
     function ensureUtagKeyOnG(target) {
+
+        // 클릭한 요소 자체 id 확인
+        const targetId = target.getAttribute && target.getAttribute("id");
+        if (
+            targetId &&
+            (
+                targetId.toLowerCase().startsWith("ellipse") ||
+                targetId.toLowerCase().startsWith("rectangle") ||
+                targetId.toLowerCase().startsWith("bar") ||
+                targetId.toLowerCase().startsWith("polygon") ||
+                targetId.toLowerCase().startsWith("path")
+            ) &&
+            UTAG_INFO_BY_EL.has(targetId)
+        ) {
+            const g = target.closest ? target.closest("g") : null;
+            return {g, key: targetId};
+        }
+
         const g = target.closest ? target.closest("g") : null;
         if (!g) return {g: null, key: ""};
 
+        // 부모 g의 id가 UTagInfo.ElementName이면 최우선 사용
+        const gId = g.getAttribute("id") || "";
+        if (gId && UTAG_INFO_BY_EL.has(gId)) {
+            g.setAttribute("data-utag-key", gId);
+            return {g, key: gId};
+        }
+
         // 이미 있으면 그대로 사용
         let key = g.getAttribute("data-utag-key") || "";
-        if (key) return {g, key};
+        if (key && UTAG_INFO_BY_EL.has(key)) return {g, key};
 
         const textWithId = g.querySelector("text[id]");
         if (textWithId) {
@@ -976,82 +1047,69 @@
 	    text, tspan {
 	      cursor: pointer !important;
 	    }
-	  `;
+	    
+	  	path[id^="Ellipse"],
+		path[id^="Rectangle"] {
+		  cursor: pointer !important;
+		}
+	  	`;
 
         svgEl.insertBefore(style, svgEl.firstChild);
     }
 
-	//데이터 창 클릭 이벤트
-	function bindDataparcClick(svgDoc) {
+    //데이터 창 클릭 이벤트
+    function bindDataparcClick(svgDoc) {
 
-	  forcePointerCursor(svgDoc);
+        forcePointerCursor(svgDoc);
 
-	  // 모바일에서 중복 호출 방지용
-	  let lastFireAt = 0;
-	 
-	  const FIRE_GUARD_MS = 350;
+        // 모바일에서 중복 호출 방지용
+        let lastFireAt = 0;
 
-	  function fire(e) {
-		if (isPinching || (Date.now() - lastPinchAt) < 350) return;
-		
-		if (isDragging) return;
- 		if ((Date.now() - lastDragAt) < DRAG_SUPPRESS_MS) return;
-	    
-	    const now = Date.now();
-	    if (now - lastFireAt < FIRE_GUARD_MS) return;
-	    lastFireAt = now;
+        const FIRE_GUARD_MS = 350;
 
-	    const { key } = ensureUtagKeyOnG(e.target);
-	    if (!key) return;
+        function fire(e) {
+            if (isPinching || (Date.now() - lastPinchAt) < 350) return;
 
-	    const info = UTAG_INFO_BY_EL.get(key);
-	    if (!info) return;
+            if (isDragging) return;
+            if ((Date.now() - lastDragAt) < DRAG_SUPPRESS_MS) return;
 
-	    const rt = REALTIME_VAL_BY_EL.get(key);
-	    const realtimeVal = rt ? rt.val : "----";
+            const now = Date.now();
+            if (now - lastFireAt < FIRE_GUARD_MS) return;
+            lastFireAt = now;
 
-	    $.ajax({
-	      url: "/multiview/dataparc/operationInfo.do",
-	      type: "POST",
-	      dataType: "html",
-	      data: {
-	        utag: info.uTag,
-	        utagVal: realtimeVal,
-	        utagDes: info.description || ""
-	      },
-	      beforeSend: function () {
-	        $("#loadingBar").css("display", "");
-	      },
-	      success: function (data) {
-	        $("#dataparcDetail").html(data);
-	      },
-	      complete: function () {
-	        $('#dataparcDetailBox').bPopup({
-	          modalClose: false,
-	          position: [0, 0],
-	          opacity: .4,
-	          speed: 450,
-	          closeClass: "close",
-	          onOpen: function () {
-	            $(this).addClass('show detail-box');
-	          },
-	          onClose: function () {
-	            $(this).removeClass('show');
-	            $("#trendModal").remove();
-	          }
-	        });
+            const {key} = ensureUtagKeyOnG(e.target);
+            if (!key) return;
 
-	        $("#loadingBar").css("display", "none");
-	      },
-	      error: function (request, status, error) {
-	        console.log("code:" + request.status + "\n message:" + request.responseText + "\n error:" + error);
-	      }
-	    });
-	  }
+            const info = UTAG_INFO_BY_EL.get(key);
+            if (!info) return;
 
-	  // click 대신 pointerup 
-	  svgDoc.addEventListener("pointerup", fire, { capture: true });
-	}
+            const rt = REALTIME_VAL_BY_EL.get(key);
+            const realtimeVal = rt ? rt.val : "----";
+
+            var data = "?utag=" + info.uTag + "&utagVal=" + realtimeVal + "&utagDes=" + info.description;
+            var box = new WinBox("운전정보", {
+                url: "/multiview/dataparc/operationInfo.do" + data,
+                width: Math.min(1200, window.innerWidth - 20) + "px",
+                height: Math.min(720, window.innerHeight - 20) + "px",
+                x: "center",
+                y: "center",
+                modal: true,
+                oncreate: fnEnableModalInteraction,
+                focus: true,
+                class: ["app-winbox", "app-winbox--detail"],
+                position: "center",
+                onresize: function (w, y) {
+                    if (this.min) return;
+                    this.move("center", "center");
+                },
+                onclose: function () {
+                }
+            });
+        }
+
+        // click 대신 pointerup
+        svgDoc.addEventListener("pointerup", fire, {capture: true});
+    }
 
     async function headExists(url) {
         try {
@@ -1088,22 +1146,39 @@
             .replace(/\/{2,}/g, "/");
     }
 
-    const DATAPARC_DIR_CANDIDATES = [
-        "/drawing/dataparc/",                 // 루트 바로 밑
-        "/drawing/dataparc/ICMS/",            // 예시
-        "/drawing/dataparc/9/",               // 예시
-        "/drawing/dataparc/10/",
-        "/drawing/dataparc/ICMS/9/",
-        "/drawing/dataparc/ICMS/10/"           // 예시
-        // "/drawing/dataparc/01 태안/9,10호기/ICMS/",	  // 필요하면 추가
-    ];
+    let DATAPARC_DIR_CANDIDATES = [];
+
+    // dataPARC svg 파일 디렉토리 리스트 초기화
+    async function initDataparcDirs() {
+        try {
+            const res = await fetch("/multiview/dataparc/dirs.do");
+            if (!res.ok) throw new Error();
+            DATAPARC_DIR_CANDIDATES = await res.json();
+        } catch (e) {
+            DATAPARC_DIR_CANDIDATES = [
+                "/drawing/dataparc/",
+                "/drawing/dataparc/ICMS/",
+                "/drawing/dataparc/9/",
+                "/drawing/dataparc/10/",
+                "/drawing/dataparc/ICMS/9/",
+                "/drawing/dataparc/ICMS/10/",
+                "/drawing/dataparc/ICMS/10/Com/",
+                "/drawing/dataparc/ECMS/"
+            ];
+        }
+    }
 
     async function resolveDataparcPathFromWpfLikePath(wpfPath) {
-        // 1) 파일명만 추출
+        // 1) svg 파일 디렉토리 목록 조회
+        if (DATAPARC_DIR_CANDIDATES.length === 0) {
+            await initDataparcDirs();
+        }
+
+        // 2) 파일명만 추출
         const fileName = extractFileName(wpfPath);
         if (!fileName) return null;
 
-        // 2) 후보 폴더들에 fileName 붙여서 HEAD로 찾기
+        // 3) 후보 폴더들에 fileName 붙여서 HEAD로 찾기
         for (const dir of DATAPARC_DIR_CANDIDATES) {
             const dataparcRel = dir + fileName; // 이미 dir이 "/.../"로 끝나게 관리
             const abs = new URL(dataparcRel, location.origin).href;
@@ -1134,7 +1209,7 @@
             if (!wpfPath) return;
             // inline onclick 제거해서 "movePage undefined" 방지
             g.removeAttribute("onclick");
-           
+
             g.style.cursor = "pointer";
 
             g.addEventListener("click", async (e) => {
@@ -1171,134 +1246,182 @@
             });
         });
     }
+
     // pmt id 태그 값 존재여부 확인
     function getNonEmptyPmtIdText(g) {
-	  if (!g) return "";
-	
-	  // 1) querySelector로 시도 (pmt:id는 escape 필요)
-	  let node = g.querySelector("metadata pmt\\:id, pmt\\:id");
-	  if (node) {
-	    const t = (node.textContent || "").trim();
-	    if (t) return t;
-	  }
-	
-	  // 2) fallback: getElementsByTagNameNS('*','id') (prefix 상관없이 localName=id)
-	  const any = g.getElementsByTagNameNS("*", "id");
-	  for (let i = 0; i < any.length; i++) {
-	    const t = (any[i].textContent || "").trim();
-	    if (t) return t;
-	  }
-	
-	  return "";
-	}
+        if (!g) return "";
+
+        // 1) querySelector로 시도 (pmt:id는 escape 필요)
+        let node = g.querySelector("metadata pmt\\:id, pmt\\:id");
+        if (node) {
+            const t = (node.textContent || "").trim();
+            if (t) return t;
+        }
+
+        // 2) fallback: getElementsByTagNameNS('*','id') (prefix 상관없이 localName=id)
+        const any = g.getElementsByTagNameNS("*", "id");
+        for (let i = 0; i < any.length; i++) {
+            const t = (any[i].textContent || "").trim();
+            if (t) return t;
+        }
+
+        return "";
+    }
+
     function parseTranslate(tf) {
-	  const s = String(tf || "").trim();
-	  // translate(1197, 3376.656) or translate(1197 3376.656)
-	  const m = s.match(/^translate\(\s*([-\d.]+)\s*(?:[, ]\s*([-\d.]+)\s*)?\)\s*$/i);
-	  if (!m) return null;
-	  const x = parseFloat(m[1]);
-	  const y = (m[2] == null) ? 0 : parseFloat(m[2]);
-	  if (!isFinite(x) || !isFinite(y)) return null;
-	  return { x, y, raw: `translate(${x},${y})` };
-	}
-	// dataparc 도면을 변환하는 과정에서 생긴 g 태그 transform 값을 text 로 이관 하는 함수 
-	// 조건 : text 태그에 transform 값이 없고 pmt:id 태그 에 값이 있는 경우  
+        const s = String(tf || "").trim();
+        // translate(1197, 3376.656) or translate(1197 3376.656)
+        // const m = s.match(/^translate\(\s*([-\d.]+)\s*(?:[, ]\s*([-\d.]+)\s*)?\)\s*$/i);
+        const m = s.match(/translate\(\s*([-\d.]+)\s*(?:[, ]\s*([-\d.]+)\s*)?\)/i);
+        if (!m) return null;
+        const x = parseFloat(m[1]);
+        const y = (m[2] == null) ? 0 : parseFloat(m[2]);
+        if (!isFinite(x) || !isFinite(y)) return null;
+        return {x, y, raw: `translate(${x},${y})`};
+    }
+
+    // dataparc 도면을 변환하는 과정에서 생긴 g 태그 transform 값을 text 로 이관 하는 함수
+    // 조건 : text 태그에 transform 값이 없고 pmt:id 태그 에 값이 있는 경우
     function bakeParentTranslateIntoText(svgDoc) {
-	  // translate를 가진 g들을 대상으로
-	  const gs = svgDoc.querySelectorAll('g[transform*="translate"]');
-	
-	  gs.forEach(g => {
-	    const tf = (g.getAttribute("transform") || "").trim();
-	    const tr = parseTranslate(tf);
-    	if (!tr) return; // translate만
-		
-		const pmtIdText = getNonEmptyPmtIdText(g);
-	    if (!pmtIdText) return;
-	    
-	    // 내부에 text가 없으면 스킵
-	    const text = g.querySelector("text");
-	    if (!text) return;
-	
-	    // 기존 text transform이 있으면 합성: "부모 translate + 기존 transform"
-	    const old = (text.getAttribute("transform") || "").trim();
-	    const next = old ? `${tf} ${old}` : tf;
-	    text.setAttribute("transform", next);
-	    // transform 옮겨진 텍스트인지 확인 하는 인자 셋팅
-	    text.setAttribute("data-baked-translate", "1");
-	    text.setAttribute("data-baked-tf", tf);
-	
-	    // 부모 transform 제거
-	    g.removeAttribute("transform");
-	  });
-	}
+        // translate를 가진 g들을 대상으로
+        const gs = svgDoc.querySelectorAll('g[transform*="translate"]');
+
+        gs.forEach(g => {
+            const tf = (g.getAttribute("transform") || "").trim();
+            const tr = parseTranslate(tf);
+            if (!tr) return; // translate만
+
+            const pmtIdText = getNonEmptyPmtIdText(g);
+            if (!pmtIdText) return;
+
+            // 내부에 text가 없으면 스킵
+            const text = g.querySelector("text");
+            if (!text) return;
+
+            // 기존 text transform이 있으면 합성: "부모 translate + 기존 transform"
+            const old = (text.getAttribute("transform") || "").trim();
+            const next = old ? `${tf} ${old}` : tf;
+            text.setAttribute("transform", next);
+            // transform 옮겨진 텍스트인지 확인 하는 인자 셋팅
+            text.setAttribute("data-baked-translate", "1");
+            text.setAttribute("data-baked-tf", tf);
+
+            // 부모 transform 제거
+            g.removeAttribute("transform");
+        });
+    }
 
     /**
-	 * installDragGuard
-	 * 클릭과 드래그를 구분하기 위한 입력 보호 가드 설치 함수.
-	 */
+     * installDragGuard
+     * 클릭과 드래그를 구분하기 위한 입력 보호 가드 설치 함수.
+     */
     function installDragGuard(targetEl) {
-		  if (!targetEl || targetEl.__dragGuardBound) return;
-		  targetEl.__dragGuardBound = true;
-		
-		  let start = null;
-		
-		  // pointer (마우스/안드로이드/일부 iOS)
-		  targetEl.addEventListener("pointerdown", (e) => {
-		    if (isPinching) return;
-		    start = { x: e.clientX, y: e.clientY };
-		    isDragging = false;
-		  }, { capture: true });
-		
-		  targetEl.addEventListener("pointermove", (e) => {
-		    if (!start || isPinching) return;
-		    const dx = e.clientX - start.x;
-		    const dy = e.clientY - start.y;
-		    if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
-		      isDragging = true;
-		    }
-		  }, { capture: true });
-		
-		  targetEl.addEventListener("pointerup", () => {
-		    if (isDragging) lastDragAt = Date.now();
-		    start = null;
-		    // 드래그 플래그는 잠깐 유지됐다가, 다음 제스처 시작에서 다시 false로 초기화됨
-		  }, { capture: true });
-		
-		  targetEl.addEventListener("pointercancel", () => {
-		    if (isDragging) lastDragAt = Date.now();
-		    start = null;
-		  }, { capture: true });
-		
-		  // touch (iOS 보완)
-		  targetEl.addEventListener("touchstart", (e) => {
-		    if (!e.touches || e.touches.length !== 1) return; // 1손가락만 드래그 체크
-		    if (isPinching) return;
-		    const t = e.touches[0];
-		    start = { x: t.clientX, y: t.clientY };
-		    isDragging = false;
-		  }, { passive: true, capture: true });
-		
-		  targetEl.addEventListener("touchmove", (e) => {
-		    if (!start || isPinching) return;
-		    if (!e.touches || e.touches.length !== 1) return;
-		    const t = e.touches[0];
-		    const dx = t.clientX - start.x;
-		    const dy = t.clientY - start.y;
-		    if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
-		      isDragging = true;
-		    }
-		  }, { passive: true, capture: true });
-		
-		  targetEl.addEventListener("touchend", () => {
-		    if (isDragging) lastDragAt = Date.now();
-		    start = null;
-		  }, { passive: true, capture: true });
-		
-		  targetEl.addEventListener("touchcancel", () => {
-		    if (isDragging) lastDragAt = Date.now();
-		    start = null;
-		  }, { passive: true, capture: true });
-		}
+        if (!targetEl || targetEl.__dragGuardBound) return;
+        targetEl.__dragGuardBound = true;
+
+        let start = null;
+
+        // pointer (마우스/안드로이드/일부 iOS)
+        targetEl.addEventListener("pointerdown", (e) => {
+            if (isPinching) return;
+            start = {x: e.clientX, y: e.clientY};
+            isDragging = false;
+        }, {capture: true});
+
+        targetEl.addEventListener("pointermove", (e) => {
+            if (!start || isPinching) return;
+            const dx = e.clientX - start.x;
+            const dy = e.clientY - start.y;
+            if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
+                isDragging = true;
+            }
+        }, {capture: true});
+
+        targetEl.addEventListener("pointerup", () => {
+            if (isDragging) lastDragAt = Date.now();
+            start = null;
+            // 드래그 플래그는 잠깐 유지됐다가, 다음 제스처 시작에서 다시 false로 초기화됨
+        }, {capture: true});
+
+        targetEl.addEventListener("pointercancel", () => {
+            if (isDragging) lastDragAt = Date.now();
+            start = null;
+        }, {capture: true});
+
+        // touch (iOS 보완)
+        targetEl.addEventListener("touchstart", (e) => {
+            if (!e.touches || e.touches.length !== 1) return; // 1손가락만 드래그 체크
+            if (isPinching) return;
+            const t = e.touches[0];
+            start = {x: t.clientX, y: t.clientY};
+            isDragging = false;
+        }, {passive: true, capture: true});
+
+        targetEl.addEventListener("touchmove", (e) => {
+            if (!start || isPinching) return;
+            if (!e.touches || e.touches.length !== 1) return;
+            const t = e.touches[0];
+            const dx = t.clientX - start.x;
+            const dy = t.clientY - start.y;
+            if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
+                isDragging = true;
+            }
+        }, {passive: true, capture: true});
+
+        targetEl.addEventListener("touchend", () => {
+            if (isDragging) lastDragAt = Date.now();
+            start = null;
+        }, {passive: true, capture: true});
+
+        targetEl.addEventListener("touchcancel", () => {
+            if (isDragging) lastDragAt = Date.now();
+            start = null;
+        }, {passive: true, capture: true});
+    }
+
+
+    function applyDataparcPointerBehavior(svgDoc) {
+        // UTagInfo에 없는 Ellipse/Line 장식 요소는 클릭 통과
+        svgDoc.querySelectorAll('path[id^="Ellipse"], line[id^="Line"]').forEach(el => {
+            if (!UTAG_INFO_BY_EL.has(el.id)) {
+                el.style.pointerEvents = "none";
+            }
+        });
+
+        // 추가: UTagInfo에 없는 text/tspan은 클릭 통과
+        svgDoc.querySelectorAll("text[id]").forEach(text => {
+            const parentG = text.closest ? text.closest("g") : null;
+            const parentGId = parentG ? (parentG.getAttribute("id") || "") : "";
+
+            // 부모 g id가 있으면 통과시키지 않음
+            if (
+                !UTAG_INFO_BY_EL.has(text.id) &&
+                !parentGId.trim()
+            ) {
+                text.style.pointerEvents = "none";
+
+                text.querySelectorAll("tspan").forEach(tspan => {
+                    tspan.style.pointerEvents = "none";
+                });
+            }
+        });
+
+        // UTagInfo에 등록된 단독 path만 pointer 커서 적용
+        UTAG_INFO_BY_EL.forEach((_, elementName) => {
+            const el = svgDoc.getElementById(elementName);
+            if (!el) return;
+
+            if (el.tagName.toLowerCase() === "path") {
+                el.style.cursor = "pointer";
+            }
+
+            if (el.tagName.toLowerCase() === "g") {
+                el.querySelectorAll("path").forEach(path => {
+                    path.style.cursor = "pointer";
+                });
+            }
+        });
+    }
 
     // 메인 함수 -> SVG 파일을 로드하고 초기화하는 함수
     function createAndLoadSVG(path, searchTag) {
@@ -1321,30 +1444,35 @@
         const strDocNo = path.split(".")[0];
         const object = document.createElement("object");
         object.setAttribute("id", strDocNo);
-        object.setAttribute("data", path);
+        object.setAttribute("data", path + "?v=" + Date.now());
         object.setAttribute("type", "image/svg+xml");
         object.setAttribute("preserveAspectRatio", "xMidYMid meet");
         object.style.width = "100%";
         object.style.height = "100%";
         object.style.display = "block";
         object.style.pointerEvents = "auto";
-        
+
         object.addEventListener("load", function () {
-			
+
             svgDoc = object.contentDocument;
             svgElement = svgDoc.documentElement;
             // g태그에 transform 존재하는 경우 text 로 이관
-			bakeParentTranslateIntoText(svgDoc);
-			installDragGuard(object);      
-			installDragGuard(svgElement); 
-        
+            bakeParentTranslateIntoText(svgDoc);
+            installDragGuard(object);
+            installDragGuard(svgElement);
+
             UTAG_TO_ELEMENT_LIST = extractUtagToElementMap(svgDoc);
+            const timeEl = svgDoc.getElementById("PVTextBlockTime");
+            if (timeEl) TIME_NODES.push({el: timeEl});
             UTAG_INFO_BY_EL = new Map(
                 UTAG_TO_ELEMENT_LIST.map(v => [
                     v.elementName,
                     {uTag: v.uTag, description: v.description}
                 ])
             );
+
+            applyDataparcPointerBehavior(svgDoc);
+
             // 2) 클릭 이벤트 바인딩
             bindDataparcClick(svgDoc);
 
@@ -1433,10 +1561,10 @@
                 minZoom: 1,
                 maxZoom: 10,
                 zoomScaleSensitivity: 0.7,  // 줌 민감도 조절
-                
+
                 mouseWheelZoomEnabled: true,
-				dblClickZoomEnabled: false,
-				touchEnabled: false,  
+                dblClickZoomEnabled: false,
+                touchEnabled: false,
 
                 beforePan: function (oldPan, newPan) {
                     const sizes = this.getSizes();
@@ -1469,121 +1597,130 @@
                     return {x: limitedX, y: limitedY};
                 }
             });
-			// =======================
-			// 핀치 줌 : 손가락 2개로 줌인 줌 아웃
-			// =======================
-			(function attachPinchZoom() {
-			  if (svgElement.__pinchBound) return;
-			  svgElement.__pinchBound = true;
-			
-			  // iOS에서 중요: object에도 걸어줘야 이벤트가 잡히는 케이스가 있음
-			  const targets = [svgElement, object];
-			
-			  try { svgElement.style.touchAction = "none"; } catch (e) {}
-			  try { object.style.touchAction = "none"; } catch (e) {}
-			
-			  const MIN_ZOOM = 1;
-			  const MAX_ZOOM = 10;
-			
-			  const DIST_DEADZONE_PX = 8;
-			  const SCALE_DEADZONE = 0.01;
-			
-			  let pinching = false;
-			  let startDist = 0;
-			  let lastDist = 0;
-			  let armed = false;
-			
-			  function dist(t1, t2) {
-			    const dx = t1.clientX - t2.clientX;
-			    const dy = t1.clientY - t2.clientY;
-			    return Math.hypot(dx, dy);
-			  }
-			  function mid(t1, t2) {
-			    return { x: (t1.clientX + t2.clientX) / 2, y: (t1.clientY + t2.clientY) / 2 };
-			  }
-			  function clamp(v, min, max) {
-			    return Math.max(min, Math.min(max, v));
-			  }
-			  function kill(e) {
-			    e.preventDefault();
-			    e.stopPropagation();
-			    if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
-			  }
-			
-			  function onStart(e) {
-			    if (!e.touches || e.touches.length < 2) return;
-			
-			    kill(e);
-			
-			    pinching = true;
-			    armed = false;
-			
-			    startDist = dist(e.touches[0], e.touches[1]);
-			    lastDist = startDist;
-			
-			    isPinching = true;
-			    lastPinchAt = Date.now();
-			  }
-			
-			  function onMove(e) {
-			    if (!pinching || !e.touches || e.touches.length < 2) return;
-			
-			    kill(e);
-			
-			    const newDist = dist(e.touches[0], e.touches[1]);
-			
-			    if (!armed) {
-			      const totalDelta = newDist - startDist;
-			      if (Math.abs(totalDelta) < DIST_DEADZONE_PX) return;
-			
-			      armed = true;
-			      lastDist = newDist;
-			      return;
-			    }
-			
-			    const scale = newDist / lastDist;
-			    lastDist = newDist;
-			
-			    if (Math.abs(scale - 1) < SCALE_DEADZONE) return;
-			
-			    let nextZoom = panZoom.getZoom() * scale;
-			    nextZoom = clamp(nextZoom, MIN_ZOOM, MAX_ZOOM);
-			
-			    // 기준점을 object 기준으로 잡는 게 안정적
-			    const rect = object.getBoundingClientRect();
-			    const c = mid(e.touches[0], e.touches[1]);
-			    const point = { x: c.x - rect.left, y: c.y - rect.top };
-			
-			    panZoom.zoomAtPoint(nextZoom, point);
-			
-			    isPinching = true;
-			    lastPinchAt = Date.now();
-			  }
-			
-			  function endPinch() {
-			    pinching = false;
-			    armed = false;
-			    startDist = 0;
-			    lastDist = 0;
-			
-			    isPinching = false;
-			    lastPinchAt = Date.now();
-			  }
-			
-			  function onEnd(e) {
-			    // 두 손가락 중 하나라도 남아있으면 아직 pinch 상태로 볼 수 있어서
-			    if (e.touches && e.touches.length >= 2) return;
-			    endPinch();
-			  }
-			
-			  // 리스너 등록 (svg + object 둘 다)
-			  targets.forEach((t) => {
-			    t.addEventListener("touchstart", onStart, { passive: false, capture: true });
-			    t.addEventListener("touchmove",  onMove,  { passive: false, capture: true });
-			    t.addEventListener("touchend",   onEnd,   { passive: true,  capture: true });
-			    t.addEventListener("touchcancel", endPinch, { passive: true, capture: true });
-			  });
-			})();
+            // =======================
+            // 핀치 줌 : 손가락 2개로 줌인 줌 아웃
+            // =======================
+            (function attachPinchZoom() {
+                if (svgElement.__pinchBound) return;
+                svgElement.__pinchBound = true;
+
+                // iOS에서 중요: object에도 걸어줘야 이벤트가 잡히는 케이스가 있음
+                const targets = [svgElement, object];
+
+                try {
+                    svgElement.style.touchAction = "none";
+                } catch (e) {
+                }
+                try {
+                    object.style.touchAction = "none";
+                } catch (e) {
+                }
+
+                const MIN_ZOOM = 1;
+                const MAX_ZOOM = 10;
+
+                const DIST_DEADZONE_PX = 8;
+                const SCALE_DEADZONE = 0.01;
+
+                let pinching = false;
+                let startDist = 0;
+                let lastDist = 0;
+                let armed = false;
+
+                function dist(t1, t2) {
+                    const dx = t1.clientX - t2.clientX;
+                    const dy = t1.clientY - t2.clientY;
+                    return Math.hypot(dx, dy);
+                }
+
+                function mid(t1, t2) {
+                    return {x: (t1.clientX + t2.clientX) / 2, y: (t1.clientY + t2.clientY) / 2};
+                }
+
+                function clamp(v, min, max) {
+                    return Math.max(min, Math.min(max, v));
+                }
+
+                function kill(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+                }
+
+                function onStart(e) {
+                    if (!e.touches || e.touches.length < 2) return;
+
+                    kill(e);
+
+                    pinching = true;
+                    armed = false;
+
+                    startDist = dist(e.touches[0], e.touches[1]);
+                    lastDist = startDist;
+
+                    isPinching = true;
+                    lastPinchAt = Date.now();
+                }
+
+                function onMove(e) {
+                    if (!pinching || !e.touches || e.touches.length < 2) return;
+
+                    kill(e);
+
+                    const newDist = dist(e.touches[0], e.touches[1]);
+
+                    if (!armed) {
+                        const totalDelta = newDist - startDist;
+                        if (Math.abs(totalDelta) < DIST_DEADZONE_PX) return;
+
+                        armed = true;
+                        lastDist = newDist;
+                        return;
+                    }
+
+                    const scale = newDist / lastDist;
+                    lastDist = newDist;
+
+                    if (Math.abs(scale - 1) < SCALE_DEADZONE) return;
+
+                    let nextZoom = panZoom.getZoom() * scale;
+                    nextZoom = clamp(nextZoom, MIN_ZOOM, MAX_ZOOM);
+
+                    // 기준점을 object 기준으로 잡는 게 안정적
+                    const rect = object.getBoundingClientRect();
+                    const c = mid(e.touches[0], e.touches[1]);
+                    const point = {x: c.x - rect.left, y: c.y - rect.top};
+
+                    panZoom.zoomAtPoint(nextZoom, point);
+
+                    isPinching = true;
+                    lastPinchAt = Date.now();
+                }
+
+                function endPinch() {
+                    pinching = false;
+                    armed = false;
+                    startDist = 0;
+                    lastDist = 0;
+
+                    isPinching = false;
+                    lastPinchAt = Date.now();
+                }
+
+                function onEnd(e) {
+                    // 두 손가락 중 하나라도 남아있으면 아직 pinch 상태로 볼 수 있어서
+                    if (e.touches && e.touches.length >= 2) return;
+                    endPinch();
+                }
+
+                // 리스너 등록 (svg + object 둘 다)
+                targets.forEach((t) => {
+                    t.addEventListener("touchstart", onStart, {passive: false, capture: true});
+                    t.addEventListener("touchmove", onMove, {passive: false, capture: true});
+                    t.addEventListener("touchend", onEnd, {passive: true, capture: true});
+                    t.addEventListener("touchcancel", endPinch, {passive: true, capture: true});
+                });
+            })();
 
             //  리사이즈 핸들러 등록 (한 번만)
             if (!window.__resizeBound__) {
@@ -1604,17 +1741,19 @@
                         return; // 이상하면 더 진행 안 함
                     }
 
+                    safeViewReset(panZoom, svgElement);
+
                     // 2) 마지막으로 선택한 노드가 있으면 그 기준으로 다시 줌
-                    if (LAST_SELECTED_NODE) {
-                        const bbox = LAST_SELECTED_NODE.getBBox();
-                        const outline = createOutlineRect(svgDoc, svgns, bbox, LAST_SELECTED_NODE.id);
-                        var rx = outline.getAttribute('x');
-                        var ry = outline.getAttribute('y');
-                        var rw = outline.getAttribute('width');
-                        var rh = outline.getAttribute('height');
-                        determineZoomLevel(panZoom, bbox);
-                        panToCenter(panZoom, rx, ry, rw, rh);
-                    }
+                    /*                   if (LAST_SELECTED_NODE) {
+                                           const bbox = LAST_SELECTED_NODE.getBBox();
+                                           const outline = createOutlineRect(svgDoc, svgns, bbox, LAST_SELECTED_NODE.id);
+                                           var rx = outline.getAttribute('x');
+                                           var ry = outline.getAttribute('y');
+                                           var rw = outline.getAttribute('width');
+                                           var rh = outline.getAttribute('height');
+                                           determineZoomLevel(panZoom, bbox);
+                                           panToCenter(panZoom, rx, ry, rw, rh);
+                                       }*/
                 });
                 window.__resizeBound__ = true;
             }
@@ -1640,11 +1779,11 @@
                 svgType_parent?.appendChild(title);
 
                 svgType_parent.addEventListener("pointerup", function () {
-					
-					if (isPinching || (Date.now() - lastPinchAt) < 350) return;
-                    
+
+                    if (isPinching || (Date.now() - lastPinchAt) < 350) return;
+
                     if (isDragging) return;
-  					if ((Date.now() - lastDragAt) < DRAG_SUPPRESS_MS) return;
+                    if ((Date.now() - lastDragAt) < DRAG_SUPPRESS_MS) return;
 
                     reSetStyle(svgType);
 
@@ -1670,17 +1809,17 @@
                         var ry = outline.getAttribute('y');
                         var rw = outline.getAttribute('width');
                         var rh = outline.getAttribute('height');
-                       	
-                       	 const baked = !!element?.querySelector?.('text[data-baked-translate="1"]');
-                  
-						  //  baked면 더 크게 줌 (원하는 값으로 조정)
-						  if (baked) {
-						    panZoom.zoom(10);   // 예: 8~10 사이로
-						  } else {
-						    determineZoomLevel(panZoom, bbox); 
-						  }
+
+                        const baked = !!element?.querySelector?.('text[data-baked-translate="1"]');
+
+                        //  baked면 더 크게 줌 (원하는 값으로 조정)
+                        if (baked) {
+                            panZoom.zoom(10);   // 예: 8~10 사이로
+                        } else {
+                            determineZoomLevel(panZoom, bbox);
+                        }
                         panToCenter(panZoom, rx, ry, rw, rh);
-                        
+
                     }
 
                     //  현재 요소 강조 상태로 전환
@@ -1705,8 +1844,7 @@
 
                             // 원하는 URL 생성
                             var targetUrl = "/multiview/index.do?t=F&iegNo=" + encodeURIComponent(iegNo);
-
-                            fnOpenPopupStandard(targetUrl, "설비상세정보");
+                            window.top.fnOpenPopupStandard(targetUrl, "설비상세정보");
                         },
                         error: function (xhr, status, err) {
                             console.error("[clicktag] AJAX 오류:", status, err);
@@ -1718,29 +1856,47 @@
                 svgType_parent.addEventListener("mouseout", () => setCursor(svgType_parent, 'default'));
             }
 
-       
+
             bindMovePageButtons(svgDoc);
 
             if (searchTag && ckType === "dataparc") {
                 // pnid와 동일하게: searchTag와 같은 id를 가진 <g> 태그 찾기
                 const matchedGroupSet = new Set();
 
-                for (let i = 0; i < tempTextNodes.length; i++) {
-                    const textNode = tempTextNodes[i];
-                    const parentG = textNode.closest("g[id]");
+                // searchTag(UTag) -> ElementName 변환
+                const resolvedSearchTag = (() => {
+                    const utagInfo = Array.from(svgDoc.getElementsByTagName("UTagInfo"))
+                        .find(u => (u.getAttribute("UTag") || "").toLowerCase() === searchTag.toLowerCase());
 
-                    if (!parentG) continue;
+                    return utagInfo ? utagInfo.getAttribute("ElementName") : searchTag;
+                })();
 
-                    const rawId = parentG.getAttribute("id") || "";
-                    /* console.log("rawId : " + rawId)*/
-                    const idList = rawId
-                        .split(",")
-                        .map(s => s.trim())
-                        .filter(s => s.length > 0);
+                // ElementName과 같은 id를 가진 요소 직접 찾기 (text / path / rect)
+                const directTarget = svgDoc.getElementById(resolvedSearchTag);
 
-                    if (idList.includes(searchTag)) {
-                        matchedGroupSet.add(parentG);
+                if (directTarget) {
+                    if (directTarget.tagName.toLowerCase() === "text") {
+                        const parentG = directTarget.closest("g");
+                        matchedGroupSet.add(parentG || directTarget);
+                    } else {
+                        matchedGroupSet.add(directTarget);
                     }
+                }
+
+                // directTarget이 없으면 g[id=ElementName] 찾기
+                if (matchedGroupSet.size === 0) {
+                    Array.from(svgDoc.querySelectorAll("g[id]")).forEach(parentG => {
+                        const rawId = parentG.getAttribute("id") || "";
+
+                        const idList = rawId
+                            .split(",")
+                            .map(s => s.trim())
+                            .filter(Boolean);
+
+                        if (idList.includes(resolvedSearchTag)) {
+                            matchedGroupSet.add(parentG);
+                        }
+                    });
                 }
 
                 const matchedGroups = Array.from(matchedGroupSet);
@@ -1767,7 +1923,7 @@
                     // 1개: 줌 + 보라색
                     // 1) vnet 줌/이동
                     runSearchTag_vnet(
-                        searchTag,
+                        resolvedSearchTag,
                         svgDoc,
                         panZoom,
                         () => reSetStyle(svgType)
@@ -1777,7 +1933,7 @@
                     const targetGroup = matchedGroups[0];
                     targetGroup.setAttribute("data-state", "selected");
                 }
-                LAST_SELECTED_NODE = findElementByMultiId(svgDoc, searchTag);
+                LAST_SELECTED_NODE = findElementByMultiId(svgDoc, resolvedSearchTag);
             }
 
             //  ***실시간 값 초기 세팅은 별도의 비동기 블록에서 실행***

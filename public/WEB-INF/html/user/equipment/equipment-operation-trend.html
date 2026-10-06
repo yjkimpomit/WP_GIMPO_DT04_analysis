@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>운전정보 트렌드</title>
+	<link rel="stylesheet" href="/resources/user/css/winbox-content.css">
+	<script src="/resources/user/js/jquery/jquery-3.6.1.js"></script>
+	<script src="/resources/user/js/chart/chart.umd.js"></script>
+	<script src="/resources/user/js/chart/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+
+<body>
+	<main class="winbox-layout page-content page-content--popup trend-chart-page" aria-labelledby="operation-trend-title">
+		<h1 class="result-header__title">T3.9M.9HH-MV01A-ZT</h1>
+
+		<form class="search-fields" data-popup-form>
+            <input type="hidden" name="searchCnd" value="run"/>
+            <input type="hidden" name="iegTagno" value="SAMPLE-TAG"/>
+            <span class="form-label">조회 기간</span>
+            <label>
+                <span class="visually-hidden">시작일</span>
+                <input type="date" class="form-control" id="startDate01" name="startDate" required>
+            </label>
+            
+            <label>
+                <span class="visually-hidden">시작시각</span>
+                <input type="time" class="form-control" id="startTime01" name="startTime" required>
+            </label>
+            
+            <span aria-hidden="true">~</span>
+            
+            <label>
+                <span class="visually-hidden">종료일</span>
+                <input type="date" class="form-control form-control--calendar" id="endDate01" name="endDate" required>
+            </label>
+            
+            <label>
+                <span class="visually-hidden">종료시각</span>
+                <input type="time" class="form-control" id="endTime01" name="endTime" required>
+            </label>
+            <button type="button" class="button button--primary" onclick="fnTrendSearch()">검색</button>
+        </form>
+
+		<div class="result-chart">
+            <div class="trend-data-group">
+                <dl class="text-group">
+                    <dt>최소</dt>
+                    <dd id="trendMin">-</dd>
+                </dl>
+    
+                <dl class="text-group">
+                    <dt>최대</dt>
+                    <dd id="trendMax">-</dd>
+                </dl>
+    
+                <dl class="text-group">
+                    <dt>현재</dt>
+                    <dd id="trendCurrent">-</dd>
+                </dl>
+            </div>
+
+			<div class="chart-container" id="viewChart"></div>
+		</div>
+	</main>
+	
+	<script>
+		function fnTrendSearch() {
+			const form = document.querySelector('[data-popup-form]');
+			if (!form.reportValidity()) return;
+			const start = new Date(form.elements.startDate.value + 'T' + form.elements.startTime.value);
+			const end = new Date(form.elements.endDate.value + 'T' + form.elements.endTime.value);
+			form.elements.endDate.setCustomValidity(end > start ? '' : '종료 일시는 시작 일시 이후로 선택하세요.');
+			if (!form.reportValidity()) return;
+			$.ajax({
+				url: "./detail/operationTrendChart.html",
+				method: "GET",
+				data: $(form).serialize(),
+				dataType: "html",
+				beforeSend: function () {
+					$("#loadingBar").show();
+					$("#trendMin").text("-");
+					$("#trendMax").text("-");
+					$("#trendCurrent").text("-");
+				},
+				success: function (data) {
+					clearTimeout(window.trendChartTimer);
+					window.trendChart?.destroy();
+					$("#viewChart").html(data);
+				},
+				complete: function () {
+					$("#loadingBar").css("display", "none");
+				}
+			});
+		}
+
+		$(function () {
+			const end = new Date();
+			const start = new Date(end.getTime() - 24 * 60 * 60 * 1000);
+			const pad = value => String(value).padStart(2, '0');
+			for (const [prefix, date] of [['start', start], ['end', end]]) {
+				document.getElementById(prefix + 'Date01').value = date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate());
+				document.getElementById(prefix + 'Time01').value = pad(date.getHours()) + ':' + pad(date.getMinutes());
+			}
+			document.querySelector('[data-popup-form]').addEventListener('input', function () {
+				this.elements.endDate.setCustomValidity('');
+			});
+			fnTrendSearch();
+		});
+	</script>
+
+	<script src="/resources/user/js/common/components.js"></script>
+</body>
+
+</html>

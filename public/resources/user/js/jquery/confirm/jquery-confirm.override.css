@@ -1,5 +1,4 @@
 @charset "utf-8";
-@import url(/resources/user/css/variables.css);
 /*
 * 포미트 - 서부 iPOS 공통 스타일시트
 * 작성자 : 김윤지
@@ -128,126 +127,136 @@
 }
 
 /* blue */
-.jconfirm .jconfirm-box.jconfirm-type-blue {
+body .jconfirm .jconfirm-box.jconfirm-type-blue {
 	border-top: solid 8px var(--blue-400);
 }
-.jconfirm .jconfirm-box .jconfirm-buttons button.btn-blue {
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-blue {
 	background-color: var(--blue-600);
 }
 
 /* red */
-.jconfirm .jconfirm-box.jconfirm-type-red {
+body .jconfirm .jconfirm-box.jconfirm-type-red {
 	border-top: solid 8px var(--red-400);
 }
-.jconfirm .jconfirm-box .jconfirm-buttons button.btn-red {
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-red {
 	background-color: var(--red-600);
 }
 
 /* dark */
-.jconfirm .jconfirm-box.jconfirm-type-dark {
+body .jconfirm .jconfirm-box.jconfirm-type-dark {
 	border-top: solid 8px var(--border-neutral-muted);
 }
-.jconfirm .jconfirm-box .jconfirm-buttons button.btn-dark {
-	background-color: var(--bg-neutral-default);
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-dark {
+	background-color: var(--bg-neutral-strong);
 }
 
 /* box style */
-.jconfirm.jconfirm-white .jconfirm-box,
-.jconfirm.jconfirm-light .jconfirm-box {
+body .jconfirm.jconfirm-white .jconfirm-box,
+body .jconfirm.jconfirm-light .jconfirm-box {
 	border-radius: 0;
 }
 
-.jconfirm .jconfirm-box div.jconfirm-title-c {
+body .jconfirm .jconfirm-box div.jconfirm-title-c {
 	font-weight: 700;
 	font-size: 1.25rem;
 	line-height: 1.4;
 }
 
-.jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button,
-.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button {
+body .jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button,
+body .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button {
 	font-size: 1rem;
 }
 
 
 
-.jconfirm .jconfirm-box-container {
+body .jconfirm .jconfirm-box-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 /* project dark theme */
-.jconfirm .jconfirm-bg {
+body .jconfirm .jconfirm-bg {
 	background-color: var(--overlay-modal-bg);
 	opacity: 1;
 }
 
-.jconfirm .jconfirm-box,
-.jconfirm.jconfirm-white .jconfirm-box,
-.jconfirm.jconfirm-light .jconfirm-box,
-.jconfirm.jconfirm-dark .jconfirm-box {
-	border: 1px solid var(--border-elevated-4);
-	background-color: var(--bg-neutral-stronger);
-	box-shadow: var(--shadow-2);
+body .jconfirm .jconfirm-box,
+body .jconfirm.jconfirm-white .jconfirm-box,
+body .jconfirm.jconfirm-light .jconfirm-box,
+body .jconfirm.jconfirm-dark .jconfirm-box {
+	border: 3px solid var(--border-elevated-1);
+	background-color: var(--bg-neutral-strong);
+	box-shadow: var(--box-shadow-1);
+	border-radius: var(--spacing-100);
+	color: var(--fg-neutral-default);
+}
+
+body .jconfirm .jconfirm-box div.jconfirm-title-c,
+body .jconfirm .jconfirm-box div.jconfirm-title-c .jconfirm-title {
+	color: var(--fg-neutral-emphasis);
+}
+
+body .jconfirm .jconfirm-box div.jconfirm-content-pane,
+body .jconfirm .jconfirm-box div.jconfirm-content {
 	color: var(--fg-neutral-subtlest);
 }
 
-.jconfirm .jconfirm-box div.jconfirm-title-c,
-.jconfirm .jconfirm-box div.jconfirm-title-c .jconfirm-title {
-	color: var(--fg-white);
-}
-
-.jconfirm .jconfirm-box div.jconfirm-content-pane,
-.jconfirm .jconfirm-box div.jconfirm-content {
+body .jconfirm .jconfirm-box .jconfirm-closeIcon {
 	color: var(--fg-neutral-subtlest);
 }
 
-.jconfirm .jconfirm-box .jconfirm-closeIcon {
-	color: var(--fg-neutral-subtler);
-}
-
-.jconfirm .jconfirm-box .jconfirm-closeIcon:hover,
-.jconfirm .jconfirm-box .jconfirm-closeIcon:focus-visible {
+body .jconfirm .jconfirm-box .jconfirm-closeIcon:hover,
+body .jconfirm .jconfirm-box .jconfirm-closeIcon:focus-visible {
 	color: var(--fg-white);
 }
 
-.jconfirm .jconfirm-box input,
-.jconfirm .jconfirm-box select,
-.jconfirm .jconfirm-box textarea {
+body .jconfirm .jconfirm-box input,
+body .jconfirm .jconfirm-box select,
+body .jconfirm .jconfirm-box textarea {
 	border-color: var(--border-elevated-4);
 	background-color: var(--bg-elevated-3);
-	color: var(--fg-neutral-subtlest);
+	color: var(--fg-neutral-default);
 }
 
-.jconfirm .jconfirm-box input:focus-visible,
-.jconfirm .jconfirm-box select:focus-visible,
-.jconfirm .jconfirm-box textarea:focus-visible {
+body .jconfirm .jconfirm-box input:focus-visible,
+body .jconfirm .jconfirm-box select:focus-visible,
+body .jconfirm .jconfirm-box textarea:focus-visible {
 	outline: var(--focus-ring-width) solid var(--focus-ring);
 	outline-offset: var(--focus-ring-offset);
 }
 
-.jconfirm .jconfirm-box .jconfirm-buttons button {
+body .jconfirm .jconfirm-box .jconfirm-buttons button {
 	border: 1px solid var(--button-border);
-	background-color: var(--button-primary-default-bg);
+	background-color: var(--button-primary-bg);
 	color: var(--button-primary-fg);
 }
 
-.jconfirm .jconfirm-box .jconfirm-buttons button:hover,
-.jconfirm .jconfirm-box .jconfirm-buttons button:focus-visible {
+body .jconfirm .jconfirm-box .jconfirm-buttons button:hover,
+body .jconfirm .jconfirm-box .jconfirm-buttons button:focus-visible {
 	border-color: var(--button-primary-border-hover);
 	background-color: var(--button-primary-bg-hover);
 	color: var(--button-primary-fg-hover);
 }
 
-.jconfirm .jconfirm-box .jconfirm-buttons button.btn-default {
-	border-color: var(--button-light-border);
-	background-color: var(--button-light-bg);
-	color: var(--button-light-fg);
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-default {
+	border-color: var(--button-light-border) !important;
+	background-color: var(--button-light-bg) !important;
+	color: var(--button-light-fg) !important;
 }
 
-.jconfirm .jconfirm-box .jconfirm-buttons button.btn-default:hover,
-.jconfirm .jconfirm-box .jconfirm-buttons button.btn-default:focus-visible {
-	border-color: var(--button-light-border-hover);
-	background-color: var(--button-light-bg-hover);
-	color: var(--button-light-fg-hover);
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-default:hover,
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-default:focus-visible {
+	border-color: var(--button-light-border-hover) !important;
+	background-color: var(--button-light-bg-hover) !important;
+	color: var(--button-light-fg-hover) !important;
+}
+
+body .jconfirm .jconfirm-box .jconfirm-buttons button {
+	padding: 0 var(--spacing-200);
+}
+
+body .jconfirm.jconfirm-white .jconfirm-box .jconfirm-title-c .jconfirm-icon-c,
+body .jconfirm.jconfirm-light .jconfirm-box .jconfirm-title-c .jconfirm-icon-c {
+	margin-right: 0;
 }

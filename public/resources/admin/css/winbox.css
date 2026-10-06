@@ -1,12 +1,12 @@
 @charset "utf-8";
 
 .winbox.app-winbox * {
-	font-family: var(--font-family-base);
+	font-family: var(--font-family-base), sans-serif;
 }
 
 .winbox.app-winbox {
-	border-radius: var(--winbox-radius);
 	border: 1px solid var(--winbox-header-border);
+	border-radius: var(--winbox-radius);
 	background: var(--winbox-bg);
 }
 
@@ -22,6 +22,21 @@
 	background: var(--winbox-modal-overlay-bg);
 	animation: winbox-modal-fade-in 0.2s ease-out forwards;
 }
+
+.winbox.modal[data-modal-overlay]::after {
+	content: none;
+}
+
+.app-winbox-overlay {
+	position: fixed;
+	inset: 0;
+	background: var(--winbox-modal-overlay-bg);
+	animation: winbox-modal-fade-in 0.2s ease-out forwards;
+	touch-action: none;
+	overscroll-behavior: contain;
+}
+
+.app-winbox-overlay[hidden] { display: none; }
 
 .winbox.app-winbox.modal::before {
 	background: transparent;
@@ -52,9 +67,9 @@
 	gap: var(--winbox-header-gap);
 	height: var(--winbox-header-height);
 	padding-inline: var(--winbox-header-padding-x);
-	overflow: hidden;
 	border-start-start-radius: var(--winbox-radius);
 	border-start-end-radius: var(--winbox-radius);
+	overflow: hidden;
 	border-bottom: 1px solid var(--winbox-header-border);
 	background-color: var(--winbox-header-bg);
 	color: var(--winbox-header-fg);
@@ -109,10 +124,12 @@
 .app-winbox .wb-close { background-image: url('/resources/admin/images/icons/winbox-close.svg'); }
 
 .app-winbox .wb-body {
-	overflow: hidden;
+	box-sizing: border-box;
+	overflow: auto;
 	border-end-start-radius: var(--winbox-radius);
 	border-end-end-radius: var(--winbox-radius);
 	background-color: var(--winbox-bg);
+	top: 40px;
 }
 
 /* 최소화 탭 */
@@ -139,7 +156,10 @@
 	overflow: hidden;
 }
 
-.app-winbox .wb-frame {
+.app-winbox .wb-body > iframe {
+	/* vendor의 absolute 배치를 해제해 부모 패딩 안쪽 높이를 사용한다. */
+	position: static;
+	display: block;
 	width: 100%;
 	height: 100%;
 	border: 0;

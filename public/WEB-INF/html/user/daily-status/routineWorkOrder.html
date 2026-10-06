@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>경상오더</title>
+</head>
+
+<body>
+	<main class="winbox-layout page-content">
+		<div class="page-content__placeholder">
+			<div class="splitview">
+				<aside class="splitview__pane splitview__pane--sidebar" aria-label="정보 검색">
+
+					<!-- 검색영역 -->
+					<form class="filter-panel" id="searchWorkOrderForm" method="post"
+						autocomplete="off">
+
+						<div class="filter-panel__header">
+							<span class="filter-panel__title">검색</span>
+							<button class="filter-panel__toggle" type="button" aria-label="정보 검색 접기"
+								aria-expanded="true" aria-controls="filter-panel-search"></button>
+						</div>
+
+						<div class="filter-panel__search" id="filter-panel-search">
+							<!-- filter-panel__fields 안에서 form-field 단위로 반복 -->
+							<div class="filter-panel__fields" id="filter-panel-fields">
+								<input type="hidden" name="pageIndex" id="pageIndex" value="1">
+
+								<div class="form-field">
+									<label class="form-label" for="supvorOption">감독자</label>
+									<div class="form-control-group">
+									<input class="form-control form-control--search" id="supvorOption" name="planBy"
+										type="text" aria-haspopup="dialog" data-lookup-popup
+                                        data-lookup-popup-id="requester-lookup" data-lookup-popup-title="감독자 검색"
+                                        data-lookup-popup-url="/WEB-INF/html/user/common/popup/popup-requester.html"
+                                        data-lookup-popup-width="480" data-lookup-popup-height="640"
+                                        data-title="감독자 검색" onclick="window.parent.fnOpenPopup(this.dataset.lookupPopupUrl, window.parent.$(this))">
+									<input class="form-control" type="text" id="supvorInput" name="planByName"
+										readonly aria-label="선택된 감독자명">
+									</div>
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="supvDeptOption">감독부서</label>
+									<div class="form-control-group">
+									<input class="form-control form-control--search" id="supvDeptOption" name="deptNo"
+										type="text" aria-haspopup="dialog" data-lookup-popup
+                                        data-lookup-popup-id="department-lookup" data-lookup-popup-title="감독부서 검색"
+                                        data-lookup-popup-url="/WEB-INF/html/user/common/popup/popup-department.html"
+                                        data-lookup-popup-width="480" data-lookup-popup-height="640"
+                                        data-title="감독부서 검색" onclick="window.parent.fnOpenPopup(this.dataset.lookupPopupUrl, window.parent.$(this))">
+									<input class="form-control" type="text" id="supvDeptInput" name="deptName"
+										readonly aria-label="선택된 감독부서명">
+									</div>
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="maintDeptOption">정비부서</label>
+									<div class="form-control-group">
+									<input class="form-control form-control--search" id="maintDeptOption" name="workDeptNo"
+										type="text" aria-haspopup="dialog" data-lookup-popup
+                                        data-lookup-popup-id="department-lookup" data-lookup-popup-title="정비부서 검색"
+                                        data-lookup-popup-url="/WEB-INF/html/user/common/popup/popup-department.html"
+                                        data-lookup-popup-width="480" data-lookup-popup-height="640"
+                                        data-title="정비부서 검색" onclick="window.parent.fnOpenPopup(this.dataset.lookupPopupUrl, window.parent.$(this))">
+									<input class="form-control" type="text" id="maintDeptInput" name="workdeptName"
+										readonly aria-label="선택된 정비부서명">
+									</div>
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="orderNo">오더 번호</label>
+									<input class="form-control" type="text" id="orderNo" value="" name="woNo"
+										placeholder="오더번호 입력">
+								</div>
+
+								<div class="form-field">
+									<label class="form-label" for="orderName">오더명</label>
+									<input class="form-control" type="text" id="orderName" name="description"
+										placeholder="오더명 입력">
+								</div>
+
+								<fieldset class="form-field">
+									<legend class="form-label">설계일</legend>
+
+									<div class="form-control-group">
+										<label>
+											<span class="visually-hidden">설계 시작일</span>
+											<input type="date" class="form-control" id="requestDateStart"
+												name="requestDateStart">
+										</label>
+
+										<label>
+											<span class="visually-hidden">설계 종료일</span>
+											<input type="date" class="form-control" id="requestDateEnd"
+												name="requestDateEnd">
+										</label>
+									</div>
+								</fieldset>
+
+							</div>
+
+							<div class="filter-panel__actions">
+								<button type="button" class="button button--primary"
+									onclick="fnSearchForm()">검색</button>
+								<button type="button" class="button button--secondary"
+                                    data-winbox-popup data-winbox-popup-id="daily-equipment-classification"
+                                    data-winbox-popup-title="설비분류체계"
+                                    data-winbox-popup-url="/WEB-INF/html/user/daily-status/equipment-classification.html"
+                                    data-winbox-popup-width="480" data-winbox-popup-height="640"
+                                    data-title="설비분류체계" onclick="window.parent.fnOpenPopup(this.dataset.winboxPopupUrl, window.parent.$(this))">설비분류체계</button>
+							</div>
+						</div>
+					</form>
+
+				</aside>
+				<section class="splitview__pane splitview__pane--content result-panel" aria-label="검색 결과">
+					<h1 class="page-content__heading">경상오더</h1>
+
+
+					<div class="result-panel__body" id="_VIEW_RESULT_LIST">
+
+
+
+
+
+
+
+
+						<script>
+							var totalPage = 1;
+						</script>
+
+
+						<!-- data title -->
+						<div class="result-header">
+							<h2 class="result-header__title">조회결과<span class="result-header__count">(전체 0건)</span></h2>
+
+							<div class="result-header__actions">
+								<nav class="pagination" aria-label="페이지 이동">
+									<input type="number" id="currentPage" class="form-control form-control--page"
+										aria-label="이동할 페이지 번호" value="1">
+									<span aria-hidden="true">/</span>
+									<span class="total">1</span>
+									<button type="button" class="button button--neutral"
+										onclick="fnPageMove('M')">이동</button>
+									<button type="button" class="button button--neutral"
+										onclick="fnPageMove('P')">이전</button>
+									<button type="button" class="button button--neutral"
+										onclick="fnPageMove('N')">다음</button>
+
+
+									<button type="button" class="button button--secondary"
+										onclick="fnExcelDownloadWorkOrder()">엑셀 다운로드</button>
+
+								</nav>
+							</div>
+						</div>
+
+						<!-- data-grid -->
+						<div class="table-responsive">
+							<table class="data-table data-table--list data-table--interactive" aria-label="경상오더-조회결과">
+								<thead>
+
+									<tr>
+										<th scope="col" name="excelCol" data-field="첨부">첨부</th>
+										<th scope="col" name="excelCol" data-field="RBM검사">RBM검사</th>
+										<th scope="col" name="excelCol" data-field="오더타입">오더타입</th>
+										<th scope="col" name="excelCol" data-field="진행상태">진행상태</th>
+										<th scope="col" name="excelCol" data-field="작업오더">작업오더</th>
+										<th scope="col" name="excelCol" data-field="작업요청번호">작업요청번호</th>
+										<th scope="col" name="excelCol" data-field="오더명">오더명</th>
+										<th scope="col" name="excelCol" data-field="설계일">설계일</th>
+										<th scope="col" name="excelCol" data-field="감독자">감독자</th>
+										<th scope="col" name="excelCol" data-field="감독부서">감독부서</th>
+										<th scope="col" name="excelCol" data-field="운전부서">운전부서</th>
+										<th scope="col" name="excelCol" data-field="정비부서">정비부서</th>
+										<th scope="col" name="excelCol" data-field="승인일">승인일</th>
+										<th scope="col" name="excelCol" data-field="허가일(발전차장)">허가일(발전차장)</th>
+										<th scope="col" name="excelCol" data-field="중요도">중요도</th>
+										<th scope="col" name="excelCol" data-field="작업허가">작업허가</th>
+										<th scope="col" name="excelCol" data-field="정비조건">정비조건</th>
+										<th scope="col" name="excelCol" data-field="작업형태">작업형태</th>
+										<th scope="col" name="excelCol" data-field="설계일정(시작)">설계일정(시작)</th>
+										<th scope="col" name="excelCol" data-field="설계일정(종료)">설계일정(종료)</th>
+										<th scope="col" name="excelCol" data-field="잔여공기">잔여공기</th>
+										<th scope="col" name="excelCol" data-field="설계재료비">설계재료비</th>
+										<th scope="col" name="excelCol" data-field="설계노무비">설계노무비</th>
+										<th scope="col" name="excelCol" data-field="설계경비">설계경비</th>
+										<th scope="col" name="excelCol" data-field="설계금액계">설계금액계</th>
+										<th scope="col" name="excelCol" data-field="실적재료비">실적재료비</th>
+										<th scope="col" name="excelCol" data-field="실적노무비">실적노무비</th>
+										<th scope="col" name="excelCol" data-field="실적경비">실적경비</th>
+										<th scope="col" name="excelCol" data-field="실적금액계">실적금액계</th>
+										<th scope="col" name="excelCol" data-field="설비번호">설비번호</th>
+										<th scope="col" name="excelCol" data-field="설비명">설비명</th>
+										<th scope="col" name="excelCol" data-field="작업시간">작업시간</th>
+									</tr>
+								</thead>
+								<tbody>
+
+
+									<tr>
+										<td colspan="32">
+											<div class="no-data">
+												조회된 데이터가 없습니다.
+											</div>
+										</td>
+									</tr>
+
+
+
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+
+
+					<div class="result-panel__body" id="_VIEW_RESULT_SAFETY_QUALITY"></div>
+
+
+				</section>
+			</div>
+		</div>
+	</main>
+    <script src="/resources/user/js/common/components.js"></script>
+    <script src="/resources/user/js/winbox/winbox.min.js"></script>
+    <script src="/resources/user/js/__temp/tab-content-loader.js"></script>
+    <script src="/resources/user/js/__temp/work-report-popup.js"></script>
+</body>
+
+</html>

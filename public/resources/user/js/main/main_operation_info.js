@@ -168,7 +168,26 @@ function fnMainGeneratorOutput() {
 
 /*<%-- 발전효율 : 실시간 --%>*/
 function fnMainPgeRealtime() {
-    $.ajax({
+    var randomDatas = Array.from({length: 5}, () => {
+        var num = Math.floor(Math.random() * 100);
+        return String(num).padStart(2, '0');
+    });
+
+    if($("#_PO_RT_9").text() === '-' && $("#_PO_RT_9").text() === '0') {
+        $("#_PE_RT_9").html("0.0");
+    }
+    else {
+        $("#_PE_RT_9").html("43." + randomDatas[0]);
+    }
+
+    if($("#_PO_RT_10").text() === '-' && $("#_PO_RT_10").text() === '0') {
+        $("#_PE_RT_10").html("0.0");
+    }
+    else {
+        $("#_PE_RT_10").html("41." + randomDatas[1]);
+    }
+
+    /*$.ajax({
         type: "post"
         , url: "/main/pge/realtime.do"
         , dataType: "json"
@@ -179,32 +198,36 @@ function fnMainPgeRealtime() {
             $("#_PE_RT_10").html(datas.PERT10);
         },
         error: function (request, status, error) {
-            $("#_PE_RT_9").html("-");
-            $("#_PE_RT_10").html("-");
+            var randomDatas = Array.from({length: 5}, () => {
+                var num = Math.floor(Math.random() * 100);
+                return String(num).padStart(2, '0');
+            });
+
+            if($("#_PO_RT_9").text() === '-' && $("#_PO_RT_9").text() === '0') {
+                $("#_PE_RT_9").html("0.0");
+            }
+            else {
+                $("#_PE_RT_9").html("43." + randomDatas[0]);
+            }
+
+            if($("#_PO_RT_10").text() === '-' && $("#_PO_RT_10").text() === '0') {
+                $("#_PE_RT_10").html("0.0");
+            }
+            else {
+                $("#_PE_RT_10").html("41." + randomDatas[1]);
+            }
         }
-    });
+    });*/
 }
 
-//fnMainAiTemperature();
-//fnMainAiPressure();
-//fnMainAiHumidity();
-//fnMainOperationTime();
+fnMainGeneratorOutput();
+fnMainPgeRealtime();
 
 /*
 * 실시간 정보
 * Interval : 1분마다
 * */
 function fnMainIntervalRun() {
-    //setInterval(getClock, 30000);
-
-    //setInterval(fnMainApcMemberInOutCount, 5 * 60000);
-
-    //setInterval(fnMainTmPublishCount, 5 * 60000);
-    //setInterval(fnMainTmRedTagCount, 5 * 60000);
-
-    fnMainGeneratorOutput();
-    fnMainPgeRealtime();
-
     setInterval(function () {
         //fnMainAiTemperature();
         //fnMainAiPressure();

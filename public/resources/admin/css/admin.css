@@ -7,6 +7,7 @@
 @import url('/resources/admin/css/table.css');
 @import url('/resources/admin/css/ztree.css');
 @import url('/resources/admin/css/pages.css');
+@import url('/resources/admin/css/utilities.css');
 @import url('/resources/admin/css/winbox.css');
 @import url('/resources/admin/css/winbox-content.css');
 
@@ -20,18 +21,18 @@ body:has(> .admin-shell) {
 body:has(> .admin-shell) { background: var(--admin-page-bg); }
 
 .admin-shell {
-	display: grid;
-	grid-template-rows: var(--admin-header-height) minmax(var(--spacing-000), 1fr);
+	display: flex;
+	flex-direction: column;
 	height: 100dvh;
 	min-height: 100dvh;
-	color: var(--fg-neutral-subtlest);
+	color: var(--body-fg);
 }
 
 .admin-shell > header {
 	display: flex;
 	align-items: center;
 	gap: var(--spacing-150);
-	padding-inline: var(--admin-header-padding-x);
+	padding: var(--admin-header-padding-x);
 	background: var(--admin-header-bg);
 	color: var(--fg-white);
 }
@@ -40,9 +41,11 @@ body:has(> .admin-shell) { background: var(--admin-page-bg); }
 .admin-shell > header span { font-size: var(--font-size-sm); }
 
 .admin-shell > main {
+	flex: 1;
+	min-height: 0;
+	
 	position: relative;
 	display: flex;
-	min-height: var(--spacing-000);
 	overflow: hidden;
 }
 
@@ -146,28 +149,25 @@ body:has(> .admin-shell) { background: var(--admin-page-bg); }
 .admin-shell > main:not(.is-panel-open) > aside > button::before { background-image: var(--admin-toggle-open-icon); }
 
 .admin-content {
-	display: block;
-	flex: 1 1 var(--admin-content-min-width);
-	min-width: var(--admin-content-min-width);
-	min-height: var(--spacing-000);
+	flex: 1;
 	padding: var(--admin-content-padding);
+	display: flex;
 }
 
-.admin-content > .tabs { height: 100%; }
+.admin-content > .tabs {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.admin-content > .tabs > .tab-content {
+	flex:1;
+	min-height: 0;
+}
+
+.admin-content > .tabs > .tab-content > .tab-pane { height: 100%; }
 .admin-content > .tabs > .nav-tabs { flex-wrap: nowrap; overflow-x: auto; }
-
-.admin-content > .tabs > .tab-content > .tab-pane {
-	min-height: var(--admin-empty-min-height);
-	padding: var(--spacing-300);
-	border: 1px solid var(--panel-border);
-	border-radius: var(--radius-100);
-	background: var(--panel-bg);
-}
-
-.admin-content > .tabs > .tab-content > .tab-pane.active {
-	display: grid;
-	place-items: center;
-}
 
 .admin-content > .tabs > .tab-content > .tab-pane .page-content {
 	flex: 1;
@@ -180,3 +180,6 @@ body:has(> .admin-shell) { background: var(--admin-page-bg); }
 	width: 100%;
 	height: 100%;
 }
+
+
+

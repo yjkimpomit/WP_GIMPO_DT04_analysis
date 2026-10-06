@@ -1,4 +1,8 @@
-
+var cssVar = function (name) {
+	return getComputedStyle(document.documentElement)
+		.getPropertyValue(name)
+		.trim();
+};
 
 //TM현황 작업요청 건수 차트
 var procstat_data = {
@@ -27,11 +31,11 @@ var maxValue = Math.max(...procstat_data.series.flatMap(series => series.data));
 
 var procstat_chartoptions = {
 		chart: {
-			width: 1830,
-			height: 640,
+			width: '100%',
+			height: '100%',
 			title:{
 				text: '호기별 작업요청 처리현황',
-				offsetY: -5,
+				offsetY: 10,
 				align: 'center'
 			}
 		},
@@ -39,12 +43,14 @@ var procstat_chartoptions = {
 			eventDetectType: 'grouped'
 		},
 		xAxis: {
+			height: 200,
 			label: {
-				//categories 글자 기울기 설정
+				//categories 글자 가로로 변경하는 옵션
 				rotatable: true
 			}
 		},
 		yAxis: {
+			width: 50,
 			scale: {
 				min: 0,
 				max: maxValue,
@@ -57,20 +63,42 @@ var procstat_chartoptions = {
 		theme:{
 			title:{
 				fontSize: 16,
-				fontWeight: 700
+				fontWeight: 700,
+				color: cssVar('--chart-text')
 			},
 			xAxis: {
+				title: {
+					color: cssVar('--chart-text')
+				},
 				label: {
+					color: cssVar('--chart-text-muted'),
 					fontSize: 12
-				}
+				},
+				color: cssVar('--chart-axis'),
+				width: 1
 			},
 			yAxis: {
+				title: {
+					color: cssVar('--chart-text')
+				},
 				label: {
+					color: cssVar('--chart-text-muted'),
 					fontSize: 12
-				}
+				},
+				color: cssVar('--chart-axis'),
+				width: 1
 			},
+			chart: {
+				backgroundColor: cssVar('--chart-bg')
+			},
+
 			series: {
-				colors: ['rgb(0, 102, 204)', 'rgb(0, 86, 112)', 'rgb(165, 24, 144)', 'rgb(0, 159, 77)'],
+				colors: [
+					cssVar('--chart-1'),
+					cssVar('--chart-11'),
+					cssVar('--chart-5'),
+					cssVar('--chart-2')
+				]
 				//barWidth: 24
 			}
 		},
@@ -101,7 +129,7 @@ function updateCharts(){
 		procstat_chartoptions.chart.title.text = "요청부서별 & 감독부서별 작업요청 처리현황";
 	}
 	procstat_chartoptions.chart.title.align = "center";
-	procstat_chartoptions.chart.title.offsetY = -5;
+	procstat_chartoptions.chart.title.offsetY = 10;
 	
 	//차트 검색 개수가 20개 이상 일 경우 글자 세로로 변경
 	var procListCnt = chartList.length;

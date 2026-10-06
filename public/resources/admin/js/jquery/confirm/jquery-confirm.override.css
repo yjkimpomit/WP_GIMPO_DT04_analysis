@@ -1,0 +1,262 @@
+@charset "utf-8";
+/*
+* 포미트 - 서부 iPOS 공통 스타일시트
+* 작성자 : 김윤지
+* 작성일 : 2026-08-31
+*/
+
+
+@-webkit-keyframes type-blue {
+	1%,100% {
+		border-color: var(--blue-600)
+	}
+	
+	50% {
+		border-color: var(--blue-400)
+	}
+}
+
+@keyframes type-blue {
+	1%,100% {
+		border-color: var(--blue-600)
+	}
+	
+	50% {
+		border-color: var(--blue-400)
+	}
+}
+
+@-webkit-keyframes type-green {
+	1%,100% {
+		border-color: var(--green-400)
+	}
+	
+	50% {
+		border-color: var(--green-300)
+	}
+}
+
+@keyframes type-green {
+	1%,100% {
+		border-color: var(--green-400)
+	}
+	
+	50% {
+		border-color: var(--green-300)
+	}
+}
+
+@-webkit-keyframes type-red {
+	1%,100% {
+		border-color: var(--red-600)
+	}
+	
+	50% {
+		border-color: var(--red-400)
+	}
+}
+
+@keyframes type-red {
+	1%,100% {
+		border-color: var(--red-600)
+	}
+	
+	50% {
+		border-color: var(--red-400)
+	}
+}
+
+@-webkit-keyframes type-orange {
+	1%,100% {
+		border-color: var(--yellow-400)
+	}
+	
+	50% {
+		border-color: var(--yellow-300)
+	}
+}
+
+@keyframes type-orange {
+	1%,100% {
+		border-color: var(--yellow-400)
+	}
+	
+	50% {
+		border-color: var(--yellow-300)
+	}
+}
+
+@-webkit-keyframes type-purple {
+	1%,100% {
+		border-color: var(--purple-400)
+	}
+	
+	50% {
+		border-color: var(--purple-300)
+	}
+}
+
+@keyframes type-purple {
+	1%,100% {
+		border-color: var(--purple-400)
+	}
+	
+	50% {
+		border-color: var(--purple-300)
+	}
+}
+
+@-webkit-keyframes type-dark {
+	1%,100% {
+		border-color: var(--border-neutral-subtle)
+	}
+	
+	50% {
+		border-color: var(--border-neutral-muted)
+	}
+}
+
+@keyframes type-dark {
+	1%,100% {
+		border-color: var(--border-neutral-subtle)
+	}
+	
+	50% {
+		border-color: var(--border-neutral-muted)
+	}
+}
+
+/* blue */
+body .jconfirm .jconfirm-box.jconfirm-type-blue {
+	border-top: solid 8px var(--blue-400);
+}
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-blue {
+	background-color: var(--blue-600);
+}
+
+/* red */
+body .jconfirm .jconfirm-box.jconfirm-type-red {
+	border-top: solid 8px var(--red-400);
+}
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-red {
+	background-color: var(--red-600);
+}
+
+/* dark */
+body .jconfirm .jconfirm-box.jconfirm-type-dark {
+	border-top: solid 8px var(--border-neutral-muted);
+}
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-dark {
+	background-color: var(--bg-neutral-strong);
+}
+
+/* box style */
+body .jconfirm.jconfirm-white .jconfirm-box,
+body .jconfirm.jconfirm-light .jconfirm-box {
+	border-radius: 0;
+}
+
+body .jconfirm .jconfirm-box div.jconfirm-title-c {
+	font-weight: 700;
+	font-size: 1.25rem;
+	line-height: 1.4;
+}
+
+body .jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button,
+body .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button {
+	font-size: 1rem;
+}
+
+
+
+body .jconfirm .jconfirm-box-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* project dark theme */
+body .jconfirm .jconfirm-bg {
+	background-color: var(--overlay-modal-bg);
+	opacity: 1;
+}
+
+body .jconfirm .jconfirm-box,
+body .jconfirm.jconfirm-white .jconfirm-box,
+body .jconfirm.jconfirm-light .jconfirm-box,
+body .jconfirm.jconfirm-dark .jconfirm-box {
+	border: 3px solid var(--border-elevated-1);
+	background-color: var(--bg-neutral-strong);
+	box-shadow: var(--box-shadow-2);
+	border-radius: var(--spacing-100);
+	color: var(--body-fg);
+}
+
+body .jconfirm .jconfirm-box div.jconfirm-title-c,
+body .jconfirm .jconfirm-box div.jconfirm-title-c .jconfirm-title {
+	color: var(--fg-white);
+}
+
+body .jconfirm .jconfirm-box div.jconfirm-content-pane,
+body .jconfirm .jconfirm-box div.jconfirm-content {
+	color: var(--body-fg);
+}
+
+body .jconfirm .jconfirm-box .jconfirm-closeIcon {
+	color: var(--fg-neutral-subtler);
+}
+
+body .jconfirm .jconfirm-box .jconfirm-closeIcon:hover,
+body .jconfirm .jconfirm-box .jconfirm-closeIcon:focus-visible {
+	color: var(--fg-white);
+}
+
+body .jconfirm .jconfirm-box input,
+body .jconfirm .jconfirm-box select,
+body .jconfirm .jconfirm-box textarea {
+	border-color: var(--border-elevated-4);
+	background-color: var(--bg-elevated-3);
+	color: var(--body-fg);
+}
+
+body .jconfirm .jconfirm-box input:focus-visible,
+body .jconfirm .jconfirm-box select:focus-visible,
+body .jconfirm .jconfirm-box textarea:focus-visible {
+	outline: var(--focus-ring-width) solid var(--focus-ring);
+	outline-offset: var(--focus-ring-offset);
+}
+
+body .jconfirm .jconfirm-box .jconfirm-buttons button {
+	border: 1px solid var(--button-border);
+	background-color: var(--button-primary-bg);
+	color: var(--button-primary-fg);
+}
+
+body .jconfirm .jconfirm-box .jconfirm-buttons button:hover,
+body .jconfirm .jconfirm-box .jconfirm-buttons button:focus-visible {
+	border-color: var(--button-primary-border-hover);
+	background-color: var(--button-primary-bg-hover);
+	color: var(--button-primary-fg-hover);
+}
+
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-default {
+	border-color: var(--button-light-border) !important;
+	background-color: var(--button-light-bg) !important;
+	color: var(--button-light-fg) !important;
+}
+
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-default:hover,
+body .jconfirm .jconfirm-box .jconfirm-buttons button.btn-default:focus-visible {
+	border-color: var(--button-light-border-hover) !important;
+	background-color: var(--button-light-bg-hover) !important;
+	color: var(--button-light-fg-hover) !important;
+}
+
+body .jconfirm .jconfirm-box .jconfirm-buttons button {
+	padding: 0 var(--spacing-200);
+}
+
+body .jconfirm.jconfirm-white .jconfirm-box .jconfirm-title-c .jconfirm-icon-c,
+body .jconfirm.jconfirm-light .jconfirm-box .jconfirm-title-c .jconfirm-icon-c {
+	margin-right: 0;
+}

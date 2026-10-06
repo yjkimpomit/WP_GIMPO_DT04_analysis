@@ -6,24 +6,6 @@
 
 var isFacilityNo;  // pnid 검색 활성화 플래그
 
-/* alert message var */
-var title = "", content = "";
-
-function fnAlert() {
-    $.alert({
-        title: title,
-        content: content,
-        type: 'red',
-        buttons: {
-            '확인': {
-                btnClass: 'btn-red',
-                action: function () {
-                }
-            }
-        }
-    });
-}
-
 /**
  * 설비번호 검색 리스트
  */
@@ -66,7 +48,7 @@ function fnSearchFacilityList() {
                 }
             }
             else {
-                console.log("data: 설비정보가 없습니다.");
+                //console.log("data: 설비정보가 없습니다.");
                 isFacilityNo = false;
                 fnSearchResult();
             }
@@ -82,11 +64,11 @@ function fnInitCustomFacilitySearch() {
      *  설비번호 검색
      */
     $("#searchForm #iegNo").on("keypress change", function (e) {
-        var paramIeqNo = $(this).val().trim();
-        var checkLen = paramIeqNo.length;
+        var searchKeyword = $(this).val().trim();
+        var checkLen = searchKeyword.length;
         var isEnter = (e.key === 'Enter' || e.keyCode === 13);
 
-        this.value = paramIeqNo;
+        this.value = searchKeyword;
 
         /* 전체 검색 */
         if(isEnter && checkLen === 0) {
@@ -99,9 +81,9 @@ function fnInitCustomFacilitySearch() {
             fnSearchResult();
             return false;
         }
-        else if (isEnter || checkLen >= 8) {
+        else if (isEnter && checkLen >= 2) {
             e.preventDefault();
-            if (typeof paramIeqNo === "undefined" || paramIeqNo === "") {
+            if (typeof searchKeyword === "undefined" || searchKeyword === "") {
                 $("#searchForm #iegDescription").val('');
                 return false;
             }

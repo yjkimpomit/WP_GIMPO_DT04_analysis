@@ -13,3 +13,7 @@
 .ws-reset {
 	white-space: wrap !important;
 }
+
+.text-nowrap {
+	white-space: nowrap !important;
+}

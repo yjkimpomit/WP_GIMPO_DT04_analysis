@@ -22,25 +22,6 @@ function isValidRedirectCCTV(url) {
 }
 
 /**
- * Install popup message
- */
-function fnInstallPopMessage() {
-    $("#cctvInstall").bPopup({
-        modalClose: false,
-        position: [0, 0],
-        opacity: .4,
-        speed: 450,
-        closeClass: "close",
-        onOpen: function () {
-            $(this).addClass('show detail-box');
-        },
-        onClose: function () {
-            $(this).removeClass('show');
-        }
-    });
-}
-
-/**
  * Check VLC url 스킴 체크
  *
  * @param callback
@@ -89,43 +70,7 @@ function fnViewVlcRtsp(cctvId) {
  * @param cctvId
  */
 function receiveCctvView(cctvId) {
-    //console.log("## receiveCctvView ## " + cctvId);
     fnOpenPopupStandard("/cctv/view.do?ici_cctvid=" + cctvId, "CCTV");
-
-    /* 임시 CCTV 이미지 띄우기 */
-    /*$("#cctvImg").bPopup({
-        modalClose: false,
-        position: [0, 0],
-        opacity: .4,
-        speed: 450,
-        closeClass: "close",
-        onOpen: function () {
-            $(this).addClass('show detail-box');
-        },
-        onClose: function () {
-            $(this).removeClass('show');
-        }
-    });
-    return;*/
-
-    /*$.ajax({
-        url: "/cctv/getCctvInfo.do",
-        type: "POST",
-        data: { ici_cctvid: cctvid },
-        dataType: "json",
-        success: function (data) {
-            console.table(data);
-            var result = data.result;
-
-            if (result === 1) {
-                var rtspUrl = data.cctvUrl;
-                fnViewVlcRtsp(rtspUrl);
-            }
-        },
-        error: function (request, status, error) {
-            console.log("code:" + request.status + "\n message:" + request.responseText + "\n error:" + error);
-        }
-    });*/
 }
 
 /**

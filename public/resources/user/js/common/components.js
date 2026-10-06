@@ -13,7 +13,7 @@ function initFilterPanels(root = document) {
 		if (panel.dataset.initialized) return;
 		const header = panel.querySelector('.filter-panel__header');
 		const toggle = panel.querySelector('.filter-panel__toggle');
-		const searchGroup = panel.querySelector(':scope > .filter-panel__search');
+		const contents = panel.querySelectorAll(':scope > .filter-panel__search, :scope > .filter-panel__section');
 		if (!header || !toggle) return;
 
 		panel.dataset.initialized = 'true';
@@ -21,7 +21,11 @@ function initFilterPanels(root = document) {
 		const toggleLabel = (toggle.getAttribute('aria-label') || '정보 검색').replace(/\s*(접기|펼치기)$/, '');
 		const setCollapsed = (collapsed) => {
 			panel.classList.toggle('is-collapsed', collapsed);
-			if (searchGroup) searchGroup.hidden = collapsed;
+
+			contents.forEach((element) => {
+				element.hidden = collapsed;
+			});
+
 			toggle.setAttribute('aria-expanded', String(!collapsed));
 			toggle.setAttribute('aria-label', `${toggleLabel} ${collapsed ? '펼치기' : '접기'}`);
 		};
@@ -121,4 +125,13 @@ function initComponents(root = document) {
 document.addEventListener('DOMContentLoaded',()=>initComponents());
 document.addEventListener('tabs:content-loaded', (event) => {
 	initComponents(event.target);
+});
+
+/* 윈박스닫기버튼 */
+document.addEventListener('click', function (event) {
+	const button = event.target.closest('.button.close');
+	if (!button) return;
+
+	const winbox = window.frameElement?.closest('.winbox')?.winbox;
+	winbox?.close();
 });

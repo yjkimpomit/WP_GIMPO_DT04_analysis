@@ -42,7 +42,7 @@ function fnSearchWorkReportList(searchDate) {
 
 	$.ajax({
 		type: "POST",
-		url: "/pages/dailysafety/dailysafety.html",
+		url: "/dailySafety/workReportList.do",
 		data: $("#searchWorkReportForm").serialize(),
 		dataType: "html",
 		beforeSend: function () { $("#loadingBar").css("display", ""); },
@@ -76,7 +76,7 @@ function fnSearchWorkReportList(searchDate) {
 			$("#txtSearchKeyword").val($("#searchWorkReportForm #searchKeyword").val());
 		},
 		error: function () {
-			//alert("오류가 발생했습니다.\n잠시 후 다시 시도해 주시기 바랍니다.");
+			alert("오류가 발생했습니다.\n잠시 후 다시 시도해 주시기 바랍니다.");
 		},
 		complete: function () { $("#loadingBar").css("display", "none"); }
 	});

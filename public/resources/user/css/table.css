@@ -3,10 +3,11 @@
 /* :where(.data-table)는 기존 table 선택자의 우선순위를 유지하며 적용 범위만 제한합니다. */
 
 /* 셀 텍스트 정렬 — 개별 열 지정과 테이블 전체 정렬의 우선순위 유지 */
-:where(.data-table) tbody :is(
+:where(.data-table--list) tbody :is(
 	[data-field="품명및규격"],
 	[data-field="요청부서"],
 	[data-field="감독부서"],
+	[data-field="운전부서"],
 	[data-field="Tag번호"],
 	[data-field="오더명"],
 	[data-field="정비부서"],
@@ -15,6 +16,7 @@
 	[data-field="증상"],
 	[data-field="설비명"],
 	[data-field="점검명"],
+	[data-field="점검항목"],
 	[data-field="점검부위"],
 	[data-field="포함설비명"],
 	[data-field="태그"],
@@ -28,35 +30,35 @@
 	[data-field="계층정보"],
 	[data-field="종합의견"]
 ),
-:where(.data-table)[aria-label="오더종류-데이터"] tbody :is(
+:where(.data-table--list)[aria-label="오더종류-데이터"] tbody :is(
 	[data-field="상태"],
 	[data-field="작업명"]
 ),
-:where(.data-table)[aria-label="운전정보"] tbody [data-field="태그"],
-:where(.data-table)[aria-label="CCTV-리스트"] tbody :is(
+:where(.data-table--list)[aria-label="운전정보"] tbody [data-field="태그"],
+:where(.data-table--list)[aria-label="CCTV-리스트"] tbody :is(
 	[data-field="CCTV-명"],
 	[data-field="위치"]
 ),
-:where(.data-table)[aria-label="작업요청건수"] tbody [data-field="호기"],
-:where(.data-table)[aria-label="작업요청처리현황"] tbody [data-field="구분(호기명)"],
-:where(.data-table)[aria-label="점검종류-결과"] tbody [data-field="DESC"],
-:where(.data-table)[aria-label="점검보고서-리스트"] tbody [data-field="제목"],
-:where(.data-table)[aria-label="자재정보"] tbody :is(
+:where(.data-table--list)[aria-label="작업요청건수"] tbody [data-field="호기"],
+:where(.data-table--list)[aria-label="작업요청처리현황"] tbody [data-field="구분(호기명)"],
+:where(.data-table--list)[aria-label="점검종류-결과"] tbody [data-field="DESC"],
+:where(.data-table--list)[aria-label="점검보고서-리스트"] tbody [data-field="제목"],
+:where(.data-table--list)[aria-label="자재정보"] tbody :is(
 	[data-field="품명"],
 	[data-field="규격"]
 ),
-:where(.data-table)[aria-label="공지사항-리스트"] tbody [data-field="제목"],
-:where(.data-table)[aria-label="연계문서"] tbody [data-field="파일명"] {
+:where(.data-table--list)[aria-label="공지사항-리스트"] tbody [data-field="제목"],
+:where(.data-table--list)[aria-label="연계문서"] tbody [data-field="파일명"] {
 	text-align: left;
 }
 
-:where(.data-table)[aria-label="자재정보"] tbody :is(
+:where(.data-table--list)[aria-label="자재정보"] tbody :is(
 	[data-field="연간소요량"],
 	[data-field="총누적소요량"]
 ),
-:where(.data-table)[aria-label="작업요청건수"] tbody td,
-:where(.data-table)[aria-label="작업요청처리현황"] tbody td,
-:where(.data-table) tbody :is(
+:where(.data-table--list)[aria-label="작업요청건수"] tbody td,
+:where(.data-table--list)[aria-label="작업요청처리현황"] tbody td,
+:where(.data-table--list) tbody :is(
 	[data-field="설계재료비"],
 	[data-field="설계노무비"],
 	[data-field="설계경비"],
@@ -68,60 +70,47 @@
 ) {
 	text-align: right;
 }
-
-:where(.data-table) tbody :is(
+/*
+:where(.data-table--list) tbody :is(
 	[data-field="품명및규격"],
-	[data-field="요청부서"],
-	[data-field="감독부서"],
 	[data-field="Tag번호"],
-	[data-field="오더명"],
-	[data-field="정비부서"],
+	!*[data-field="오더명"],*!
 	[data-field="대상기기번호"],
 	[data-field="요청명"],
-	[data-field="증상"],
 	[data-field="설비명"],
 	[data-field="점검명"],
-	[data-field="점검부위"],
 	[data-field="포함설비명"],
 	[data-field="태그"],
 	[data-field="상세정보"],
 	[data-field="대상기기명"],
 	[data-field="작업허가"],
 	[data-field="공사종류"],
-	[data-field="공사명"],
+	!*[data-field="공사명"],*!
 	[data-field="작업명"],
 	[data-field="WBS"],
-	[data-field="계층정보"],
+	!*[data-field="계층정보"],*!
 	[data-field="종합의견"]
 ),
-:where(.data-table)[aria-label="오더종류-데이터"] tbody :is(
-	[data-field="상태"],
-	[data-field="작업명"]
-),
-:where(.data-table)[aria-label="운전정보"] tbody [data-field="태그"],
-:where(.data-table)[aria-label="CCTV-리스트"] tbody :is(
+:where(.data-table--list)[aria-label="운전정보"] tbody [data-field="태그"],
+:where(.data-table--list)[aria-label="CCTV-리스트"] tbody :is(
 	[data-field="CCTV-명"],
 	[data-field="위치"]
 ),
-:where(.data-table)[aria-label="작업요청건수"] tbody [data-field="호기"],
-:where(.data-table)[aria-label="작업요청처리현황"] tbody [data-field="구분(호기명)"],
-:where(.data-table)[aria-label="점검종류-결과"] tbody [data-field="DESC"],
-:where(.data-table)[aria-label="점검보고서-리스트"] tbody [data-field="제목"],
-:where(.data-table)[aria-label="자재정보"] tbody :is(
+:where(.data-table--list)[aria-label="점검종류-결과"] tbody [data-field="DESC"],
+:where(.data-table--list)[aria-label="점검보고서-리스트"] tbody [data-field="제목"],
+:where(.data-table--list)[aria-label="자재정보"] tbody :is(
 	[data-field="품명"],
 	[data-field="규격"]
 ),
-:where(.data-table)[aria-label="공지사항-리스트"] tbody [data-field="제목"],
-:where(.data-table)[aria-label="연계문서"] tbody [data-field="파일명"] {
+:where(.data-table--list)[aria-label="공지사항-리스트"] tbody [data-field="제목"],
+:where(.data-table--list)[aria-label="연계문서"] tbody [data-field="파일명"] {
 	white-space: normal;
-}
+	word-break: break-all;
+}*/
 
-:where(.data-table) tbody :is(
+:where(.data-table--list) tbody :is(
 	[data-field="품명및규격"],
-	[data-field="오더명"],
 	[data-field="대상기기번호"],
-	[data-field="요청명"],
-	[data-field="설비명"],
 	[data-field="점검명"],
 	[data-field="상세정보"],
 	[data-field="대상기기명"],
@@ -131,32 +120,31 @@
 	[data-field="작업명"],
 	[data-field="WBS"]
 ),
-:where(.data-table)[aria-label="오더종류-데이터"] tbody [data-field="작업명"],
-:where(.data-table)[aria-label="점검종류-결과"] tbody [data-field="DESC"],
-:where(.data-table)[aria-label="점검보고서-리스트"] tbody :is(
+:where(.data-table--list)[aria-label="점검종류-결과"] tbody [data-field="DESC"],
+:where(.data-table--list)[aria-label="점검보고서-리스트"] tbody :is(
 	[data-field="제목"],
 	[data-field="종합의견"]
 ),
-:where(.data-table)[aria-label="자재정보"] tbody :is(
+:where(.data-table--list)[aria-label="자재정보"] tbody :is(
 	[data-field="품명"],
 	[data-field="규격"]
 ),
-:where(.data-table)[aria-label="공지사항-리스트"] tbody [data-field="제목"],
-:where(.data-table)[aria-label="공사오더-조회결과"] tbody [data-field="계층정보"],
-:where(.data-table)[aria-label="연계문서"] tbody [data-field="파일명"] {
+:where(.data-table--list)[aria-label="공지사항-리스트"] tbody [data-field="제목"],
+:where(.data-table--list)[aria-label="공사오더-조회결과"] tbody [data-field="계층정보"],
+:where(.data-table--list)[aria-label="연계문서"] tbody [data-field="파일명"] {
 	min-width: var(--table-cell-description-min-width);
 }
 
-:where(.data-table)[aria-label="운전정보"] tbody [data-field="상세정보"] {
+:where(.data-table--list)[aria-label="운전정보"] tbody [data-field="상세정보"] {
 	--table-cell-description-min-width: 160px;
 }
 
 /* 테이블별 예외 — 접근성 이름 변경 시 선택자도 함께 확인 */
-:where(.data-table)[aria-label="종합현황-일별조회결과"] tbody [data-field="감독부서"] {
+:where(.data-table--list)[aria-label="종합현황-일별조회결과"] tbody [data-field="감독부서"] {
 	text-align: center;
 }
 
-:where(.data-table)[aria-label="종합현황-일별조회결과"] tbody :is(
+:where(.data-table--list)[aria-label="종합현황-일별조회결과"] tbody :is(
 	[data-field="작업장소"],
 	[data-field="공사/작업명"]
 ) {
@@ -164,57 +152,41 @@
 	min-width: var(--table-cell-work-min-width);
 }
 
-:where(.data-table)[aria-label="작업요청확정"] tbody [data-field="요청부서"] {
+:where(.data-table--list)[aria-label="작업요청확정"] tbody [data-field="요청부서"] {
 	min-width: 10rem;
 }
 
-:where(.data-table)[aria-label="global-search-result"] td[data-field="바로가기"] {
+:where(.data-table--list)[aria-label="global-search-result"] td[data-field="바로가기"] {
 	width: 1%;
 	white-space: nowrap;
 }
 
-:where(.data-table)[aria-label="global-search-result"] td[data-field="명칭"] {
+:where(.data-table--list)[aria-label="global-search-result"] td[data-field="명칭"] {
 	text-align: left;
 }
 
 /* 셀 상태 및 버튼 표시 */
-:where(.data-table) tbody td[data-field="설비명"] > button:is(:disabled, .disabled) {
+:where(.data-table--list)[aria-label="설비정보"] tbody :is([data-field="설비명"]) button:is(:disabled, .disabled) {
 	display: none;
 }
 
-:where(.data-table) td:has(.yn) {
+:where(.data-table--list) td:has(.yn) {
 	font-weight: var(--font-weight-bold);
 	background-color: var(--table-bg);
 }
 
-:where(.data-table) td:has(.yn.yes) {
+:where(.data-table--list) td:has(.yn.yes) {
 	color: var(--table-text-positive);
 	background-color: var(--table-bg-positive);
 }
 
-:where(.data-table) td:has(.yn.no) {
+:where(.data-table--list) td:has(.yn.no) {
 	color: var(--table-text-negative);
 	background-color: var(--table-bg-negative);
 }
 
-/* 긴 텍스트 줄바꿈 */
-.data-table:not(.view-table) tbody :is(
-	[data-field="오더명"],
-	[data-field="요청명"],
-	[data-field="설비명"],
-	[data-field="대상기기명"]
-) {
-	white-space: normal;
-	word-break: break-all;
-}
-
-.data-table:not(.view-table) tbody [data-field="증상"] {
-	white-space: normal;
-	word-break: keep-all;
-}
-
 /* 열 너비 */
-.data-table:not(.view-table) tbody :is(
+.data-table--list tbody :is(
 	[data-field="오더명"],
 	[data-field="요청명"],
 	[data-field="설비명"],
@@ -224,7 +196,7 @@
 	max-width: var(--table-cell-name-max-width);
 }
 
-.data-table:not(.view-table) tbody :is([data-field="증상"], [data-field="설비번호"]) {
+.data-table--list tbody :is([data-field="증상"], [data-field="설비번호"]) {
 	min-width: var(--table-cell-compact-min-width);
 }
 

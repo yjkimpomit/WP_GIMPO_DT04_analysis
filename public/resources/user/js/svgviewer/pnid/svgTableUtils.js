@@ -261,7 +261,7 @@
         }
         const iframe = document.getElementById("svgContanier");
         if (iframe && iframe.contentWindow) {
-            iframe.contentWindow.postMessage({ type: "searchTag", tag: target }, "*");
+            iframe.contentWindow.postMessage({ type: "searchTag", tag: target }, window.location.origin);
         }
     }
 

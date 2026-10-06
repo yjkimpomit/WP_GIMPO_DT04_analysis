@@ -210,7 +210,7 @@
 			return;
 		}
 
-		boxEl.style.display = "block";
+		boxEl.style.display = "flex";
 
 		history.forEach((item, index) => {
 
@@ -717,11 +717,10 @@
 		const params = new URLSearchParams(window.location.search);
 		const dataPath = params.get("dataPath");
 		const searchTag = params.get("searchTag");
-
+		const disableInitZoom = params.get("disableInitZoom") === "true";
+		
 		if (!dataPath) return;
 		
-		console.log("dataPath : " +dataPath);
-
 		// 파일 존재 여부 먼저 확인
 		const exists = await checkSvgExists(dataPath);
 
@@ -735,8 +734,7 @@
 		    });
 		    return;
 		  }
-		console.log("dataPath , searchTag" , searchTag)
-		createAndLoadSVG(dataPath, searchTag);
+		createAndLoadSVG(dataPath, searchTag, null, disableInitZoom);
 	}
 
 
@@ -760,10 +758,9 @@
 		// 이동할 SVG 경로
 		const nextDataPath = "/drawing/pnid/" + targetFileMove;
 		
-		console.log("[movepage] nextDataPath =", nextDataPath);
+		// 이동할 focus 좌표
+		const movePoint = (moveData.move_point || "").trim();
 		
-		checkSvgExists(nextDataPath).then(ok => console.log("[movepage] exists?", ok));
-
 		if (!targetFileMove) return;
 
 		PENDING_GRID_ONLY = !searchTagMove;
@@ -787,7 +784,7 @@
 		
 
 		// 실제 도면만 교체
-		createAndLoadSVG(nextDataPath, searchTagMove);
+		createAndLoadSVG(nextDataPath, searchTagMove, movePoint);
 
 	}
 	
@@ -880,8 +877,9 @@
 		}
 
 	// SVG 파일을 생성하고 로드하는 함수
-	function createAndLoadSVG(path, searchTag) {
-
+	function createAndLoadSVG(path, searchTag, movePoint, disableInitZoom = false) {
+		LAST_SELECTED_NODE = null;
+		
 		CURRENT_DATA_PATH = path;
 		CURRENT_SEARCH_TAG = searchTag || "";
 
@@ -893,14 +891,14 @@
 		const strDocNo = path.split(".")[0];
 		const object = document.createElement("object");
 		object.setAttribute("id", strDocNo);
-		object.setAttribute("data", path);
+		object.setAttribute("data", path + "?v=" + Date.now());
 		object.setAttribute("type", "image/svg+xml");
 		object.setAttribute("preserveAspectRatio", "xMidYMid meet");
 		object.style.width = "100%";
 		object.style.height = "100%";
 		object.style.display = "block";
 		object.style.pointerEvents = "auto";
-
+		object.style.opacity = "0";
 
 		object.addEventListener("load", function() {
 
@@ -990,7 +988,24 @@
 			else {
 				ckType = "dataparc";
 			}
-
+			if (disableInitZoom && ckType === "pnid") {
+			    const group = svgElement.querySelector('g[transform="scale(1,-1)"]');
+			    const bbox = group.getBBox();
+			    const vb = svgElement.viewBox.baseVal;
+			
+			    const widthRatio = bbox.width / vb.width;
+			    const heightRatio = bbox.height / vb.height;
+			
+			    // 원본 viewBox에 비해 도면이 지나치게 작을 때만 보정
+			    if ( bbox.width > 0 && bbox.height > 0 && (widthRatio < 0.6 || heightRatio < 0.6)) {
+			        const correctedY = -(bbox.y + bbox.height);
+			
+			        svgElement.setAttribute(
+			            "viewBox",
+			            `${bbox.x} ${correctedY} ${bbox.width} ${bbox.height}`
+			        );
+			    }
+			}
 			panZoom = svgPanZoom(svgElement, {
 				zoomEnabled: true,
 				controlIconsEnabled: true,
@@ -1011,7 +1026,6 @@
 					// 실제 뷰어 크기 (svg-pan-zoom이 잡은 viewport)
 					const viewportWidth = sizes.width;
 					const viewportHeight = sizes.height;
-					/*console.log("test: " + viewportWidth,viewportHeight)*/
 					// 화면 밖으로 약간만 나가게 허용하고 싶을 때 여백
 					const gutterX = 100;   // 좌우 여백 (px)
 					const gutterY = 100;   // 상하 여백 (px)
@@ -1032,7 +1046,9 @@
 					return { x: limitedX, y: limitedY };
 				}
 			});
-
+		    requestAnimationFrame(() => {
+		        object.style.opacity = "1";
+		    });
 			// =======================
 			// "핀치 줌"
 			// =======================
@@ -1349,7 +1365,7 @@
 							// 원하는 URL 생성
 							var targetUrl = "/multiview/index.do?t=F&iegNo=" + encodeURIComponent(iegNo);
 
-							fnOpenPopupStandard(targetUrl, "설비상세정보");
+							window.top.fnOpenPopupStandard(targetUrl, "설비상세정보");
 
 						},
 						error: function(xhr, status, err) {
@@ -1390,7 +1406,67 @@
 			}
 			// 검색 태그가 있을 경우 해당 태그 강조 및 확대
 			if (searchTag && ckType === "pnid") {
-
+				if (disableInitZoom) {
+				    return;
+				}
+				if(movePoint){
+				    const [targetX, targetY] = movePoint
+				        .split(",")
+				        .map(v => v.trim());
+				
+				    let matchedText = null;
+				
+				    const textNodes = svgElement.querySelectorAll("text");
+				
+				    textNodes.forEach(textNode => {
+				
+				        const x = (textNode.getAttribute("x") || "").trim();
+				        const y = (textNode.getAttribute("y") || "").trim();
+				
+				        if (x === targetX && y === targetY) {
+				            matchedText = textNode;
+				        }
+				    });
+				
+				if (matchedText) {
+				
+				    reSetStyle(svgType);
+				    safeViewReset(panZoom, svgElement);
+				
+				    requestAnimationFrame(() => {
+				        const textRect = matchedText.getBoundingClientRect();
+				        const svgRect = svgElement.getBoundingClientRect();
+				
+				        const point = {
+				            x: textRect.left + textRect.width / 2 - svgRect.left,
+				            y: textRect.top + textRect.height / 2 - svgRect.top
+				        };
+				
+				        panZoom.zoomAtPoint(8, point);
+				
+				        requestAnimationFrame(() => {
+				            const textRect2 = matchedText.getBoundingClientRect();
+				            const svgRect2 = svgElement.getBoundingClientRect();
+				
+				            const dx = (svgRect2.left + svgRect2.width / 2) - (textRect2.left + textRect2.width / 2);
+				            const dy = (svgRect2.top + svgRect2.height / 2) - (textRect2.top + textRect2.height / 2);
+				
+				            const currentPan = panZoom.getPan();
+				
+				            panZoom.pan({
+				                x: currentPan.x + dx,
+				                y: currentPan.y + dy
+				            });
+				        });
+				    });
+				
+				    } else {
+				
+				        console.warn("[movePoint] text not found:", movePoint);
+				    }
+				    return;				
+				}
+			
 				// searchTag와 같은 id를 가진 <g> 태그를 찾기
 				const matchedGroupSet = new Set();  // 중복 g 방지용
 

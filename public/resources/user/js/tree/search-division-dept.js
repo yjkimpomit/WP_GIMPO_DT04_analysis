@@ -44,8 +44,8 @@ $(document).ready(function () {
             var code = node.id;
             var code_name = String(node.text).replace(/^\[[^\]]+\]/, '').trim();
 
-            $(writeTo.option).val(code);
-            $(writeTo.input).val(code_name);
+            window.parent.$(writeTo.option).val(code);
+            window.parent.$(writeTo.input).val(code_name);
 
             var treeObj = $.fn.zTree.getZTreeObj($(modalSelector + ' .ztree').attr('id'));
             // 선택해제 및 모두 접기 (개별 트리 기준 처리)
@@ -56,7 +56,7 @@ $(document).ready(function () {
             }
 
             // 모달 닫기
-            $(modalSelector).find('.close').trigger('click');
+            window.parent.$(".winbox.app-winbox.app-winbox--detail.focus").find(".wb-close").trigger("click");
         };
     }
 
@@ -82,8 +82,22 @@ $(document).ready(function () {
         , url: "/common/deptList.do"
         , dataType: "json"
         , success: function (data) {
-            zNodes = data;
-            divisionJSTree();
+	        var excludeIds = ['8603', '8606', '8610', '8627', '8629', '8728', '8744', '9990', 'A50000'];
+	        var removeIds = new Set(excludeIds);
+	
+	        function addChildren(id) {
+	            data.filter(n => String(n.parent) === String(id)).forEach(n => {
+	                if (!removeIds.has(String(n.id))) {
+	                    removeIds.add(String(n.id));
+	                    addChildren(n.id);
+	                }
+	            });
+	        }
+	
+	        excludeIds.forEach(addChildren);
+	
+	        zNodes = data.filter(n => !removeIds.has(String(n.id)));
+	        divisionJSTree();
         }
     });
 

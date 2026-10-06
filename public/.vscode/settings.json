@@ -38,7 +38,8 @@
 		"sash.hoverBorder": "#3a4e73",
 		"sideBar.border": "#3a4e73",
 		"activityBar.activeBorder": "#e7e7e7",
-		"activityBarTop.activeBorder": "#e7e7e7"
+		"activityBarTop.activeBorder": "#e7e7e7",
+		"statusBar.inactiveBackground": "#293751"
 	},
 	"peacock.color": "#293751"
 }

@@ -14,23 +14,22 @@
 .logo {
 	margin-left: auto;
 	margin-right: auto;
-	height: 32px;
+	height: 48px;
 
 	display: flex;
 	align-items: center;
 
 	background-image: url('/resources/user/images/logo.svg');
 	background-repeat: no-repeat;
-	background-position: left 8px;
-	background-size: auto 32px;
-	padding-left: 68px;
+	background-position: left center;
+	background-size: auto 24px;
+	padding-left: 56px;
 }
 
 .logo .bi {
 	display: flex;
 	align-items: center;
 	gap: .5rem;
-	margin-top: .25rem;
 }
 
 .logo .bi .system {
@@ -88,44 +87,6 @@
 
 html[data-theme='dark'] .logo .bi .select-plant .icon-arrow {
 	background-image: url('/resources/user/images/icons/arrow_drop_down-white.svg');
-}
-
-.logo .bi:has(.plant-group.active) .select-plant .icon-arrow {
-	transform: rotate(180deg);
-}
-
-.plant-group {
-	display: none;
-	position: absolute;
-	top: auto;
-	margin-top: .5rem;
-	z-index: 102;
-
-	width: auto;
-	flex-direction: column;
-
-	background-color: var(--form-bg);
-	border: 1px solid var(--form-border);
-	border-radius: .25rem;
-	padding: .25rem;
-}
-
-.plant-group.active {
-	display: flex;
-}
-
-.plant-group span {
-	white-space: nowrap;
-	cursor: pointer;
-
-	display: block;
-	padding: .5rem .75rem .375rem;
-}
-
-.plant-group span:hover {
-	color: var(--form-text-hover);
-	background-color: var(--form-bg-hover);
-	border-radius: .25rem;
 }
 
 /* map-bg */

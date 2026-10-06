@@ -11,6 +11,10 @@
 	display: none !important;
 }
 
+[onclick] {
+	cursor: pointer;
+}
+
 html,
 body,
 div,
@@ -145,16 +149,6 @@ body {
 	background-color: var(--scrollbar-bg);
 }
 
-/* Scroll remains available while its visual indicator is hidden. */
-.scrollbar-hidden {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
-.scrollbar-hidden::-webkit-scrollbar {
-	display: none;
-}
-
 input,
 select,
 textarea {
@@ -232,3 +226,14 @@ button:focus-visible {
     position: absolute !important;
 }
 
+/* Chrome, Edge, Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	margin: 0;
+	-webkit-appearance: none;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}

@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+/*
+ * 포미트 - 서부 iPOS 관리자 스타일시트
+ * 작성자 : 김윤지
+ * 작성일 : 2026.03.12
+ * 내용 : 외부 라이브러리 오버라이드 스타일
+ *
+ */
+
+body .dropzone {
+	height: 100%;
+	background: var(--bg-pattern-placeholder);
+	border: none;
+	padding: 0;
+}
+
+body .dropzone .dz-message {
+	padding: var(--spacing-200);
+	height: 100%;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	margin: 0;
+}
+body .dropzone .dz-preview {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+	margin: 0 auto;
+}
+body .dropzone .dz-preview:hover,
+body .dropzone .dz-preview .dz-progress {
+	z-index: 11;
+}
+body .dropzone .dz-preview.dz-image-preview {
+	background-color: transparent;
+}
+
+body .dropzone .dz-preview .dz-image {
+	border-radius: 0;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+}
+
+body .dropzone .dz-preview .dz-image img {
+	width: 100%;
+	height: auto;
+}

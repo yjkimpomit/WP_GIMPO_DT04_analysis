@@ -392,8 +392,8 @@
 	--ai-glow-mid: var(--orange-500a32);
 	--ai-glow-top: var(--orange-500a48);
 	
-	--shadow-1: 0 0 16px 8px rgb(26 34 46 / 24%);
-	--shadow-2: 0 0 24px 8px var(--bg-neutral-contrast);
+	--box-shadow-1: 0 0 16px 8px rgb(26 34 46 / 24%);
+	--box-shadow-2: 0 0 24px 8px var(--bg-neutral-contrast);
 	
 	--left-shadow:
 			0 0 1px 0 var(--bg-neutral-strongest-tint),
@@ -427,22 +427,19 @@
 	--scrollbar-size: 10px;
 	--scrollbar-track-inset: 2px;
 	
-	--splitview-sidebar-mobile-height: 240px;
+	/*--splitview-sidebar-mobile-height: 240px;*/
 	--splitview-sidebar-width: 300px;
 	
 	/* WinBox frame */
 	--winbox-detail-border: var(--border-elevated-4);
-	--winbox-detail-shadow: var(--shadow-1);
+	--winbox-detail-shadow: var(--box-shadow-1);
 	--winbox-header-bg-hover: var(--elevated-a32);
 	--winbox-header-border: var(--border-elevated-3);
 	--winbox-header-fg: var(--fg-neutral-emphasis);
 	--winbox-header-gap: var(--spacing-100);
 	--winbox-header-height: 40px;
 	--winbox-header-padding-x: var(--spacing-200);
-	--winbox-min-header-bg: var(--bg-neutral-strong);
-	--winbox-min-header-border: var(--border-elevated-3);
 	--winbox-min-header-fg: var(--fg-neutral-emphasis);
-	--winbox-min-header-radius: var(--spacing-200);
 	--winbox-dock-bg: var(--bg-navy-strong-tint);
 	--winbox-dock-bg-active: var(--bg-navy-strongest);
 	--winbox-dock-border: var(--navy-600);
@@ -474,11 +471,6 @@
 	--chart-11: var(--bg-neutral-subtle); /* Gray */
 	
 	/* component */
-	
-	--aside-tab-font-size: var(--font-size-sm);
-	--aside-tab-height: var(--spacing-400);
-	
-	
 	--bg-base: var(--filter-field-default-bg);
 	
 	/* Board list */
@@ -598,23 +590,7 @@
 	--data-table-list-th-bg: var(--bg-navy-stronger);
 	--data-table-list-th-border: var(--border-elevated-4);
 	
-	--detail-empty-state-bg: var(--bg-pattern-placeholder);
-	--detail-empty-state-border: var(--border-elevated-2);
-	--detail-empty-state-fg: var(--fg-neutral-subtlest);
-	--detail-popup-title-gap: var(--spacing-100);
-	
 	/* Document viewer */
-	--document-list-gap: var(--spacing-100);
-	--document-list-item-bg: var(--bg-transparent);
-	--document-list-item-bg-hover: var(--bg-elevated-2);
-	--document-list-item-border: var(--border-elevated-2);
-	--document-list-item-border-hover: var(--border-elevated-3);
-	--document-list-item-border-width: 1px;
-	--document-list-item-gap: var(--spacing-100);
-	--document-list-item-padding: var(--spacing-200);
-	--document-list-item-radius: var(--spacing-050);
-	--document-list-fg: var(--fg-neutral-subtlest);
-	--document-list-equipment-name-fg: var(--fg-neutral-emphasis);
 	--document-viewer-bg: var(--bg-neutral-contrast);
 	--document-viewer-border: var(--border-transparent);
 	--document-viewer-border-width: 1px;
@@ -642,7 +618,6 @@
 	--filter-toggle-size: var(--spacing-400);
 	
 	--form-actions-gap: var(--spacing-100);
-	--form-button-border: var(--border-elevated-4);
 
 	--form-check-size: var(--spacing-200);
 	
@@ -658,19 +633,8 @@
 	--form-field-gap: var(--spacing-100);
 	--form-field-bg-strong: rgba(var(--teal-rgb), 100%);
 	--form-field-bg-subtle: rgba(var(--teal-rgb), 40%);
-	--form-grid-bg: var(--bg-transparent);
-	--form-grid-border: var(--border-transparent);
-	--form-grid-item-border: var(--border-elevated-2);
-	--form-grid-label-width: 8rem;
-	--form-grid-label-bg: var(--table-tbody-th-bg);
-	--form-grid-cell-padding: var(--spacing-100);
-	--date-selection-max-height: 10rem;
-	--form-grid-column-gap: var(--spacing-200);
-	--form-grid-padding: var(--spacing-200);
-	--form-grid-radius: var(--spacing-100);
-	--form-grid-row-gap: var(--spacing-200);
+	--form-group-min-width: 240px;
 	--form-height: var(--form-control-height);
-	--form-helper-fg: var(--fg-neutral-subtler);
 	--form-icon-size: var(--spacing-250);
 	--form-input-bg: var(--bg-navy-strongest);
 	--form-input-border: var(--border-navy-default);
@@ -678,7 +642,6 @@
 	--form-layout-gap: var(--spacing-200);
 	--form-page-control-width: var(--spacing-500);
 	--form-placeholder-fg: var(--fg-neutral-emphasis);
-	--form-required-fg: var(--fg-white);
 	--form-select-option-bg: var(--bg-neutral-stronger);
 	--form-select-control-padding-x: var(--spacing-400);
 	--form-select-icon-inset: var(--spacing-050);
@@ -713,7 +676,7 @@
 	--header-search-bg: var(--bg-navy-stronger);
 	--header-search-border: var(--border-elevated-3);
 	--header-search-close-icon-fg: var(--fg-neutral-emphasis);
-	--header-search-expanded-shadow: var(--shadow-2);
+	--header-search-expanded-shadow: var(--box-shadow-2);
 	--header-search-fg: var(--fg-neutral-emphasis);
 	--header-search-focus-bg: var(--bg-neutral-strong);
 	--header-search-focus-border: var(--border-elevated-2);
@@ -752,18 +715,14 @@
 	--panel-split-layout-header-min-height: 24px;
 	--panel-split-layout-title-gap: var(--spacing-100);
 	--panel-split-layout-title-size: 18px;
-	--panel-toggle-active-fg: var(--fg-white);
-	--panel-toggle-active-bg: var(--bg-primary-subtle);
-	--panel-toggle-active-border: var(--border-elevated-4);
+	
 	--panel-toggle-bg: var(--bg-navy-stronger);
 	--panel-toggle-border: var(--border-elevated-4);
-	--panel-toggle-desktop-fg: var(--fg-neutral-emphasis);
 	--panel-toggle-fg: var(--fg-neutral-emphasis);
 	--panel-toggle-switch-active-bg: var(--bg-primary-subtle);
 	--panel-toggle-switch-active-thumb-bg: var(--fg-white);
 	--panel-toggle-switch-bg: var(--bg-navy-strongest);
 	--panel-toggle-switch-thumb-bg: var(--fg-neutral-emphasis);
-	--panel-scroll-gap: var(--spacing-100);
 	
 	--calendar-bg: var(--bg-neutral-strong);
 	--calendar-border: var(--border-elevated-1);
@@ -776,7 +735,7 @@
 	
 	--popover-bg: var(--bg-neutral-strong);
 	--popover-border: var(--border-neutral-subtle);
-	--popover-shadow: var(--shadow-1);
+	--popover-shadow: var(--box-shadow-1);
 	
 	/* chart */
 	--result-chart-height: 560px;
@@ -822,16 +781,10 @@
 	--tab-hover-fg: var(--fg-neutral-emphasis);
 	--tab-item-padding-x: var(--spacing-200);
 	--tab-list-gap: var(--spacing-100);
-	--tab-nav-pill-active-bg: var(--tab-active-bg);
-	--tab-nav-pill-active-border: var(--tab-active-border);
-	--tab-nav-pill-bg: var(--tab-default-bg);
-	--tab-nav-pill-hover-bg: var(--tab-default-bg);
 	--tab-radius: var(--spacing-050);
-	--tab-error-fg: var(--fg-danger-emphasis);
 	
 	--table-responsive-header-offset: 0;
 	--table-responsive-header-z-index: 3;
-	--table-responsive-max-height: 400px;
 	--table-responsive-bg: var(--bg-sunken-1);
 	
 	--table-bg: var(--bg-elevated-1);
@@ -845,7 +798,7 @@
 	--table-cell-name-max-width: 640px;
 	--table-cell-work-min-width: 380px;
 	--table-empty-fg: var(--fg-neutral-subtler);
-	--table-empty-min-height: 140px;
+	--table-empty-min-height: 80px;
 	--table-font-size: var(--font-size-base);
 	--table-list-tr-height: var(--form-control-height);
 	--table-primary-thead-border: var(--border-elevated-4);
@@ -853,8 +806,8 @@
 	--table-row-focus-width: var(--focus-ring-width);
 	--table-sort-icon-fg: var(--fg-neutral-subtlest);
 	--table-row-caution-fg: var(--fg-info-emphasis);
-	--table-row-critical-fg: var(--fg-danger-emphasis);
-	--table-row-normal-fg: var(--fg-success-emphasis);
+	--table-row-danger-fg: var(--fg-danger-emphasis);
+	--table-row-success-fg: var(--fg-success-emphasis);
 	--table-row-warning-fg: var(--fg-warning-emphasis);
 	--table-row-selected-bg: var(--bg-elevated-1);
 	--table-secondary-thead-border: var(--border-elevated-3);
@@ -906,13 +859,8 @@
 	--ztree-item-radius: var(--radius-050);
 	
 	/* error */
-	--error-link-fg: var(--fg-primary-subtler);
-	--error-link-hover-fg: var(--fg-white);
 	--error-border: var(--border-danger-default);
 	--error-text: var(--fg-neutral-subtler);
-	--error-logo-width: var(--spacing-1000);
-	--error-logo-height: var(--spacing-600);
-	--error-logo-image-height: var(--spacing-400);
 	--error-content-max-width: 400px;
 	--error-content-max-width-wide: 960px;
 	--error-content-margin-top: var(--spacing-800);
@@ -936,4 +884,54 @@
 	--error-note-border-width: var(--spacing-050);
 	--error-note-offset: calc(var(--spacing-100) * -1);
 	--error-title-size: 21px;
+	
+	/* SVG Viewer - history-box popup */
+	--history-width: 320px;
+	--history-height: 240px;
+	--history-width-web: 320px;
+	
+	--history-offset-x: var(--spacing-100);
+	--history-offset-y: var(--spacing-100);
+	
+	--history-bg: var(--bg-neutral-contrast);
+	--history-border: var(--winbox-header-border);
+	--history-box-shadow: var(--box-shadow-1);
+	
+	--history-header-bg: var(--winbox-header-bg);
+	--history-header-border: var(--winbox-header-border);
+	
+	--history-icon-size: 16px;
+	--history-line-offset-x: 12px;
+	--history-item-border: var(--border-elevated-5);
+	--history-link: var(--fg-neutral-subtlest);
+	--history-link-hover: var(--fg-neutral-emphasis);
+	
+	/* 설비정보 사진배경영역 */
+	--facility-photo-bg: var(--bg-elevated-1);
+	--facility-photo-radius: var(--spacing-050);
+	
+	/* popup */
+	--popup-width: 400px;
+	--popup-height: 240px;
+	
+	--popup-bg: var(--bg-neutral-subtlest);
+	--popup-box-shadow: var(--box-shadow-1);
+	--popup-padding-x: var(--spacing-300);
+	--popup-padding-y: var(--spacing-200);
+	--popup-radius: var(--spacing-300);
+	--popup-border: var(--border-elevated-5);
+	--popup-text: var(--fg-neutral-contrast);
+	--popup-text-inverse: var(--fg-white);
+	
+	--popup-title-bg: var(--bg-neutral-default);
+	
+	--popup-header-bg: var(--bg-neutral-default);
+	--popup-header-border: var(--border-elevated-1);
+	--popup-header-text: var(--fg-white);
+	
+	--popup-footer-bg: var(--bg-neutral-default);
+	--popup-footer-border: var(--border-elevated-1);
+	--popup-footer-text: var(--fg-neutral-contrast);
+	--popup-footer-text-inverse: var(--fg-white);
+	
 }

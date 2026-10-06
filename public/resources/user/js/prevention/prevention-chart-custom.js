@@ -1,3 +1,8 @@
+var cssVar = function (name) {
+	return getComputedStyle(document.documentElement)
+		.getPropertyValue(name)
+		.trim();
+};
 
 //처음 화면을 띄울 때 차트라인이 안보이게 설정하는 변수
 var setValue = true;
@@ -37,14 +42,14 @@ var applyCommonYAxisOptionsPlugin = {
 					family: 'Noto Sans KR',
 					weight: '400'
 				},
-				color: '#111111',
+				color: cssVar('--chart-text'),
 				maxRotation: 45,
 				minRotation: 45,
 				borderWidth: 1
 			}, 
 			title: {
 				display: true,
-				color: '#333333',
+				color: cssVar('--chart-text'),
 				font: {
 					size: 12,
 					family: 'Noto Sans KR'
@@ -69,110 +74,110 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 			label: '발전량(Mwh)',
 			yAxisID: 'y1',
 			data: mwh,
-			borderColor: 'rgba(254, 80, 0, 0.8)',
-			borderWidth: 1,
+			borderColor: cssVar('--chart-4'),
+			borderWidth: 2,
 			//borderDash: [24, 4, 24, 4],
 			pointStyle: 'rectRot',
-			pointBackgroundColor: 'rgba(254, 80, 0, 1)',
+			pointBackgroundColor: cssVar('--chart-4'),
 			fill: false,
 			hidden: setValue
 		}, {
 			label: '￦/MWH',
 			yAxisID: 'y2',
 			data: mwc,
-			borderColor: 'rgba(228, 0, 43, 1)',
-			borderWidth: 1,
+			borderColor: cssVar('--chart-7'),
+			borderWidth: 2,
 			//borderDash: [16, 4, 8, 4],
 			pointStyle: 'triangle',
-			pointBackgroundColor: 'rgba(228, 0, 43, 1)',
+			pointBackgroundColor: cssVar('--chart-7'),
 			fill: false,
 			hidden: setValue
 		}, {
 			label: '비용(억원)',
 			yAxisID: 'y3',
 			data: cost,
-			borderColor: 'rgba(165, 24, 144, 1)',
-			borderWidth: 1,
+			borderColor: cssVar('--chart-5'),
+			borderWidth: 2,
 			borderDash: [24, 2],
 			pointStyle: 'rect',
-			pointBackgroundColor: 'rgba(165, 24, 144, 1)',
+			pointBackgroundColor: cssVar('--chart-5'),
 			fill: false,
 			hidden: setValue
 		}, {
 			label: '이용률(%)',
 			yAxisID: 'y4',
 			data: use_rate,
-			borderColor: 'rgba(0, 150, 170, 1)',
-			borderWidth: 1,
+			borderColor: cssVar('--chart-8'),
+			borderWidth: 2,
 			borderDash: [4, 8],
 			pointStyle: 'circle',
-			pointBackgroundColor: 'rgba(0, 150, 170, 1)',
+			pointBackgroundColor: cssVar('--chart-8'),
 			fill: false,
 			hidden: setValue
 		}, {
 			label: 'PM(건)',
 			yAxisID: 'y5',
 			data: pm,
-			borderColor: 'rgba(0, 86, 112, 1)',
-			borderWidth: 1,
+			borderColor: cssVar('--chart-9'),
+			borderWidth: 2,
 			borderDash: [12, 4, 8, 16],
 			pointStyle: 'rectRounded',
-			pointBackgroundColor: 'rgba(0, 86, 112, 1)',
+			pointBackgroundColor: cssVar('--chart-9'),
 			fill: false,
 			hidden: setValue
 		}, {
 			label: '작업오더(건)',
 			yAxisID: 'y6',
 			data: wo,
-			borderColor: 'rgba(0, 119, 200, 1)',
-			borderWidth: 1,
+			borderColor: cssVar('--chart-6'),
+			borderWidth: 2,
 			borderDash: [8, 4, 8, 8, 24],
 			pointStyle: 'star',
-			pointBackgroundColor: 'rgba(0, 119, 200, 1)',
+			pointBackgroundColor: cssVar('--chart-6'),
 			fill: false,
 			hidden: setValue
 		}, {
 			label: 'TM(건)',
 			yAxisID: 'y7',
 			data: tm,
-			borderColor: 'rgba(0, 159, 77, 1)',
-			borderWidth: 1,
+			borderColor: cssVar('--chart-2'),
+			borderWidth: 2,
 			//borderDash: [4, 2, 16, 24, 32],
 			pointStyle: 'circle',
-			pointBackgroundColor: 'rgba(0, 159, 77, 1)',
+			pointBackgroundColor: cssVar('--chart-2'),
 			fill: false,
 			hidden: setValue
 		}, {
 			label: 'Failure Tendency',
 			yAxisID: 'y8',
 			data: failureTendency,
-			borderColor: 'rgba(200, 160, 0, 1)',
-			borderWidth: 1,
+			borderColor: cssVar('--chart-5'),
+			borderWidth: 2,
 			borderDash: [8, 12, 24],
 			pointStyle: 'rectRounded',
-			pointBackgroundColor: 'rgba(200, 160, 0, 1)',
+			pointBackgroundColor: cssVar('--chart-5'),
 			fill: false,
 			hidden: setValue
 		}, {
 			label: 'Factor(F.T./$)',
 			yAxisID: 'y9',
 			data: factor,
-			borderColor: 'rgba(0, 102, 204, 1)',
-			borderWidth: 1,
+			borderColor: cssVar('--chart-11'),
+			borderWidth: 2,
 			borderDash: [4, 8, 16, 8],
 			pointStyle: 'triangle',
-			pointBackgroundColor: 'rgba(0, 102, 204, 1)',
+			pointBackgroundColor: cssVar('--chart-11'),
 			fill: false,
 			hidden: setValue
 		}, {
 			label: 'Trip(건)',
 			yAxisID: 'y10',
 			data: trip,
-			borderColor: 'rgba(110, 160, 0, 1)',
-			borderWidth: 1,
+			borderColor: cssVar('--chart-10'),
+			borderWidth: 2,
 			borderDash: [4, 4],
 			pointStyle: 'crossRot',
-			pointBackgroundColor: 'rgba(110, 160, 0, 1)',
+			pointBackgroundColor: cssVar('--chart-10'),
 			fill: false,
 			hidden: setValue
 		}]
@@ -205,7 +210,7 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 						family: 'Noto Sans KR',
 						weight: '500'
 					},
-					color: '#333333'
+					color: cssVar('--chart-text')
 				}
 			},
 			y5: {
@@ -220,7 +225,7 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 					stepSize: 10000000
 				},
 				border: {
-					color: 'rgba(0, 86, 112, 1)'
+					color: cssVar('--chart-9')
 				}
 			},
 			y4: {
@@ -235,7 +240,7 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 					stepSize: 500
 				},
 				border: {
-					color: 'rgba(0, 150, 170, 1)'
+					color: cssVar('--chart-8')
 				}
 			},
 			y3: {
@@ -250,7 +255,7 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 					stepSize: 500
 				},
 				border: {
-					color: 'rgba(165, 24, 144, 1)'
+					color: cssVar('--chart-5')
 				}
 			},
 			y2: {
@@ -265,7 +270,7 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 					stepSize: 10
 				},
 				border: {
-					color: 'rgba(228, 0, 43, 1)'
+					color: cssVar('--chart-7')
 				}
 			},
 			y1: {
@@ -280,7 +285,7 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 					drawOnChartArea: true // 그리드 라인을 한쪽 축에만 표시
 				},
 				border: {
-					color: 'rgba(254, 80, 0, 1)'
+					color: cssVar('--chart-4'),
 				}
 			},
 			y6: {
@@ -295,7 +300,7 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 					stepSize: 10000
 				},
 				border: {
-					color: 'rgba(0, 119, 200, 1)'
+					color: cssVar('--chart-6'),
 				}
 			},
 			y7: {
@@ -310,7 +315,7 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 					stepSize: 2000
 				},
 				border: {
-					color: 'rgba(0, 159, 77, 1)'
+					color: cssVar('--chart-2')
 				}
 			},
 			y8: {
@@ -325,7 +330,7 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 					stepSize: 2000
 				},
 				border: {
-					color: 'rgba(200, 160, 0, 1)'
+					color: cssVar('--chart-5')
 				}
 			},
 			y9: {
@@ -340,7 +345,7 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 					stepSize: 0.2
 				},
 				border: {
-					color: 'rgba(0, 102, 204, 1)'
+					color: cssVar('--chart-11')
 				}
 			},
 			y10: {
@@ -355,10 +360,9 @@ var myChart = new Chart(document.getElementById('trend_chart'), {
 					stepSize: 5
 				},
 				border: {
-					color: 'rgba(110, 160, 0, 1)'
+					color: cssVar('--chart-10'),
 				}
 			}
-			
 		},
 		layout: {
 			padding: {

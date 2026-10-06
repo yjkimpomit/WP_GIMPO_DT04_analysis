@@ -102,7 +102,7 @@ var cc_chartoptions = {
 				if (tooltipDataInfo.label === '효율'){
 					return value + '%';
 				}
-				console.log(tooltipDataInfo);
+				//console.log(tooltipDataInfo);
 				return value;
 			},
 		},
@@ -213,7 +213,7 @@ var gt_chartoptions = {
 				if (tooltipDataInfo.label === '효율'){
 					return value + '%';
 				}
-				console.log(tooltipDataInfo);
+				//console.log(tooltipDataInfo);
 				return value;
 			},
 		},
@@ -325,7 +325,7 @@ var gt2_chartoptions = {
 				if (tooltipDataInfo.label === '효율'){
 					return value + '%';
 				}
-				console.log(tooltipDataInfo);
+				//console.log(tooltipDataInfo);
 				return value;
 			},
 		},
@@ -437,7 +437,7 @@ var st_chartoptions = {
 				if (tooltipDataInfo.label === '효율'){
 					return value + '%';
 				}
-				console.log(tooltipDataInfo);
+				//console.log(tooltipDataInfo);
 				return value;
 			},
 		},
