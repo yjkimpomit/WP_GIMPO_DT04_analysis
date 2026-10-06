@@ -68,6 +68,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+	justify-content: space-around;
 	gap: var(--spacing-200);
 	color: var(--info-message-fg);
 	border: 1px solid var(--info-message-border);
@@ -1168,6 +1169,12 @@ textarea.form-control {
 .data-table--interactive > tbody > tr:focus-visible {
 	outline: var(--table-row-focus-width) solid var(--table-row-focus);
 	outline-offset: calc(var(--table-row-focus-width) * -1);
+}
+
+.data-table--interactive > tbody > tr:has(.no-data),
+.data-table--interactive > tbody > tr:has(.no-data):hover > * {
+	cursor: inherit;
+	background-color: inherit;
 }
 
 /* Semantic row treatments can be shared by monitoring and alarm tables. */
