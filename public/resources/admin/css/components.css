@@ -156,7 +156,6 @@ fieldset.form-field > legend.form-label {
 }
 
 .form-select {
-	padding-inline-end: var(--form-select-control-padding-x);
 	appearance: none;
 	background-image: url('/resources/admin/images/icons/keyboard_arrow_down.svg');
 	background-repeat: no-repeat;
