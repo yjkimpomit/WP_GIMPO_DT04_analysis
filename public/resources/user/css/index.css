@@ -61,10 +61,10 @@ body {
 
 @media (min-width: 768px) {
 	.model-viewer {
-		top: 72px;
+		top: var(--header-height);
 		left: var(--gnb-width-collapsed);
 		width: calc(100% - var(--gnb-width-collapsed));
-		height: 100vh;
+		height: calc(100% - var(--header-height));
 		
 		/* web: top 72px / left 80px */
 		background:

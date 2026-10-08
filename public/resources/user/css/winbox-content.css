@@ -43,6 +43,10 @@ body > .winbox-layout {
 	overflow-y: auto;
 }
 
+body > .winbox-layout--flush {
+	--winbox-layout-gutter: 0;
+}
+
 @media (min-width: 768px) {
 	.winbox-layout {
 		--winbox-layout-gutter: var(--spacing-300);
