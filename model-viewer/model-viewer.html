@@ -239,6 +239,7 @@
 			<div class="model-tree">
 				<div class="model-tree-header">
 					<div class="model-tree-header__filters">
+						<button type="button" class="model-tree-header__home" title="처음 레벨"></button>
 						<label class="visually-hidden" for="facilityType">설비 구분</label>
 						<select id="facilityType" class="model-tree-header__select">
 							<option>AUX BLR</option>
@@ -248,6 +249,8 @@
 						<select id="facilityFloor" class="model-tree-header__select">
 							<option>1F</option>
 						</select>
+						<button type="button" class="model-tree-header__reset" title="초기화"></button>
+						<button type="button" class="model-tree-header__toggle" title="트리메뉴 토글"></button>
 					</div>
 
 					<div class="model-tree-header__search">
@@ -278,7 +281,7 @@
 								<button type="button" class="icon icon--treeitem-visible" aria-label="1F 숨기기"></button>
 							</div>
 						</div>
-						<div class="model-tree__row model-tree__row--expanded" role="listitem">
+						<div class="model-tree__row model-tree__row--expanded hover" role="listitem">
 							<div class="model-tree__left">
 								<span class="model-tree__arrow" aria-hidden="true"></span>
 								<span class="model-tree__label" title="2F">2F</span>
@@ -298,7 +301,7 @@
 								<button type="button" class="icon icon--treeitem-visible" aria-label="터빈설비 숨기기"></button>
 							</div>
 						</div>
-						<div class="model-tree__row model-tree__row--depth-2" role="listitem">
+						<div class="model-tree__row model-tree__row--depth-2 active" role="listitem">
 							<div class="model-tree__left">
 								<div class="model-tree__label" title="터빈본체">터빈본체</div>
 							</div>
