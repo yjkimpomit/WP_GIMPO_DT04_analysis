@@ -102,7 +102,7 @@
 		</section>
 
 		<section>
-			<h2>AI 알람 아이콘 및 클릭시 팝오버 : 변경예정</h2>
+			<h2>AI 알람 아이콘 및 클릭시 팝오버 <small>updated: 2026-10-12</small></h2>
 			<!-- AI 알람 아이콘 -->
 			<span class="status-indicator" role="img" aria-label="AI 알람">
 				<span class="status-indicator__icon" aria-hidden="true"></span>
@@ -163,64 +163,136 @@
 		</section>
 
 		<section>
-			<h2>안전작업 알람 아이콘 및 팝오버 : 변경예정</h2>
-			<!-- 안전작업 알람 아이콘 -->
-			<span class="worker-badge worker-badge--urgent" role="img" aria-label="안전작업 긴급 알람">
-				<span class="worker-badge__icon" aria-hidden="true"></span>
-				<span class="worker-badge__status" aria-hidden="true"></span>
-			</span>
+			<h2>안전작업 알람 아이콘 및 팝오버 <small>updated: 2026-10-12</small></h2>
 
-			<!-- 안전작업 알람 팝오버 -->
-			<div class="work-popover">
-				<div class="work-popover__header">
-					<strong class="work-popover__title">ST-1 터빈동 2층</strong>
-					<button type="button" class="work-popover__close" aria-label="닫기">
-						<span class="icon icon--close" aria-hidden="true"></span>
-					</button>
-				</div>
+			<div class="splitview">
+				<div class="splitview__pane">
+					<div>
+						<h3>정상일때, </h3>
+						<!-- 안전작업 알람 아이콘 -->
+						<span class="worker-badge worker-badge--normnal" role="img" aria-label="안전작업 정상">
+							<span class="worker-badge__icon" aria-hidden="false"></span>
+							<span class="worker-badge__status" aria-hidden="false" style="display: none;"></span>
+						</span>
 
-				<dl class="work-popover__info">
-					<div class="work-popover__item work-popover__item--success">
-						<dt>안전 상태</dt>
-						<dd>정상</dd>
-					</div>
+						<!-- 안전작업 알람 팝오버 -->
+						<div class="work-popover">
+							<div class="work-popover__header">
+								<strong class="work-popover__title">GT-룸</strong>
+								<button type="button" class="work-popover__close" aria-label="닫기">
+									<span class="icon icon--close" aria-hidden="true"></span>
+								</button>
+							</div>
 
-					<div class="work-popover__item">
-						<dt>현재 상태</dt>
-						<dd>작업 중</dd>
-					</div>
+							<dl class="work-popover__info">
+								<div class="work-popover__item work-popover__item--success">
+									<dt>안전 상태</dt>
+									<dd>정상</dd>
+								</div>
 
-					<div class="work-popover__item">
-						<dt>작업 인원</dt>
-						<dd>8명</dd>
-					</div>
+								<div class="work-popover__item">
+									<dt>현재 상태</dt>
+									<dd>작업 중</dd>
+								</div>
 
-					<div class="work-popover__item">
-						<dt>작업 구역</dt>
-						<dd>스팀터빈 윤활유 계통</dd>
-					</div>
-				</dl>
+								<div class="work-popover__item">
+									<dt>작업 인원</dt>
+									<dd>10명</dd>
+								</div>
 
-				<div class="work-popover__section">
-					<h3 class="work-popover__section-title">작업일정</h3>
+								<div class="work-popover__item">
+									<dt>작업 구역</dt>
+									<dd>GT {__작업구역__}</dd>
+								</div>
+							</dl>
 
-					<dl class="work-popover__info">
-						<div class="work-popover__item">
-							<dt>작업 시작</dt>
-							<dd>10:20</dd>
+							<div class="work-popover__section">
+								<h3 class="work-popover__section-title">작업일정</h3>
+
+								<dl class="work-popover__info">
+									<div class="work-popover__item">
+										<dt>작업 시작</dt>
+										<dd>10:20</dd>
+									</div>
+
+									<div class="work-popover__item">
+										<dt>예정 종료</dt>
+										<dd>12:00</dd>
+									</div>
+								</dl>
+							</div>
 						</div>
 
-						<div class="work-popover__item">
-							<dt>예정 종료</dt>
-							<dd>12:00</dd>
-						</div>
-					</dl>
+
+					</div>
+
 				</div>
+				
+				<div class="splitview__pane">
+					<div>
+						<h3>이상발생시, </h3>
+						<!-- 안전작업 알람 아이콘 -->
+						<span class="worker-badge worker-badge--urgent" role="img" aria-label="안전작업 이상발생">
+							<span class="worker-badge__icon" aria-hidden="true"></span>
+							<span class="worker-badge__status" aria-hidden="true"></span>
+						</span>
+
+						<!-- 안전작업 알람 팝오버 -->
+						<div class="work-popover">
+							<div class="work-popover__header">
+								<strong class="work-popover__title">GT-룸</strong>
+								<button type="button" class="work-popover__close" aria-label="닫기">
+									<span class="icon icon--close" aria-hidden="true"></span>
+								</button>
+							</div>
+
+							<dl class="work-popover__info">
+								<div class="work-popover__item work-popover__item--danger">
+									<dt>안전 상태</dt>
+									<dd>경고 1</dd>
+								</div>
+
+								<div class="work-popover__item work-popover__item--danger">
+									<dt>현재 상태</dt>
+									<dd>쓰러짐 1</dd>
+								</div>
+
+								<div class="work-popover__item">
+									<dt>작업 인원</dt>
+									<dd>10명</dd>
+								</div>
+
+								<div class="work-popover__item">
+									<dt>작업 구역</dt>
+									<dd>GT {__작업구역__}</dd>
+								</div>
+							</dl>
+
+							<div class="work-popover__section">
+								<h3 class="work-popover__section-title">작업일정</h3>
+
+								<dl class="work-popover__info">
+									<div class="work-popover__item">
+										<dt>작업 시작</dt>
+										<dd>10:20</dd>
+									</div>
+
+									<div class="work-popover__item">
+										<dt>예정 종료</dt>
+										<dd>12:00</dd>
+									</div>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
 			
 			<ol class="comment">
 				<li>팝오버는 좌측 -16픽셀, 탑 -16픽셀만큼 이동시켜 주세요. (알람 아이콘과 오버랩)</li>
 			</ol>
+			
 		</section>
 
 		<!-- 건물 하이라이트 -->
@@ -235,7 +307,7 @@
 		576px 이상 - model-tree 패널은 우측에 나타납니다.
 		-->
 		<section>
-			<h2>모델 트리메뉴</h2>
+			<h2>모델 트리메뉴 <small>updated: 2026-10-08</small></h2>
 			<div class="model-tree">
 				<div class="model-tree-header">
 					<div class="model-tree-header__filters">

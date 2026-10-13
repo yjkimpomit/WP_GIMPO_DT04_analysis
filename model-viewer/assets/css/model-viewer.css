@@ -310,6 +310,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+
+	min-width: 280px;
 }
 
 .safety-popover__header {
@@ -429,8 +431,8 @@
 }
 
 .safety-status--danger {
-	border-color: #b90f40;
-	background: rgb(185 15 64 / 88%);
+	border-color: #df134c;
+	background: #b90f40e0;
 }
 
 .safety-status:hover {
@@ -476,6 +478,15 @@
 
 	border: 2px solid #fff;
 	border-radius: 50%;
+	background: #0fa983;
+	display: none;
+}
+
+.worker-badge.worker-badge--urgent {
+	background: #F52C64;
+}
+.worker-badge.worker-badge--urgent .worker-badge__status {
+	display: block;
 	background: #b90f40;
 }
 
@@ -500,6 +511,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	
+	min-width: 280px;
 }
 
 .work-popover__header {
@@ -562,8 +575,13 @@
 }
 
 .work-popover__item--success {
-	border-color: #007446;
-	background: rgb(0 116 70 / 88%);
+	border-color: #077E6E;
+	background: #036359e0;
+}
+
+.work-popover__item--danger {
+	border-color: #df134c;
+	background: #b90f40e0;
 }
 
 .work-popover__item>dt {
@@ -1025,4 +1043,21 @@ table th {
 
 table td:last-child {
 	border-right: 0;
+}
+
+h2 small {
+	margin-inline: 16px;
+	padding-inline: 8px;
+	color: #fff;
+	background-color: #df134c;
+	text-decoration: underline;
+
+	font-size: 16px;
+}
+
+.splitview {
+	display: flex;
+	align-items: flex-start;
+	gap: 24px;
+	flex-direction: row;
 }
