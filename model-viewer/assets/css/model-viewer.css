@@ -613,6 +613,28 @@
 	line-height: 16px;
 }
 
+/* 4족보행로봇 아이콘 */
+.robotic-dog-badge {
+	position: relative;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	inline-size: 36px;
+	block-size: 32px;
+
+	border: 2px solid #fff;
+	border-radius: 16px;
+	background: #034D63;
+}
+
+.robotic-dog-badge>span:first-child {
+	inline-size: 20px;
+	block-size: 20px;
+	background: url('robotic-dog.svg') center / contain no-repeat;
+}
+
 /* 모델 트리 메뉴 */
 .model-tree {
 	border: 1px solid rgb(84 116 182 / 60%);
@@ -994,70 +1016,3 @@
 
 
 
-
-/******** 샘플용 - 개발시 사용안함 ********/
-html,
-body {
-	height: auto;
-	overflow: visible;
-}
-
-section {
-	margin-bottom: 3rem;
-}
-
-.model-viewer {
-	display: flex;
-	gap: 16px;
-	flex-direction: column;
-	padding: 24px;
-}
-
-.model-focus-ring {
-	inline-size: 240px;
-	block-size: 80px;
-}
-
-table {
-	border-collapse: collapse;
-	border-top: 2px solid rgba(84, 116, 182, 0.6);
-	color: #FFF;
-	white-space: nowrap;
-}
-
-table th,
-table td {
-	padding: 12px 16px;
-	font-size: 14px;
-	line-height: 18px;
-	text-align: left;
-
-	border-right: 1px solid rgba(84, 116, 182, 0.6);
-	border-bottom: 1px solid rgba(84, 116, 182, 0.6);
-}
-
-table th {
-	min-width: 120px;
-	background: rgba(84, 116, 182, 0.1);
-}
-
-table td:last-child {
-	border-right: 0;
-}
-
-h2 small {
-	margin-inline: 16px;
-	padding-inline: 8px;
-	color: #fff;
-	background-color: #df134c;
-	text-decoration: underline;
-
-	font-size: 16px;
-}
-
-.splitview {
-	display: flex;
-	align-items: flex-start;
-	gap: 24px;
-	flex-direction: row;
-}

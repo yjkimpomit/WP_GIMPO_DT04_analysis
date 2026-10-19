@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="theme-color" content="#FFFFFF">
+	<title>모델뷰어-김포열병합 DT</title>
+
+	<meta name="description" content="작업-김포열병합 DT 서비스 제공">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- favicon -->
+	<link rel="icon" href="favicon.ico" sizes="any">
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+	<link rel="stylesheet" href="./assets/fonts/NotoSansKR/NotoSansKR.css" />
+	<link rel="stylesheet" href="./assets/css/reset.css" />
+	<style>
+		/* 배경컬러 - 임시 확인용 */
+		.model-viewer {
+			width: 100vw;
+			height: 100vh;
+			position: relative;
+			overflow: hidden;
+			
+			/* mobile: top 56px / left 0 */
+			background:
+					radial-gradient(
+							circle 70vmax at 50vw calc(50vh - 56px),
+							rgba(0, 0, 0, 0) 50%,
+							rgba(0, 0, 0, 0.2) 90%
+					),
+					radial-gradient(
+							circle 70vmax at 50vw calc(50vh - 56px),
+							#243b59 20%,
+							#1b2a41 80%,
+							#1b2a41 100%);
+			padding: 24px;
+		}
+	</style>
+
+
+
+	<!-- 4족보행로봇 아이콘 start -->
+	<style>
+		.robotic-dog-badge {
+			position: relative;
+
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+
+			inline-size: 36px;
+			block-size: 32px;
+
+			border: 2px solid #fff;
+			border-radius: 16px;
+			background: #034D63;
+		}
+
+		.robotic-dog-badge>span:first-child {
+			inline-size: 20px;
+			block-size: 20px;
+			background: url('robotic-dog.svg') center / contain no-repeat;
+		}
+	</style>
+	<!-- 4족보행로봇 아이콘 end -->
+
+</head>
+
+<body>
+	<!-- 배경컬러 -->
+	<div class="model-viewer">
+
+		<section>
+			<h2>4족보행로봇 아이콘 <small>updated: 2026-10-19</small></h2>
+			<code>로봇 아이콘에 대해서는 상태별 데이터가 아직 정의되지 않았으므로, 아이콘만 표시하면 됩니다.</code>
+
+			<!-- 4족보행로봇 아이콘 start -->
+			<span class="robotic-dog-badge" role="img" aria-label="4족보행로봇">
+				<span class="robotic-dog-badge__icon" aria-hidden="true"></span>
+			</span>
+			<!-- 4족보행로봇 아이콘 end -->
+
+		</section>
+			
+	</div>
+</body>
+</html>
